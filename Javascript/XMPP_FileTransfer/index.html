@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.4.2.js"></script>
+<script type="text/javascript" src="jabberwerx.ui.js"></script>
+
+<script type="text/javascript">
+	// uncomment below code if you not using proxy , this wont work in ie9
+
+	client = new jabberwerx.Client("xep099tester");
+	/*client.event("clientStatusChanged").bind(function(evt) {
+		if (evt.data.next == jabberwerx.Client.status_connected) {
+			client.sendMessage("preddy2@cisco.com", "Hello XMPP User.");
+		}
+	});*/
+
+	var gfile;
+	var contents; 
+    var recievedMessage;
+	jabberwerx.$(document).bind(
+			"ready",
+
+			function() {
+				client.event("fileTransferRequestReceived").bind(
+						function(evt) {
+							//User Input Simulation, true for accept, false for reject.
+							
+							client.respondForFileTransOpenRequest(jabberwerx.$("#endpointInfo").val(), true, evt.data.getID());
+							//client.respondForFileTransOpenRequest(jabberwerx.$("#endpointInfo").val(), false, evt.data.getID());
+						});
+				
+				client.event("messageReceived").bind(
+						function(evt) {
+							var message = evt.data;
+							var body = message.getBody();
+							if (body) {
+								jabberwerx.$("#received-text-content").text(
+										body);
+								jabberwerx.$("#text-from").text(
+										message.getFrom());
+								jabberwerx.$("#status").text(
+										"Received message from "
+												+ message.getFrom());
+							}
+						});
+			
+			});
+</script>
+</head>
+<body>
+	<title>XMPP XEP099 Tester</title>
+	<h2>XMPP XEP099 Tester</h2>
+	<hr />
+	<h3>Log in</h3>
+	User ID :
+	<input id="username" /> Password :
+	<input id="password" />
+	<button id="login">Login</button>
+	<br />
+	<hr />
+	<h3>Messaging</h3>
+	To :
+	<input type="text" id="text-to" /> Content :
+	<input type="text" id="text-content" />
+	<button id="send">Send</button>
+	<br /> Received from:
+	<div id="text-from"></div>
+	Received content:
+	<div id="received-text-content"></div>
+	<hr />
+	<h3>File Transfer</h3>
+	Endpoint :
+	<input type="text" id="endpointInfo" />
+	<button id="getInfo">Get Info</button>
+	.:|:.:|:.
+	<button id="getItems">Get Items</button>
+	.:|:.:|:.
+	<input type="text" id="initNegoText"/>
+	<button id="initNego">InitNego</button>
+	<br />Select your file :
+	<input type="file" id="myFile" />
+	<br /> NAME :
+	<div id="name"></div>
+	<br /> SIZE :
+	<div id="size"></div>
+	<br /> Endpoint :
+	<input type="text" id="endpointSendFile" />
+	<button id="sendFile">Send a File</button>
+	.:|:.:|:.
+	<div id="download"></div>
+	<hr />
+	<h3>STATUS</h3>
+
+	<div id="status"></div>
+	<h4>Detail</h4>
+	<div id="detail"></div>
+	<script type="text/javascript">
+	
+		//html event binding
+		jabberwerx.$("#login").click(
+				function() {
+					var username = jabberwerx.$("#username").val();
+					var password = jabberwerx.$("#password").val()
+
+					try {
+						client.connect(username, password, {
+							successCallback : function() {
+								jabberwerx.$("#status").text(
+										"Connection successful");
+							},
+							errorCallback : function(err) {
+								var tstr = jabberwerx.util.serializeXML(err);
+								jabberwerx.util.debug.warn(tstr);
+								jabberwerx.$("#status").text(
+										"Could not connect: " + tstr);
+							}
+						});
+					} catch (ex) {
+						jabberwerx.util.debug.warn(ex.message);
+						jabberwerx.$("#status").text(
+								"Could not connect: " + ex.message);
+					}
+				});
+		jabberwerx.$("#send").click(
+				function() {
+					client.sendMessage(jabberwerx.$("#text-to").val(),
+							jabberwerx.$("#text-content").val());
+					jabberwerx.$("#status").text("Message sent");
+				});
+		jabberwerx.$("#getInfo").click(
+				function() {
+					//1. Requester Sends Service Discovery Request to Target
+					client.getInfo(jabberwerx.$("#endpointInfo").val(),
+							"shahhuss@cisco.com");
+
+				});
+		jabberwerx.$("#getItems").click(function() {
+			//2. Requester Sends Service Discovery Request to Server
+			//client.getItems("cisco.com");
+			client.getItems(jabberwerx.$("#endpointInfo").val());
+		});
+		jabberwerx.$("#initNego").click(
+				function() {initNegoText
+					client.initFileTransNego(jabberwerx.$("#endpointInfo").val());
+				});
+
+		var _blobUrl = '';
+
+		jabberwerx.$("#myFile").click(
+				function(event) {
+					gfile = event.target.files[0];
+					if(gfile){
+					var reader = new FileReader();
+					reader.onload = function(event){
+							contents =  reader.result;
+							//jabberwerx.$("#detail").html(contents);
+							$("#name").text(gfile.name + " / " + gfile.type);
+							$("#size").text(gfile.size);
+					      }
+						//reader.readAsText(gfile);
+						reader.readAsDataURL(gfile);
+						//reader.readAsA(gfile);
+					}else{
+						alert("Failed to load a file");
+					}
+
+				});
+
+		jabberwerx.$("#sendFile").click(
+				function() {
+					client.sendFile(jabberwerx.$("#endpointSendFile").val(), gfile, contents);
+					//_localFileSaveTest();
+				});
+		
+		function _localFileSaveTest(){
+			var BASE64_MARKER = ';base64,';
+
+			if (contents.indexOf(BASE64_MARKER) == -1) {
+			      var parts = contents.split(',');
+			      var contentType = parts[0].split(':')[1];
+			      var raw = parts[1];
+
+			      return new Blob([raw], {type: contentType});
+			    }
+			
+			var parts = contents.split(BASE64_MARKER);
+			var contentType = parts[0].split(':')[1];
+			
+		    var raw = window.atob(parts[1]);
+			
+		    var rawLength = raw.length;
+
+		    var uInt8Array = new Uint8Array(rawLength);
+
+		    for (var i = 0; i < rawLength; ++i) {
+		      uInt8Array[i] = raw.charCodeAt(i);
+		    }
+				                
+		    var blob = new Blob([uInt8Array], {type: contentType});
+            _blobUrl = window.URL.createObjectURL(blob);
+            	                
+            a= document.createElement("a");
+            document.body.appendChild(a);
+            a.style = "display: none";   
+            a.href = _blobUrl;
+            a.download = gfile.name;
+            a.click();
+		}
+		
+//		contents = '12345678901234';
+//		var file = {};
+//		file.size = contents.length;
+//		file.type = 'text/plain'
+		
+		function fileChunkingUnitTest(){
+			jabberwerx.$("#detail").append("fileChunkingUnitTest Started");
+			jabberwerx.$("#detail").append('<br>');
+			jabberwerx.$("#detail").append("Contents size = " + file.size);
+			jabberwerx.$("#detail").append('<br>');
+			file.size = contents.length;
+			
+			var blockSize = 10;
+			var sid=0, seq =0, start = 0, end=0;
+			var prefix = 'dataChunk-';
+			
+
+            var iteration = Math.ceil(file.size / blockSize);
+			
+			//Start Data transfer iteration asyncronouslly
+			for(var index=0; index< iteration; index++){
+				if(seq == iteration){
+					//Last Iteration
+					end = file.size;
+				}else{
+					end = end +  blockSize;
+				}
+				
+				jabberwerx.$("#detail").append("[start]="+ start);
+				jabberwerx.$("#detail").append('<br>');
+				jabberwerx.$("#detail").append("[end]=" + end);
+				jabberwerx.$("#detail").append('<br>');
+				var data = contents.substring(start , end);
+				jabberwerx.$("#detail").append("[seq]="+seq);
+				jabberwerx.$("#detail").append(':::');
+				jabberwerx.$("#detail").append("[sid]="+prefix + sid);
+				jabberwerx.$("#detail").append(':::');
+				jabberwerx.$("#detail").append("[data]=" + data);
+				
+				jabberwerx.$("#detail").append('<br>');
+				//_sendData(to, seq, prefix+ sid, data);
+				
+				seq ++;
+				sid ++;
+				start = end;
+				
+			}
+		}
+
+	</script>
+</body>
+</html>
+
