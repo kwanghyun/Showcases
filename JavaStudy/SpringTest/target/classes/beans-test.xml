@@ -1,0 +1,35 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean name="sequenceGenerator" class="config.SequenceGenerator">
+		<property name="prefixGenerator" ref="datePrefixGenerator" /> 
+		<property name="suffix" value="A" /> 
+		<property name="initial" value="100000" />
+	</bean>
+	
+	<bean id="datePrefixGenerator" class="config.DatePrefixGenerator">
+		<property name="pattern" value="yyyyMMdd"></property>
+	</bean>
+
+	<bean id="bookService" class="transaction.service.BookServiceImpl">
+		<property name="bookDao" ref="bookDao" />
+		<property name="stockDao" ref="stockDao" />
+		<property name="accountDao" ref="accountDao" />
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+	<bean id="bookServiceJpa" class="transaction.service.BookServiceJpaImpl">
+<!-- 		<property name="bookDao" ref="bookJpaDao" />
+		<property name="stockDao" ref="stockJpaDao" />
+		<property name="accountDao" ref="accountJpaDao" /> -->
+	</bean>
+     
+    <bean id="bookShop" class="transaction.jdbc.JdbcBookShop">
+    	<property name="dataSource" ref="dataSourceT"></property>
+    </bean>
+	<import resource="spring-jpa-test.xml"/>
+	
+</beans>
