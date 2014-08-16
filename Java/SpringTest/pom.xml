@@ -14,8 +14,7 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-		</dependency>
+
 		<!-- General dependencies -->
 		<dependency>
 			<groupId>log4j</groupId>

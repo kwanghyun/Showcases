@@ -1,0 +1,17 @@
+/META-INF
+/beans-test.xml
+/beans.xml
+/cache
+/concurrency
+/designpattern
+/hibernate
+/jdbc.properties
+/jpa
+/log4j.properties
+/log4j.xml
+/security
+/spring
+/spring-jpa-test.xml
+/spring-jpa.xml
+/transaction
+/util

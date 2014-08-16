@@ -14,8 +14,7 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-		</dependency>
+
 		<!-- General dependencies -->
 		<dependency>
 			<groupId>log4j</groupId>
@@ -321,13 +320,6 @@
 			<version>3.2.1.Final</version>
 		</dependency>
 
-		<!--Hazelcast Cache-->
-		<dependency>
-			<groupId>com.hazelcast</groupId>
-			<artifactId>hazelcast</artifactId>
-			<version>3.2.4</version>
-		</dependency>
-		
 		<!-- Testing dependencies -->
 		<dependency>
 			<groupId>junit</groupId>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-3.0.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+    <!-- JPA Entity Manager Factory -->
+	<bean id="entityManagerFactory" 
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+          p:dataSource-ref="dataSourceT">
+        <property name="jpaVendorAdapter">
+<!-- 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
+					p:database="H2" p:showSql="true"/>
+ -->	
+ 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+ 		</property>
+		<property name="jpaDialect">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+		</property>
+		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml"/>
+    </bean>
+    
+    <!-- For @PersistenContext -->
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+	<!-- Or -->
+	<!-- <context:annotation-config /> -->
+
+
+	<context:property-placeholder location="classpath*:*.properties"/>
+			
+	<bean 
+	id="dataSourceT" 
+	class="org.apache.commons.dbcp.BasicDataSource"
+	destroy-method="close" 
+	p:driverClassName="${jdbc.driverClassName}"
+	p:url="${jdbc.url}" 
+	p:username="${jdbc.username}" 
+	p:password="${jdbc.password}" />
+	
+ 	
+ 	<!-- For @Transaction Isolation, Propagation Test -->
+<!-- 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSourceT"/>
+	</bean>	 -->
+	
+	<!-- For @Transactional Default JPA transaction, can't change Isolation, Propagation Mode -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
+		p:entityManagerFactory-ref="entityManagerFactory"/>	
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+ 
+    <!-- Read in DAOs from the JPA package -->
+    <context:component-scan base-package="transaction.dao.jpa" />
+    <!-- Read in @Services -->
+    <context:component-scan base-package="transaction.service" />
+    
+    <!-- If you are using Spring 2.5 or later, you can simply include the <context:annotation-config> element in
+	your bean configuration file, and a RequiredAnnotationBeanPostProcessor instance will automatically get
+	registered. -->
+	<!-- <context:annotation-config /> -->
+
+	<bean id="bookDao" class="transaction.dao.BookDao">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	<bean id="accountDao" class="transaction.dao.AccountDao">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	<bean id="stockDao" class="transaction.dao.StockDao">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	
+	<bean id="employeeDao" class="transaction.dao.jpa.EmployeeDao"/>
+<!-- 	<bean id="bookJpaDao" class="transaction.dao.jpa.BookJpaDao">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	<bean id="stockJpaDao" class="transaction.dao.jpa.StockJpaDao">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	<bean id="accountJpaDao" class="transaction.dao.jpa.AccountJpaDao">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean> -->
+</beans>
