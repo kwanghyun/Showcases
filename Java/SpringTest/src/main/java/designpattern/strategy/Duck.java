@@ -1,9 +1,14 @@
 package designpattern.strategy;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public abstract class Duck {
 	FlyBehavior flyBehavior;
 	QuackBehavior quackBehavior;
-
+	LinkedList<Object> list = new LinkedList<Object>();
+	
+	
 	public Duck() {
 	}
 

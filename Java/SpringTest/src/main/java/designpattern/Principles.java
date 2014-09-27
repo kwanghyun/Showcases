@@ -7,7 +7,7 @@ public class Principles {
 	 * 1. Encapsulate what varies.
 	 * 2. Favor composition over inheritance.
 	 * 3. Program to interfaces, not implementations.
-	 * 4. Open0Clised Principle
+	 * 4. Open Close Principle
 	 * 	Classes should be open for extension, but closed for modification.
 	 * 5. Dependency Inversion
 	 * 	Depend on abstractions. Do not depend on concrete classes.
@@ -35,10 +35,6 @@ public class Principles {
 	
 	// 5. Abstract Factory - Provide an interface for creating families of related
 	// or dependent object without specifying their concrete classes.
-	
-	// 6. Factory Method - Define an interface for creating an object, but let
-	// subclasses decide which class to instantiate. Factory Method lets a class
-	// defer instantiation to the subclasses.
 	
 	/* ###Factory Method VS Abstract Factory ### */
 	// Factory Method relies on inheritance: object creation is delegated to
@@ -79,10 +75,6 @@ public class Principles {
 	// representation.
 	
 	// 13. Composite Pattern allows you to compose objects into tree structures
-	// to represent part-whole hierarchies. Composite lets clients treat
-	// individual objects and compositions of objects uniformly.
-	
-	// 14. Composite Pattern allows you to compose objects into tree structures
 	// to represent part-whole hierarchies. Composite lets clients treat
 	// individual objects and compositions of objects uniformly.
 	
