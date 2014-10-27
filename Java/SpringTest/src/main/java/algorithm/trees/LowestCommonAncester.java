@@ -28,6 +28,21 @@ public class LowestCommonAncester {
 		return null;
 	}
 	
+	public TreeNode findCom(TreeNode root, int val1, int val2){
+
+		if (root == null)
+			return null;
+		
+		if(root.value < val1 && root.value < val2)
+			root = findCom(root.left, val1, val2);
+		else if(root.value > val1 && root.value > val2)
+			root = findCom(root.right, val1, val2);
+		else
+			return root;
+		
+		return null;
+	}
+
 	public static void main(String args []){
 		
 		LowestCommonAncester lca = new LowestCommonAncester();
@@ -53,5 +68,6 @@ public class LowestCommonAncester {
 //		eight.setLeft(ten);
 
 		System.out.println(lca.findLowestCommonAncester(towenty, 1, 24 ).getValue());
+		System.out.println(lca.findCom(towenty, 1, 24 ).getValue());
 	}
 }

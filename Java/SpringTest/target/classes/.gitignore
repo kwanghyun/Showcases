@@ -1,4 +1,7 @@
+/META-INF
 /algorithm
+/beans-test.xml
+/beans.xml
 /cache
 /concurrency
 /designpattern
@@ -8,4 +11,3 @@
 /spring
 /transaction
 /util
-/altorithm

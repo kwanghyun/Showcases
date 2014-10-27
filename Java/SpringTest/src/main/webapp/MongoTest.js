@@ -178,7 +178,7 @@ function getRandomMovies(num) {
 }
 
 function insertTheaterData(num) {
-	db.test.insert({
+	db.itemLocation.insert({
 		id : "theater_id" + num,
 		name : "theater_name" + num,
 		phoneNumber : Math.round((Math.random() * 1000000000)),
@@ -197,7 +197,8 @@ function insertDealData(num) {
 	var start = getRandomDate(new Date(2013, 0, 1), new Date());
 	var end = getRandomDate(start, new Date(2015, 5, 1));
 
-	db.test.insert({
+	db.itemLocation.insert({
+		_class : "com.cisco.location.service.beans.ItemLocation",
 		name : "Deal Title-" + num,
 		startTime :new Date(start),
 		endTime : new Date(end),
@@ -215,7 +216,7 @@ function insertDealData(num) {
 }
 
 function insertAdData(num) {
-	db.test.insert({
+	db.itemLocation.insert({
 		name : {
 			first : "firstname" + num,
 			last : "lastname" + num

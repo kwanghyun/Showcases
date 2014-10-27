@@ -1,14 +1,14 @@
 package algorithm.linkedlist;
-
+ 
 public class RemoveNode {
 
 	Node head, tail;
 	int count;
-
+	
 	// 3 => 4 => 5
 	// previous.next = temp.next
 	// 3 => 5
-	public boolean delete(int value) {
+	public boolean delete(int value) {		
 		Node temp = tail;
 		Node previous = tail;
 		while (temp != null) {

@@ -16,4 +16,18 @@ public class SimplePizzaFactory {
 		}
 		return pizza;
 	}
+	
+	public Pizza createPizza2(String type){
+		try {
+			Class<?> c = Class.forName(type);
+			return (Pizza) c.newInstance();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		return null;	
+	}
 }

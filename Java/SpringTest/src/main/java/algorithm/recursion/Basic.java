@@ -9,7 +9,8 @@ public class Basic {
 	 */
 	public static int recursionCheck(int count){
 		//Stopping point
-		if(count == 0) return 0;
+		if(count == 0) 
+			return 0;
 		
 		System.out.println("1. count : " + count);
 		

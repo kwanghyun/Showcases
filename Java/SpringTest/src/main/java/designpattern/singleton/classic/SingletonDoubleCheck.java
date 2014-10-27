@@ -7,9 +7,10 @@ package designpattern.singleton.classic;
 
 public class SingletonDoubleCheck {
 	private volatile static SingletonDoubleCheck uniqueInstance;
- 
-	private SingletonDoubleCheck() {}
- 
+
+	private SingletonDoubleCheck() {
+	}
+
 	public static SingletonDoubleCheck getInstance() {
 		if (uniqueInstance == null) {
 			synchronized (SingletonDoubleCheck.class) {

@@ -5,7 +5,7 @@ public class MatrixConvertToZero {
 	int[][] matrix = {
 			{1,1,1,1},
 			{1,1,0,1},
-			{1,0,1,1}
+			{1,1,1,1}
 	};
 	
 	public void solution(int[][] matrix){

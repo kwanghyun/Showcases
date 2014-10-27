@@ -15,9 +15,6 @@ public class FindBeginingNode {
 	// input: A -> B -> C -> D -> E -> C [the same C as earlier]
 	// output: C
 
-	// Only character is the value? and Unique value is not allowed? then we can
-	// go with boolean[256] approach.
-
 	Node head;
 
 	public void insert(Node node) {
@@ -46,13 +43,13 @@ public class FindBeginingNode {
 
 		Node slow = head;
 		Node fast = head;
-	
+
 		boolean found = false;
 		// Check weather the list circular one or not.
 		while (slow == null || fast.next != null) {
 			slow = slow.next;
 			fast = fast.next.next;
-			
+
 			if (slow == fast) {
 				found = true;
 				break; // they met finally
@@ -60,13 +57,38 @@ public class FindBeginingNode {
 		}
 
 		slow = head;
-		while(slow != fast){
+		while (slow != fast) {
 			slow = slow.next;
 			fast = fast.next;
 		}
 		return null;
 	}
+	
+	public Node Solution3(Node head) {
 
+		Node fast = head.next.next;
+		Node slow = head.next;
+
+		while (fast != null) {
+			if (fast.ch == slow.ch) {
+				break;
+			} else {
+				fast = fast.next.next;
+				slow = slow.next;
+			}
+		}
+
+		while (head.ch != slow.ch) {
+			if (head.ch == slow.ch)
+				return head;
+			else {
+				head = head.next;
+				slow = slow.next;
+			}
+		}
+		return slow;
+	}
+	
 	public static void main(String args[]) {
 		FindBeginingNode fbn = new FindBeginingNode();
 		Node nodec = new Node('C');
@@ -83,6 +105,8 @@ public class FindBeginingNode {
 		fbn.insert(nodea);
 
 		if (fbn.solution(fbn.head) != null)
-			System.out.println((fbn.solution2(fbn.head).ch));
+//			System.out.println((fbn.solution2(fbn.head).ch));
+		System.out.println((fbn.Solution3(fbn.head).ch));
+		
 	}
 }
