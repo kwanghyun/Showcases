@@ -21,10 +21,13 @@ eventBus.registerHandler('geo.update', function(args, responder) {
 	sendPersistorEvent({
 		action : "update",
 		collection : col_name,
-		matcher : {}
+		criteria : args.criteria,
+		objNew : args.objNew,
+		upsert : args.upsert,
+		multi : args.multi
 	}, function(reply) {
 		responder({
-			data : reply.results
+			data : reply
 		});
 	});
 });
@@ -53,7 +56,7 @@ eventBus.registerHandler('geo.save', function(data, responder) {
 
 eventBus.registerHandler('geo.geoindex', function(data, responder) {
 	sendPersistorEvent({
-		action : "ensureIndex",
+		action : "command",
 		collection : col_name,
 		document : {"loc" : "2dsphere"}
 	}, function(reply) {
@@ -61,14 +64,14 @@ eventBus.registerHandler('geo.geoindex', function(data, responder) {
 	});
 });
 eventBus.registerHandler('geo.delete', function(args, responder) {
-//	sendPersistorEvent({
-//		action : "delete",
-//		collection : col_name,
-//		matcher : {
-//			_id : args.id
-//		}
-//	}, function(reply) {
-//		responder({});
-//	});
-	console.log("$$$$$$$DELETE$$$$$$$$$$$");
+	sendPersistorEvent({
+		action : "delete",
+		collection : col_name,
+		matcher : {
+			_id : args.id
+		}
+	}, function(reply) {
+		responder({});
+	});
+//	console.log("$$$$$$$DELETE$$$$$$$$$$$");
 });

@@ -38,6 +38,51 @@ routeMatcher.put('/test', function(req) {
 	});
 });
 
+
+/*
+ * Update
+ * Example
+{
+  "criteria": {
+  		"_id": "parkingLot_id-3"
+    },
+    "objNew" : {
+        "$set": {
+            "count": 30
+        }
+     },
+    "upsert" : true,
+    "multi" : false
+}
+{
+  "criteria": {
+  		"_id": "parkingLot_id-3"
+    },
+    "objNew" : {
+        "$inc": {
+            "count": 1
+        }
+     },
+    "upsert" : true,
+    "multi" : false
+}
+
+ */
+routeMatcher.post('/test', function(req) {
+	req.bodyHandler(function(data) {
+		var content =  JSON.parse(data.toString());
+		console.log("content.query : " + content);
+		console.log("content.query.path : " + JSON.stringify(content));
+		
+		eventBus.send('geo.update', content,  function(result) {
+			req.response.end('result : ' + JSON.stringify(result));
+			
+		});
+	});
+
+});
+
+
 /*
  * Get data 
  * Example 
@@ -92,22 +137,6 @@ routeMatcher.post('/test/_search/regex', function(req) {
 
 });
 
-routeMatcher.post('/test', function(req) {
-	
-	req.bodyHandler(function(data) {
-		var content =  JSON.parse(data.toString());
-		console.log("content.query : " + content.query);
-		console.log("content.query.path : " + JSON.stringify(content.query.path));
-		
-		eventBus.send('geo.update', content.query,  function(result) {
-			req.response.end('result : ' + JSON.stringify(result));
-			
-		});
-	});
-
-});
-
-
 routeMatcher.delete('/test/:docId', function(req) {
 	var docId = req.params().get('docId');
 	console.log("docID : " + docId);
@@ -116,31 +145,6 @@ routeMatcher.delete('/test/:docId', function(req) {
 		req.response.end('result : ' + JSON.stringify(result));
 	});
 });
-
-/*
- * Update 
- * Example 
-{
-  "query": {
-    "path" : "/^US/San Jose"
-  }
-}
- */
-
-routeMatcher.post('/test', function(req) {
-
-	req.bodyHandler(function(data) {
-		var content =  JSON.parse(data.toString());
-		console.log("DATA : " + content);
-		console.log("DATA : " + content.test);
-//		for(var i in json){
-//			console.log( i + ": " + json[i]);
-//		}
-	});
-
-	req.response.end('Here is response for post......');
-});
-
 
 server.requestHandler(routeMatcher).listen(8080, 'localhost');
 
