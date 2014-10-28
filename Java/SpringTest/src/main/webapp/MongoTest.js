@@ -252,7 +252,7 @@ function insertParkingLots(num) {
 }
 
 /*
- * Real-time top 10 recommendations for parking lot near by you.
+ * Real-time top 10 recommendations for parking lot near by you. (Based on user's purchase history)
  */
 db.testdb.aggregate([
                      {$geoNear: {
@@ -286,6 +286,34 @@ db.runCommand(
 		}
 );
 
+/*
+ * Map Reduce Exmaple
+ */
+
+var mapFunc = function(){
+	emit(this.parkinglotId, this.price);
+};
+
+var reduceFunc = function(keyParkingLotId, prices ){
+	return Array.sum(prices);
+};
+
+db.testdb.mapReduce(
+		mapFunc,
+		reduceFunc,
+		{out : {inline : 1}}
+);
+
+db.runCommand({
+	'mapreduce' : 'testdb',
+	'map' : function() {
+		emit(this.parkinglotId, this.price);
+	},
+	'reduce' : function(key, values) {
+		return Array.sum(values);
+	},
+	'out' : 'Income_byParkingLot'
+});
 
 /*
  * Real-time most popluar parking lot top 10.

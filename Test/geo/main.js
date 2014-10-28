@@ -36,6 +36,18 @@ eventBus.registerHandler('geo.find', function(data, responder) {
 	sendPersistorEvent({
 		action : "find",
 		collection : col_name,
+		matcher : data
+	}, function(reply) {
+		responder({
+			data : reply.results
+		});
+	});
+});
+
+eventBus.registerHandler('geo.find.path', function(data, responder) {
+	sendPersistorEvent({
+		action : "find",
+		collection : col_name,
 		matcher : { path : new RegExp(data) }
 	}, function(reply) {
 		responder({

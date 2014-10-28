@@ -121,14 +121,14 @@ routeMatcher.post('/test/_search', function(req) {
   }
 }
  */
-routeMatcher.post('/test/_search/regex', function(req) {
+routeMatcher.post('/test/_search/path', function(req) {
 	
 	req.bodyHandler(function(data) {
 		var content =  JSON.parse(data.toString());
 		console.log("content.query : " + content.query);
 		console.log("content.query.path : " + JSON.stringify(content.query.path));
 		
-		eventBus.send('geo.find', content.query,  function(result) {
+		eventBus.send('geo.find.path', content.query.path,  function(result) {
 			req.response.end('result : ' + JSON.stringify(result));
 			
 		});
