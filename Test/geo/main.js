@@ -50,7 +50,7 @@ eventBus.registerHandler('geo.save', function(data, responder) {
 		collection : col_name,
 		document : data
 	},function(reply) {
-		responder(data);
+		responder(reply);
 	});
 });
 
@@ -58,11 +58,12 @@ eventBus.registerHandler('geo.geoindex', function(data, responder) {
 	sendPersistorEvent({
 		action : "command",
 		collection : col_name,
-		document : {"loc" : "2dsphere"}
+		command : {"loc" : "2dsphere"}
 	}, function(reply) {
-		responder(data);
+		responder(reply);
 	});
 });
+
 eventBus.registerHandler('geo.delete', function(args, responder) {
 	sendPersistorEvent({
 		action : "delete",
@@ -75,3 +76,13 @@ eventBus.registerHandler('geo.delete', function(args, responder) {
 	});
 //	console.log("$$$$$$$DELETE$$$$$$$$$$$");
 });
+
+eventBus.registerHandler('geo.command', function(data, responder) {
+	sendPersistorEvent({
+		action : "command",
+		command : data
+	}, function(reply) {
+		responder(reply.result);
+	});
+});
+

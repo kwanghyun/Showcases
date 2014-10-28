@@ -79,7 +79,6 @@ routeMatcher.post('/test', function(req) {
 			
 		});
 	});
-
 });
 
 
@@ -145,6 +144,63 @@ routeMatcher.delete('/test/:docId', function(req) {
 		req.response.end('result : ' + JSON.stringify(result));
 	});
 });
+
+
+
+/*
+ * Run command
+ * Example : Real-time top 10 recommendations for parking lot near by you. Based on purchase history
+		{ aggregate: "geoData",
+		    pipeline: [
+	                     {$geoNear: {
+	                          near: { type: "Point", coordinates: [ 72 , 15 ] },
+	                          distanceField: "dist.calculated",
+	                          maxDistance: 800000,
+	                          spherical: true
+	                       }
+	                     },
+	                     { $group : { _id : "$_id" , count : { $sum : 1 } } },
+	                     { $sort : { count : -1, _id : 1}},
+	                     { $limit : 10 }
+	                  ]
+		}
+
+ * Example : Most popular top 10 parking lot. Based on purchase history
+{ aggregate: "geoData",
+    pipeline: [
+               { $group : { _id : "$_id" , count : { $sum : 1 } } },
+               { $sort : { count : -1}},
+               { $limit : 10 }
+            ]
+}
+
+ * Example : Create an index 
+{
+    createIndexes: "geoData",
+    indexes: [
+        {
+            key: {
+                loc : "2dsphere",
+            },
+            name: "geoDataIndex",
+            2dsphereIndexVersion : 2,
+        }
+    ]
+  }
+
+ */
+routeMatcher.post('/test/command', function(req) {
+	req.bodyHandler(function(data) {
+
+		var content =  data.toString();
+		console.log("content : " + content);
+		eventBus.send('geo.command', content,  function(result) {
+			req.response.end('result : ' + JSON.stringify(result));
+			
+		});
+	});
+});
+
 
 server.requestHandler(routeMatcher).listen(8080, 'localhost');
 

@@ -198,7 +198,6 @@ function insertDealData(num) {
 	var end = getRandomDate(start, new Date(2015, 5, 1));
 
 	db.itemLocation.insert({
-		_class : "com.cisco.location.service.beans.ItemLocation",
 		name : "Deal Title-" + num,
 		startTime :new Date(start),
 		endTime : new Date(end),
@@ -236,6 +235,75 @@ function insertAdData(num) {
 	});
 }
 
+function insertParkingLots(num) {
+	db.testdb.insert({
+		path : paths[Math.floor(Math.random() * paths.length)],
+		loc : {
+			type : "Point",
+			coordinates : [ getRandomInRange(70, 74, 5),
+							getRandomInRange(13, 16, 5) ]
+		},
+		parkinglotId : "parkinglot-id_" + (Math.floor(Math.random() * 100 + 1)),
+		price : Math.floor(Math.random() * 100 + 1) * 100,
+		buyer : users[Math.floor(Math.random() * users.length)],
+		score : Math.floor(Math.random() * 6),
+		comments : JSON.parse(getRandomComments(5))
+	});
+}
+
+/*
+ * Real-time top 10 recommendations for parking lot near by you.
+ */
+db.testdb.aggregate([
+                     {$geoNear: {
+                          near: { type: "Point", coordinates: [ 72 , 15 ] },
+                          distanceField: "dist.calculated",
+                          maxDistance: 800000,
+                          query: { buyer: "user11" },
+                          spherical: true
+                       }
+                     },
+                     { $group : { _id : "$parkinglotId" , count : { $sum : 1 } } },
+                     { $sort : { count : -1, _id : 1}},
+                     { $limit : 10 }
+                  ]);
+
+db.runCommand(
+		{ aggregate: "testdb",
+		    pipeline: [
+	                     {$geoNear: {
+	                          near: { type: "Point", coordinates: [ 72 , 15 ] },
+	                          distanceField: "dist.calculated",
+	                          maxDistance: 800000,
+	                          query: { buyer: "user11" },
+	                          spherical: true
+	                       }
+	                     },
+	                     { $group : { _id : "$parkinglotId" , count : { $sum : 1 } } },
+	                     { $sort : { count : -1, _id : 1}},
+	                     { $limit : 10 }
+	                  ]
+		}
+);
+
+
+/*
+ * Real-time most popluar parking lot top 10.
+ */
+db.testdb.aggregate([
+                     { $group : { _id : "$parkinglotId" , count : { $sum : 1 } } },
+                     { $sort : { count : -1}},
+                     { $limit : 10 }
+                  ]);
+
+db.runCommand(
+{ aggregate: "testdb",
+    pipeline: [
+               { $group : { _id : "$parkinglotId" , count : { $sum : 1 } } },
+               { $sort : { count : -1}},
+               { $limit : 10 }
+            ]
+});
 
 
 function insertAdData2(num) {
@@ -258,6 +326,7 @@ function insertAdData2(num) {
 	});
 }
 
+
 function insertTestData(num, type) {
 	if(type== null)
 		return; 
@@ -274,6 +343,7 @@ function insertTestData(num, type) {
 
 	}
 }
+
 
 function insert1(num) {	
 	for (var i = 1; i < num + 1; i++) {
@@ -293,9 +363,16 @@ function insert3(num) {
 	}
 }
 
-db.testOne.ensureIndex({
+function insert4(num) {	
+	for (var i = 1; i < num + 1; i++) {
+		insertParkingLots(i);
+	}
+}
+
+db.testdb.ensureIndex({
 	"loc" : "2dsphere"
 });
+
 db.testOne.ensureIndex({
 	"tile" : "2d"
 }, {
@@ -304,6 +381,19 @@ db.testOne.ensureIndex({
 });
 
 
+map = function() {
+	for(var key in this){
+		emit(key, {count: 1});
+	}
+};
+
+reduce = function(key, emits){
+	total = 0;
+	for(var i in emits){
+		total += emits[i].count;
+	}
+	return {"count" : total};
+};
 
 window.onload = function() {
 
