@@ -26,6 +26,17 @@ db.test.find({
 	}
 }).pretty();
 
+db.testdb.find(
+{
+	  $near: {
+	     $geometry: {
+	        type: "Point" ,
+	        coordinates: [ 72 , 15 ]
+	     },
+	     $minDistance: 80000
+	  }
+});
+
 db.test.find({
 	loc : {
 		$geoWithin : {
@@ -89,6 +100,34 @@ db.test.find({
 		}
 	}
 }).pretty();
+
+
+
+db.testdb.find({
+	loc : {
+		$geoWithin : {
+			$center : [ [ 72, 15 ], 0.1 ]
+		}
+	}
+}).pretty();
+
+
+db.testdb.find({
+	$or : [ {
+		loc : {
+			$geoWithin : {
+				$center : {
+					type : "Point",
+					coordinates : [ [ 72, 15 ], 1 ]
+				},
+			}
+		}
+	}, {
+		path : {
+			$regex : "^/US/California/San[^\S]Jose/Building[^\S]4/floor[5-7]"
+		}
+	} ]
+});
 
 
 

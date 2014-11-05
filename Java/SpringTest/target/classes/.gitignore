@@ -4,10 +4,3 @@
 /beans.xml
 /cache
 /concurrency
-/designpattern
-/hibernate
-/jpa
-/security
-/spring
-/transaction
-/util

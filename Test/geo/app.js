@@ -15,20 +15,20 @@ routeMatcher.get('/test', function(req) {
 	console.log(req.query());
 });
 
-//routeMatcher.put('/*', function(req) {
-//	var params = req.params();
-//    req.response().end('put...');    
-//});
-//
-//routeMatcher.post('/*', function(req) {
-//	var params = req.params();
-//    req.response().end('post...');    
-//});
+routeMatcher.put('/*', function(req) {
+	var params = req.params();
+    req.response().end('put...');    
+});
 
-//routeMatcher.delete('/*', function(req) {
-//	var params = req.params();
-//    req.response().end('delete...');    
-//});
+routeMatcher.post('/*', function(req) {
+	var params = req.params();
+    req.response().end('post...');    
+});
+
+routeMatcher.delete('/*', function(req) {
+	var params = req.params();
+    req.response().end('delete...');    
+});
 
 server.requestHandler(routeMatcher).listen(8989, 'localhost');
 

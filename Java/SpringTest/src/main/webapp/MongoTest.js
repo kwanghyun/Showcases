@@ -14,6 +14,12 @@ for (var i = 1; i < 35; i++) {
 	paths.push("/US/California/San Jose/Building " + i);
 	paths.push("/US/California/San Jose/Building " + i + "/floor1");
 	paths.push("/US/California/San Jose/Building " + i + "/floor2");
+	paths.push("/US/California/San Jose/Building " + i + "/floor3");
+	paths.push("/US/California/San Jose/Building " + i + "/floor4");
+	paths.push("/US/California/San Jose/Building " + i + "/floor5");
+	paths.push("/US/California/San Jose/Building " + i + "/floor6");
+	paths.push("/US/California/San Jose/Building " + i + "/floor7");
+	paths.push("/US/California/San Jose/Building " + i + "/floor8");
 }
 
 var catalogList = new Array();
@@ -268,6 +274,40 @@ db.testdb.aggregate([
                      { $limit : 10 }
                   ]);
 
+
+
+/*
+ * GeoNear with Regular expression together (floor range)
+ */
+db.testdb.aggregate([
+                     {$geoNear: {
+                          near: { type: "Point", coordinates: [ 72 , 15 ] },
+                          distanceField: "dist.calculated",
+                          maxDistance: 800000,
+                          query: { path : {$regex : "^/US/California/San[^\S]Jose/Building[^\S]4/floor[5-7]"} },
+                          spherical: true
+                       }
+                     },
+                     { $sort : { path: -1}}
+                  ])
+
+db.runCommand(
+		{ aggregate: "testdb",
+		    pipeline:[
+	                     {$geoNear: {
+	                          near: { type: "Point", coordinates: [ 72 , 15 ] },
+	                          distanceField: "dist.calculated",
+	                          maxDistance: 800000,
+	                          query: { path : {$regex : "^/US/California/San[^\S]Jose/Building[^\S]4/floor[5-7]"} },
+	                          spherical: true
+	                       }
+	                     },
+	                     { $sort : { path: -1}}
+	                  ]
+		}
+);
+
+
 db.runCommand(
 		{ aggregate: "testdb",
 		    pipeline: [
@@ -285,6 +325,57 @@ db.runCommand(
 	                  ]
 		}
 );
+
+
+db.testdb.find({
+	$or : [ {
+		loc : {
+			$geoNear : {
+				$geometry : {
+					type : "Point",
+					coordinates : [ 72, 15 ]
+				},
+				$maxDistance : 80000
+			}
+		}
+	}, {
+		path : {
+			$regex : "^/US/California/San[^\S]Jose/Building[^\S]4/floor[5-7]"
+		}
+	} ]
+});
+
+db.testdb.find({
+	"loc" : {
+		$within : {
+			$center : [ [ 72, 15], 1]
+		}
+	}
+}, {
+	"price" : 1,
+	"path" : 1
+});
+
+
+db.testdb.find({
+	"loc" : {
+		$within : {
+			$center : [ [ 72, 15], 0.15 ]
+		}
+	}
+})
+
+db.testdb.find({
+	"loc" : {
+		$within : {
+			$center : [ [ 72, 15], 0.15 ]
+		}
+	}
+}, {
+	"path" : {
+		$regex : "^/US/California/San[^\S]Jose/Building[^\S]4/floor[5-7]"
+	}
+});
 
 /*
  * Map Reduce Exmaple
@@ -315,6 +406,55 @@ db.runCommand({
 	'out' : 'Income_byParkingLot'
 });
 
+/*
+ * Map recude exmpale
+ * Return parking lots avg score from the all user rating. 
+ */
+var mapFunc2 = function(){
+	var key = this.parkinglotId;
+	for( var i = 0; i < this.comments.length; i++){
+		var value = {
+				count : 1,
+				score : this.comments[i].score
+		};
+		emit(key, value);
+	}
+};
+
+var reduceFunc2 = function(keyParkingLotId, valObjs ){
+	reduceVal = {count : 0, score :0};
+	
+	for(i = 0; i < valObjs.length; i++){
+		reduceVal.count += valObjs[i].count;
+		reduceVal.score += valObjs[i].score;
+	}
+	return reduceVal;
+};
+
+var finallizeFunc2 = function(key, reducedVal){
+	reducedVal.avg = reducedVal.score/reducedVal.count;
+	return reducedVal;
+};
+
+db.testdb.mapReduce(
+		mapFunc2,
+		reduceFunc2,
+		{
+			out : {inline : 1},
+			finalize : finallizeFunc2
+		}
+);
+
+db.runCommand({
+	'mapreduce' : 'testdb',
+	'map' : function() {
+		emit(this.parkinglotId, this.price);
+	},
+	'reduce' : function(key, values) {
+		return Array.sum(values);
+	},
+	'out' : 'Income_byParkingLot'
+});
 /*
  * Real-time most popluar parking lot top 10.
  */

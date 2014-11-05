@@ -150,20 +150,20 @@ routeMatcher.delete('/test/:docId', function(req) {
 /*
  * Run command
  * Example : Real-time top 10 recommendations for parking lot near by you. Based on purchase history
-		{ aggregate: "geoData",
-		    pipeline: [
-	                     {$geoNear: {
-	                          near: { type: "Point", coordinates: [ 72 , 15 ] },
-	                          distanceField: "dist.calculated",
-	                          maxDistance: 800000,
-	                          spherical: true
-	                       }
-	                     },
-	                     { $group : { _id : "$_id" , count : { $sum : 1 } } },
-	                     { $sort : { count : -1, _id : 1}},
-	                     { $limit : 10 }
-	                  ]
-		}
+{ aggregate: "geoData",
+    pipeline: [
+                 {$geoNear: {
+                      near: { type: "Point", coordinates: [ 72 , 15 ] },
+                      distanceField: "dist.calculated",
+                      maxDistance: 800000,
+                      spherical: true
+                   }
+                 },
+                 { $group : { _id : "$_id" , count : { $sum : 1 } } },
+                 { $sort : { count : -1, _id : 1}},
+                 { $limit : 10 }
+              ]
+}
 
  * Example : Most popular top 10 parking lot. Based on purchase history
 { aggregate: "geoData",
@@ -173,6 +173,23 @@ routeMatcher.delete('/test/:docId', function(req) {
                { $limit : 10 }
             ]
 }
+
+
+ * Example : Geonear with Regex
+{ aggregate: "geoData",
+    pipeline:[
+                 {$geoNear: {
+                      near: { type: "Point", coordinates: [ 72 , 15 ] },
+                      distanceField: "dist.calculated",
+                      maxDistance: 800000,
+                      query: { path : {$regex : "^/US/California/San[^\S]Jose/Building[^\S]4/floor[5-7]"} },
+                      spherical: true
+                   }
+                 },
+                 { $sort : { path: -1}}
+              ]
+}
+
 
  * Example : Create an index 
 {
