@@ -6,7 +6,6 @@ import java.util.Arrays;
 /*Design an algorithm to find all pairs of integers within an array which sum to a specified value.
  * 
  */
-
 public class CC_19_11_SumPairInArray {
 
 	public ArrayList<String> findSumParis(int[] arr, int sum) {

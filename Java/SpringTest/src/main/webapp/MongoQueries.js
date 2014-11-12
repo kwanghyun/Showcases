@@ -14,12 +14,12 @@ db.test.ensureIndex({
  * 2DSphere Geo-spatial find Query Examples
  */
 
-db.test.find({
+db.geoLocation.find({
 	loc : {
 		$geoNear : {
 			$geometry : {
 				type : "Point",
-				coordinates : [ 175, 35.5 ]
+				coordinates : [ 37, -121 ]
 			},
 			$maxDistance : 80000
 		}

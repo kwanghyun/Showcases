@@ -2,34 +2,34 @@ package algorithm.linkedlist;
 
 public class MyReverseLinkedList {
 
-	public Node reverseList(Node head){
+public Node reverseList(Node head){
 
-		if(head.next == null) //One node only 
-			return null;
-		
-		Node second = head.next;
-		Node third = second.next;
-		
-		head.next = null;
-		second.next = head;
-		
-		if(second.next == null){
-			//Two Node only, it's already reversed.
-			return second; 
-		}
-		
-		Node currentNode = third;
-		Node previousNode = second; 
-		
-		while(currentNode != null){
-			Node nextNode = currentNode.next;
-			//Only current.next to point previous Node
-			currentNode.next = previousNode;
-			previousNode = currentNode;
-			currentNode = nextNode;
-		}
-		return previousNode;
+	if(head.next == null) //One node only 
+		return null;
+	
+	Node second = head.next;
+	Node third = second.next;
+	
+	head.next = null;
+	second.next = head;
+	
+	if(second.next == null){
+		//Two Node only, it's already reversed.
+		return second; 
 	}
+	
+	Node currentNode = third;
+	Node previousNode = second; 
+	
+	while(currentNode != null){
+		Node nextNode = currentNode.next;
+		//Only current.next to point previous Node
+		currentNode.next = previousNode;
+		previousNode = currentNode;
+		currentNode = nextNode;
+	}
+	return previousNode;
+}
 	 
 
 	

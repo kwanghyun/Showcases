@@ -9,24 +9,24 @@ package algorithm.etc;
  */
 public class Power {
 
-	public int pow(int x, int y){
-		int sum = 1;
-		for(int i =0; i < y; i ++){
-			sum *= x;
-		}
-		return sum;
+public int pow(int x, int y){
+	int sum = 1;
+	for(int i =0; i < y; i ++){
+		sum *= x;
 	}
+	return sum;
+}
+
+public int pow2(int x, int y){
+	return powRe( x,  y, 0);
+}
+
+public int powRe(int x, int y, int counter){
+	if(counter == y)
+		return 1;
 	
-	public int pow2(int x, int y){
-		return powRe( x,  y, 0);
-	}
-	
-	public int powRe(int x, int y, int counter){
-		if(counter == y)
-			return 1;
-		
-		return x * powRe(x, y, counter+1);
-	}
+	return x * powRe(x, y, counter+1);
+}
 	
 	public static void main(String args[]){
 		Power pw = new Power();

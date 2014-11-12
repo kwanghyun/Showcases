@@ -309,6 +309,22 @@ db.runCommand(
 
 
 db.runCommand(
+{
+	geoNear : "testdb",
+	near : {
+		type : "Point",
+		coordinates : [ 73.9667, 14.78 ]
+	},
+	spherical : true,
+	query : {
+		path : {
+			$regex : "^/US/California/San[^\S]Jose/Building[^S]17/floor[1-3]"
+		}
+}
+});
+
+
+db.runCommand(
 		{ aggregate: "testdb",
 		    pipeline: [
 	                     {$geoNear: {
@@ -537,7 +553,7 @@ function insert4(num) {
 	}
 }
 
-db.testdb.ensureIndex({
+db.geoLocation.ensureIndex({
 	"loc" : "2dsphere"
 });
 

@@ -9,57 +9,55 @@ import java.util.ArrayList;
  */
 public class FindOutWayInMaze {
 
-	int[][] maze = {
-			{1,1,1,1},
-			{-1,1,-1,1},
-			{1,1,-1,1},
-			{1, 1, 1,10}
-	};
+int[][] maze = {
+		{1,1,1,1},
+		{-1,1,-1,1},
+		{1,1,-1,1},
+		{1, 1, 1,10}
+};
 	
 	String str = "";
 	
-	public boolean findPath( int[][] maze, int x, int y){
-		if(x > maze.length-1 || y > maze[0].length-1)
-			return false;
-		
-		if(maze[x][y] < 0 ){
-			return false;
-		}
-		str += "[" + x + ", " + y+"]";
-		if(maze[x][y] == 10){
-//			System.out.println("0"+str);
-			return true;
-		}
-//		System.out.println("1"+str);
-		boolean found = findPath(maze, x+1, y);
-		if(!found)
-			findPath(maze, x, y+1);
-
+public boolean findPath( int[][] maze, int x, int y){
+	if(x > maze.length-1 || y > maze[0].length-1)
+		return false;
+	
+	if(maze[x][y] < 0 ){
+		return false;
+	}
+	str += "[" + x + ", " + y+"]";
+	if(maze[x][y] == 10){
 		return true;
 	}
 	
-	public String findPath2( int[][] maze, int x, int y, String str){
-		if(x > maze.length-1 || y > maze[0].length-1)
-			return null;
-		
-		if(maze[x][y] < 0 ){
-			return null;
-		}
-		str += "[" + x + ", " + y+"]";
-		if(maze[x][y] == 10){
-//			System.out.println("0"+str);
-			return str;
-		}
-//		System.out.println("1"+str);
-		String temp = findPath2(maze, x+1, y, str);
-		if(temp != null)
-			str = str + temp;
-		
-		if(temp == null)
-			findPath2(maze, x, y+1, str);
+	boolean found = findPath(maze, x+1, y);
+	if(!found)
+		findPath(maze, x, y+1);
 
+	return true;
+}
+
+public String findPath2( int[][] maze, int x, int y, String str){
+	if(x > maze.length-1 || y > maze[0].length-1)
+		return null;
+	
+	if(maze[x][y] < 0 ){
+		return null;
+	}
+	str += "[" + x + ", " + y+"]";
+	if(maze[x][y] == 10){
 		return str;
 	}
+
+	String temp = findPath2(maze, x+1, y, str);
+	if(temp != null)
+		str = str + temp;
+	
+	if(temp == null)
+		findPath2(maze, x, y+1, str);
+
+	return str;
+}
 	
 	public static void main(String args[]){
 		FindOutWayInMaze m = new FindOutWayInMaze();
