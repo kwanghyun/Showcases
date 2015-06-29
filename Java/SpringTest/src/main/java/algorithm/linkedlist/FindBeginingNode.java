@@ -23,48 +23,8 @@ public class FindBeginingNode {
 		head = node;
 	}
 
-	public Node solution(Node root) {
-		Set<Node> list = new HashSet<Node>();
-
-		Node temp = root;
-
-		while (temp != null) {
-			if (list.contains(temp)) {
-				return temp;
-			}
-			list.add(temp);
-			temp = temp.next;
-		}
-		return null;
-	}
-
-	//TODO Complte this.
-	public Node solution2(Node head) {
-
-		Node slow = head;
-		Node fast = head;
-
-		boolean found = false;
-		// Check weather the list circular one or not.
-		while (slow == null || fast.next != null) {
-			slow = slow.next;
-			fast = fast.next.next;
-
-			if (slow == fast) {
-				found = true;
-				break; // they met finally
-			}
-		}
-
-		slow = head;
-		while (slow != fast) {
-			slow = slow.next;
-			fast = fast.next;
-		}
-		return null;
-	}
 	
-	public Node Solution3(Node head) {
+	public Node Solution(Node head) {
 
 		Node fast = head.next.next;
 		Node slow = head.next;
@@ -104,9 +64,9 @@ public class FindBeginingNode {
 		fbn.insert(nodeb);
 		fbn.insert(nodea);
 
-		if (fbn.solution(fbn.head) != null)
-//			System.out.println((fbn.solution2(fbn.head).ch));
-		System.out.println((fbn.Solution3(fbn.head).ch));
+
+		System.out.println("------------------------------");
+		System.out.println((fbn.Solution(fbn.head).ch));
 		
 	}
 }

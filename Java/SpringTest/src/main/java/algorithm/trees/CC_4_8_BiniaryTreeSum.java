@@ -11,34 +11,36 @@ package algorithm.trees;
  */
 public class CC_4_8_BiniaryTreeSum {
 	
-	public int sum(TreeNode root, int sum){
+	public int sum(TreeNode root ){
 		if(root == null)
 			return 0;
-		sum = root.value;
-		return  sum + sum(root.left, sum) + sum(root.right, sum);
+		return  root.value + sum(root.left) + sum(root.right);
+	}
+	
+	public int treeSum(TreeNode root){
+		if(root == null) 
+			return 0;		
+		int sum =  root.value + treeSum(root.left) + treeSum(root.right);
+		return sum;
 	}
 	
 	public int treeSum(TreeNode root, int sum){
 		if(root == null) 
 			return 0;		
-		sum =  root.value + sum(root.left, sum) + sum(root.right, sum);
-		return sum;
-	}
-	
-	public int recursion(TreeNode root, int sum){
-		if(root == null) 
-			return 0;		
-
-		sum = root.value + recursion(root.left, sum) +  recursion(root.right, sum);
+		sum =  root.value + treeSum(root.left, sum) + treeSum(root.right, sum);
 		return sum;
 	}
 	
 	public static void main(String args[]){
 		CC_4_8_BiniaryTreeSum obj = new CC_4_8_BiniaryTreeSum();
-//		System.out.println(obj.sum(obj.generateEntireTree(), 0));
-//		System.out.println(1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9);
-//		System.out.println(obj.treeSum(obj.generateEntireTree(), 0));
-		System.out.println(obj.recursion(obj.generateEntireTree(), 0));
+		System.out.println(obj.sum(obj.generateEntireTree()));
+		System.out.println("------------------------------------");
+		System.out.println(1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9);
+		System.out.println("------------------------------------");
+		System.out.println(obj.treeSum(obj.generateEntireTree(), 0));
+		System.out.println("------------------------------------");
+		System.out.println(obj.treeSum(obj.generateEntireTree()));
+		
 	}
 
 	public TreeNode generateEntireTree(){

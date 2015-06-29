@@ -4,49 +4,101 @@ package algorithm.trees;
  * Serializing/deserializing binary tree in most space-efficient way
  */
 public class SerializeDeserialize {
-	
-	public String serialize(TreeNode root, String str){
-		
-		if(root == null)
+
+	int index = 0;
+
+	public String serialize(TreeNode root, String str) {
+
+		if (root == null)
 			return "#";
-		str = root.value + serialize(root.left, str) + serialize(root.right, str);
-		return str;
+		return root.value + serialize(root.left, str)
+				+ serialize(root.right, str);
 	}
-	
-	public TreeNode deserialize(char[] arr, int count){
-		if(count > arr.length)
+
+	public TreeNode deserialize(char[] arr) {
+		if (index >= arr.length)
 			return null;
-		
-		if(arr[count] == '#'){
-			System.out.println("#hit : " + count);
-			return null;
+
+		if (arr[index] == '#') {
+			index++;
+			System.out.println("#hit : " + index);
+			return deserialize(arr);
 		}
-		TreeNode node = new TreeNode(Character.getNumericValue(arr[count]));
-		node.left = deserialize(arr, count +1);
-		node.right = deserialize(arr, count +1);
-		
+		TreeNode node = new TreeNode(Character.getNumericValue(arr[index]));
+		index++;
+		node.left = deserialize(arr);
+		index++;
+		node.right = deserialize(arr);
+
 		return node;
 	}
 	
-	public static void main(String args[]){
-		SerializeDeserialize mw = new SerializeDeserialize();
-		String str = "";
-		System.out.println(mw.serialize(mw.generateEntireTree(), str));
-		String rstr = mw.serialize(mw.generateEntireTree(), str);
-		System.out.println("--------------------------");
-		char[] arr = rstr.toCharArray();
-		mw.printPreOrder(mw.deserialize(arr, 0));
+	int idx = 0;
+	public TreeNode dese(String str) {
+		if (idx > str.length() - 1)
+			return null;
+
+		if (str.charAt(idx) == '#') {
+			idx ++;
+			return dese(str);
+		}
+
+		TreeNode node = new TreeNode(Character.getNumericValue(str.charAt(idx)));
+		idx ++;
+		node.left = dese(str);
+		idx ++;
+		node.right = dese(str);
+
+		return node;
 	}
 	
-	public void printPreOrder(TreeNode root){
-		if(root == null)
+	//NOTE : by using local param "index" it will start -f
+	public TreeNode dese(String str, int index) {
+		if (index > str.length() - 1)
+			return null;
+
+		if (str.charAt(index) == '#') {
+			return dese(str, index + 1);
+		}
+
+		TreeNode node = new TreeNode(Character.getNumericValue(str.charAt(index)));
+		
+		node.left = dese(str, index + 1);
+		node.right = dese(str, index + 1);
+
+		return node;
+	}
+
+	public static void main(String args[]) {
+		SerializeDeserialize mw = new SerializeDeserialize();
+		String serializedStr = "";
+		serializedStr = mw.serialize(mw.createTestTree(), serializedStr);
+		System.out.println("serializedStr :: " + serializedStr);
+		System.out.println("--------------------------");
+		char[] arr = serializedStr.toCharArray();
+		mw.printPreOrder(mw.deserialize(arr));
+//		System.out.println("--------------------------");
+//		mw.printPreOrder(mw.dese(serializedStr, 0));
+		System.out.println("--------------------------");
+		mw.printPreOrder(mw.dese(serializedStr));
+	}
+
+	public void printPreOrder(TreeNode root) {
+		if (root == null)
 			return;
 		System.out.println(root.value);
 		printPreOrder(root.left);
 		printPreOrder(root.right);
 	}
-	
-	public TreeNode generateEntireTree(){
+
+	// 1
+	// / \
+	// 2 3
+	// / \ /
+	// 4 5 6
+	// / /\
+	// 7 8 9
+	public TreeNode createTestTree() {
 		TreeNode one = new TreeNode(1);
 		TreeNode two = new TreeNode(2);
 		TreeNode three = new TreeNode(3);

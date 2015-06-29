@@ -1,6 +1,7 @@
 package algorithm.etc;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /*
  * You have an MxN matrix and a robot trying to go from top-left to bottom-right.. 
@@ -9,63 +10,48 @@ import java.util.ArrayList;
  */
 public class FindOutWayInMaze {
 
+//int[][] maze = {
+//		{1,1,1,1},
+//		{-1,1,-1,1},
+//		{1,1,-1,1},
+//		{1, 1, 1,10}
+//};
 int[][] maze = {
-		{1,1,1,1},
-		{-1,1,-1,1},
-		{1,1,-1,1},
-		{1, 1, 1,10}
+		{1,1,0,1},
+		{0,1,1,1},
+		{1,1,0,1},
+		{1,1,1,1}
 };
-	
-	String str = "";
-	
-public boolean findPath( int[][] maze, int x, int y){
-	if(x > maze.length-1 || y > maze[0].length-1)
-		return false;
-	
-	if(maze[x][y] < 0 ){
-		return false;
-	}
-	str += "[" + x + ", " + y+"]";
-	if(maze[x][y] == 10){
-		return true;
-	}
-	
-	boolean found = findPath(maze, x+1, y);
-	if(!found)
-		findPath(maze, x, y+1);
 
-	return true;
-}
-
-public String findPath2( int[][] maze, int x, int y, String str){
-	if(x > maze.length-1 || y > maze[0].length-1)
-		return null;
-	
-	if(maze[x][y] < 0 ){
-		return null;
-	}
-	str += "[" + x + ", " + y+"]";
-	if(maze[x][y] == 10){
-		return str;
+	List<String> pathList = new ArrayList<String>();
+	public String findPath(int[][] maze, String path, int x, int y){
+		int row = maze.length;
+		int column = maze[0].length;
+				
+		if(x > column -1 || y > row -1 ){
+			return path;
+		}
+		if(maze[x][y] == 0){
+			return path;
+		}else if(x == row -1 && y == column -1){
+			path = path + "[" + x + ", " + y + "] ";
+			pathList.add(path);
+			return path;
+		}else{
+			path = path + "[" + x + ", " + y + "] ";
+			findPath(maze, path, x + 1, y);
+			findPath(maze, path, x, y + 1);
+		}
+		return path;
 	}
 
-	String temp = findPath2(maze, x+1, y, str);
-	if(temp != null)
-		str = str + temp;
-	
-	if(temp == null)
-		findPath2(maze, x, y+1, str);
-
-	return str;
-}
 	
 	public static void main(String args[]){
 		FindOutWayInMaze m = new FindOutWayInMaze();
-//		m.findPath(m.maze, 0, 0);
-//		System.out.println(m.str);
+		m.findPath(m.maze, "", 0, 0);
+		for(String item : m.pathList){
+			System.out.println(":::" + item);
+		}
 		
-		System.out.println(m.findPath2(m.maze, 0, 0, ""));
-//		System.out.println(m.maze.length);
-//		System.out.println(m.maze[0].length);
 	}
 }

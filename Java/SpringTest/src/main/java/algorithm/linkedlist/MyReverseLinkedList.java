@@ -36,7 +36,7 @@ public Node reverseList(Node head){
 	public void printAllNode(Node head){
 		Node currentNode = head;
 		while(currentNode != null){
-			System.out.print("[" + currentNode.val + "], ");
+			System.out.print("[" + currentNode.val + "] ");
 			currentNode = currentNode.next;
 		}
 	}

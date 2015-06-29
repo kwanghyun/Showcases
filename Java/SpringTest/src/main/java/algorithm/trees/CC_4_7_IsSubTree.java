@@ -25,82 +25,51 @@ public class CC_4_7_IsSubTree {
 	// Postorder: 7 4 5 2 8 9 6 3 1
 	// Level-order: 1 2 3 4 5 6 7 8 9
 
-	public boolean isSubTree(TreeNode entire, TreeNode part) {
-		if (part == null)
-			return true;
-		return findAMatch(entire, part);
+	public boolean isSubTree(TreeNode root1, TreeNode root2) {
+		
+		TreeNode match = findNode(root1, root2);
+		if(match == null) 
+			return false;
+		
+		return checkTrees(match, root2);
 	}
 
-	public boolean findAMatch(TreeNode entire, TreeNode part) {
 
-		if (entire == null)
-			return false;
-		if (part == null)
-			return false;
-		if (entire.value == part.value)
-			return checkTree(entire, part) && checkTree(entire, part);
-		return findAMatch(entire.left, part) || findAMatch(entire.right, part);
-	}
-
-	public boolean checkTree(TreeNode entire, TreeNode part) {
-		if (part == null)
-			return true;
-		if (entire.value != part.value)
-			return false;
-
-		return checkTree(entire.left, part.left)
-				|| checkTree(entire.right, part.right);
-	}
-
-	public boolean checkIdentical(TreeNode root1, TreeNode root2) {
-
-		if (root2 == null)
-			return true;
-		if (root1.value != root2.value)
-			return false;
-
-		return checkIdentical(root1.left, root2.left)
-				&& checkIdentical(root1.right, root2.right);
-	}
-
-	public boolean findRoot(TreeNode root1, TreeNode root2) {
-
-		if (root1 == null)
-			return false;
-		System.out.println(root1.value);
-
-		if (root1.value == root2.value) {
-			System.out.println(root1.value);
-			return checkIdentical(root1, root2);
-		}
-		return findRoot(root1.left, root2) || findRoot(root1.right, root2);
-	}
-
-	
 	public TreeNode findNode(TreeNode root1, TreeNode root2) {
-		if (root1 == null) {
+		TreeNode foundNode = null;
+		if (root1 == null)
 			return null;
-		} else if (root1.value == root2.value) {
+		
+		if (root1.value == root2.value) {
 			return root1;
-		} else {
-			TreeNode foundNode = findNode(root1.left, root2);
-			if (foundNode == null)
-				foundNode = findNode(root1.right, root2);
-
-			if (foundNode != null)
-				return foundNode;
 		}
-		return null;
+		
+		foundNode = findNode(root1.left, root2);
+		if(foundNode == null)
+			foundNode = findNode(root1.right, root2);
+		
+		return foundNode;
 	}
+	
+	public boolean checkTrees(TreeNode root1, TreeNode root2){
+		if(root2 == null)
+			return true;
+		
+		if(root1 == null)
+			return false;
+		
+		if(root1.value != root2.value)
+			return false;
+			
+		return checkTrees(root1.left, root2.left) && checkTrees(root1.right, root2.right);
+	}
+
 	
 	public static void main(String args[]) {
 		CC_4_7_IsSubTree ist = new CC_4_7_IsSubTree();
-		// System.out.println(ist.isSubTree(ist.generateEntireTree(),
-		// ist.generatePartTree()));
+		 System.out.println(ist.isSubTree(ist.generateEntireTree(),
+		 ist.generatePartTree()));
 
-//		System.out.println(ist.findRoot(ist.generateEntireTree(),
-//				ist.generatePartTree()));
-//		TreeNode node = new TreeNode(1);
 		System.out.println(ist.findNode(ist.generateEntireTree(),
 				ist.generatePartTree()).value);
 	}

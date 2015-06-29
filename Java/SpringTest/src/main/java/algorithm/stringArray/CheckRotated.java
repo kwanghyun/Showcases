@@ -2,7 +2,7 @@ package algorithm.stringArray;
 
 //Assume you have a method isSubstring which checks if one word is a substring of another. 
 //Given two strings, s1 and s2, write code to check if s2 is a rotation of s1 using only one call 
-//to isSubstring (i.e., ¡°waterbottle¡± is a rotation of ¡°erbottlewat¡±).
+//to isSubstring (i.e., "waterbottle" is a rotation of "erbottlewat").
 
 public class CheckRotated {
 
@@ -11,31 +11,25 @@ public class CheckRotated {
 			return false;
 		if (str1.length() != str2.length())
 			return false;
-		boolean found = false;
-		int index = 0;
-		for (int i = 0; i < str2.length(); i++) {
-			if (str1.charAt(0) == str2.charAt(i)) {
-				index = i;
-				found = true;
+
+		char firstChar = str1.charAt(0);
+		int idx = 0;
+
+		while (str1.indexOf(firstChar, idx) > -1) {
+			for (int i = 0; i < str2.length(); i++) {
+				if (firstChar == str2.charAt(i)) {
+					
+					String before = str2.substring(0, i);
+					String after = str2.substring(i, str2.length());
+					System.out.println(after + before);
+
+					if (str1.equals(after.concat(before)))
+						return true;
+				}
 			}
-		}
-
-		if (found) {
-			String before = str2.substring(0, index);
-			String after = str2.substring(index, str2.length());
-//			System.out.println(after + before  );
-
-			if (str1.equals(after.concat(before)))
-				return true;
+			idx++;
 		}
 		return false;
 	}
 
-	public static void main(String args[]) {
-		CheckRotated cr = new CheckRotated();
-		System.out.println(cr.solution("waterbottle", "erbottlewat"));
-		System.out.println(cr.solution("waterbottle", "erbottlewae"));
-		System.out.println(cr.solution("waterbottle", "erbottlewa"));
-		System.out.println(cr.solution("waterbottle", "waterbottle"));
-	}
 }

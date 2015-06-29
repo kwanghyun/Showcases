@@ -9,30 +9,26 @@ package algorithm.etc;
  */
 public class Power {
 
-public int pow(int x, int y){
-	int sum = 1;
-	for(int i =0; i < y; i ++){
-		sum *= x;
+	public int pow(int x, int y){
+		int sum = 1;
+		for(int i =0; i < y; i ++){
+			sum *= x;
+		}
+		return sum;
 	}
-	return sum;
-}
-
-public int pow2(int x, int y){
-	return powRe( x,  y, 0);
-}
-
-public int powRe(int x, int y, int counter){
-	if(counter == y)
-		return 1;
 	
-	return x * powRe(x, y, counter+1);
-}
+	public int recurPow(int x, int n){
+		if(n == 0)
+			return 1;
+		
+		return x * recurPow(x, n-1);
+	}
 	
 	public static void main(String args[]){
 		Power pw = new Power();
 		System.out.println(pw.pow(2,4));
 		System.out.println(pw.pow(2,8));
-		System.out.println(pw.pow2(2,4));
-		System.out.println(pw.pow2(2,8));
+		System.out.println(pw.recurPow(2,4));
+		System.out.println(pw.recurPow(2,8));
 	}
 }

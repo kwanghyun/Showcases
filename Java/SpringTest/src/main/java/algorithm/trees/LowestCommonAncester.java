@@ -7,13 +7,12 @@ package algorithm.trees;
 //        8       22
 //       / \      /  \
 //     4  12   21  24
-//     /        / \
-//    7       8   9
-
+//    /     / \
+//   1  10  14
 public class LowestCommonAncester {
 
 	public TreeNode findLowestCommonAncester(TreeNode root, int value1, int value2) {
-
+		
 		while (root != null) {
 			int value = root.getValue();
 
@@ -28,20 +27,21 @@ public class LowestCommonAncester {
 		return null;
 	}
 	
-	public TreeNode findCom(TreeNode root, int val1, int val2){
+public TreeNode findCom(TreeNode root, int val1, int val2) {
 
-		if (root == null)
-			return null;
-		
-		if(root.value < val1 && root.value < val2)
-			root = findCom(root.left, val1, val2);
-		else if(root.value > val1 && root.value > val2)
-			root = findCom(root.right, val1, val2);
-		else
-			return root;
-		
+	if (root == null)
 		return null;
+
+	if (root.value > val1 && root.value > val2) {
+		root = findCom(root.left, val1, val2);
+	} else if (root.value < val1 && root.value < val2) {
+		root = findCom(root.right, val1, val2);
+	} else {
+		return root;
 	}
+	//return null; ==> this will end up returns null
+	return root;
+}
 
 	public static void main(String args []){
 		
@@ -65,9 +65,12 @@ public class LowestCommonAncester {
 		four.setLeft(one);
 		twoentytwo.setLeft(twowentyone);
 		twoentytwo.setRight(twowentyfour);
-//		eight.setLeft(ten);
+		eight.setLeft(ten);
 
-		System.out.println(lca.findLowestCommonAncester(towenty, 1, 24 ).getValue());
-		System.out.println(lca.findCom(towenty, 1, 24 ).getValue());
+		System.out.println(lca.findLowestCommonAncester(towenty, 1, 14).getValue());
+		System.out.println(lca.findCom(towenty,  1, 14).getValue());
+		System.out.println(lca.findCom(towenty,  1, 12).getValue());
+		System.out.println(lca.findCom(towenty,  21, 24).getValue());
+		System.out.println(lca.findCom(towenty,  1, 24).getValue());
 	}
 }

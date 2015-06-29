@@ -1,31 +1,32 @@
 package algorithm.stringArray;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class FirstNonrepeatedCharacter {
-	public static Character firstNonRepeated(String str) {
-		HashMap<Character, Integer> charHash = 
-				new HashMap<Character, Integer>();
-		int i, length;
-		Character c;
+	
+	public Character firstNonRepeated(String str) {
+		if (str == null)
+			return null;
+		Map<Character, Integer> mapper = new HashMap<Character, Integer>();
 
-		length = str.length();
-		// Scan str, building hash table
-		for (i = 0; i < length; i++) {
-			c = str.charAt(i);
-			if (charHash.containsKey(c)) {
-				// Increment count corresponding to c
-				charHash.put(c, charHash.get(c) + 1);
+		Character ch;
+		int length = str.length();
+		for (int idx = 0; idx < length; idx++) {
+			ch = str.charAt(idx);
+			if (mapper.containsKey(ch)) {
+				mapper.put(ch, mapper.get(ch) + 1);
 			} else {
-				charHash.put(c, 1);
+				mapper.put(ch, 1);
 			}
 		}
-		// Search hash table in order of str
-		for (i = 0; i < length; i++) {
-			c = str.charAt(i);
-			if (charHash.get(c) == 1)
-				return c;
+			
+		for (int i = 0; i < length; i++) {
+			ch = str.charAt(i);
+			if (mapper.get(ch) == 1)
+				return ch;
 		}
+		
 		return null;
 	}
 }

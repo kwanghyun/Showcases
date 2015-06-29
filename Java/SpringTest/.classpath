@@ -6,11 +6,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
@@ -28,6 +23,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Softwares/hazelcast-3.2.4/lib/hazelcast-3.2.4.jar"/>
+	<classpathentry kind="lib" path="C:/Softwares/Jars/scala/scala-parser-combinators-2.11.0-M4.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

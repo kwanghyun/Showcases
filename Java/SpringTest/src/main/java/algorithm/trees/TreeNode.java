@@ -1,10 +1,10 @@
 package algorithm.trees;
 
 public class TreeNode {
-	int value;
+	public int value;
 	String str;
-	TreeNode left;
-	TreeNode right;
+	public TreeNode left;
+	public TreeNode right;
 
 	public TreeNode(int value) {
 		this.left = null;

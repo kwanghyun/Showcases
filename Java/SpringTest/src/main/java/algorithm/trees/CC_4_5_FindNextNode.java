@@ -21,7 +21,7 @@ public class CC_4_5_FindNextNode {
 	int count = 0;
 	int stopCount = Integer.MAX_VALUE;
 
-	public TreeNode findNext(TreeNode root, int value) {
+	public TreeNode findNext2(TreeNode root, int value) {
 
 		if (root == null)
 			return null;
@@ -51,17 +51,18 @@ public class CC_4_5_FindNextNode {
 
 	public TreeNode find(TreeNode current, int value) {
 		TreeNode node;
-		
+
 		if (current == null)
 			return null;
 
 		count2++;
 
-		if(count2 == stopCount2){
-			//This return wouldn't work because it's only available variable during recursion.
+		if (count2 == stopCount2) {
+			// This return wouldn't work because it's only available variable
+			// during recursion.
 			return current;
 		}
-		
+
 		node = find(current.left, value);
 
 		if (current.value == value) {
@@ -73,45 +74,48 @@ public class CC_4_5_FindNextNode {
 		return node;
 	}
 
-	public static void main(String args[]) {
-		CC_4_5_FindNextNode fnn = new CC_4_5_FindNextNode();
-		// fnn.findNext(fnn.generateTree(), 9);
-//		System.out.println(fnn.find(fnn.generateTree(), 5).value);
-		
-		System.out.println(fnn.recurVolitale(0));
-		System.out.println(fnn.recurPersist(0));
-	}
-	
-	public int recurVolitale(int count){
-		if(count == 5){
-			System.out.println("Inside count : " + count );
-			return count;
+	boolean stopSignal = false;
+
+	public TreeNode findNext(TreeNode root, int value) {
+		TreeNode foundNode = null;
+		if (root == null)
+			return null;
+
+		foundNode = findNext(root.left, value);
+
+		if (root.value == value) {
+			stopSignal = true;
+			return null;
 		}
-		recurVolitale(count+1);
-		return count;
+		if (stopSignal == true) {
+			return root;
+		}
+
+		if (foundNode == null)
+			foundNode = findNext(root.right, value);
+
+		return foundNode;
 	}
 
-	//When count meet 5, the return is not the final return, it will return back to the recursive to main method,
-	//so need to return the count and return that value in the main method.
-	public int recurPersist(int count){
-		if(count == 5){
-			System.out.println("Inside count : " + count );
-			return count;
-		}
-		count = recurPersist(count+1);
-		return count;
+
+	public static void main(String args[]) {
+		CC_4_5_FindNextNode fnn = new CC_4_5_FindNextNode();
+		System.out.println(fnn.findNext(fnn.generateTree(), 5).value);
+
+		// System.out.println(fnn.find(fnn.generateTree(), 5).value);
+
 	}
 
 	public TreeNode generateTree() {
 
-		// 1
-		// / \
-		// / \
-		// / \
-		// 2 3
-		// / \ /
-		// 4 5 6
-		// / / \
+		// 		  1
+		// 	     / \
+		//     /    \
+		//    /      \
+		//   2       3
+		//  / \      /
+		// 4  5    6
+		// /  / \
 		// 7 8 9
 		// Preorder: 1 2 4 7 5 3 6 8 9
 		// Inorder: 7 4 2 5 1 8 6 9 3
@@ -137,6 +141,5 @@ public class CC_4_5_FindNextNode {
 		six.setRight(nine);
 		return one;
 	}
-	
 
 }
