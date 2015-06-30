@@ -12,7 +12,7 @@ public class LongestPalindrome {
 			String str = "";
 			int count = 0;
 			boolean first = true;
-			while (i - j >= 0 && i + j < arr.length){
+			while (i - j >= 0 && i + j < arr.length - 1){
 				
 				if(arr[i-j] != arr[i+j]){
 					if(longestCount <count ){

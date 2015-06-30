@@ -10,12 +10,6 @@ import java.util.List;
  */
 public class FindOutWayInMaze {
 
-//int[][] maze = {
-//		{1,1,1,1},
-//		{-1,1,-1,1},
-//		{1,1,-1,1},
-//		{1, 1, 1,10}
-//};
 int[][] maze = {
 		{1,1,0,1},
 		{0,1,1,1},
@@ -24,25 +18,25 @@ int[][] maze = {
 };
 
 	List<String> pathList = new ArrayList<String>();
-	public String findPath(int[][] maze, String path, int x, int y){
+	public void findPath(int[][] maze, String path, int x, int y){
 		int row = maze.length;
 		int column = maze[0].length;
 				
 		if(x > column -1 || y > row -1 ){
-			return path;
+			return;
 		}
 		if(maze[x][y] == 0){
-			return path;
-		}else if(x == row -1 && y == column -1){
+			return;
+		}
+		if(x == row -1 && y == column -1){
 			path = path + "[" + x + ", " + y + "] ";
 			pathList.add(path);
-			return path;
+			return;
 		}else{
 			path = path + "[" + x + ", " + y + "] ";
 			findPath(maze, path, x + 1, y);
 			findPath(maze, path, x, y + 1);
 		}
-		return path;
 	}
 
 	
