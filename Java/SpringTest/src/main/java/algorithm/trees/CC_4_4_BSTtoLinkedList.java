@@ -12,7 +12,7 @@ public class CC_4_4_BSTtoLinkedList {
 	/*
 	 * Given a binary search tree, design an algorithm which creates a linked
 	 * list of all the nodes at each depth (eg, if you have a tree with depth D,
-	 * you¡¯ll have D linked lists).
+	 * youï¿½ï¿½ll have D linked lists).
 	 */
 	/*
 	 * MISTAKE NOTE 1. break before add to arraylist. so last depth didn't print
@@ -23,40 +23,34 @@ public class CC_4_4_BSTtoLinkedList {
 
 	public ArrayList<LinkedList<Node>> convertBSTtoLinkedList(TreeNode root) {
 
-		ArrayList<ArrayList<TreeNode>> resultList = new ArrayList<ArrayList<TreeNode>>();
-		ArrayList<LinkedList<Node>> l_list = new ArrayList<LinkedList<Node>>();
+		ArrayList<ArrayList<TreeNode>> treeNodeVisitList = new ArrayList<ArrayList<TreeNode>>();
+		ArrayList<LinkedList<Node>> resultList = new ArrayList<LinkedList<Node>>();
 
-		ArrayList<TreeNode> newList = new ArrayList<TreeNode>();
-		resultList.add(newList);
 		int level = 0;
-		resultList.get(level).add(root);
-
-		while (true) {
-			LinkedList<Node> aLinkedList = new LinkedList<Node>();
-			ArrayList<TreeNode> nextList = new ArrayList<TreeNode>();
-			System.out.println(resultList.get(level).size());
-
-			for (int i = 0; i < resultList.get(level).size(); i++) {
-
-				aLinkedList
-						.addLast(new Node(resultList.get(level).get(i).value));
-
-				if (resultList.get(level).get(i).left != null)
-					nextList.add(resultList.get(level).get(i).left);
-				if (resultList.get(level).get(i).right != null)
-					nextList.add(resultList.get(level).get(i).right);
+		ArrayList<TreeNode> newList = new ArrayList<TreeNode>();
+		newList.add(root);
+		treeNodeVisitList.add(newList);
+		
+		while (treeNodeVisitList.get(level).size() != 0) {
+			LinkedList<Node> newLinkedList = new LinkedList<Node>();
+			ArrayList<TreeNode> nextVisitList = new ArrayList<TreeNode>();
+			
+			for (TreeNode child : treeNodeVisitList.get(level)) {	
+				newLinkedList.addLast(new Node(child.value));
+				
+				if (child.left != null)
+					nextVisitList.add(child.left);
+				if (child.right != null)
+					nextVisitList.add(child.right);
 			}
-			// MUST add before exit
-			l_list.add(aLinkedList);
+			
+			resultList.add(newLinkedList);
 
-			if (nextList.size() == 0)
-				break;
-
-			resultList.add(nextList);
+			treeNodeVisitList.add(nextVisitList);
 			level++;
 		}
 
-		return l_list;
+		return resultList;
 	}
 
 	public ArrayList<LinkedList<Integer>> solution(TreeNode root) {
@@ -95,7 +89,7 @@ public class CC_4_4_BSTtoLinkedList {
 		return lists;
 	}
 
-	public ArrayList<LinkedList<Integer>> convert(
+	public ArrayList<LinkedList<Integer>> convertRecursively(
 			ArrayList<LinkedList<Integer>> result_list, TreeNode root, int level) {
 		if (root == null)
 			return null;
@@ -106,9 +100,9 @@ public class CC_4_4_BSTtoLinkedList {
 		result_list.get(level).addLast(root.value);
 		
 		if(root.left != null)
-			result_list = convert(result_list, root.left, level + 1);
+			result_list = convertRecursively(result_list, root.left, level + 1);
 		if(root.right != null)
-			result_list = convert(result_list, root.right, level + 1);
+			result_list = convertRecursively(result_list, root.right, level + 1);
 		
 		return result_list;
 	}
@@ -129,23 +123,31 @@ public class CC_4_4_BSTtoLinkedList {
 	public static void main(String args[]) {
 		TreeNode root;
 		CC_4_4_BSTtoLinkedList bll = new CC_4_4_BSTtoLinkedList();
-		root = bll.generateTree();
+		
 		// ArrayList<LinkedList<Node>> list = bll.convertBSTtoLinkedList(root);
-		ArrayList<LinkedList<Integer>> list = bll.solution(root);
+//		ArrayList<LinkedList<Integer>> list = bll.solution(root);
 		
 		ArrayList<LinkedList<Integer>> convertedlist = new ArrayList<LinkedList<Integer>>();		
-		convertedlist = bll.convert(convertedlist, root, 0);
-		System.out.println("-----------------------------");
-		for (LinkedList<Integer> linkedList : list) {
+		convertedlist = bll.convertRecursively(convertedlist, bll.generateTree(), 0);
+//		System.out.println("-----------------------------");
+//		for (LinkedList<Integer> linkedList : list) {
+//			for (Integer i : linkedList) {
+//				System.out.print(i + ",");
+//			}
+//			System.out.print("\n");
+//		}
+		System.out.println("----------------@Convert() recursive-------------------");
+		for (LinkedList<Integer> linkedList : convertedlist) {
 			for (Integer i : linkedList) {
 				System.out.print(i + ",");
 			}
 			System.out.print("\n");
 		}
-		System.out.println("----------------@Convert()-------------------");
-		for (LinkedList<Integer> linkedList : convertedlist) {
-			for (Integer i : linkedList) {
-				System.out.print(i + ",");
+		
+		System.out.println("----------------@Convert() while-------------------");
+		for (LinkedList<Node> linkedList : bll.convertBSTtoLinkedList(bll.generateTree())) {
+			for (Node node : linkedList) {
+				System.out.print(node.val + ",");
 			}
 			System.out.print("\n");
 		}

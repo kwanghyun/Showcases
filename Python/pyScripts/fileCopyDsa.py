@@ -29,6 +29,17 @@ def fileCopy():
 
 targetList = []
 
+''' GENERAL '''
+# targetList.append({
+#               'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\UnitTestTemplate\\UnitTest.html',
+#               'dest' : 'C:\\Softwares\\smartlocker\\dsa\smart-locker\\src\\main\\wwebapp\\dsaSimulator\\UnitTestTemplate\\UnitTest.html'
+#         })
+
+# targetList.append({
+#               'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\UnitTestTemplate\\UnitTest.js',
+#               'dest' : 'C:\\Softwares\\smartlocker\\dsa\smart-locker\\src\\main\\webapp\\dsaSimulator\\UnitTestTemplate\\UnitTest.js'
+#         })
+
 ''' BROWSERFY FILES '''
 # targetList.append({
 #               'src' : 'C:\Softwares\SampleCode\dglogic\dglux_server_0517\www\dglux5\Test\\adopter\IECAdopterSimluator.js',
@@ -74,6 +85,21 @@ targetList.append({
               'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\panasonic\\SerialConnection.js',
               'dest' : 'C:\\Softwares\\smartlocker\\dsa\smart-locker\\src\\main\\webapp\\kiosk-ui\\js\\lib\\dsa\\panasonic\\SerialConnection.js'
         })
+
+targetList.append({
+              'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\PanasonicLockerManager.js',
+              'dest' : 'C:\\Softwares\\smartlocker\\dsa\smart-locker\\src\\main\\webapp\\kiosk-ui\\js\\lib\\dsa\\PanasonicLockerManager.js'
+        })
+
+# targetList.append({
+#               'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\PanaLockerManagerUnitTest.html',
+#               'dest' : 'C:\\Softwares\\smartlocker\\dsa\smart-locker\\src\\main\\webapp\\dsaSimulator\\PanaLockerManagerUnitTest.html'
+#         })
+
+# targetList.append({
+#               'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\PanaLockerManagerUnitTest.js',
+#               'dest' : 'C:\\Softwares\\smartlocker\\dsa\smart-locker\\src\\main\\webapp\\dsaSimulator\\PanaLockerManagerUnitTest.js'
+#         })
 
 
 ''' NODE JS FILES '''

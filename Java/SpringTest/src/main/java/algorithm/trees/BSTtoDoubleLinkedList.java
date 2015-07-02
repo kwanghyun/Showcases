@@ -5,7 +5,7 @@ import algorithm.linkedlist.Node;
 public class BSTtoDoubleLinkedList {
 
 	Node head;
-	Node last;
+	Node tail;
 	public void convert(TreeNode root){
 		if(root == null)
 			return;
@@ -14,16 +14,15 @@ public class BSTtoDoubleLinkedList {
 		
 		Node newNode = new Node(root.value);
 		
-		if(last == null){
-			last = newNode;
+		if(tail == null){
+			tail = newNode;
 			head = newNode;
 		}else{
-			Node current = last;
+			Node current = tail;
 			current.next = newNode;
-//			current.previous = newNode;
-			last = newNode;
+			newNode.previous = current;
+			tail = newNode;
 		}
-		
 		convert(root.right);
 	}
 	

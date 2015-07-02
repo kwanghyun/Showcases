@@ -11,6 +11,7 @@ import java.util.Arrays;
 public class Closest3Sum {
 	
 	public int findCloestSum(int[] arr, int sum){
+		
 		int cloestSum = 0;
 		int smalledstDiff = Integer.MAX_VALUE;
 		for(int i =0; i < arr.length; i ++){
@@ -40,18 +41,19 @@ public class Closest3Sum {
 			while(j < k){
 				int tempSum = arr[i] + arr[j] + arr[k];
 				int diff = Math.abs(sum - tempSum);
-				
-				if(tempSum > sum)
-					k--;
-				else
-					j++;
-				
+			
 				if(diff < minDiff){
 					minDiff = diff;
 					closestSum = tempSum;
 				}
+	
+				if(tempSum > sum)
+					k--;
+				else
+					j++;
 			}
 		}
+		
 		return closestSum;		
 	}
 	
@@ -61,5 +63,7 @@ public class Closest3Sum {
 		int[] arr = {-1, 2, 1, 3, -4, 4, 5};
 		System.out.println(cs.findCloestSum(arr, 15));
 		System.out.println(cs.doBetter(arr, 15));
+		
+		System.out.println("123".substring(1));
 	}
 }

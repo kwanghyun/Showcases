@@ -7,7 +7,7 @@ import java.util.HashMap;
  */
 public class CC_19_8_MostFrequencyWordInBook {
 	
-	public String findMaxRequency(String[] book){
+	public String findMaxFreqeuncy(String[] book){
 		
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		int max =0 ;
@@ -34,7 +34,7 @@ public class CC_19_8_MostFrequencyWordInBook {
 	public static void main(String args[]){
 		String [] book = {"apple","orage","apple","selk","apple","mongo","drama"};
 		CC_19_8_MostFrequencyWordInBook ob = new CC_19_8_MostFrequencyWordInBook();
-		System.out.println(ob.findMaxRequency(book));
+		System.out.println(ob.findMaxFreqeuncy(book));
 	}
 
 }
