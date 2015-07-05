@@ -11,6 +11,7 @@ val res2 = sc.textFile("myData/filelog-info_10.106.8.160.log").map(_.split(","))
 val resp = res1.union(res2)
 
 val req = sc.textFile("myData/perf_1000_2_22Jun2015.log").filter(line => line.contains("PERFORMANCE TEST")).map(_.split(",")).map(r => (r(1), r(2)))
+val req = req.filter(r => r._2.toLong > 1434956198424L)
 
 val result = resp.join(req)
 	
@@ -35,7 +36,9 @@ import java.text.SimpleDateFormat
 val format = new SimpleDateFormat("h:mm:ss.SSS")
 
 val req = sc.textFile("myData/perf_1000.log").filter(line => line.contains("PERFORMANCE TEST")).map(_.split(",")).map(r => (r(1), r(2)))
-val sorted = req.reduceByKey((x, y) => (y.toLong - x.toLong).toString).map(r => (r._1.split('|')(2), r._2)).sortByKey(true)
+val req = req.filter(r => r._2.toLong > 1434956198424L)
+
+val sorted = filtered.reduceByKey((x, y) => (y.toLong - x.toLong).toString).map(r => (r._1.split('|')(2), r._2)).sortByKey(true)
 val resultArr = sorted.map(r => format.format(r._1.toLong) + "," + r._2)
 
 resultArr.coalesce(1,true).saveAsTextFile("myResult")

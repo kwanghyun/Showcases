@@ -12,8 +12,8 @@ public class Basic {
 		int beginIndex = 0;
 		int endIndex = 5;
 		
-		System.out.println("Row :: " + matrix.length); //Array's array
-		System.out.println("Column :: " + matrix[0].length);
+		System.out.println("Row :: " + matrix.length); //Row :: 4, Array's array 
+		System.out.println("Column :: " + matrix[0].length); //Column :: 5
 		string.toCharArray(); // get char array of a String
 		Arrays.sort(array); // sort an array
 		Arrays.toString(charArray); // convert to string

@@ -139,16 +139,16 @@ def close():
 
 
 def main():
-
 	
 	downloadSLlog("10.106.8.93", sl_log)
 
-	# hosts = ["10.106.8.158", "10.106.8.160"]
-	# for host in hosts:
-	# 	downloadApplogs(host, file_list1)
-	# brokerHost = "10.106.8.159"
+	# hosts = ["10.106.8.158", "10.106.8.160", "10.106.8.80", "10.106.9.188", "10.106.9.157", "10.106.9.232", "10.106.8.162"]
+	hosts = ["10.106.8.158", "10.106.8.160", "10.106.8.80", "10.106.9.188", "10.106.9.157", "10.106.9.232"]
+	for host in hosts:
+		downloadApplogs(host, file_list1)
+	brokerHost = "10.106.8.159"
 
-	# downloadBrokerPerfStat(brokerHost, broker_stat_file_list);
+	downloadBrokerPerfStat(brokerHost, broker_stat_file_list);
 
 
 main()

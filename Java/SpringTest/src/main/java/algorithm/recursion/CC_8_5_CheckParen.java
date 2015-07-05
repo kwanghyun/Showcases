@@ -13,11 +13,10 @@ import java.util.List;
  */
 public class CC_8_5_CheckParen {
 
-	List<String> list = new ArrayList<String>();
 	
 	List<String> strList = new ArrayList<String>();
 	
-	public void paren(int open, int close, char chs[], int count) {
+	public void paren(int open, int close, char chs[], int index) {
 
 		if (open > 3 || close > 3)
 			return;
@@ -25,16 +24,19 @@ public class CC_8_5_CheckParen {
 		if (open == 3 && close == 3) {
 			strList.add(new String(chs));
 		} else {
-			chs[count] = '(';
-			paren(open + 1, close, chs, count + 1);
+			chs[index] = '(';
+			paren(open + 1, close, chs, index + 1);
 
-			chs[count] = ')';
-			paren(open, close + 1, chs, count + 1);
+			chs[index] = ')';
+			paren(open, close + 1, chs, index + 1);
 
 		}
 	}
 
-	//String didn't work, when return to open 2, remaining string is "{{{"
+	
+	List<String> list = new ArrayList<String>();
+	
+	//String didn't work, when return to open 2, remaining string is "{{{"	
 	public void checkParen(int open, int close, String str) {
 
 		if (open > 3 || close > 3){

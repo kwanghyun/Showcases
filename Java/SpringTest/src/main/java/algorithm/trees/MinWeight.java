@@ -8,17 +8,21 @@ package algorithm.trees;
  */
 public class MinWeight {
 
-	public int findMinWeight(TreeNode root, int level) {
+	public int findMinWeight(TreeNode root1, TreeNode root2){
+		return Math.min(findWeight(root1, 1), findWeight(root2, 1));
+	}
+
+	public int findWeight(TreeNode root, int level) {
 		if (root == null)
 			return 0;
 		return level * root.value 
-				+ level * findMinWeight(root.left, level + 1) 
-				+ level * findMinWeight(root.right, level + 1);
+				+ level * findWeight(root.left, level + 1) 
+				+ level * findWeight(root.right, level + 1);
 	}
-
+	
 	public static void main(String args[]){
 		MinWeight mw = new MinWeight();
-		System.out.println(mw.findMinWeight(mw.generateEntireTree(), 1));
+		System.out.println("#Min :: " + mw.findMinWeight(mw.generateEntireTree(), mw.generatePartTree()));
 	}
 	
 	public TreeNode generateEntireTree(){
@@ -42,4 +46,18 @@ public class MinWeight {
 		return one;
 	}
 
+	public TreeNode generatePartTree(){
+		TreeNode one = new TreeNode(1);
+		TreeNode two = new TreeNode(2);
+		TreeNode three = new TreeNode(3);
+		TreeNode four = new TreeNode(4);
+		TreeNode five = new TreeNode(5);
+		TreeNode six = new TreeNode(6);
+		one.setLeft(two);
+		one.setRight(three);
+		two.setLeft(four);
+		two.setRight(five);
+		three.setLeft(six);
+		return one;
+	}
 }
