@@ -3,7 +3,7 @@ package algorithm.trees;
 import java.util.Stack;
 
 /*
- * Write an algorithm to find the ¡®next¡¯ node (i.e., in-order successor) of 
+ * Write an algorithm to find the ï¿½ï¿½nextï¿½ï¿½ node (i.e., in-order successor) of 
  * a given node in a binary search tree where each node has a link to its parent.
  */
 
@@ -15,64 +15,6 @@ import java.util.Stack;
  *  current recursive. (recurPersist, recurValotile)
  */
 public class CC_4_5_FindNextNode {
-	TreeNode next;
-	Stack<TreeNode> visitedList = new Stack<TreeNode>();
-
-	int count = 0;
-	int stopCount = Integer.MAX_VALUE;
-
-	public TreeNode findNext2(TreeNode root, int value) {
-
-		if (root == null)
-			return null;
-
-		visitedList.push(root);
-		count++;
-
-		if (count == stopCount)
-			next = root;
-
-		findNext(root.left, value);
-
-		if (root.value == value) {
-			stopCount = count + 1;
-			System.out.println("stopCount : " + stopCount);
-		}
-
-		findNext(root.right, value);
-
-		return null;
-	}
-
-	TreeNode previous = null;
-
-	int stopCount2 = 0;
-	int count2 = 0;
-
-	public TreeNode find(TreeNode current, int value) {
-		TreeNode node;
-
-		if (current == null)
-			return null;
-
-		count2++;
-
-		if (count2 == stopCount2) {
-			// This return wouldn't work because it's only available variable
-			// during recursion.
-			return current;
-		}
-
-		node = find(current.left, value);
-
-		if (current.value == value) {
-			stopCount2 = count2 + 1;
-		}
-
-		node = find(current.right, value);
-
-		return node;
-	}
 
 	boolean stopSignal = false;
 
@@ -81,7 +23,6 @@ public class CC_4_5_FindNextNode {
 		if (root == null)
 			return null;
 
-		foundNode = findNext(root.left, value);
 
 		if (root.value == value) {
 			stopSignal = true;
@@ -90,6 +31,8 @@ public class CC_4_5_FindNextNode {
 		if (stopSignal == true) {
 			return root;
 		}
+
+		foundNode = findNext(root.left, value);
 
 		if (foundNode == null)
 			foundNode = findNext(root.right, value);
@@ -101,9 +44,6 @@ public class CC_4_5_FindNextNode {
 	public static void main(String args[]) {
 		CC_4_5_FindNextNode fnn = new CC_4_5_FindNextNode();
 		System.out.println(fnn.findNext(fnn.generateTree(), 5).value);
-
-		// System.out.println(fnn.find(fnn.generateTree(), 5).value);
-
 	}
 
 	public TreeNode generateTree() {
@@ -115,8 +55,8 @@ public class CC_4_5_FindNextNode {
 		//   2       3
 		//  / \      /
 		// 4  5    6
-		// /  / \
-		// 7 8 9
+		// /  		/ \
+		// 7 	   8   9
 		// Preorder: 1 2 4 7 5 3 6 8 9
 		// Inorder: 7 4 2 5 1 8 6 9 3
 		// Postorder: 7 4 5 2 8 9 6 3 1

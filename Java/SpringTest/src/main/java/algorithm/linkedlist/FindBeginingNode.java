@@ -8,7 +8,7 @@ public class FindBeginingNode {
 	// Given a circular linked list, implement an algorithm which returns node
 	// at the beginning of the loop.
 	// DEFINITION
-	// Circular linked list: A (corrupt) linked list in which a node¡¯s next
+	// Circular linked list: A (corrupt) linked list in which a nodeï¿½ï¿½s next
 	// pointer points to an earlier node, so as to make a loop in the linked
 	// list.
 	// EXAMPLE
@@ -39,12 +39,8 @@ public class FindBeginingNode {
 		}
 
 		while (head.ch != slow.ch) {
-			if (head.ch == slow.ch)
-				return head;
-			else {
-				head = head.next;
-				slow = slow.next;
-			}
+			head = head.next;
+			slow = slow.next;
 		}
 		return slow;
 	}

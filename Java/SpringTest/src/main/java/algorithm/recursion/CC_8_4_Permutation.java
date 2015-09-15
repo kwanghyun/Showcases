@@ -10,7 +10,7 @@ public class CC_8_4_Permutation {
 		ArrayList<String> permutations = new ArrayList<String>();
 		if (str == null)
 			return null;
-
+		
 		if (str.length() == 0) {
 			//without this size program doesn't work...
 			permutations.add(" ");
@@ -33,29 +33,29 @@ public class CC_8_4_Permutation {
 		return permutations;
 	}
 	
-	public static void PrintPermuation(char[] inputs, int currentFocus) {
+	public void printPermuation(char[] inputs, int index) {
 		// before start, check if currentFocus come to the last char
-		if (currentFocus == inputs.length - 1) {
+		if (index == inputs.length - 1) {
 			System.out.println(new String(inputs));
 			return;
 		}
 
 		// now first keep the current char order in the array and proceed to
 		// next
-		PrintPermuation(inputs, currentFocus + 1);
-
+		
+		printPermuation(inputs, index + 1);
+		
 		// new need swap each next char with currentFocus
-		for (int i = currentFocus + 1; i < inputs.length; i++) {
+		for (int i = index + 1; i < inputs.length; i++) {
 			// swap the char pair of position(currentFocus, i)
-			char temp = inputs[currentFocus];
-			inputs[currentFocus] = inputs[i];
+			char temp = inputs[index];
+			inputs[index] = inputs[i];
 			inputs[i] = temp;
 
-			PrintPermuation(inputs, currentFocus + 1);
+			printPermuation(inputs, index + 1);
 		}
 	}
 	
-
 	public static void main(String[] args) {
 		
 //		by adding " ",  array 0 max, size 0
@@ -76,5 +76,7 @@ public class CC_8_4_Permutation {
 		System.out.println("===================");
 		for(String str : list)
 			System.out.println("String : [" + str + "] " + "Length : [" + str.length() + "]");
+		
+		p.printPermuation("1234".toCharArray(), 0);
 	}
 }

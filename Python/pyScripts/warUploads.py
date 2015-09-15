@@ -2,6 +2,8 @@ import paramiko
 import datetime
 import time
 import logging
+from easygui import msgbox
+import traceback
 
 # logging.basicConfig(filename='log-file.log',level=logging.DEBUG)
 logging.basicConfig(level=logging.INFO)
@@ -13,9 +15,15 @@ now = datetime.datetime.now()
 file_list = []
 
 file_list.append({
-              'src' : 'C:\\Softwares\\smartlocker\\dsa\\locker-service\\target\\locker-service.war',
-              'dest' : '/opt/cisco/apache/tomcat/webapps/locker-service.war'
+              'src' : 'C:\\Users\\kwjang\\Documents\\workspace-sts-3.6.4.RELEASE\\webapp.demo\\target\\logDemo.war',
+              'dest' : '/home/scc-dev/software/apache-tomcat-7.0.64/webapps/logDemo.war'
         })
+
+remove_file_list = []
+remove_file_list.append("/home/scc-dev/software/apache-tomcat-7.0.64/webapps/logDemo.war")
+
+remove_directory_list = []
+remove_directory_list.append("/home/scc-dev/software/apache-tomcat-7.0.64/webapps/logDemo")
 
 # file_list.append({
 #               'src' : 'C:\\Softwares\\smartlocker\\dsa\\smart-locker-jar\\target\\smart-locker.war',
@@ -31,8 +39,8 @@ def connect(host):
 	logging.info('Connecting to ::::: %s' % host)
 	
 	# Auth
-	username = "admin"
-	password = "Cisco123!Cisco123"
+	username = "scc-dev"
+	password = "Cisco_123"
 	connect.transport.connect(username = username, password = password)
 
 	# Go!
@@ -47,10 +55,29 @@ def download(fileMap):
 	connect.sftp.get(fileMap['src'], fileMap['dest'])
 
 
-def remove(path):
-	logging.info("Deleting the srouce file")
-	connect.sftp.remove(path);
+def remove(paths):
+	logging.info("Deleting the File")
+	
+	for path in paths:
+		try:
+			logging.info("@@ path => %s" % path)
+			connect.sftp.remove(path);
+		except IOError, e:
+			logging.error("######Oops! %s" % e)
+			logging.error(traceback.format_exc())
 
+
+def removeDir(paths):
+	logging.info("Deleting the Directory")
+	
+	for path in paths:
+		try:
+			logging.info("@@ path => %s" % path)
+			connect.sftp.rmdir(path);
+		except IOError, e:
+			logging.error("######Oops! %s" % e)
+			logging.error(traceback.format_exc())
+	
 
 def upload(fileMap):
 	connect.sftp.put(fileMap['src'], fileMap['dest'])
@@ -63,10 +90,13 @@ def close():
 	connect.transport.close()
 
 
-def uploadFiles(host, file_list):
+def uploadFiles(host):
 	try:
-		connect(host);
+		connect(host)
+		remove(remove_file_list)
+		# removeDir(remove_directory_list)
 		for fileMap in file_list:
+			logging.info(fileMap)
 			upload(fileMap)
 
 	except IOError, e:
@@ -81,7 +111,7 @@ def main():
 	# 	downloadApplogs(host, file_list1)
 	
 	host = "10.106.8.16"
-	uploadFiles(host, file_list);
-
+	uploadFiles(host)
+	msgbox('DONE')
 
 main()

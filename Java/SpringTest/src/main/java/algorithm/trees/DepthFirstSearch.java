@@ -6,6 +6,7 @@ import java.util.List;
 public class DepthFirstSearch {
 
 	public GraphNode dfs(GraphNode root, int value){	
+		GraphNode found = null;
 		if(root == null)
 			return null;
 
@@ -13,7 +14,7 @@ public class DepthFirstSearch {
 			return root;
 		} else {
 			List<GraphNode> list = root.getAdjacent();
-			GraphNode found;
+			
 			for (GraphNode node : list) {
 				if (node.state == State.Unvisited) {
 					found = dfs(node, value);
@@ -24,7 +25,7 @@ public class DepthFirstSearch {
 			}
 		}
 		System.out.println("2. " + root.value);
-		return null;
+		return found;
 	}
 	
 	public static void main(String args[]){

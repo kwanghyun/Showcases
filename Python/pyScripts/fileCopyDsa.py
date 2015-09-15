@@ -41,55 +41,43 @@ targetList = []
 #         })
 
 ''' BROWSERFY FILES '''
+
 # targetList.append({
-#               'src' : 'C:\Softwares\SampleCode\dglogic\dglux_server_0517\www\dglux5\Test\\adopter\IECAdopterSimluator.js',
-#               'dest' : 'C:\Softwares\smartlocker\dsa\smart-locker\src\main\webapp\dsaSimulator\\adopter\IECAdopterSimluator.js'
+#               'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\PanaLockerSimulator.html',
+#               'dest' : 'C:\\Softwares\\smartlocker\\dsa\\smart-locker\\src\\main\\webapp\\dsaSimulator\\PanaLockerSimulator.html'
 #         })
 
 # targetList.append({
-#               'src' : 'C:\Softwares\SampleCode\dglogic\dglux_server_0517\www\dglux5\Test\\adopter\IECAdopter.js',
-#               'dest' : 'C:\Softwares\smartlocker\dsa\smart-locker\src\main\webapp\dsaSimulator\\adopter\IECAdopter.js'
+#               'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\PanasonicLockerSimulator.js',
+#               'dest' : 'C:\\Softwares\\smartlocker\\dsa\\smart-locker\\src\\main\\webapp\\dsaSimulator\\PanasonicLockerSimulator.js'
+#         })
+
+
+# targetList.append({
+#               'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\panasonic\\CommandModel.js',
+#               'dest' : 'C:\\Softwares\\smartlocker\\dsa\smart-locker\\src\\main\\webapp\\kiosk-ui\\js\\lib\\dsa\\panasonic\\CommandModel.js'
 #         })
 
 # targetList.append({
-#               'src' : 'C:\Softwares\SampleCode\dglogic\dglux_server_0517\www\dglux5\Test\\adopter\AdopterCore.js',
-#               'dest' : 'C:\Softwares\smartlocker\dsa\smart-locker\src\main\webapp\dsaSimulator\\adopter\AdopterCore.js'
+#               'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\panasonic\\SerialConnection.js',
+#               'dest' : 'C:\\Softwares\\smartlocker\\dsa\\smart-locker\\src\\main\\webapp\\kiosk-ui\\js\\lib\\dsa\\panasonic\\SerialConnection.js'
 #         })
-
-# targetList.append({
-#               'src' : 'C:\Softwares\SampleCode\dglogic\dglux_server_0517\www\dglux5\Test\\adopter\dslink.js',
-#               'dest' : 'C:\Softwares\smartlocker\dsa\smart-locker\src\main\webapp\dsaSimulator\\adopter\dslink.js'
-#         })
-
-# targetList.append({
-#               'src' : 'C:\Softwares\SampleCode\dglogic\dglux_server_0517\www\dglux5\Test\ServerSimulator.html',
-#               'dest' : 'C:\Softwares\smartlocker\dsa\smart-locker\src\main\webapp\dsaSimulator\ServerSimulator.html'
-#         })
-
-targetList.append({
-              'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\PanaLockerSimulator.html',
-              'dest' : 'C:\\Softwares\\smartlocker\\dsa\smart-locker\\src\\main\\webapp\\dsaSimulator\\PanaLockerSimulator.html'
-        })
-
-targetList.append({
-              'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\PanasonicLockerSimulator.js',
-              'dest' : 'C:\\Softwares\\smartlocker\\dsa\smart-locker\\src\\main\\webapp\\dsaSimulator\\PanasonicLockerSimulator.js'
-        })
-
-targetList.append({
-              'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\panasonic\\CommandModel.js',
-              'dest' : 'C:\\Softwares\\smartlocker\\dsa\smart-locker\\src\\main\\webapp\\kiosk-ui\\js\\lib\\dsa\\panasonic\\CommandModel.js'
-        })
-
-targetList.append({
-              'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\panasonic\\SerialConnection.js',
-              'dest' : 'C:\\Softwares\\smartlocker\\dsa\smart-locker\\src\\main\\webapp\\kiosk-ui\\js\\lib\\dsa\\panasonic\\SerialConnection.js'
-        })
 
 # targetList.append({
 #               'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\PanasonicLockerManager.js',
-#               'dest' : 'C:\\Softwares\\smartlocker\\dsa\smart-locker\\src\\main\\webapp\\kiosk-ui\\js\\lib\\dsa\\PanasonicLockerManager.js'
+#               'dest' : 'C:\\Softwares\\smartlocker\\dsa\\smart-locker\\src\\main\\webapp\\kiosk-ui\\js\\lib\\dsa\\PanasonicLockerManager.js'
 #         })
+
+# targetList.append({
+#               'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\DSAManager.js',
+#               'dest' : 'C:\\Softwares\\smartlocker\\dsa\smart-locker\\src\\main\\webapp\\kiosk-ui\\js\\lib\\dsa\\DSAManager.js'
+#         })
+
+# targetList.append({
+#               'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\LockerManager.js',
+#               'dest' : 'C:\\Softwares\\smartlocker\\dsa\smart-locker\\src\\main\\webapp\\kiosk-ui\\js\\lib\\dsa\\LockerManager.js'
+#         })
+
 
 # targetList.append({
 #               'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\PanaLockerManagerUnitTest.html',
@@ -102,11 +90,74 @@ targetList.append({
 #         })
 
 
-''' NODE JS FILES '''
+
+''' E-commerce'''
 targetList.append({
-              'src' : 'C:\Softwares\SampleCode\dglogic\sdk-dslink-javascript\\APP.js',
-              'dest' : 'C:\Softwares\smartlocker\dsa\smart-locker\src\main\webapp\\nodeJS-simulator\\APP.js'
+              'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\PanaLockerSimulator.html',
+              'dest' : 'C:\\Softwares\\smartlocker\\smartlocker-eCommerce\\smart-locker\\src\\main\\webapp\\dsaSimulator\\PanaLockerSimulator.html'
         })
+
+targetList.append({
+              'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\PanasonicLockerSimulator.js',
+              'dest' : 'C:\\Softwares\\smartlocker\\smartlocker-eCommerce\\smart-locker\\src\\main\\webapp\\dsaSimulator\\PanasonicLockerSimulator.js'
+        })
+
+targetList.append({
+              'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\ServerSimulator.html',
+              'dest' : 'C:\\Softwares\\smartlocker\\smartlocker-eCommerce\\smart-locker\\src\\main\\webapp\\dsaSimulator\\ServerSimulator.html'
+        })
+
+# targetList.append({
+#               'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\panasonic\\SerialConnection.js',
+#               'dest' : 'C:\\Softwares\\smartlocker\\smartlocker-eCommerce\\smart-locker\\src\\main\\webapp\\kiosk-ui\\js\\lib\\dsa\\panasonic\\SerialConnection.js'
+#         })
+
+# targetList.append({
+#               'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\PanasonicLockerManager.js',
+#               'dest' : 'C:\\Softwares\\smartlocker\\smartlocker-eCommerce\\smart-locker\\src\\main\\webapp\\kiosk-ui\\js\\lib\\dsa\\PanasonicLockerManager.js'
+#         })
+
+targetList.append({
+              'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\DSAManager.js',
+              'dest' : 'C:\\Softwares\\smartlocker\\smartlocker-eCommerce\\smart-locker\\src\\main\\webapp\\dsaSimulator\\DSAManager.js'
+        })
+
+targetList.append({
+              'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\DSAManager.js',
+              'dest' : 'C:\\Softwares\\smartlocker\\smartlocker-eCommerce\\smart-locker\\src\\main\\webapp\\kiosk-ui\\js\\lib\\dsa\\DSAManager.js'
+        })
+
+targetList.append({
+              'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\PrinterManager.js',
+              'dest' : 'C:\\Softwares\\smartlocker\\smartlocker-eCommerce\\smart-locker\\src\\main\\webapp\\dsaSimulator\\PrinterManager.js'
+        })
+
+targetList.append({
+              'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\PrinterManager.js',
+              'dest' : 'C:\\Softwares\\smartlocker\\smartlocker-eCommerce\\smart-locker\\src\\main\\webapp\\kiosk-ui\\js\\lib\\dsa\\PrinterManager.js'
+        })
+
+targetList.append({
+              'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\adopter\\dslink.js',
+              'dest' : 'C:\\Softwares\\smartlocker\\smartlocker-eCommerce\\smart-locker\\src\\main\\webapp\\dsaSimulator\\adopter\\dslink.js'
+        })
+
+targetList.append({
+              'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\adopter\\dslink.js',
+              'dest' : 'C:\\Softwares\\smartlocker\\smartlocker-eCommerce\\smart-locker\\src\\main\\webapp\\kiosk-ui\\js\\lib\\dsa\\dslink.js'
+        })
+
+# targetList.append({
+#               'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\www\\dglux5\\Test\\LockerManager.js',
+#               'dest' : 'C:\\Softwares\\smartlocker\\smartlocker-eCommerce\\smart-locker\\src\\main\\webapp\\kiosk-ui\\js\\lib\\dsa\\LockerManager.js'
+#         })
+
+
+''' NODE JS FILES '''
+# targetList.append({
+#               'src' : 'C:\Softwares\SampleCode\dglogic\sdk-dslink-javascript\\APP.js',
+#               'dest' : 'C:\Softwares\smartlocker\dsa\smart-locker\src\main\webapp\\nodeJS-simulator\\APP.js'
+#         })
 
 # targetList.append({
 #               'src' : 'C:\Softwares\SampleCode\dglogic\sdk-dslink-javascript\\Utils.js',
@@ -149,8 +200,8 @@ def copyFile(src, dest):
 
 def copyFiles(list):
     for entry in list:
-        print "source %s::::: file exist? %s" % (entry['src'],  os.path.exists(entry['src']));
-        print "destination %s::::: file exist? %s" % (entry['dest'], os.path.exists(entry['dest']));
+        print "src ..%s : exist? %s" % (entry['src'][-70:],  os.path.exists(entry['src']));
+        print "dst ..%s : exist? %s" % (entry['dest'][-70:], os.path.exists(entry['dest']));
         copyFile(entry['src'], entry['dest'])
 
 

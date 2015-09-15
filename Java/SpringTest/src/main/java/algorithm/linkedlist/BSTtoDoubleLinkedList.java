@@ -1,6 +1,6 @@
-package algorithm.trees;
+package algorithm.linkedlist;
 
-import algorithm.linkedlist.Node;
+import algorithm.trees.TreeNode;
 
 public class BSTtoDoubleLinkedList {
 

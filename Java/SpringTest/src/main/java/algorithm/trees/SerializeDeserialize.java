@@ -23,14 +23,14 @@ public class SerializeDeserialize {
 			index++;
 			System.out.println("#hit : " + index);
 			return deserialize(arr);
-		}
-		TreeNode node = new TreeNode(Character.getNumericValue(arr[index]));
-		index++;
-		node.left = deserialize(arr);
-		index++;
-		node.right = deserialize(arr);
-
-		return node;
+		}else{
+			TreeNode node = new TreeNode(Character.getNumericValue(arr[index]));
+			index++;
+			node.left = deserialize(arr);
+			index++;
+			node.right = deserialize(arr);
+			return node;
+		}	
 	}
 	
 	int idx = 0;
@@ -53,20 +53,22 @@ public class SerializeDeserialize {
 	}
 	
 	//NOTE : by using local param "index" it will start -f
-	public TreeNode dese(String str, int index) {
+	public boolean dese(String str, int index) {
 		if (index > str.length() - 1)
-			return null;
+			return false;
 
 		if (str.charAt(index) == '#') {
-			return dese(str, index + 1);
+			return false;
 		}
 
 		TreeNode node = new TreeNode(Character.getNumericValue(str.charAt(index)));
 		
-		node.left = dese(str, index + 1);
-		node.right = dese(str, index + 1);
-
-		return node;
+		if(dese(str, index + 1))
+			node.left = node; 
+		if(dese(str, index + 1))
+			node.right = node; 
+		
+		return true;
 	}
 
 	public static void main(String args[]) {
@@ -80,7 +82,10 @@ public class SerializeDeserialize {
 //		System.out.println("--------------------------");
 //		mw.printPreOrder(mw.dese(serializedStr, 0));
 		System.out.println("--------------------------");
-		mw.printPreOrder(mw.dese(serializedStr));
+		TreeNode root = mw.dese(serializedStr);
+		mw.printPreOrder(root);
+		System.out.println("--------------------------");
+		mw.printInOrder(root);
 	}
 
 	public void printPreOrder(TreeNode root) {
@@ -90,14 +95,22 @@ public class SerializeDeserialize {
 		printPreOrder(root.left);
 		printPreOrder(root.right);
 	}
+	
+	public void printInOrder(TreeNode root) {
+		if (root == null)
+			return;
+		printPreOrder(root.left);
+		System.out.println(root.value);
+		printPreOrder(root.right);
+	}
 
-	// 1
-	// / \
-	// 2 3
-	// / \ /
-	// 4 5 6
-	// / /\
-	// 7 8 9
+	// 		 1
+	// 		/  \
+	// 	   2   3
+	//   / \    /
+	//  4  5 	6
+	//  / 		/ \
+	// 7     8   9
 	public TreeNode createTestTree() {
 		TreeNode one = new TreeNode(1);
 		TreeNode two = new TreeNode(2);

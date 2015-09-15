@@ -59,7 +59,7 @@ def upload(fileMap):
 
 def close():
 	logging.info("Closing connection.....")
-	logging.info("   ")
+	logging.info(".......................")
 	connect.sftp.close()
 	connect.transport.close()
 
@@ -79,7 +79,8 @@ def uploadFiles(host, file_list):
 def main():
 	
 	# APP File only
-	hosts = ["10.106.8.158", "10.106.8.160", "10.106.8.80", "10.106.9.188", "10.106.9.157", "10.106.9.232", "10.106.8.162"]
+	# hosts = ["10.106.8.158", "10.106.8.160", "10.106.8.80", "10.106.9.188", "10.106.9.157", "10.106.9.232", "10.106.8.162"]
+	hosts = ["10.106.8.80", "10.106.9.188", "10.106.9.157", "10.106.9.232", "10.106.8.162"]
 	for host in hosts:
 		uploadFiles(host, file_list);
 

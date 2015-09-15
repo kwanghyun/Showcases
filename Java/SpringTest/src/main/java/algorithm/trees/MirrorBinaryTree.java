@@ -6,92 +6,43 @@ import java.util.Stack;
 
 public class MirrorBinaryTree {
 
-	public TreeNode clone(TreeNode root){
-		
-		Queue<TreeNode> queue = new LinkedList<TreeNode>();
-		queue.add(root);
-		
-		TreeNode newHead;
-		
-		while(!queue.isEmpty()){
-			TreeNode node = queue.element();
-			queue.remove();
-			System.out.println(node.value);
-			TreeNode newNode = new TreeNode(node.value);
-			
-			if(node.left != null){
-				queue.add(node.left);
-				newNode.left = new TreeNode(node.left.value);
-			}
-			if(node.right != null){
-				queue.add(node.right);
-				newNode.right = new TreeNode(node.right.value);
-			}
-		}
+public TreeNode mirror(TreeNode root){
+	if(root == null)
 		return null;
-	}
 	
-	public String serialize(TreeNode root){
+	TreeNode temp = root.left;
+	root.left = mirror(root.right);
+	root.right = mirror(temp);
+	
+	return root;
+}
+	
+	public TreeNode mirror2(TreeNode root){
+		if(root == null)
+			return null;
 		
-		Queue<TreeNode> queue = new LinkedList<TreeNode>();
-		queue.add(root);
+		TreeNode temp = root.left;
+		root.left = root.right;
+		root.right = temp;
 		
-		String str = "";
-		
-		while(!queue.isEmpty()){
-			TreeNode node = queue.element();
-			queue.remove();
-			str += node.value;
-			TreeNode newNode = new TreeNode(node.value);
-			
-			if(node.left != null){
-				queue.add(node.left);
-			}else{
-				str += "#";
-			}
-			if(node.right != null){
-				queue.add(node.right);
-			}else{
-				str += "#";
-			}
-		}
-		return str;
-	}
+		mirror(root.left);
+		mirror(root.right);
 
-	public TreeNode deserialize(String str){
-		Queue<TreeNode> queue = new LinkedList<TreeNode>();
-		TreeNode newHead = new TreeNode(Integer.parseInt(str.charAt(0)+""));
-		queue.add(newHead);
-		int count = 1;
-		
-		while(count != str.length()){
-			TreeNode node1 = queue.element();
-			queue.remove();
-			
-			char ch1 = str.charAt(count++);
-			char ch2 = str.charAt(count++);
-			
-			if(ch1 != '#'){
-				node1.left = new TreeNode(Integer.parseInt(ch1+""));
-				queue.add(node1.left);
-			}else
-				node1.left = null;
-				
-			if(ch2 != '#'){
-				node1.right = new TreeNode(Integer.parseInt(ch2+""));
-				queue.add(node1.right);
-			}else
-				node1.right = null;
-				
-		}
-		return newHead;
+		return root;
 	}
+		
+		
 
 	public static void main(String args[]){
 		MirrorBinaryTree mbt = new MirrorBinaryTree();
-		System.out.println(mbt.serialize(mbt.generateTree()));
-		System.out.println("-------------DES-------------------");
-		mbt.printNode(mbt.deserialize(mbt.serialize(mbt.generateTree())));
+		System.out.println("-------------BEFORE-------------------");
+		TreeNode header = mbt.generateTree();
+		mbt.printNode(header);
+		System.out.println("\n-------------After-------------------");
+		TreeNode mirrored = mbt.mirror(header);
+		System.out.println();
+		mbt.printNode(mirrored);
+		
 	}
 	
 	public void printNode(TreeNode root){
@@ -113,15 +64,15 @@ public class MirrorBinaryTree {
 	}
 	
 	public TreeNode generateTree() {
-		// 1
-		// / \
-		// / \
-		// / \
-		// 2 3
-		// / \ /
-		// 4 5 6
-		// / / \
-		// 7 8 9
+		// 		 1
+		// 		/ \
+		// 	   /   \
+		//    /    \
+		//   2     3
+		//  / \    /
+		// 4  5  6
+		///   / \
+		//7  8 9
 		TreeNode one = new TreeNode(1);
 		TreeNode two = new TreeNode(2);
 		TreeNode three = new TreeNode(3);

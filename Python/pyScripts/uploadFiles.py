@@ -12,10 +12,10 @@ now = datetime.datetime.now()
 
 file_list = []
 
-file_list.append({
-              'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\\www\\dglux5\\Test\\panasonic\\SerialConnection.js',
-              'dest' : '/opt/cisco/apache/tomcat/webapps/smart-locker/kiosk-ui/js/lib/dsa/panasonic/SerialConnection.js'
-        })
+# file_list.append({
+#               'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\\www\\dglux5\\Test\\panasonic\\SerialConnection.js',
+#               'dest' : '/opt/cisco/apache/tomcat/webapps/smart-locker/kiosk-ui/js/lib/dsa/panasonic/SerialConnection.js'
+#         })
 
 # file_list.append({
 #               'src' : 'C:\\Softwares\\SampleCode\\dglogic\\dglux_server_0517\\www\\dglux5\\Test\\panasonic\\CommandModel.js',
