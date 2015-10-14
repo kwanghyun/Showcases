@@ -4,7 +4,7 @@ package algorithm.stringArray;
 //Given two strings, s1 and s2, write code to check if s2 is a rotation of s1 using only one call 
 //to isSubstring (i.e., "waterbottle" is a rotation of "erbottlewat").
 
-public class IsSubstring {
+public class IsRotatedString {
 
 	public boolean solution(String str1, String str2) {
 		if (str1 == null || str2 == null)
@@ -56,7 +56,7 @@ public class IsSubstring {
 	}
 
 	public static void main(String[] args) {
-		IsSubstring obj = new IsSubstring();
+		IsRotatedString obj = new IsRotatedString();
 		obj.solution2("waterbottle", "erbottlewat");
 	}
 

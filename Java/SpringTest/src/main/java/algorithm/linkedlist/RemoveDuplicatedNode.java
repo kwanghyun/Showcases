@@ -1,33 +1,49 @@
 package algorithm.linkedlist;
 
-public class RemoveDuplicatedNode {
-	// Write code to remove duplicates from an unsorted linked list.
-	// FOLLOW UP
-	// How would you solve this problem if a temporary buffer is not allowed?
-	Node first;
+/*Given a sorted linked list, delete all duplicates such that each element appear only
+ once.
+ For example,
+ Given 1->1->2, return 1->2.
+ Given 1->1->2->3->3, return 1->2->3.
 
-	public void insert(Node newNode) {
-		Node current = first;
-		first = newNode;
-		first.next = current;
+ The key of this problem is using the right loop condition. And change what is necessary
+ in each loop. You can use different iteration conditions like the following 2
+ solutions.
+ */
+public class RemoveDuplicatedNode {
+
+	public Node deleteDuplicates(Node head) {
+		if (head == null || head.next == null)
+			return head;
+
+		Node prev = head;
+		Node curr = head.next;
+
+		while (curr != null) {
+			if (curr.val == prev.val) {
+				prev.next = curr.next;
+				curr = curr.next;
+			} else {
+				prev = curr;
+				curr = curr.next;
+			}
+		}
+		return head;
 	}
 
-	public void removeDuplicatedNode(Node root) {
-		while (root != null) {
-			Node pointer = root.next;
-			Node previous = root;
-			while (pointer != null) {
-				if (root.ch == pointer.ch) {
-					previous.next = pointer.next;
-					if (previous.next == null)
-						break;
-					pointer = previous.next.next;
-				}
-				previous = pointer;
-				pointer = pointer.next;
+	public Node deleteDuplicates2(Node head) {
+		if (head == null || head.next == null)
+			return head;
+		
+		Node curr = head;
+		while (curr != null && curr.next != null) {
+			if (curr.val == curr.next.val) {
+				curr.next = curr.next.next;
+			} else {
+				curr = curr.next;
 			}
-			root = root.next;
 		}
+		return head;
 	}
 
 	public String toString(Node root) {
@@ -43,17 +59,5 @@ public class RemoveDuplicatedNode {
 	public static void main(String args[]) {
 		RemoveDuplicatedNode rdn = new RemoveDuplicatedNode();
 
-		StringBuilder sb = new StringBuilder("FOLLOW UP");
-		sb.reverse();
-		char[] charArr = new String(sb).toCharArray();
-
-		for (char i : charArr) {
-			Node node = new Node(i);
-			rdn.insert(node);
-		}
-		System.out.println(rdn.toString(rdn.first));
-		rdn.removeDuplicatedNode(rdn.first);
-		System.out.println("____________________");
-		System.out.println(rdn.toString(rdn.first));
 	}
 }

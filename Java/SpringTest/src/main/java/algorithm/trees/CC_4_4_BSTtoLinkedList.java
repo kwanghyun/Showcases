@@ -19,74 +19,30 @@ public class CC_4_4_BSTtoLinkedList {
 	 * out. 2. In a while loop, didn't change traget node from root, so it keep
 	 * add left,right node of root node.
 	 */
-	ArrayList<Node> firstNodeList = new ArrayList<Node>();
 
-	public ArrayList<LinkedList<Node>> convertBSTtoLinkedList(TreeNode root) {
-
-		ArrayList<ArrayList<TreeNode>> treeNodeVisitList = new ArrayList<ArrayList<TreeNode>>();
-		ArrayList<LinkedList<Node>> resultList = new ArrayList<LinkedList<Node>>();
-
-		int level = 0;
-		ArrayList<TreeNode> newList = new ArrayList<TreeNode>();
-		newList.add(root);
-		treeNodeVisitList.add(newList);
+	public ArrayList<LinkedList<Node>> solution(TreeNode root) {
+		ArrayList<LinkedList<Node>> result = new ArrayList<LinkedList<Node>>();
+		LinkedList<TreeNode> q = new LinkedList<TreeNode>();
+		q.add(root);
 		
-		while (treeNodeVisitList.get(level).size() != 0) {
-			LinkedList<Node> newLinkedList = new LinkedList<Node>();
-			ArrayList<TreeNode> nextVisitList = new ArrayList<TreeNode>();
+		while(!q.isEmpty()){
+			int size = q.size();
 			
-			for (TreeNode child : treeNodeVisitList.get(level)) {	
-				newLinkedList.addLast(new Node(child.value));
+			LinkedList<Node> newHeader = new LinkedList<Node>();
+			
+			for(int i = 0; i < size; i++){
+				TreeNode curr = q.remove();
+				newHeader.addLast(new Node(curr.value));
 				
-				if (child.left != null)
-					nextVisitList.add(child.left);
-				if (child.right != null)
-					nextVisitList.add(child.right);
+				if(curr.left != null) 
+					q.add(curr.left);
+				if(curr.right != null)
+					q.add(curr.right);
 			}
 			
-			resultList.add(newLinkedList);
-
-			treeNodeVisitList.add(nextVisitList);
-			level++;
+			result.add(newHeader);
 		}
-
-		return resultList;
-	}
-
-	public ArrayList<LinkedList<Integer>> solution(TreeNode root) {
-		ArrayList<LinkedList<Integer>> lists = new ArrayList<LinkedList<Integer>>();
-		ArrayList<Stack<TreeNode>> leveList = new ArrayList<Stack<TreeNode>>();
-		Stack<TreeNode> stack = new Stack<TreeNode>();
-
-		int level = 0;
-		stack.push(root);
-		leveList.add(level, stack);
-
-		while (true) {
-
-			LinkedList<Integer> list = new LinkedList<Integer>();
-			Stack<TreeNode> nextStack = new Stack<TreeNode>();
-			leveList.add(level + 1, nextStack);
-
-			while (!leveList.get(level).isEmpty()) {
-				System.out.println(leveList.get(level).size());
-				TreeNode node = leveList.get(level).pop();
-				list.add(node.value);
-
-				if (node.left != null)
-					leveList.get(level + 1).push(node.left);
-				if (node.right != null)
-					leveList.get(level + 1).push(node.right);
-			}
-
-			lists.add(level, list);
-
-			if (leveList.get(level + 1).isEmpty())
-				break;
-
-			level++;
-		}
-		return lists;
+		return result;
 	}
 
 	public ArrayList<LinkedList<Integer>> convertRecursively(
@@ -107,35 +63,16 @@ public class CC_4_4_BSTtoLinkedList {
 		return result_list;
 	}
 
-	public void printAll() {
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		for (algorithm.linkedlist.Node node : firstNodeList) {
-			algorithm.linkedlist.Node temp = node;
-			while (node != null) {
-				list.add(temp.val);
-				temp = temp.next;
-			}
-			System.out.println(Arrays.toString(list.toArray()));
-			System.out.println("-----------------------------");
-		}
-	}
+
 
 	public static void main(String args[]) {
 		TreeNode root;
 		CC_4_4_BSTtoLinkedList bll = new CC_4_4_BSTtoLinkedList();
-		
-		// ArrayList<LinkedList<Node>> list = bll.convertBSTtoLinkedList(root);
-//		ArrayList<LinkedList<Integer>> list = bll.solution(root);
-		
+			
 		ArrayList<LinkedList<Integer>> convertedlist = new ArrayList<LinkedList<Integer>>();		
 		convertedlist = bll.convertRecursively(convertedlist, bll.generateTree(), 0);
-//		System.out.println("-----------------------------");
-//		for (LinkedList<Integer> linkedList : list) {
-//			for (Integer i : linkedList) {
-//				System.out.print(i + ",");
-//			}
-//			System.out.print("\n");
-//		}
+		System.out.println("-----------------------------");
+
 		System.out.println("----------------@Convert() recursive-------------------");
 		for (LinkedList<Integer> linkedList : convertedlist) {
 			for (Integer i : linkedList) {
@@ -143,9 +80,9 @@ public class CC_4_4_BSTtoLinkedList {
 			}
 			System.out.print("\n");
 		}
-		
-		System.out.println("----------------@Convert() while-------------------");
-		for (LinkedList<Node> linkedList : bll.convertBSTtoLinkedList(bll.generateTree())) {
+
+		System.out.println("----------------@Convert() while with queue -------------------");
+		for (LinkedList<Node> linkedList : bll.solution(bll.generateTree())) {
 			for (Node node : linkedList) {
 				System.out.print(node.val + ",");
 			}

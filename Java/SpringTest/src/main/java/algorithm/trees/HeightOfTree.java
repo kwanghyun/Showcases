@@ -16,6 +16,8 @@ public class HeightOfTree {
 	    return 1 + Math.max( 
 	    		treeHeight( n.getLeft() ), treeHeight( n.getRight() ) );
 	}
+	
+	
 	public static void main(String args []){
 		HeightOfTree hot = new HeightOfTree();
 		TreeNode one = new TreeNode(1);

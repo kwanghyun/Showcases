@@ -1,5 +1,7 @@
 package algorithm.recursion;
 
+import java.util.Random;
+
 import algorithm.trees.TreeNode;
 
 
@@ -118,5 +120,7 @@ public class Basic {
 		System.out.println("----------------@recurWithCharArr@----------------");
 		char[] chArr = new char[6];
 		b.recurWithCharArr(0, 0, chArr, 0);
+		Random r = new Random();
+		System.out.println("RANDOM : "+r.nextInt(10));
 	}
 }

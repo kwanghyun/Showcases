@@ -1,10 +1,37 @@
 package algorithm.trees;
 
+import java.util.LinkedList;
 import java.util.Stack;
 
 
 public class PrintOutlineOfTree {
 
+	public void printOutline(TreeNode root) {
+		LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
+		queue.add(root);
+
+		while (!queue.isEmpty()) {
+			int size = queue.size();
+
+			for (int idx = 0; idx < size; idx++) {
+				TreeNode node = queue.remove();
+				if (idx == 0)
+					System.out.println(node.value);
+				else if (idx == size - 1)
+					System.out.println(node.value);
+				else if (node.right == null && node.left == null)
+					System.out.println(node.value);
+
+				if (node.right != null) {
+					queue.add(node.right);
+				}
+				if (node.left != null) {
+					queue.add(node.left);
+				}
+			}
+		}
+	}
+	
 	public String getLeftNodes(TreeNode root, String str){
 		
 		if(root == null) 
@@ -55,6 +82,9 @@ public class PrintOutlineOfTree {
 		return str;
 	}
 	
+	
+
+
 	public static void main(String args[]){
 		PrintOutlineOfTree poo = new PrintOutlineOfTree();
 		String leftStr = "";
@@ -65,21 +95,19 @@ public class PrintOutlineOfTree {
 		System.out.println("RIGHT :: " + poo.getRightNodes(poo.generateEntireTree(), rightStr));
 		System.out.println("-----------------------------------------------------");
 		System.out.println("LEAVES :: " + poo.getLeaves(poo.generateEntireTree(), leaves));
+		System.out.println("-----------------------------------------------------");
+		poo.printOutline(poo.generateEntireTree());
 	}
 	
-	//       1
-	//      / \
-	//     /   \
-	//    /     \
-	//   2      3
-	//   / \    /
-	//  4 5   6
-	//  /     / \
-	// 7     8  9
-	// Preorder: 1 2 4 7 5 3 6 8 9
-	// Inorder: 7 4 2 5 1 8 6 9 3
-	// Postorder: 7 4 5 2 8 9 6 3 1
-	// Level-order: 1 2 3 4 5 6 7 8 9
+	//           1
+	//      /        \
+	//     /          \
+	//    /            \
+	//   2             3
+	//   / \          /   \
+	//  4   5       6    10
+	//  /   / \     / \    / \
+	// 7  13 14 8  9 11 12
 	
 	public TreeNode generateEntireTree(){
 		TreeNode one = new TreeNode(1);
@@ -91,14 +119,24 @@ public class PrintOutlineOfTree {
 		TreeNode seven = new TreeNode(7);
 		TreeNode eight = new TreeNode(8);
 		TreeNode nine = new TreeNode(9);
+		TreeNode ten = new TreeNode(10);
+		TreeNode eleven = new TreeNode(11);
+		TreeNode twelve = new TreeNode(12);
+		TreeNode thirteen = new TreeNode(13);
+		TreeNode fourteen = new TreeNode(14);
 		one.setLeft(two);
 		one.setRight(three);
 		two.setLeft(four);
 		two.setRight(five);
+		five.setLeft(thirteen);
+		five.setRight(fourteen);
 		three.setLeft(six);
+		three.setRight(ten);
 		four.setLeft(seven);
 		six.setLeft(eight);
 		six.setRight(nine);
+		ten.setLeft(eleven);
+		ten.setRight(twelve);
 		return one;
 	}
 }

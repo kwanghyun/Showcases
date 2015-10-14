@@ -41,8 +41,8 @@ public class BlockingQueue<T> {
 	}
 	
 	public static class Producer implements Runnable{
-		private BlockingQueue queue;
-		public Producer(BlockingQueue workerQueue){
+		private BlockingQueue<Integer> queue;
+		public Producer(BlockingQueue<Integer> workerQueue){
 			queue = workerQueue;
 		}
 		
@@ -62,8 +62,8 @@ public class BlockingQueue<T> {
 	}
 	
 	public static class Consumer implements Runnable{
-		private BlockingQueue queue;
-		public Consumer(BlockingQueue workerQueue){
+		private BlockingQueue<Integer> queue;
+		public Consumer(BlockingQueue<Integer> workerQueue){
 			queue = workerQueue;
 		}
 		public void run() {
@@ -84,8 +84,10 @@ public class BlockingQueue<T> {
 	}
 	
 	public static void main(String[] args) {
-		BlockingQueue<Runnable> bq = new BlockingQueue<Runnable>(10);
+		BlockingQueue<Integer> bq = new BlockingQueue<Integer>(10);
 		(new Thread(new Producer(bq))).start();
-		(new Thread(new Consumer(bq))).start();
+		(new Thread(new Consumer(bq))).start();		
+		
 	}
+
 }

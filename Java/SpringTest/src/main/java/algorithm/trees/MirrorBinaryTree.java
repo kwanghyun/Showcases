@@ -43,6 +43,12 @@ public TreeNode mirror(TreeNode root){
 		System.out.println();
 		mbt.printNode(mirrored);
 		
+		TreeNode header2 = mbt.generateTree();
+		System.out.println("\n-------------After-------------------");
+		TreeNode mirrored2 = mbt.mirror2(header2);
+		System.out.println();
+		mbt.printNode(mirrored2);
+		
 	}
 	
 	public void printNode(TreeNode root){

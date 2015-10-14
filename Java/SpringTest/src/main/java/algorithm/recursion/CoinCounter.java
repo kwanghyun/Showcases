@@ -32,6 +32,24 @@ public class CoinCounter {
 			countCoins(amount, c25, c10, c5, c1+1);
 		}
 	}
+	
+	public void countCoins2(int amount, int c25, int c10, int c5, int c1){
+		
+		int total = 25 * c25 + 10 * c10 + 5 * c5 + c1;
+	
+		if(amount < total ) 
+			return;		
+		
+		if(amount == total){
+			System.out.println(c25 + ", " + c10 + ", " + c5 + ", " + c1);
+		}else{
+			countCoins2(amount, c25+1, c10, c5, c1);
+			countCoins2(amount, c25, c10+1, c5, c1);
+			countCoins2(amount, c25, c10, c5+1, c1);
+			countCoins2(amount, c25, c10, c5, c1+1);
+		}
+		return;
+	}
 		
 	/*
 	 * The difference with findAllpossible path is, it meets condition when sum
@@ -46,6 +64,9 @@ public class CoinCounter {
 			System.out.println(idx + " :: " + entry);
 			idx ++;
 		}
+		
+		System.out.println("---------------------------------------");
+		counter.countCoins2(26, 0, 0, 0, 0);
 			
 	}
 }

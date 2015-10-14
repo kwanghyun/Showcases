@@ -7,25 +7,6 @@ public class CheckAnagrams {
 	//EASY : 
 	// Sort both string and compare.
 	
-	public boolean checkAnagram(String str1, String str2){
-		if(str1==null || str2==null || str1.length() != str2.length())
-			return false;
-		
-		int[] checker1 = new int[256];
-		int[] checker2 = new int[256];
-		
-		for(int i = 0; i < str1.length(); i ++){
-			checker1[str1.charAt(i)]++;
-			checker2[str1.charAt(i)]++;
-		}
-		
-		for(int j = 0; j < checker1.length; j ++){
-			if(checker1[j]!= checker2[j])
-				return false;
-		}
-		return true;
-	}
-
 	public boolean checkAnagram2(String str1, String str2){
 		if(str1==null || str2==null || str1.length() != str2.length())
 			return false;
@@ -33,17 +14,11 @@ public class CheckAnagrams {
 		int[] checker1 = new int[256];
 		int[] checker2 = new int[256];
 		int[] checkpoints = new int[str1.length()+ str2.length()];
-		int index = 0;
 		
 		for(int i = 0; i < str1.length(); i ++){
 			checker1[str1.charAt(i)]++;
 			checker2[str2.charAt(i)]++;
-			checkpoints[index] = str1.charAt(i);
-			index++;
-			if(str1.charAt(i) == str2.charAt(i)){
-				checkpoints[index] = str2.charAt(i);
-				index++;
-			}
+			checkpoints[i] = str1.charAt(i);
 		}
 		
 		for(int j = 0; j < checkpoints.length; j ++){

@@ -1,6 +1,7 @@
 package algorithm.recursion;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /*
@@ -8,7 +9,7 @@ import java.util.List;
  * The robot can only move in two directions: right and down. 
  * How many possible paths are there for the robot?
  * FOLLOW UP
- * Imagine certain squares are ¡°off limits¡±, such that the robot can not step on them. 
+ * Imagine certain squares are ï¿½ï¿½off limitsï¿½ï¿½, such that the robot can not step on them. 
  * Design an algorithm to get all possible paths for the robot.
  * 
  * Route number = (n + m)!/n! * m!
@@ -17,9 +18,10 @@ import java.util.List;
 /*
  * Mistake Note :
  * 1. Forgot to add recursion stopping point.  
+ * 
  */
-public class CC_8_2_FindRounte {
 
+public class CC_8_2_FindRounte {
 	public static void findRoute(int x, int y, String path,
 			ArrayList<String> pathList) {
 

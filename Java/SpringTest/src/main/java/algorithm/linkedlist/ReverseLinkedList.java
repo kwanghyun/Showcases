@@ -1,46 +1,77 @@
 package algorithm.linkedlist;
 
 public class ReverseLinkedList {
-	 
-	public Node reverseList(Node head){
-	
-		if(head.next == null) //One node only 
+
+	public Node reverseList(Node head) {
+
+		if (head.next == null) // One node only
 			return null;
-		
+
 		Node second = head.next;
 		Node third = second.next;
-		
+
 		head.next = null;
 		second.next = head;
-		
-		if(second.next == null){
-			//Two Node only, it's already reversed.
-			return second; 
+
+		if (second.next == null) {
+			// Two Node only, it's already reversed.
+			return second;
 		}
-		
+
 		Node currentNode = third;
-		Node previousNode = second; 
-		
-		while(currentNode != null){
+		Node previousNode = second;
+
+		while (currentNode != null) {
 			Node nextNode = currentNode.next;
-			//Only current.next to point previous Node
+			// Only current.next to point previous Node
 			currentNode.next = previousNode;
 			previousNode = currentNode;
 			currentNode = nextNode;
 		}
 		return previousNode;
 	}
-		
-	public void printAllNode(Node head){
+
+public Node reverseList2(Node head) {
+	if (head == null || head.next == null)
+		return head;
+
+	Node prev = head;
+	Node curr = head.next;
+	head.next = null;
+
+	while (prev != null && curr != null) {
+		Node next = curr.next;
+		curr.next = prev;
+		prev = curr;
+		curr = next;
+	}
+	return prev;
+}
+
+	public Node reverseList3(Node head) {
+		if (head == null || head.next == null)
+			return head;
+
+		// get second node
+		Node second = head.next;
+
+		// set first’s next to be null
+		head.next = null;
+
+		Node rest = reverseList3(second);
+		second.next = head;
+		return rest;
+	}
+
+	public void printAllNode(Node head) {
 		Node currentNode = head;
-		while(currentNode != null){
+		while (currentNode != null) {
 			System.out.print("[" + currentNode.val + "] ");
 			currentNode = currentNode.next;
 		}
 	}
-	
-	public static void main(String args []){
-		ReverseLinkedList mrl = new ReverseLinkedList(); 
+
+	public Node generateList() {
 		Node node1 = new Node(1);
 		Node node2 = new Node(2);
 		Node node3 = new Node(3);
@@ -51,9 +82,14 @@ public class ReverseLinkedList {
 		node3.next = node4;
 		node4.next = node5;
 		node5.next = null;
-		mrl.printAllNode(node1);
+		return node1;
+	}
+
+	public static void main(String args[]) {
+		ReverseLinkedList mrl = new ReverseLinkedList();
+		Node head = mrl.generateList();
+		mrl.printAllNode(head);
 		System.out.println("\n-----------------------------------------");
-		mrl.reverseList(node1);
-		mrl.printAllNode(node5);
+		mrl.printAllNode(mrl.reverseList2(head));
 	}
 }

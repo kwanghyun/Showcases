@@ -26,52 +26,75 @@ public class CC_4_7_IsSubTree {
 	// Level-order: 1 2 3 4 5 6 7 8 9
 
 	public boolean isSubTree(TreeNode root1, TreeNode root2) {
-		
+
 		TreeNode match = findNode(root1, root2);
-		if(match == null) 
+		if (match == null)
 			return false;
-		
+
 		return checkTrees(match, root2);
 	}
-
 
 	public TreeNode findNode(TreeNode root1, TreeNode root2) {
 		TreeNode foundNode = null;
 		if (root1 == null)
 			return null;
-		
+
 		if (root1.value == root2.value) {
 			return root1;
 		}
-		
+
 		foundNode = findNode(root1.left, root2);
-		if(foundNode == null)
+		if (foundNode == null)
 			foundNode = findNode(root1.right, root2);
-		
+
 		return foundNode;
 	}
-	
-	public boolean checkTrees(TreeNode root1, TreeNode root2){
-		if(root2 == null)
+
+	public boolean checkTrees(TreeNode root1, TreeNode root2) {
+		if (root2 == null)
 			return true;
-		
-		if(root1 == null)
+
+		if (root1 == null)
 			return false;
-		
-		if(root1.value != root2.value)
+
+		if (root1.value != root2.value)
 			return false;
-			
-		return checkTrees(root1.left, root2.left) && checkTrees(root1.right, root2.right);
+
+		return checkTrees(root1.left, root2.left)
+				&& checkTrees(root1.right, root2.right);
 	}
 
-	
 	public static void main(String args[]) {
 		CC_4_7_IsSubTree ist = new CC_4_7_IsSubTree();
-		 System.out.println(ist.isSubTree(ist.generateEntireTree(),
-		 ist.generatePartTree()));
+//		System.out.println(ist.isSubTree(ist.generateEntireTree(),
+//				ist.generatePartTree()));
+//
+//		System.out.println(ist.findNode(ist.generateEntireTree(),
+//				ist.generatePartTree()).value);
+		
+		System.out.println(ist.find(ist.generateEntireTree(), 7).value);
+	}
 
-		System.out.println(ist.findNode(ist.generateEntireTree(),
-				ist.generatePartTree()).value);
+	public TreeNode find(TreeNode node, int value) {
+		TreeNode foundNode = null;
+		if (node == null)
+			return null;
+
+		if (node.value == value)
+			return node;
+
+//		if (node.left != null) {
+//			foundNode = find(node.left, value);
+//		}
+//		if (node.right != null) {
+//			foundNode = find(node.right, value);
+//		}
+		foundNode = find(node.left, value);
+		if(foundNode == null){
+			foundNode = find(node.right, value);
+		}
+		
+		return foundNode;
 	}
 
 	public TreeNode generateEntireTree() {

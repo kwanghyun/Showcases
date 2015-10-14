@@ -2,26 +2,46 @@ package algorithm.trees;
 
 import java.util.Stack;
 
+/*Given a binary tree, flatten it to a linked list in-place.
+		 1
+		/ \
+	   2   5
+	  / \   \
+      3 4   6
+The flattened tree should look like:
+	1
+	 \
+	  2
+ 		\	
+		 3
+		  \
+		   4
+			\
+			 5
+			  \
+			   6
+
+Go down through the left, when right is not null, push right to stack.*/
 public class FlattenBinaryTree {
 	public void flatten(TreeNode root) {
 		Stack<TreeNode> stack = new Stack<TreeNode>();
-		TreeNode pointer = root;
+		TreeNode p = root;
 
-		while (pointer != null || !stack.empty()) {
+		while (p != null || !stack.empty()) {
 
-			if (pointer.right != null) {
-				stack.push(pointer.right);
+			if (p.right != null) {
+				stack.push(p.right);
 			}
 
-			if (pointer.left != null) {
-				pointer.right = pointer.left;
-				pointer.left = null;
+			if (p.left != null) {
+				p.right = p.left;
+				p.left = null;
 			} else if (!stack.empty()) {
 				TreeNode temp = stack.pop();
-				pointer.right = temp;
+				p.right = temp;
 			}
 
-			pointer = pointer.right;
+			p = p.right;
 		}
 	}
 }

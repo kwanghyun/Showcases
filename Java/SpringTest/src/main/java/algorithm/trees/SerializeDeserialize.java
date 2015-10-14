@@ -7,12 +7,12 @@ public class SerializeDeserialize {
 
 	int index = 0;
 
-	public String serialize(TreeNode root, String str) {
+	public String serialize(TreeNode root) {
 
 		if (root == null)
 			return "#";
-		return root.value + serialize(root.left, str)
-				+ serialize(root.right, str);
+		return root.value + serialize(root.left)
+				+ serialize(root.right);
 	}
 
 	public TreeNode deserialize(char[] arr) {
@@ -23,36 +23,57 @@ public class SerializeDeserialize {
 			index++;
 			System.out.println("#hit : " + index);
 			return deserialize(arr);
-		}else{
+		} else {
 			TreeNode node = new TreeNode(Character.getNumericValue(arr[index]));
 			index++;
 			node.left = deserialize(arr);
 			index++;
 			node.right = deserialize(arr);
 			return node;
-		}	
+		}
 	}
-	
+
 	int idx = 0;
+
 	public TreeNode dese(String str) {
 		if (idx > str.length() - 1)
 			return null;
 
 		if (str.charAt(idx) == '#') {
-			idx ++;
+			idx++;
 			return dese(str);
 		}
 
 		TreeNode node = new TreeNode(Character.getNumericValue(str.charAt(idx)));
-		idx ++;
+		idx++;
 		node.left = dese(str);
-		idx ++;
+		idx++;
 		node.right = dese(str);
 
 		return node;
 	}
-	
-	//NOTE : by using local param "index" it will start -f
+
+	int i = 0;
+
+	public TreeNode dese2(String str) {
+		TreeNode node = null;
+		if (i == str.length() - 1)
+			return node;
+
+		if (str.charAt(i) == '#') {
+			return node;
+		} else {
+			node = new TreeNode(Character.getNumericValue(str.charAt(i)));
+			i++;
+			node.left = dese2(str);
+			i++;
+			node.right = dese2(str);
+		}
+
+		return node;
+	}
+
+	// NOTE : by using local param "index" it will start -f
 	public boolean dese(String str, int index) {
 		if (index > str.length() - 1)
 			return false;
@@ -61,28 +82,29 @@ public class SerializeDeserialize {
 			return false;
 		}
 
-		TreeNode node = new TreeNode(Character.getNumericValue(str.charAt(index)));
-		
-		if(dese(str, index + 1))
-			node.left = node; 
-		if(dese(str, index + 1))
-			node.right = node; 
-		
+		TreeNode node = new TreeNode(Character.getNumericValue(str
+				.charAt(index)));
+
+		if (dese(str, index + 1))
+			node.left = node;
+		if (dese(str, index + 1))
+			node.right = node;
+
 		return true;
 	}
 
 	public static void main(String args[]) {
 		SerializeDeserialize mw = new SerializeDeserialize();
 		String serializedStr = "";
-		serializedStr = mw.serialize(mw.createTestTree(), serializedStr);
+		serializedStr = mw.serialize(mw.createTestTree());
 		System.out.println("serializedStr :: " + serializedStr);
 		System.out.println("--------------------------");
 		char[] arr = serializedStr.toCharArray();
 		mw.printPreOrder(mw.deserialize(arr));
-//		System.out.println("--------------------------");
-//		mw.printPreOrder(mw.dese(serializedStr, 0));
+		// System.out.println("--------------------------");
+		// mw.printPreOrder(mw.dese(serializedStr, 0));
 		System.out.println("--------------------------");
-		TreeNode root = mw.dese(serializedStr);
+		TreeNode root = mw.dese2(serializedStr);
 		mw.printPreOrder(root);
 		System.out.println("--------------------------");
 		mw.printInOrder(root);
@@ -95,7 +117,7 @@ public class SerializeDeserialize {
 		printPreOrder(root.left);
 		printPreOrder(root.right);
 	}
-	
+
 	public void printInOrder(TreeNode root) {
 		if (root == null)
 			return;
@@ -104,13 +126,13 @@ public class SerializeDeserialize {
 		printPreOrder(root.right);
 	}
 
-	// 		 1
-	// 		/  \
-	// 	   2   3
-	//   / \    /
-	//  4  5 	6
-	//  / 		/ \
-	// 7     8   9
+	//         1
+	//       /   \
+	//      2     3
+	//     / \    /
+	//    4  5  6
+	//   /   / \
+	// 7   8   9
 	public TreeNode createTestTree() {
 		TreeNode one = new TreeNode(1);
 		TreeNode two = new TreeNode(2);

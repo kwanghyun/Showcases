@@ -17,23 +17,33 @@ public class PeekableIterator<E> implements Iterator<E> {
 	}
 
 	public E next() {
-		hasPeek = false;
-		if (hasPeek) {
-			return nextElement;
-		} else {
-			return iterator.next();
+		if (hasNext()) {
+			// Only get next element when there is no nextElement.
+			if (!hasPeek) {
+				nextElement = iterator.next();
+			}
+			// When next is called, the current element become stale
+			hasPeek = false;
+		}else{
+			nextElement = null;
 		}
+		return nextElement;
 	}
 
 	public E peek() {
 		if (hasNext()) {
-			if (hasPeek == false) {
+			if (!hasPeek) {
 				nextElement = iterator.next();
-				hasPeek = true;
 			}
+			// When peek is called, we have the next element
+			hasPeek = true;
 		} else {
 			nextElement = null;
 		}
 		return nextElement;
+	}
+
+	public void remove() {
+		iterator.remove();
 	}
 }

@@ -5,6 +5,7 @@ public class Node {
 	public char ch;
 	public Node next;
 	public Node previous;
+	public Node random;
 
 	public Node(int x) {
 		val = x;

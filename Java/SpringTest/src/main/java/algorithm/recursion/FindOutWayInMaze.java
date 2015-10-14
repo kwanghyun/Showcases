@@ -1,4 +1,4 @@
-package algorithm.etc;
+package algorithm.recursion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +38,6 @@ int[][] maze = {
 			findPath(maze, path, x, y + 1);
 		}
 	}
-
 	
 	public static void main(String args[]){
 		FindOutWayInMaze m = new FindOutWayInMaze();
