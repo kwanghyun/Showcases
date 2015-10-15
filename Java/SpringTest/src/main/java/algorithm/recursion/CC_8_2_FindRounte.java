@@ -9,7 +9,7 @@ import java.util.List;
  * The robot can only move in two directions: right and down. 
  * How many possible paths are there for the robot?
  * FOLLOW UP
- * Imagine certain squares are ��off limits��, such that the robot can not step on them. 
+ * Imagine certain squares are "off limits", such that the robot can not step on them. 
  * Design an algorithm to get all possible paths for the robot.
  * 
  * Route number = (n + m)!/n! * m!
@@ -58,25 +58,22 @@ public class CC_8_2_FindRounte {
 		}
 	}
 	
-	public ArrayList<String> recur(int x, int y, String str, ArrayList<String> list){
-		if(x > 3 || y > 3){
-			return null;
-		}
-		
-		str = str + "["+x + ", " + y +"] ";
-		
-		if(x == 3 && y ==3){
-			list.add(str);
-			return null;
-		}
-			
-		recur(x +1, y, str, list);
-		recur(x, y+1, str, list);
-		
-		return list;
+public void findRoutes(int x, int y, String str, ArrayList<String> list){
+	if(x > 3 || y > 3){
+		return;
 	}
-
 	
+	str = str + "["+x + ", " + y +"] ";
+	
+	if(x == 3 && y ==3){
+		list.add(str);
+	}else{
+		findRoutes(x +1, y, str, list);
+		findRoutes(x, y+1, str, list);			
+	}
+}
+
+
 	public static void main(String args[]) {
 		// findRoute(1, 1);
 		// System.out.println(visitedTrack.size());
@@ -90,7 +87,7 @@ public class CC_8_2_FindRounte {
 		
 		CC_8_2_FindRounte fr = new CC_8_2_FindRounte();
 		ArrayList<String> list2 = new ArrayList<String>();
-		fr.recur(0,0,"", list2);
+		fr.findRoutes(0,0,"", list2);
 		for(String s : list2)
 			System.out.println(s);
 		System.out.println("SIZE : "+ list.size());

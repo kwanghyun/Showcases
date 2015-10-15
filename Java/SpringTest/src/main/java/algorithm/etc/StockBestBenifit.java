@@ -6,6 +6,8 @@ public class StockBestBenifit {
 	 * stock on day i. If you were only permitted to buy one share of the stock
 	 * and sell one share of the stock, design an algorithm to find the best
 	 * times to buy and sell.
+	 * 
+	 * Case : [1,2,3,0]
 	 */
 
 	public String solution(int[] arr) {
@@ -33,7 +35,7 @@ public class StockBestBenifit {
 	// when max diff is changed. 
 	public String solution2(int[] arr) {
 
-		int minIdx = 0, maxIdx = 0, maxDiff = 0, tempMinIdx = 0;
+		int minIdx = 0, maxIdx = 0, maxDiff = 0;
 
 		for (int idx = 0; idx < arr.length; idx++) {
 			
@@ -44,7 +46,7 @@ public class StockBestBenifit {
 				maxDiff = diff;
 				maxIdx = idx;
 			}
-			
+
 			if (arr[minIdx] > arr[idx]) {
 				minIdx = idx;
 			}
@@ -77,9 +79,11 @@ public class StockBestBenifit {
 		// int[] arr = { 3, 2, 15};
 		// int[] arr = { 3, 2, 6, 4, 8, 1, 24, 1, 7, 0 };
 //		int[] arr = { 3, 2, 6, 4, 8, 1, 24, 11, 0, 30 };
-		int[] arr = { 3, 5, 24, 2, 1, 0 };
+//		int[] arr = { 3, 5, 24, 2, 1, 0 };
+		int[] arr = { 3, 2, 6, 4, 8, 1, 24, 11, 30, 0 };
 		System.out.println(sbb.maxProfit(arr));
-
+		System.out.println(sbb.solution(arr));
+		System.out.println(sbb.solution2(arr));
 	}
 }
 

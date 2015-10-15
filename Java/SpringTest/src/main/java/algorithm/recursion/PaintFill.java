@@ -11,32 +11,28 @@ import java.util.Arrays;
 
 public class PaintFill {
 
-	static Color[][] screen = {
-			{ Color.Black, Color.Black, Color.Black, Color.White},
-			{ Color.Black, Color.White, Color.White, Color.Black },
-			{ Color.Black, Color.White, Color.White, Color.Black },
-			{ Color.Black, Color.Black, Color.Black, Color.Black } };
-
 	enum Color {
 		Black, White, Red, Yellow, Green
 	}
 
-	boolean paint(Color[][] screen, int x, int y, Color oldColor, Color newColor) {
-
+	static Color[][] screen = {
+			{ Color.Black, Color.Black, Color.Black, Color.White},
+			{ Color.Black, Color.White, Color.White, Color.Black },
+			{ Color.Black, Color.White, Color.White, Color.Black },
+			{ Color.Black, Color.Black, Color.White, Color.Black } };
+	
+	
+	void paint(Color[][] screen, int x, int y, Color oldColor, Color newColor) {
+	
 		if (x < 0 || x >= screen[0].length || y < 0 || y >= screen.length) {
-			return false;
-		}
-
-		// by putting all recursive into inside of the block, not able to paint
-		// over the boundary, only able to move 4 directions(up, down, left, right)
-		if (screen[y][x] == oldColor) { 
+			return;
+		}else if (screen[y][x] == oldColor) { 
 			screen[y][x] = newColor;
 			paint(screen, x - 1, y, oldColor, newColor); // left
 			paint(screen, x + 1, y, oldColor, newColor); // right
 			paint(screen, x, y - 1, oldColor, newColor); // top
 			paint(screen, x, y + 1, oldColor, newColor); // bottom
 		}
-		return true;
 	}
 
 	public static void main(String args[]) {

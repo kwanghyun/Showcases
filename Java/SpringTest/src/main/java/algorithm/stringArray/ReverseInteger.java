@@ -1,27 +1,31 @@
 package algorithm.stringArray;
 
+/*
+ * Reverse digits of an integer. 
+ * Example1: x = 123, return 321 Example2: x = -123, return -321
+ */
 public class ReverseInteger {
-	public int reverseInteger(int paramNum) {
+	public int reverseInteger(int num) {
 		// flag marks if x is negative
 		boolean flag = false;
-		if (paramNum < 0) {
-			paramNum = 0 - paramNum;
+		if (num < 0) {
+			num = 0 - num;
 			flag = true;
 		}
 
-		int resultNum = 0;
-		int tempNum = paramNum;
+		int result = 0;
+		int temp = num;
 
-		while (tempNum > 0) {
-			int mod = tempNum % 10;
-			tempNum = tempNum / 10;
-			resultNum = resultNum * 10 + mod;
+		while (temp > 0) {
+			int mod = temp % 10;
+			temp = temp / 10;
+			result = result * 10 + mod;
 		}
 
 		if (flag) {
-			resultNum = 0 - resultNum;
+			result = 0 - result;
 		}
 
-		return resultNum;
+		return result;
 	}
 }
