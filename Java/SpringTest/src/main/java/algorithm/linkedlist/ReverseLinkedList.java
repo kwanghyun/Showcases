@@ -88,8 +88,11 @@ public Node reverseList2(Node head) {
 	public static void main(String args[]) {
 		ReverseLinkedList mrl = new ReverseLinkedList();
 		Node head = mrl.generateList();
+		Node head2 = mrl.generateList();
 		mrl.printAllNode(head);
 		System.out.println("\n-----------------------------------------");
 		mrl.printAllNode(mrl.reverseList2(head));
+		System.out.println("\n-----------------------------------------");
+		mrl.printAllNode(mrl.reverseList3(head2));
 	}
 }

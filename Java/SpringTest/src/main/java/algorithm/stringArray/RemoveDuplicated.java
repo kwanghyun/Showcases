@@ -31,7 +31,7 @@ public class RemoveDuplicated {
 		return result;
 	}
 
-	public int countUnique(int[] arr) {
+	public static int countUnique(int[] arr) {
 		int count = 0;
 		for (int i = 0; i < arr.length - 1; i++) {
 			if (arr[i] == arr[i + 1]) {
@@ -50,8 +50,8 @@ public class RemoveDuplicated {
 		if (arr.length <= 2)
 			return arr;
 
-		int prev = 1;
-		int curr = 2;
+		int prev = 0;
+		int curr = 1;
 		int dupCount = 1;
 		while (curr < arr.length) {
 
@@ -72,6 +72,7 @@ public class RemoveDuplicated {
 
 	public static void main(String[] args) {
 		int[] arr = { 1, 2, 2, 2, 2, 3, 3, 3, 3, 3 };
+		System.out.println(countUnique(arr));
 		System.out.println(Arrays.toString(removeDuplicates(arr)));
 		System.out.println(Arrays.toString(removeDuplicates2(arr)));
 	}

@@ -16,13 +16,15 @@ public class ParkingLot {
 	private List<Slot> compactSlots;
 	private List<Slot> largeSlots;
 
-	public ParkingLot() {  
-        smallSlots = new ArrayList<Slot>(NUMBER_OF_SMALL_SLOTS);  
-        compactSlots = new ArrayList<Slot>(NUMBER_OF_COMPACT_SLOTS);  
-        largeSlots = new ArrayList<Slot>(NUMBER_OF_LARGE_SLOTS);  
-        createSlots();  
-        occupiedSlots = new HashMap<Long, Slot>();  
-    }	private void createSlots() {
+	public ParkingLot() {
+		smallSlots = new ArrayList<Slot>(NUMBER_OF_SMALL_SLOTS);
+		compactSlots = new ArrayList<Slot>(NUMBER_OF_COMPACT_SLOTS);
+		largeSlots = new ArrayList<Slot>(NUMBER_OF_LARGE_SLOTS);
+		createSlots();
+		occupiedSlots = new HashMap<Long, Slot>();
+	}
+
+	private void createSlots() {
 
 		for (int i = 1; i <= NUMBER_OF_SMALL_SLOTS; i++) {
 			smallSlots.add(new SmallSlot(i));

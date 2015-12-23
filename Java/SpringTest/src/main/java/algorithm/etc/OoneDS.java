@@ -5,67 +5,73 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Random;
 
+/*
+ * Java program to design a data structure that support folloiwng operations
+ * in the 0(1) time a) Insert b) Delete c) Search d) getRandom
+ */
+
 public class OoneDS {
+	ArrayList<Integer> arr;
+	HashMap<Integer, Integer> map;
 
-	/* Java program to design a data structure that support folloiwng operations
-	   in the 0(1) time
-	   a) Insert
-	   b) Delete
-	   c) Search
-	   d) getRandom */
-		 
-	class MyDS
-	{
-	   ArrayList<Integer> arr;
-	 
-	   // A hash where keys are array elements and vlaues are
-	   // indexes in arr[]
-	   HashMap<Integer, Integer>  hash;
-	 
-	   public MyDS()
-	   {
-	       arr = new ArrayList<Integer>();
-	       hash = new HashMap<Integer, Integer>();
-	   }
-	 
-	   void add(int x)
-	   {
-	      if (hash.get(x) != null)
-	          return;
-	 
-	      int idx = arr.size();
-	      arr.add(x);
-	 
-	      hash.put(x, idx);
-	   }
-	 
-	   void remove(int x)
-	   {
-	       Integer index = hash.get(x);
-	       if (index == null)
-	          return;
-	 
-	       hash.remove(x);
-	 
-	       int size = arr.size();
-	       Integer last = arr.get(size-1);
-	       Collections.swap(arr, index,  size-1);
+	public OoneDS() {
+		arr = new ArrayList<Integer>();
+		map = new HashMap<Integer, Integer>();
+	}
 
-	       arr.remove(size-1);
-	       hash.put(last, index);
-	    }
-	 
-	    int getRandom()
-	    {
-	       Random rand = new Random();  
-	       int index = rand.nextInt(arr.size());
-	 
-	       return arr.get(index);
-	    }
-	 
-	    Integer search(int x)
-	    {
-	       return hash.get(x);
-	    }
+	void add(int x) {
+		if (map.get(x) != null)
+			return;
+
+		int idx = arr.size();
+		arr.add(x);
+
+		map.put(x, idx);
+	}
+
+	void remove(int x) {
+		Integer index = map.get(x);
+		if (index == null)
+			return;
+
+		map.remove(x);
+
+		int size = arr.size();
+		Integer last = arr.get(size - 1);
+		arr.set(index, last);
+		arr.remove(size - 1);
+		map.put(last, index);
+	}
+
+	int getRandom() {
+		Random rand = new Random();
+		int index = rand.nextInt(arr.size());
+
+		return arr.get(index);
+	}
+
+	Integer search(int x) {
+		return map.get(x);
+	}
+
+	public static void main(String[] args) {
+		OoneDS obj = new OoneDS();
+		obj.add(1);
+		obj.add(2);
+		obj.add(3);
+		obj.add(4);
+		obj.add(5);
+		System.out.println(obj.getRandom());
+		System.out.println(obj.getRandom());
+		System.out.println(obj.getRandom());
+		obj.remove(5);
+		System.out.println(obj.getRandom());
+		obj.remove(4);
+		System.out.println(obj.getRandom());
+		obj.remove(3);
+		System.out.println(obj.getRandom());
+		obj.remove(2);
+		System.out.println(obj.getRandom());
+		
 	}
 }

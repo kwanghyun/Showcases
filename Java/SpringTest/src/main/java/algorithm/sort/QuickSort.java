@@ -3,26 +3,23 @@ package algorithm.sort;
 public class QuickSort {
 
 	// Sort an array using a simple but inefficient quicksort.
-	public int[] quicksortSimple(int[] data) {
+	public int[] quickSort(int[] data) {
 
 		if (data.length < 2) {
 			return data;
 		}
 
-		int pivotIndex = data.length / 2;
-		int pivotValue = data[pivotIndex];
-
+		int pvtIdx = data.length / 2;
+		int pvtVal = data[pvtIdx];
 		int leftCount = 0;
 
 		// Count how many are less than the pivot
-
 		for (int i = 0; i < data.length; ++i) {
-			if (data[i] < pivotValue)
+			if (data[i] < pvtVal)
 				++leftCount;
 		}
 
 		// Allocate the arrays and create the subsets
-
 		int[] left = new int[leftCount];
 		int[] right = new int[data.length - leftCount - 1];
 
@@ -30,12 +27,12 @@ public class QuickSort {
 		int r = 0;
 
 		for (int i = 0; i < data.length; ++i) {
-			if (i == pivotIndex)
+			if (i == pvtIdx)
 				continue;
 
 			int val = data[i];
 
-			if (val < pivotValue) {
+			if (val < pvtVal) {
 				left[l++] = val;
 			} else {
 				right[r++] = val;
@@ -43,14 +40,12 @@ public class QuickSort {
 		}
 
 		// Sort the subsets
-
-		left = quicksortSimple(left);
-		right = quicksortSimple(right);
+		left = quickSort(left);
+		right = quickSort(right);
 
 		// Combine the sorted arrays and the pivot back into the original array
-
 		System.arraycopy(left, 0, data, 0, left.length);
-		data[left.length] = pivotValue;
+		data[left.length] = pvtVal;
 		System.arraycopy(right, 0, data, left.length + 1, right.length);
 
 		return data;

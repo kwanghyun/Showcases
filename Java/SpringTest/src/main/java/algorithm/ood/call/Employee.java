@@ -9,7 +9,8 @@ class Employee {
 		this.rank = rank;
 	}
 
-	void ReceiveCall(Call call) {/* /* ... */ }
+	void ReceiveCall(Call call) {/* /* ... */
+	}
 
 	void CallHandled(Call call) { /* ... */
 	} // call is complete

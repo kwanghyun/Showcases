@@ -14,35 +14,37 @@ public class CloneRandomLinkedList {
 	public Node clone(Node head) {
 		if (head == null)
 			return null;
-		HashMap<Node, Node> map = new HashMap<Node, Node>();
-		Node cloneHead = new Node(head.val);
-
-		Node originP = head;
-		Node cloneP = cloneHead;
-		map.put(head, cloneHead);
-		originP = originP.next;
 		
-		while (originP != null) {
-			Node newNode = new Node(originP.val);
-			map.put(originP, newNode);
-			cloneP.next = newNode;
-			cloneP = newNode;
-			originP = originP.next;
+		HashMap<Node, Node> map = new HashMap<Node, Node>();
+		Node clone_h = new Node(head.val);
+
+		Node origin_p = head;
+		Node clone_p = clone_h;
+		
+		map.put(head, clone_h);
+		origin_p = origin_p.next;
+		
+		while (origin_p != null) {
+			Node newNode = new Node(origin_p.val);
+			map.put(origin_p, newNode);
+			clone_p.next = newNode;
+			clone_p = newNode;
+			origin_p = origin_p.next;
 		}
 
-		originP = head;
-		cloneP = cloneHead;
-		while (originP != null) {
-			if (originP.random != null)
-				cloneP.random = map.get(originP.random);
+		origin_p = head;
+		clone_p = clone_h;
+		while (origin_p != null) {
+			if (origin_p.random != null)
+				clone_p.random = map.get(origin_p.random);
 			else
-				cloneP.random = null;
+				clone_p.random = null;
 
-			originP = originP.next;
-			cloneP = cloneP.next;
+			origin_p = origin_p.next;
+			clone_p = clone_p.next;
 		}
 
-		return cloneHead;
+		return clone_h;
 	}
 
 	public static void main(String args[]) {

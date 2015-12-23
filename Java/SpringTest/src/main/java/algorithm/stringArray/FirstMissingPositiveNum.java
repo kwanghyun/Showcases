@@ -12,7 +12,6 @@ public class FirstMissingPositiveNum {
 
 	public static int firstMissingPositiveAnd0(int arr[], int num) {
 		for (int i = 0; i < num; i++) {
-			// while loop for "break" in the below
 			while (arr[i] != i) {
 				// if (arr[i] != i) {
 				// no need to swap when ith element is out of range [0,n]

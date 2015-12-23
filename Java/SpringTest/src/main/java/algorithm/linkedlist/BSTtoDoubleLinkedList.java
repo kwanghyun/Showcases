@@ -6,6 +6,7 @@ public class BSTtoDoubleLinkedList {
 
 	Node head;
 	Node tail;
+	
 	public void convert(TreeNode root){
 		if(root == null)
 			return;
@@ -18,9 +19,8 @@ public class BSTtoDoubleLinkedList {
 			tail = newNode;
 			head = newNode;
 		}else{
-			Node current = tail;
-			current.next = newNode;
-			newNode.previous = current;
+			tail.next = newNode;
+			newNode.previous = tail;
 			tail = newNode;
 		}
 		convert(root.right);

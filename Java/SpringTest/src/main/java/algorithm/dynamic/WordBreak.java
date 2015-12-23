@@ -17,8 +17,21 @@ public class WordBreak {
 		return wordBreak(string, dict, 0);
 	}
 
-	public boolean wordBreakHelper(String string, HashSet<String> dict,
-			int start) {
+	public boolean wordBreak(String str, HashSet<String> dict, int start) {
+		if (start == str.length())
+			return true;
+		String part = "";
+		for (int i = 0; i < str.length(); i++) {
+			part = str.substring(0, i);
+			if (dict.contains(part)) {
+				if (wordBreak(part, dict, i))
+					return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean wordBreakHelper(String string, HashSet<String> dict, int start) {
 		if (start == string.length())
 			return true;
 
@@ -37,19 +50,6 @@ public class WordBreak {
 		return false;
 	}
 
-	public boolean wordBreak(String str, HashSet<String> dict, int start) {
-		if (start == str.length())
-			return true;
-		String part = "";
-		for (int i = 0; i < str.length(); i++) {
-			part = str.substring(0, i);
-			if (dict.contains(part)) {
-				if (wordBreak(part, dict, i))
-					return true;
-			}
-		}
-		return false;
-	}
 
 	/*
 	 * Dynamic Programming The key to solve this problem by using dynamic

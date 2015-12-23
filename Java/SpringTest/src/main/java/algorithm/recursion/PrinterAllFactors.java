@@ -21,7 +21,7 @@ public class PrinterAllFactors {
 		}
 	}
 	
-	public void solution2(int n, ArrayList<Integer> list, int idx) {
+	public void solution2(int n, ArrayList<Integer> list) {
 		for (int i = 2; i <= n / 2; i++) {
 			if (n % i == 0) {
 				list.add(i);
@@ -30,7 +30,7 @@ public class PrinterAllFactors {
 					System.out.println(list);
 					list.remove(list.size() - 1);
 				} else {
-					solution2(n / i, list, idx + 1);
+					solution2(n / i, list);
 				}
 				list.remove(list.size() - 1);
 			}
@@ -56,7 +56,7 @@ public class PrinterAllFactors {
 		obj.solution(12, arr, 0);
 		System.out.println("---------------------");
 		ArrayList<Integer> list = new ArrayList<Integer>();
-		obj.solution2(12, list, 0);
+		obj.solution2(12, list);
 		
 		// obj.solution2(12, 0, arr);
 

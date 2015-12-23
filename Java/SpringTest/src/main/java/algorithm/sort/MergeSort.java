@@ -3,53 +3,51 @@ package algorithm.sort;
 public class MergeSort {
 
 	// Sort an array using a simple but inefficient merge sort.
-	public int[] mergeSortSimple( int[] data ){
+	public int[] mergeSort(int[] data) {
 
-	    if( data.length < 2 ){
-	        return data;
-	    }
+		if (data.length < 2) {
+			return data;
+		}
 
-	    // Split the array into two subarrays of approx equal size.
+		// Split the array into two subarrays of approx equal size.
 
-	    int   mid= data.length / 2;
-	    int[] left = new int[ mid ];
-	    int[] right = new int[ data.length - mid ];
+		int mid = data.length / 2;
+		int[] left = new int[mid];
+		int[] right = new int[data.length - mid];
 
-	    System.arraycopy( data, 0, left, 0, left.length );
-	    System.arraycopy( data, mid, right, 0, right.length );
+		System.arraycopy(data, 0, left, 0, left.length);
+		System.arraycopy(data, mid, right, 0, right.length);
 
-	    // Sort each subarray, then merge the result.
+		// Sort each subarray, then merge the result.
 
-	    mergeSortSimple( left );
-	    mergeSortSimple( right );
+		mergeSort(left);
+		mergeSort(right);
 
-	    return merge( data, left, right );
+		return merge(data, left, right);
 	}
 
 	// Merge two smaller arrays into a larger array.
-	private int[] merge( int[] dest, int[] left, int[] right ){
-	    int dind = 0;
-	    int lind = 0;
-	    int rind = 0;
+	private int[] merge(int[] result, int[] left, int[] right) {
+		int idx = 0;
+		int lIdx = 0;
+		int rIdx = 0;
 
-	    // Merge arrays while there are elements in both
-	    while ( lind < left.length && rind < right.length ){
-	        if ( left[ lind ] <= right[ rind ] ){
-	            dest[ dind++ ] = left[ lind++ ];
-	        } else {
-	            dest[ dind++ ] = right[ rind++ ];
-	        }
-	    }
+		// Merge arrays while there are elements in both
+		while (lIdx < left.length && rIdx < right.length) {
+			if (left[lIdx] <= right[rIdx]) {
+				result[idx++] = left[lIdx++];
+			} else {
+				result[idx++] = right[rIdx++];
+			}
+		}
 
-	    // Copy rest of whichever array remains
-	    while ( lind < left.length )
-	        dest[ dind++ ] = left[ lind++ ];
+		// Copy rest of whichever array remains
+		while (lIdx < left.length)
+			result[idx++] = left[lIdx++];
 
-	    while ( rind < right.length )
-	        dest[ dind++ ] = right[ rind++ ];
+		while (rIdx < right.length)
+			result[idx++] = right[rIdx++];
 
-	    return dest;
+		return result;
 	}
 }
-
-
