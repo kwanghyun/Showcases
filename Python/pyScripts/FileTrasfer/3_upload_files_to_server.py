@@ -2,6 +2,7 @@ import sftp
 import sys
 import filecmp
 import config
+from easygui import msgbox
 
 target_dsa_1 = {
   'src' : config.dsaDevPath + '\\DSAManager.js',
@@ -31,12 +32,12 @@ sl_webapp_2 = {
 
 target_spring_demo_webapp = {
   'src' : config.demoWebAppJarPath + '\\logDemo.war',
-  'dest' : config.testTomcatPath + 'logDemo.war'
+  'dest' : config.testTomcatPath + '/logDemo.war'
 }
 
 spark_perf_app = {
   'src' : config.demoWebAppJarPath + '\\logDemo.war',
-  'dest' : config.testTomcatPath + 'logDemo.war'
+  'dest' : config.testTomcatPath + '/logDemo.war'
 }
 
 
@@ -49,10 +50,10 @@ def fileTransfer(host, removeSrc, removeDest):
     sftpManager = sftp.SftpManager()
 
     if host is not None: 
-        sftpManager.setHost(host);
+        sftpManager.setHost(host)
 
     try:
-        sftpManager.connect();
+        sftpManager.connect()
         for fileMap in file_list:
             
             if removeSrc == True:
@@ -114,17 +115,16 @@ def main():
         file_list.append(sl_webapp_2)
         fileTransfer(host, False, True)
     elif sys.argv[1] == "6":
-        host = tomcat_default_server
+        host = config.tomcat_default_server
         file_list.append(target_spring_demo_webapp)
         fileTransfer(host, False, True)
     elif sys.argv[1] == "7":
         file_list.append(spark_perf_app)
         fileTransfer(host, False, True)
-
     else:
         print "Sorry! No Match Found"
 
-
+    msgbox('DONE')
 
 if __name__ == "__main__":
     main()

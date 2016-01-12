@@ -14,7 +14,8 @@ class SftpManager:
 		self.password = "Cisco_123"
 		self.port = 22
 		self.host = ""
-		logging.info("init done")
+		self.transport = None
+		self.sftp = None
 
 
 	def setCredential(self, usr, pwd):
@@ -31,15 +32,16 @@ class SftpManager:
 
 
 	def connect(self):
-		logging.info("connect()......" + self.host);
-		connect.transport = paramiko.Transport((self.host, self.port))
-		logging.info('Connecting to ::::: %s' % host)
+		logging.info("connect()......" + self.host)
+		self.transport = paramiko.Transport((self.host, self.port))
+		# logging.info('host ::::: %s' % self.host)
+		# logging.info('port ::::: %s' % self.port)
 		
 		# Auth
-		connect.transport.connect(username=self.username, password=self.password)
+		self.transport.connect(username=self.username, password=self.password)
 
 		# Go!
-		connect.sftp = paramiko.SFTPClient.from_transport(connect.transport)
+		self.sftp = paramiko.SFTPClient.from_transport(self.transport)
 
 		logging.info("Wow!!! Conected!")
 
@@ -48,7 +50,7 @@ class SftpManager:
 		logging.info("[Download] src ::: %s" % fileMap['src'])
 		logging.info("[Download] dest::: %s" % fileMap['dest'])
 		# file['dest'] = 'C:\\Users\\kwjang\\Desktop\\filelog-info_' + now.strftime('%Y%m%d_%H%M%S') + '.log' 
-		connect.sftp.get(fileMap['src'], fileMap['dest'])
+		self.sftp.get(fileMap['src'], fileMap['dest'])
 
 
 	def downloads(self, file_list):
@@ -57,15 +59,15 @@ class SftpManager:
 
 
 	def remove(self, path):
-		logging.info("Deleting the srouce file")
-		connect.sftp.remove(path)
+		logging.info("Deleting a file => " + path)
+		self.sftp.remove(path)
 
 
 	def upload(self, fileMap):
 		logging.info("[Upload] src ::: %s" % fileMap['src'])
 		logging.info("[Upload] dest::: %s" % fileMap['dest'])
 
-		connect.sftp.put(fileMap['src'], fileMap['dest'])
+		self.sftp.put(fileMap['src'], fileMap['dest'])
 
 
 	def uploads(self, file_list):
@@ -76,9 +78,12 @@ class SftpManager:
 	def close(self):
 		logging.info("Closing connection.....")
 		logging.info("   ")
-		connect.sftp.close()
-		connect.transport.close()
+		self.sftp.close()
+		self.transport.close()
 
+
+if __name__ == "__main__":
+    main()
 
 	# def downloadBrokerPerfStat(host, file_list):
 	# 	try:
