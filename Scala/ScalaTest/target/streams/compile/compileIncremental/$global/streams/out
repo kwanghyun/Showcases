@@ -1,0 +1,74 @@
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mInitial source changes: [0m
+[0m[[0mdebug[0m] [0m	removed:Set()[0m
+[0m[[0mdebug[0m] [0m	added: Set(C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala, C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala, C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala, C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala, C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala)[0m
+[0m[[0mdebug[0m] [0m	modified: Set(C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala)[0m
+[0m[[0mdebug[0m] [0mRemoved products: Set()[0m
+[0m[[0mdebug[0m] [0mExternal API changes: API Changes: Set()[0m
+[0m[[0mdebug[0m] [0mModified binary dependencies: Set()[0m
+[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set(C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala, C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala, C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala, C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala, C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala, C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala)[0m
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mSources indirectly invalidated by:[0m
+[0m[[0mdebug[0m] [0m	product: Set()[0m
+[0m[[0mdebug[0m] [0m	binary dep: Set()[0m
+[0m[[0mdebug[0m] [0m	external source: Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala, C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala, C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala, C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala, C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala, C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala)[0m
+[0m[[0mdebug[0m] [0mRecompiling all 7 sources: invalidated sources (6) exceeded 50.0% of all sources[0m
+[0m[[0minfo[0m] [0mCompiling 7 Scala sources to C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes...[0m
+[0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.10.5[0m
+[0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.10.5[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler 4436f972, interfacing (CompilerInterface) with Scala compiler version 2.10.5[0m
+[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	C:\Program Files\Java\jdk1.7.0_75\jre\lib\resources.jar;C:\Program Files\Java\jdk1.7.0_75\jre\lib\rt.jar;C:\Program Files\Java\jdk1.7.0_75\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.7.0_75\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.7.0_75\jre\lib\jce.jar;C:\Program Files\Java\jdk1.7.0_75\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.7.0_75\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.7.0_75\jre\classes;C:\Users\kwjang\.ivy2\cache\org.scala-lang\scala-library\jars\scala-library-2.10.5.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes[0m
+[0m[[0mdebug[0m] [0mScala compilation took 29.726594754 s[0m
+[0m[[0mdebug[0m] [0mInvalidating C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala...[0m
+[0m[[0mdebug[0m] [0mInvalidating (transitively) by inheritance from C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala...[0m
+[0m[[0mdebug[0m] [0mInitial set of included nodes: Set(C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala)[0m
+[0m[[0mdebug[0m] [0mInvalidated by transitive inheritance dependency: Set(C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala)[0m
+[0m[[0mdebug[0m] [0mThe C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m	notify, unapply, curried, Subsract, wait, CalculatorOOP2, copy$default$2, $asInstanceOf, Operator, compose, productArity, equals, Number, Add, asInstanceOf, OperatorExpression, Divide, synchronized, left, $isInstanceOf, andThen, Expression, tupled, canEqual, main, productPrefix, Multiply, notifyAll, readResolve, isInstanceOf, operate, <init>, calculate, apply, parse, ==, clone, copy$default$3, copy, toString, !=, getClass, copy$default$1, ne, operators, value, toInfix, NumberExpression, eq, productIterator, right, ##, finalize, productElement, hashCode, op.[0m
+[0m[[0mdebug[0m] [0mAll member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0mInvalidating C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala...[0m
+[0m[[0mdebug[0m] [0mInvalidating (transitively) by inheritance from C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala...[0m
+[0m[[0mdebug[0m] [0mInitial set of included nodes: Set(C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala)[0m
+[0m[[0mdebug[0m] [0mInvalidated by transitive inheritance dependency: Set(C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala)[0m
+[0m[[0mdebug[0m] [0mThe C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m	notify, unapply, wait, $asInstanceOf, Box, productArity, equals, asInstanceOf, synchronized, $isInstanceOf, canEqual, getDog, productPrefix, notifyAll, readResolve, GenericBox, isInstanceOf, contents, <init>, Puppy, Dog, apply, ==, clone, members$1, contents$1, copy, put, members, toString, !=, get, getClass, copy$default$1, House, putPuppy, ne, PrivateGenericBox, eq, productIterator, ##, finalize, productElement, hashCode.[0m
+[0m[[0mdebug[0m] [0mAll member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0mInvalidating C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala...[0m
+[0m[[0mdebug[0m] [0mInvalidating (transitively) by inheritance from C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala...[0m
+[0m[[0mdebug[0m] [0mInitial set of included nodes: Set(C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala)[0m
+[0m[[0mdebug[0m] [0mInvalidated by transitive inheritance dependency: Set(C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala)[0m
+[0m[[0mdebug[0m] [0mThe C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m	notify, unapply, Subsract, wait, $asInstanceOf, Operator, productArity, equals, Number, Add, asInstanceOf, Divide, synchronized, $isInstanceOf, canEqual, productPrefix, Multiply, notifyAll, readResolve, isInstanceOf, operate, <init>, calculate, ==, clone, toString, !=, getClass, ne, operators, eq, productIterator, CalculatorOOP, ##, finalize, productElement, hashCode.[0m
+[0m[[0mdebug[0m] [0mAll member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0mInvalidating C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala...[0m
+[0m[[0mdebug[0m] [0mInvalidating (transitively) by inheritance from C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala...[0m
+[0m[[0mdebug[0m] [0mInitial set of included nodes: Set(C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala)[0m
+[0m[[0mdebug[0m] [0mInvalidated by transitive inheritance dependency: Set(C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala)[0m
+[0m[[0mdebug[0m] [0mThe C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m	notify, wait, $asInstanceOf, equals, asInstanceOf, synchronized, $isInstanceOf, dogGetBox, PutGetBox, Varient, dogPutBox, getDog, PutBox, notifyAll, isInstanceOf, <init>, Puppy, Dog, puppyGetBox, ==, clone, $init$, put, Boxes, GetBox, toString, !=, get, getClass, puppyPutBox, putPuppy, ne, eq, ##, finalize, hashCode.[0m
+[0m[[0mdebug[0m] [0mAll member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0mInvalidating C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala...[0m
+[0m[[0mdebug[0m] [0mInvalidating (transitively) by inheritance from C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala...[0m
+[0m[[0mdebug[0m] [0mInitial set of included nodes: Set(C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala)[0m
+[0m[[0mdebug[0m] [0mInvalidated by transitive inheritance dependency: Set(C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala)[0m
+[0m[[0mdebug[0m] [0mThe C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m	notify, OperationExpression, unapply, curried, wait, step, copy$default$2, $asInstanceOf, Operator, compose, productArity, equals, Number, asInstanceOf, synchronized, left, $isInstanceOf, andThen, Expression, tupled, canEqual, main, productPrefix, notifyAll, readResolve, isInstanceOf, <init>, calculate, apply, parse, ==, clone, copy$default$3, copy, tokens, toString, !=, getClass, copy$default$1, ne, operators, value, toInfix, NumberExpression, eq, Calculator, productIterator, right, ##, finalize, productElement, hashCode, op.[0m
+[0m[[0mdebug[0m] [0mAll member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0mInvalidating C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala...[0m
+[0m[[0mdebug[0m] [0mInvalidating (transitively) by inheritance from C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala...[0m
+[0m[[0mdebug[0m] [0mInitial set of included nodes: Set(C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala)[0m
+[0m[[0mdebug[0m] [0mInvalidated by transitive inheritance dependency: Set(C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala)[0m
+[0m[[0mdebug[0m] [0mThe C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m	notify, wait, Measured, <=, $asInstanceOf, shoppingList, productArity, equals, Killograms1, Milligrams, asInstanceOf, <, Mass, synchronized, Grams, $isInstanceOf, >=, Killograms, Grams1, canEqual, productPrefix, notifyAll, amount, compareTo, isInstanceOf, symbol, toGrams, <init>, ==, clone, $init$, Mass1, copy, toString, !=, getClass, copy$default$1, ne, Milligrams1, eq, compare, productIterator, >, ##, finalize, productElement, hashCode.[0m
+[0m[[0mdebug[0m] [0mAll member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0mNew invalidations:[0m
+[0m[[0mdebug[0m] [0m	Set()[0m
+[0m[[0mdebug[0m] [0mInitial set of included nodes: Set()[0m
+[0m[[0mdebug[0m] [0mPreviously invalidated, but (transitively) depend on new invalidations:[0m
+[0m[[0mdebug[0m] [0m	Set()[0m
+[0m[[0mdebug[0m] [0mAll newly invalidated sources after taking into account (previously) recompiled sources:Set()[0m

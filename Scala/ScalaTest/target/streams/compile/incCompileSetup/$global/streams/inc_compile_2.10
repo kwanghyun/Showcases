@@ -1,0 +1,815 @@
+format version: 5
+output mode:
+1 items
+0 -> single
+output directories:
+1 items
+output dir -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes
+compile options:
+0 items
+javac options:
+0 items
+compiler version:
+1 items
+0 -> 2.10.5
+compile order:
+1 items
+0 -> Mixed
+name hashing:
+1 items
+0 -> true
+products:
+89 items
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\Caculator$$anonfun$calculate$1.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\Caculator$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\Caculator.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP$$anonfun$calculate$1.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP$Add$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP$Divide$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP$Multiply$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP$Number$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP$Operator$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP$Operator.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP$Subsract$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$$anonfun$parse$1.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$Add$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$Divide$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$Expression.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$Multiply$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$Number$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$NumberExpression$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$NumberExpression.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$Operator$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$Operator.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$OperatorExpression$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$OperatorExpression.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$Subsract$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Cookbook$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Cookbook.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Grams$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Grams.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Grams1$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Grams1.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Killograms$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Killograms.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Killograms1$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Killograms1.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Mass.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Mass1.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Measured$class.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Measured.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Milligrams$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Milligrams.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Milligrams1$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Milligrams1.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Recipe$$anonfun$shoppingList$1.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Recipe$$anonfun$shoppingList$2$$anonfun$1.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Recipe$$anonfun$shoppingList$2.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Recipe$$anonfun$shoppingList$3.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Recipe$$anonfun$shoppingList$4.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Recipe$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Recipe.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$$anonfun$6.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$Expression.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$Number$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$NumberExpression$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$NumberExpression.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$OperationExpression$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$OperationExpression.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$Operator$$anonfun$1.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$Operator$$anonfun$2.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$Operator$$anonfun$3.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$Operator$$anonfun$4.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$Operator$$anonfun$5.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$Operator$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Box$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Box.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Dog.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\GenericBox$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\GenericBox.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\House$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\House.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\PrivateGenericBox$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\PrivateGenericBox.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Puppy.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$Boxes$$anon$1.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$Boxes$$anon$2.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$Boxes$$anon$3.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$Boxes$$anon$4.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$Boxes$.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$Dog.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$GetBox$class.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$GetBox.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$Puppy.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$PutBox$class.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$PutBox.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$PutGetBox.class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient.class
+binary dependencies:
+14 items
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> C:\Program Files\Java\jdk1.7.0_75\jre\lib\rt.jar
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> C:\Users\kwjang\.ivy2\cache\org.scala-lang\scala-library\jars\scala-library-2.10.5.jar
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> C:\Program Files\Java\jdk1.7.0_75\jre\lib\rt.jar
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> C:\Users\kwjang\.ivy2\cache\org.scala-lang\scala-library\jars\scala-library-2.10.5.jar
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> C:\Program Files\Java\jdk1.7.0_75\jre\lib\rt.jar
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> C:\Users\kwjang\.ivy2\cache\org.scala-lang\scala-library\jars\scala-library-2.10.5.jar
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Program Files\Java\jdk1.7.0_75\jre\lib\rt.jar
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> C:\Users\kwjang\.ivy2\cache\org.scala-lang\scala-library\jars\scala-library-2.10.5.jar
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> C:\Program Files\Java\jdk1.7.0_75\jre\lib\rt.jar
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> C:\Users\kwjang\.ivy2\cache\org.scala-lang\scala-library\jars\scala-library-2.10.5.jar
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> C:\Program Files\Java\jdk1.7.0_75\jre\lib\rt.jar
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> C:\Users\kwjang\.ivy2\cache\org.scala-lang\scala-library\jars\scala-library-2.10.5.jar
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> C:\Program Files\Java\jdk1.7.0_75\jre\lib\rt.jar
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> C:\Users\kwjang\.ivy2\cache\org.scala-lang\scala-library\jars\scala-library-2.10.5.jar
+direct source dependencies:
+0 items
+direct external dependencies:
+0 items
+public inherited source dependencies:
+0 items
+public inherited external dependencies:
+0 items
+member reference internal dependencies:
+0 items
+member reference external dependencies:
+0 items
+inheritance internal dependencies:
+0 items
+inheritance external dependencies:
+0 items
+class names:
+89 items
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> main.scala.caculator.Caculator
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> main.scala.caculator.Caculator$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> main.scala.caculator.Caculator$$anonfun$calculate$1
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> main.scala.caculator.CalculatorOOP
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> main.scala.caculator.CalculatorOOP$$anonfun$calculate$1
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> main.scala.caculator.CalculatorOOP$Add$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> main.scala.caculator.CalculatorOOP$Divide$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> main.scala.caculator.CalculatorOOP$Multiply$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> main.scala.caculator.CalculatorOOP$Number$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> main.scala.caculator.CalculatorOOP$Operator
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> main.scala.caculator.CalculatorOOP$Operator$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> main.scala.caculator.CalculatorOOP$Subsract$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> main.scala.caculator.CalculatorOOP2
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> main.scala.caculator.CalculatorOOP2$$anonfun$parse$1
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> main.scala.caculator.CalculatorOOP2$Add$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> main.scala.caculator.CalculatorOOP2$Divide$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> main.scala.caculator.CalculatorOOP2$Expression
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> main.scala.caculator.CalculatorOOP2$Multiply$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> main.scala.caculator.CalculatorOOP2$Number$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> main.scala.caculator.CalculatorOOP2$NumberExpression
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> main.scala.caculator.CalculatorOOP2$NumberExpression$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> main.scala.caculator.CalculatorOOP2$Operator
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> main.scala.caculator.CalculatorOOP2$Operator$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> main.scala.caculator.CalculatorOOP2$OperatorExpression
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> main.scala.caculator.CalculatorOOP2$OperatorExpression$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> main.scala.caculator.CalculatorOOP2$Subsract$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Cookbook
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Cookbook$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Grams
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Grams$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Grams1
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Grams1$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Killograms
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Killograms$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Killograms1
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Killograms1$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Mass
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Mass1
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Measured
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Measured$class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Milligrams
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Milligrams$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Milligrams1
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Milligrams1$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Recipe
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Recipe$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Recipe$$anonfun$shoppingList$1
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Recipe$$anonfun$shoppingList$2
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Recipe$$anonfun$shoppingList$2$$anonfun$1
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Recipe$$anonfun$shoppingList$3
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main.scala.cookbook.Recipe$$anonfun$shoppingList$4
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> main.scala.functionalPro.Calculator
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> main.scala.functionalPro.Calculator$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> main.scala.functionalPro.Calculator$$anonfun$6
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> main.scala.functionalPro.Calculator$Expression
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> main.scala.functionalPro.Calculator$Number$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> main.scala.functionalPro.Calculator$NumberExpression
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> main.scala.functionalPro.Calculator$NumberExpression$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> main.scala.functionalPro.Calculator$OperationExpression
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> main.scala.functionalPro.Calculator$OperationExpression$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> main.scala.functionalPro.Calculator$Operator$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> main.scala.functionalPro.Calculator$Operator$$anonfun$1
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> main.scala.functionalPro.Calculator$Operator$$anonfun$2
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> main.scala.functionalPro.Calculator$Operator$$anonfun$3
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> main.scala.functionalPro.Calculator$Operator$$anonfun$4
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> main.scala.functionalPro.Calculator$Operator$$anonfun$5
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> main.scala.generic.Box
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> main.scala.generic.Box$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> main.scala.generic.Dog
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> main.scala.generic.GenericBox
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> main.scala.generic.GenericBox$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> main.scala.generic.House
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> main.scala.generic.House$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> main.scala.generic.PrivateGenericBox
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> main.scala.generic.PrivateGenericBox$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> main.scala.generic.Puppy
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> main.scala.generic.Varient
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> main.scala.generic.Varient$Boxes$
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> main.scala.generic.Varient$Boxes$$anon$1
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> main.scala.generic.Varient$Boxes$$anon$2
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> main.scala.generic.Varient$Boxes$$anon$3
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> main.scala.generic.Varient$Boxes$$anon$4
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> main.scala.generic.Varient$Dog
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> main.scala.generic.Varient$GetBox
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> main.scala.generic.Varient$GetBox$class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> main.scala.generic.Varient$Puppy
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> main.scala.generic.Varient$PutBox
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> main.scala.generic.Varient$PutBox$class
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> main.scala.generic.Varient$PutGetBox
+used names:
+425 items
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> !=
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> &&
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> *
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> +
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> -
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> /
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> <init>
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> ==
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> AnyRef
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> Array
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> Boolean
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> Caculator
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> IllegalArgumentException
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> Int
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> NumberFormatException
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> Predef
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> Stack
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> String
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> Unit
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> apply
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> args
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> augmentString
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> caculator
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> calculate
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> collection
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> expression
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> foreach
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> handleNumber
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> handleOperator
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> left
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> length
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> main
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> mutable
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> package
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> pop
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> println
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> push
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> refArrayOps
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> right
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> scala
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> split
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> stack
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> toInt
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> token
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> unary_!
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> *
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> +
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> -
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> ->
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> /
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> <init>
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> Add
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> AnyRef
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> CalculatorOOP
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> Divide
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> IllegalArgumentException
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> Int
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> Map
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> Multiply
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> None
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> Number
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> NumberFormatException
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> Operator
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> Option
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> Predef
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> Product
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> ScalaRunTime
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> Serializable
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> Stack
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> String
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> Subsract
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> any2ArrowAssoc
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> apply
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> augmentString
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> caculator
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> collection
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> expression
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> foreach
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> get
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> isEmpty
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> left
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> main
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> mutable
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> num
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> op
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> operate
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> operators
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> package
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> pop
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> push
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> refArrayOps
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> right
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> runtime
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> scala
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> split
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> stack
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> toInt
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> toString
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> token
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> typedProductIterator
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> unapply
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> unary_!
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> !=
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> &&
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> *
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> +
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> -
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> ->
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> /
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> <init>
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> ==
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> AbstractFunction1
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> AbstractFunction3
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> Add
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> AnyRef
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> Array
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> CalculatorOOP2
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> Divide
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> Expression
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> IllegalArgumentException
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> Int
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> Map
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> Multiply
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> None
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> Number
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> NumberExpression
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> NumberFormatException
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> Operator
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> OperatorExpression
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> Option
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> Predef
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> Product
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> ScalaRunTime
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> Serializable
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> Stack
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> Statics
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> String
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> StringContext
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> Subsract
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> Unit
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> _hashCode
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> _toString
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> any2ArrowAssoc
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> apply
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> args
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> asInstanceOf
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> augmentString
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> caculator
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> calculate
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> collection
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> eq
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> expression
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> finalizeHash
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> foreach
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> get
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> isEmpty
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> isInstanceOf
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> left
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> length
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> main
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> mix
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> mutable
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> num
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> op
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> operate
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> operators
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> package
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> parse
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> pop
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> println
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> push
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> refArrayOps
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> right
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> runtime
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> s
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> scala
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> split
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> stack
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> toInfix
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> toInt
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> toString
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> token
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> typedProductIterator
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> unapply
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> unary_!
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> value
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> ||
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> &&
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> +
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> -
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> ->
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> /
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> <
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> <init>
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> ==
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> AbstractFunction1
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> AbstractFunction2
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> AnyRef
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> Comparable
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> Cookbook
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> Double
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> Grams
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> Grams1
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> Int
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> Killograms
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> Killograms1
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> List
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> Map
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> Mass
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> Mass1
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> Measured
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> Milligrams
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> Milligrams1
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> None
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> Ordered
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> Predef
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> Product
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> Recipe
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> ScalaRunTime
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> Serializable
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> Statics
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> String
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> _1
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> _2
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> _hashCode
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> _toString
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> amount
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> any2ArrowAssoc
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> apply
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> asInstanceOf
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> baconPanacakes
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> canBuildFrom
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> compareTo
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> cookbook
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> directions
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> doubleHash
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> eq
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> finalizeHash
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> getOrElse
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> have
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> immutable
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> ingredients
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> isInstanceOf
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> java
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> kitchen
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> lang
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> main
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> map
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> mix
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> name
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> ne
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> need
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> package
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> pbj
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> runtime
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> scala
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> symbol
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> that
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> toGrams
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> toInt
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> toList
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> toString
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> typedProductIterator
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> unchecked
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> withFilter
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> ||
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> !=
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> &&
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> *
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> +
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> -
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> ->
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> /
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> ::
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> <init>
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> ==
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> AbstractFunction1
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> AbstractFunction3
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> AnyRef
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> Array
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> Calculator
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> Expression
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> Function2
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> IllegalArgumentException
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> Int
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> List
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> Map
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> None
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> Number
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> NumberExpression
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> NumberFormatException
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> OperationExpression
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> Operator
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> Option
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> Predef
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> Product
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> ScalaRunTime
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> Serializable
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> Statics
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> String
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> StringContext
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> Unit
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> _hashCode
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> _root_
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> _toString
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> any2ArrowAssoc
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> apply
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> args
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> asInstanceOf
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> augmentString
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> calculate
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> canBuildFrom
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> empty
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> eq
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> expression
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> finalizeHash
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> foldLeft
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> functionalPro
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> get
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> head
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> immutable
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> isEmpty
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> isInstanceOf
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> left
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> length
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> main
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> map
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> mix
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> num
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> op
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> operators
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> package
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> parse
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> println
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> refArrayOps
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> rest
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> right
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> runtime
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> s
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> scala
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> split
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> stack
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> step
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> swap
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> toInfix
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> toInt
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> toString
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> token
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> tokens
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> typedProductIterator
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> unapply
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> unary_!
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> value
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> ||
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> &&
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> <init>
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> ==
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> AbstractFunction1
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> Any
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> AnyRef
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> Box
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> Dog
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> GenericBox
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> House
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> Member
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> None
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> Nothing
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> PrivateGenericBox
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> Product
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> Puppy
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> ScalaRunTime
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> Serializable
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> T
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> Unit
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> _hashCode
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> _root_
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> _toString
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> asInstanceOf
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> box
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> contents
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> contents_=
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> eq
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> generic
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> house
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> isInstanceOf
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> java
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> lang
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> main
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> members
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> members_=
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> reflect
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> runtime
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> scala
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> toString
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> typedProductIterator
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> ||
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> $anon
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> <init>
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> ???
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> A
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> Any
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> AnyRef
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> Boxes
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> Dog
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> GetBox
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> Nothing
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> Predef
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> Puppy
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> PutBox
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> T
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> Unit
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> Varient
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> _root_
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> box
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> dogGetBox
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> dogPutBox
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> generic
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> get
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> getDog
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> main
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> puppyGetBox
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> puppyPutBox
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> put
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> putPuppy
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> scala
+product stamps:
+89 items
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\Caculator$$anonfun$calculate$1.class -> lastModified(1437298840588)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\Caculator$.class -> lastModified(1437298840556)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\Caculator.class -> lastModified(1437298840479)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP$$anonfun$calculate$1.class -> lastModified(1437298840627)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP$Add$.class -> lastModified(1437298840636)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP$Divide$.class -> lastModified(1437298840646)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP$Multiply$.class -> lastModified(1437298840655)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP$Number$.class -> lastModified(1437298840662)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP$Operator$.class -> lastModified(1437298840679)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP$Operator.class -> lastModified(1437298840665)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP$Subsract$.class -> lastModified(1437298840690)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP.class -> lastModified(1437298840616)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$$anonfun$parse$1.class -> lastModified(1437298840785)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$Add$.class -> lastModified(1437298840804)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$Divide$.class -> lastModified(1437298840866)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$Expression.class -> lastModified(1437298840882)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$Multiply$.class -> lastModified(1437298840917)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$Number$.class -> lastModified(1437298840931)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$NumberExpression$.class -> lastModified(1437298840942)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$NumberExpression.class -> lastModified(1437298840978)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$Operator$.class -> lastModified(1437298841005)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$Operator.class -> lastModified(1437298840978)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$OperatorExpression$.class -> lastModified(1437298841103)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$OperatorExpression.class -> lastModified(1437298841071)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2$Subsract$.class -> lastModified(1437298841116)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\caculator\CalculatorOOP2.class -> lastModified(1437298840755)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Cookbook$.class -> lastModified(1437298841138)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Cookbook.class -> lastModified(1437298841122)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Grams$.class -> lastModified(1437298841153)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Grams.class -> lastModified(1437298841211)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Grams1$.class -> lastModified(1437298841224)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Grams1.class -> lastModified(1437298841250)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Killograms$.class -> lastModified(1437298841280)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Killograms.class -> lastModified(1437298841272)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Killograms1$.class -> lastModified(1437298841311)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Killograms1.class -> lastModified(1437298841302)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Mass.class -> lastModified(1437298841318)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Mass1.class -> lastModified(1437298841329)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Measured$class.class -> lastModified(1437298841338)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Measured.class -> lastModified(1437298841335)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Milligrams$.class -> lastModified(1437298841382)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Milligrams.class -> lastModified(1437298841375)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Milligrams1$.class -> lastModified(1437298841467)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Milligrams1.class -> lastModified(1437298841441)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Recipe$$anonfun$shoppingList$1.class -> lastModified(1437298841536)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Recipe$$anonfun$shoppingList$2$$anonfun$1.class -> lastModified(1437298841556)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Recipe$$anonfun$shoppingList$2.class -> lastModified(1437298841550)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Recipe$$anonfun$shoppingList$3.class -> lastModified(1437298841563)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Recipe$$anonfun$shoppingList$4.class -> lastModified(1437298841571)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Recipe$.class -> lastModified(1437298841484)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\cookbook\Recipe.class -> lastModified(1437298841528)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$$anonfun$6.class -> lastModified(1437298841623)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$.class -> lastModified(1437298841607)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$Expression.class -> lastModified(1437298841640)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$Number$.class -> lastModified(1437298841668)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$NumberExpression$.class -> lastModified(1437298841724)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$NumberExpression.class -> lastModified(1437298841712)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$OperationExpression$.class -> lastModified(1437298841762)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$OperationExpression.class -> lastModified(1437298841744)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$Operator$$anonfun$1.class -> lastModified(1437298841783)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$Operator$$anonfun$2.class -> lastModified(1437298841822)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$Operator$$anonfun$3.class -> lastModified(1437298841828)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$Operator$$anonfun$4.class -> lastModified(1437298841854)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$Operator$$anonfun$5.class -> lastModified(1437298841877)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator$Operator$.class -> lastModified(1437298841773)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\functionalPro\Calculator.class -> lastModified(1437298841579)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Box$.class -> lastModified(1437298841908)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Box.class -> lastModified(1437298841899)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Dog.class -> lastModified(1437298841913)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\GenericBox$.class -> lastModified(1437298841932)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\GenericBox.class -> lastModified(1437298842000)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\House$.class -> lastModified(1437298842016)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\House.class -> lastModified(1437298842051)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\PrivateGenericBox$.class -> lastModified(1437298842080)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\PrivateGenericBox.class -> lastModified(1437298842069)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Puppy.class -> lastModified(1437298842085)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$Boxes$$anon$1.class -> lastModified(1437298842172)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$Boxes$$anon$2.class -> lastModified(1437298842179)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$Boxes$$anon$3.class -> lastModified(1437298842184)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$Boxes$$anon$4.class -> lastModified(1437298842213)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$Boxes$.class -> lastModified(1437298842157)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$Dog.class -> lastModified(1437298842222)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$GetBox$class.class -> lastModified(1437298842240)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$GetBox.class -> lastModified(1437298842234)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$Puppy.class -> lastModified(1437298842251)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$PutBox$class.class -> lastModified(1437298842272)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$PutBox.class -> lastModified(1437298842268)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient$PutGetBox.class -> lastModified(1437298842275)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\target\scala-2.10\classes\main\scala\generic\Varient.class -> lastModified(1437298842111)
+source stamps:
+7 items
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> hash(f92f374ba402bf86d71881ecab61ae956c241287)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> hash(58fe51f94ce6f9300fead0b9fafeb77bae0d9861)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> hash(7ba5a4695d63ee9732dd060d3d7d8bf0f21ba108)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> hash(f8300f2a4b7497a51bd2fa4b8ff367d0f21f596b)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> hash(71ca2810a7d976d86d2a3aa4cfa9c703448483c0)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> hash(ca4efa13a04336834e5c01e8745b2503724a8ac9)
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> hash(c7ddf570f563dcfcdebebb58f79259106b5d8379)
+binary stamps:
+2 items
+C:\Program Files\Java\jdk1.7.0_75\jre\lib\rt.jar -> lastModified(1422850783799)
+C:\Users\kwjang\.ivy2\cache\org.scala-lang\scala-library\jars\scala-library-2.10.5.jar -> lastModified(1425002069000)
+class names:
+2 items
+C:\Program Files\Java\jdk1.7.0_75\jre\lib\rt.jar -> java.lang.Object
+C:\Users\kwjang\.ivy2\cache\org.scala-lang\scala-library\jars\scala-library-2.10.5.jar -> scala.Unit
+internal apis:
+7 items
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHBeX6v0AHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAGHNyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cOT6Gll0AAlDYWN1bGF0b3JzcQB+AAznzbU4dAAGbm90aWZ5c3EAfgAMVv4x3XQABHdhaXRzcQB+AAyl2VrtdAANJGFzSW5zdGFuY2VPZnNxAH4ADHZVwX50AAZlcXVhbHNzcQB+AAyuGh7pdAAMYXNJbnN0YW5jZU9mc3EAfgAMPgP0QnQADGhhbmRsZU51bWJlcnNxAH4ADM/rmgB0AAxzeW5jaHJvbml6ZWRzcQB+AAzZ/IkodAANJGlzSW5zdGFuY2VPZnNxAH4ADJOyAzZ0AARtYWluc3EAfgAMCbIFfXQACW5vdGlmeUFsbHNxAH4ADIuae9F0AAxpc0luc3RhbmNlT2ZzcQB+AAxSwFQvdAAJY2FsY3VsYXRlc3EAfgAMwadbRnQAAj09c3EAfgAMOeGTnHQADmhhbmRsZU9wZXJhdG9yc3EAfgAMf4Y4xnQABWNsb25lc3EAfgAM/QyrgHQACHRvU3RyaW5nc3EAfgAMyznWAXQAAiE9c3EAfgAM+UQYOHQACGdldENsYXNzc3EAfgAM4je6wXQAAm5lc3EAfgAM0DTG9nQAAmVxc3EAfgAMo6XR33QAAiMjc3EAfgAM06lwIXQACGZpbmFsaXplc3EAfgAMN7JWNHQACGhhc2hDb2Rlc3IAE3hzYnRpLmFwaS5Tb3VyY2VBUEm5Xqf5KSM4pAIAAlsAC2RlZmluaXRpb25zdAAXW0x4c2J0aS9hcGkvRGVmaW5pdGlvbjtbAAhwYWNrYWdlc3QAFFtMeHNidGkvYXBpL1BhY2thZ2U7eHB1cgAXW0x4c2J0aS5hcGkuRGVmaW5pdGlvbjuIyVzntONeDgIAAHhwAAAAAXNyABN4c2J0aS5hcGkuQ2xhc3NMaWtlgzQcod+wl2wCAARMAA5kZWZpbml0aW9uVHlwZXQAGkx4c2J0aS9hcGkvRGVmaW5pdGlvblR5cGU7WwAQc2F2ZWRBbm5vdGF0aW9uc3QAE1tMamF2YS9sYW5nL1N0cmluZztMAAhzZWxmVHlwZXQAEEx4c2J0aS9hcGkvTGF6eTtMAAlzdHJ1Y3R1cmVxAH4AR3hyACF4c2J0aS5hcGkuUGFyYW1ldGVyaXplZERlZmluaXRpb275EW6x1VA84gIAAVsADnR5cGVQYXJhbWV0ZXJzdAAaW0x4c2J0aS9hcGkvVHlwZVBhcmFtZXRlcjt4cgAUeHNidGkuYXBpLkRlZmluaXRpb26HKhvocULjRgIABEwABmFjY2Vzc3QAEkx4c2J0aS9hcGkvQWNjZXNzO1sAC2Fubm90YXRpb25zdAAXW0x4c2J0aS9hcGkvQW5ub3RhdGlvbjtMAAltb2RpZmllcnN0ABVMeHNidGkvYXBpL01vZGlmaWVycztMAARuYW1lcQB+AA14cHNyABB4c2J0aS5hcGkuUHVibGljulg9rmwtYEICAAB4cgAQeHNidGkuYXBpLkFjY2Vzc91imvgdYzFIAgAAeHB1cgAXW0x4c2J0aS5hcGkuQW5ub3RhdGlvbjvrl+sZEPaNSAIAAHhwAAAAAHNyABN4c2J0aS5hcGkuTW9kaWZpZXJzxxETIWmc3CQCAAFCAAVmbGFnc3hwAHQAHm1haW4uc2NhbGEuY2FjdWxhdG9yLkNhY3VsYXRvcnVyABpbTHhzYnRpLmFwaS5UeXBlUGFyYW1ldGVyO9ltJg8onfK2AgAAeHAAAAAAfnIAGHhzYnRpLmFwaS5EZWZpbml0aW9uVHlwZQAAAAAAAAAAEgAAeHIADmphdmEubGFuZy5FbnVtAAAAAAAAAAASAAB4cHQABk1vZHVsZXVyABNbTGphdmEubGFuZy5TdHJpbmc7rdJW5+kde0cCAAB4cAAAAABzcgATeHNidGkuU2FmZUxhenkkSW1wbFACLpOXl0A/AgADWgAIYml0bWFwJDBMAAJfdHQAEkxqYXZhL2xhbmcvT2JqZWN0O0wABGV2YWx0ABFMc2NhbGEvRnVuY3Rpb24wO3hyABZ4c2J0aS5hcGkuQWJzdHJhY3RMYXp503e1AV+756ACAAB4cAFzcgATeHNidGkuYXBpLkVtcHR5VHlwZbz9nkZJO4kkAgAAeHIAFHhzYnRpLmFwaS5TaW1wbGVUeXBlcnhiiCEjv0ACAAB4cgAOeHNidGkuYXBpLlR5cGU/atkhFkmqygIAAHhwcHNxAH4AXwFzcgATeHNidGkuYXBpLlN0cnVjdHVyZamq+YCTb9gAAgADTAAIZGVjbGFyZWRxAH4AR0wACWluaGVyaXRlZHEAfgBHTAAHcGFyZW50c3EAfgBHeHEAfgBmc3EAfgBfAXVxAH4AQgAAAAFzcgANeHNidGkuYXBpLkRlZlK+n+J8tDZpAgACTAAKcmV0dXJuVHlwZXQAEEx4c2J0aS9hcGkvVHlwZTtbAA92YWx1ZVBhcmFtZXRlcnN0ABpbTHhzYnRpL2FwaS9QYXJhbWV0ZXJMaXN0O3hxAH4ASHEAfgBRdXEAfgBSAAAAAHNxAH4AVABxAH4AIXVxAH4AVwAAAABzcgAUeHNidGkuYXBpLlByb2plY3Rpb27z0o1U6UWkLQIAAkwAAmlkcQB+AA1MAAZwcmVmaXh0ABZMeHNidGkvYXBpL1NpbXBsZVR5cGU7eHEAfgBldAAEVW5pdHNyABN4c2J0aS5hcGkuU2luZ2xldG9u/Kdf+M9W5EYCAAFMAARwYXRodAAQTHhzYnRpL2FwaS9QYXRoO3hxAH4AZXNyAA54c2J0aS5hcGkuUGF0aJs9XAjOpSeEAgABWwAKY29tcG9uZW50c3QAGltMeHNidGkvYXBpL1BhdGhDb21wb25lbnQ7eHB1cgAaW0x4c2J0aS5hcGkuUGF0aENvbXBvbmVudDtD2gl0LWcWdAIAAHhwAAAAAnNyAAx4c2J0aS5hcGkuSWSYMmyLN1PEQAIAAUwAAmlkcQB+AA14cgAXeHNidGkuYXBpLlBhdGhDb21wb25lbnRfmiJbLoafvAIAAHhwdAAFc2NhbGFzcgAOeHNidGkuYXBpLlRoaXPbCe2mzFpAXAIAAHhxAH4AgXVyABpbTHhzYnRpLmFwaS5QYXJhbWV0ZXJMaXN0O/XTOh3ys3DuAgAAeHAAAAABc3IAF3hzYnRpLmFwaS5QYXJhbWV0ZXJMaXN01sW8HGRJdOMCAAJaAAppc0ltcGxpY2l0WwAKcGFyYW1ldGVyc3QAHFtMeHNidGkvYXBpL01ldGhvZFBhcmFtZXRlcjt4cAB1cgAcW0x4c2J0aS5hcGkuTWV0aG9kUGFyYW1ldGVyO8+4xV2l3bVtAgAAeHAAAAABc3IAGXhzYnRpLmFwaS5NZXRob2RQYXJhbWV0ZXIfRa4X00mw6gIABFoACmhhc0RlZmF1bHRMAAhtb2RpZmllcnQAHUx4c2J0aS9hcGkvUGFyYW1ldGVyTW9kaWZpZXI7TAAEbmFtZXEAfgANTAADdHBlcQB+AG54cAB+cgAbeHNidGkuYXBpLlBhcmFtZXRlck1vZGlmaWVyAAAAAAAAAAASAAB4cQB+AFp0AAVQbGFpbnQABGFyZ3NzcgAXeHNidGkuYXBpLlBhcmFtZXRlcml6ZWQWbO5pA8m7fwIAAkwACGJhc2VUeXBlcQB+AHVbAA10eXBlQXJndW1lbnRzdAARW0x4c2J0aS9hcGkvVHlwZTt4cQB+AGVzcQB+AHR0AAVBcnJheXEAfgB6dXIAEVtMeHNidGkuYXBpLlR5cGU7dP+lWnv56UECAAB4cAAAAAFzcQB+AHR0AAZTdHJpbmdzcQB+AHhzcQB+AHt1cQB+AH4AAAADc3EAfgCAdAAEamF2YXNxAH4AgHQABGxhbmdxAH4AhXBzcQB+AF8BdXEAfgBCAAAAAHBzcQB+AF8BdXEAfgCZAAAAAnNxAH4AdHQABk9iamVjdHEAfgCdc3EAfgB0dAADQW55cQB+AHpwcHVyABRbTHhzYnRpLmFwaS5QYWNrYWdlO1sTGTdwpyehAgAAeHAAAAADc3IAEXhzYnRpLmFwaS5QYWNrYWdlflmP9q7OOVgCAAFMAARuYW1lcQB+AA14cHQAFG1haW4uc2NhbGEuY2FjdWxhdG9yc3EAfgCucQB+ACFzcQB+AK50AAptYWluLnNjYWxhc3IAFXhzYnRpLmFwaS5Db21waWxhdGlvbu364MNq6KBCAgACSgAJc3RhcnRUaW1lWwAHb3V0cHV0c3QAGltMeHNidGkvYXBpL091dHB1dFNldHRpbmc7eHAAAAFOpa9mqXVyABpbTHhzYnRpLmFwaS5PdXRwdXRTZXR0aW5nO39qwvOnh6VCAgAAeHAAAAABc3IAF3hzYnRpLmFwaS5PdXRwdXRTZXR0aW5netmaR3T7HXsCAAJMAA9vdXRwdXREaXJlY3RvcnlxAH4ADUwAD3NvdXJjZURpcmVjdG9yeXEAfgANeHB0AEdDOlxVc2Vyc1xrd2phbmdcZ2l0XFNob3djYXNlc1xTY2FsYVxTY2FsYVRlc3RcdGFyZ2V0XHNjYWxhLTIuMTBcY2xhc3Nlc3QAAS91cgACW0Ks8xf4BghU4AIAAHhwAAAAFPkvN0ukAr+G1xiB7KthrpVsJBKH
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHAA/eu6AHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAJXNyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cIwQGi90AAZub3RpZnlzcQB+AAy+yjb2dAAHdW5hcHBseXNxAH4ADD3ccuh0AAhTdWJzcmFjdHNxAH4ADOC1KBl0AAR3YWl0c3EAfgAMTjJw53QADSRhc0luc3RhbmNlT2ZzcQB+AAxsjgNKdAAIT3BlcmF0b3JzcQB+AAxbOLjbdAAMcHJvZHVjdEFyaXR5c3EAfgAMvCFjvnQABmVxdWFsc3NxAH4ADCUbubh0AAZOdW1iZXJzcQB+AAyd8L5BdAADQWRkc3EAfgAMUTJtgnQADGFzSW5zdGFuY2VPZnNxAH4ADPsdtwp0AAZEaXZpZGVzcQB+AAx8euzIdAAMc3luY2hyb25pemVkc3EAfgAMr06JgHQADSRpc0luc3RhbmNlT2ZzcQB+AAxJj9G0dAAIY2FuRXF1YWxzcQB+AAwtOWlNdAANcHJvZHVjdFByZWZpeHNxAH4ADKJhvg10AAhNdWx0aXBseXNxAH4ADLRBSox0AAlub3RpZnlBbGxzcQB+AAxFE7GgdAALcmVhZFJlc29sdmVzcQB+AAzR9lA+dAAMaXNJbnN0YW5jZU9mc3EAfgAMqrrgOXQAB29wZXJhdGVzcQB+AAxvTK8BdAAGPGluaXQ+c3EAfgAMDE1VFXQACWNhbGN1bGF0ZXNxAH4ADNAtPFp0AAI9PXNxAH4ADAadK/10AAVjbG9uZXNxAH4ADLj7U890AAh0b1N0cmluZ3NxAH4ADKml7950AAIhPXNxAH4ADBLqGfp0AAhnZXRDbGFzc3NxAH4ADG1vP/90AAJuZXNxAH4ADLy7xtB0AAlvcGVyYXRvcnNzcQB+AAzjE59QdAACZXFzcQB+AAzbtct4dAAPcHJvZHVjdEl0ZXJhdG9yc3EAfgAMQOU+unQADUNhbGN1bGF0b3JPT1BzcQB+AAxgXCI6dAACIyNzcQB+AAwyQuuadAAIZmluYWxpemVzcQB+AAyJJ0HjdAAOcHJvZHVjdEVsZW1lbnRzcQB+AAy6uFlqdAAIaGFzaENvZGVzcgATeHNidGkuYXBpLlNvdXJjZUFQSblep/kpIzikAgACWwALZGVmaW5pdGlvbnN0ABdbTHhzYnRpL2FwaS9EZWZpbml0aW9uO1sACHBhY2thZ2VzdAAUW0x4c2J0aS9hcGkvUGFja2FnZTt4cHVyABdbTHhzYnRpLmFwaS5EZWZpbml0aW9uO4jJXOe0414OAgAAeHAAAAABc3IAE3hzYnRpLmFwaS5DbGFzc0xpa2WDNByh37CXbAIABEwADmRlZmluaXRpb25UeXBldAAaTHhzYnRpL2FwaS9EZWZpbml0aW9uVHlwZTtbABBzYXZlZEFubm90YXRpb25zdAATW0xqYXZhL2xhbmcvU3RyaW5nO0wACHNlbGZUeXBldAAQTHhzYnRpL2FwaS9MYXp5O0wACXN0cnVjdHVyZXEAfgBheHIAIXhzYnRpLmFwaS5QYXJhbWV0ZXJpemVkRGVmaW5pdGlvbvkRbrHVUDziAgABWwAOdHlwZVBhcmFtZXRlcnN0ABpbTHhzYnRpL2FwaS9UeXBlUGFyYW1ldGVyO3hyABR4c2J0aS5hcGkuRGVmaW5pdGlvbocqG+hxQuNGAgAETAAGYWNjZXNzdAASTHhzYnRpL2FwaS9BY2Nlc3M7WwALYW5ub3RhdGlvbnN0ABdbTHhzYnRpL2FwaS9Bbm5vdGF0aW9uO0wACW1vZGlmaWVyc3QAFUx4c2J0aS9hcGkvTW9kaWZpZXJzO0wABG5hbWVxAH4ADXhwc3IAEHhzYnRpLmFwaS5QdWJsaWO6WD2ubC1gQgIAAHhyABB4c2J0aS5hcGkuQWNjZXNz3WKa+B1jMUgCAAB4cHVyABdbTHhzYnRpLmFwaS5Bbm5vdGF0aW9uO+uX6xkQ9o1IAgAAeHAAAAAAc3IAE3hzYnRpLmFwaS5Nb2RpZmllcnPHERMhaZzcJAIAAUIABWZsYWdzeHAAdAAibWFpbi5zY2FsYS5jYWN1bGF0b3IuQ2FsY3VsYXRvck9PUHVyABpbTHhzYnRpLmFwaS5UeXBlUGFyYW1ldGVyO9ltJg8onfK2AgAAeHAAAAAAfnIAGHhzYnRpLmFwaS5EZWZpbml0aW9uVHlwZQAAAAAAAAAAEgAAeHIADmphdmEubGFuZy5FbnVtAAAAAAAAAAASAAB4cHQACENsYXNzRGVmdXIAE1tMamF2YS5sYW5nLlN0cmluZzut0lbn6R17RwIAAHhwAAAAAHNyABN4c2J0aS5TYWZlTGF6eSRJbXBsUAIuk5eXQD8CAANaAAhiaXRtYXAkMEwAAl90dAASTGphdmEvbGFuZy9PYmplY3Q7TAAEZXZhbHQAEUxzY2FsYS9GdW5jdGlvbjA7eHIAFnhzYnRpLmFwaS5BYnN0cmFjdExhennTd7UBX7vnoAIAAHhwAHBzcgAgeHNidGkuU2FmZUxhenkkJGFub25mdW4kc3RyaWN0JDEAAAAAAAAAAAIAAUwAB3ZhbHVlJDFxAH4Aenhwc3IAE3hzYnRpLmFwaS5FbXB0eVR5cGW8/Z5GSTuJJAIAAHhyABR4c2J0aS5hcGkuU2ltcGxlVHlwZXJ4YoghI79AAgAAeHIADnhzYnRpLmFwaS5UeXBlP2rZIRZJqsoCAAB4cHNxAH4AeQBwc3EAfgB+c3IAE3hzYnRpLmFwaS5TdHJ1Y3R1cmWpqvmAk2/YAAIAA0wACGRlY2xhcmVkcQB+AGFMAAlpbmhlcml0ZWRxAH4AYUwAB3BhcmVudHNxAH4AYXhxAH4AgnNxAH4AeQBwc3EAfgB+dXEAfgBcAAAAAHNxAH4AeQBwc3EAfgB+dXEAfgBcAAAAAHNxAH4AeQBwc3EAfgB+dXIAEVtMeHNidGkuYXBpLlR5cGU7dP+lWnv56UECAAB4cAAAAAJzcgAUeHNidGkuYXBpLlByb2plY3Rpb27z0o1U6UWkLQIAAkwAAmlkcQB+AA1MAAZwcmVmaXh0ABZMeHNidGkvYXBpL1NpbXBsZVR5cGU7eHEAfgCBdAAGT2JqZWN0c3IAE3hzYnRpLmFwaS5TaW5nbGV0b278p1/4z1bkRgIAAUwABHBhdGh0ABBMeHNidGkvYXBpL1BhdGg7eHEAfgCBc3IADnhzYnRpLmFwaS5QYXRomz1cCM6lJ4QCAAFbAApjb21wb25lbnRzdAAaW0x4c2J0aS9hcGkvUGF0aENvbXBvbmVudDt4cHVyABpbTHhzYnRpLmFwaS5QYXRoQ29tcG9uZW50O0PaCXQtZxZ0AgAAeHAAAAADc3IADHhzYnRpLmFwaS5JZJgybIs3U8RAAgABTAACaWRxAH4ADXhyABd4c2J0aS5hcGkuUGF0aENvbXBvbmVudF+aIlsuhp+8AgAAeHB0AARqYXZhc3EAfgCedAAEbGFuZ3NyAA54c2J0aS5hcGkuVGhpc9sJ7abMWkBcAgAAeHEAfgCfc3EAfgCSdAADQW55c3EAfgCWc3EAfgCZdXEAfgCcAAAAAnNxAH4AnnQABXNjYWxhcQB+AKV1cgAUW0x4c2J0aS5hcGkuUGFja2FnZTtbExk3cKcnoQIAAHhwAAAAA3NyABF4c2J0aS5hcGkuUGFja2FnZX5Zj/auzjlYAgABTAAEbmFtZXEAfgANeHB0ABRtYWluLnNjYWxhLmNhY3VsYXRvcnNxAH4Ar3QABG1haW5zcQB+AK90AAptYWluLnNjYWxhc3IAFXhzYnRpLmFwaS5Db21waWxhdGlvbu364MNq6KBCAgACSgAJc3RhcnRUaW1lWwAHb3V0cHV0c3QAGltMeHNidGkvYXBpL091dHB1dFNldHRpbmc7eHAAAAFOpa9mqXVyABpbTHhzYnRpLmFwaS5PdXRwdXRTZXR0aW5nO39qwvOnh6VCAgAAeHAAAAABc3IAF3hzYnRpLmFwaS5PdXRwdXRTZXR0aW5netmaR3T7HXsCAAJMAA9vdXRwdXREaXJlY3RvcnlxAH4ADUwAD3NvdXJjZURpcmVjdG9yeXEAfgANeHB0AEdDOlxVc2Vyc1xrd2phbmdcZ2l0XFNob3djYXNlc1xTY2FsYVxTY2FsYVRlc3RcdGFyZ2V0XHNjYWxhLTIuMTBcY2xhc3Nlc3QAAS91cgACW0Ks8xf4BghU4AIAAHhwAAAAFFj+UflM5vkwD+rQufr+t3uuDZhh
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHCdyld0AHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAOHNyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cC/OswR0AAZub3RpZnlzcQB+AAwIfwIOdAAHdW5hcHBseXNxAH4ADP6/End0AAdjdXJyaWVkc3EAfgAM74VNFXQACFN1YnNyYWN0c3EAfgAMiSjJa3QABHdhaXRzcQB+AAwIynmwdAAOQ2FsY3VsYXRvck9PUDJzcQB+AAzqmS9QdAAOY29weSRkZWZhdWx0JDJzcQB+AAz9Mf/8dAANJGFzSW5zdGFuY2VPZnNxAH4ADBluJWF0AAhPcGVyYXRvcnNxAH4ADOtDIDF0AAdjb21wb3Nlc3EAfgAMbn4WIXQADHByb2R1Y3RBcml0eXNxAH4ADOj1rgZ0AAZlcXVhbHNzcQB+AAwe4J3/dAAGTnVtYmVyc3EAfgAMie30mXQAA0FkZHNxAH4ADDhzodx0AAxhc0luc3RhbmNlT2ZzcQB+AAzQoZ+wdAAST3BlcmF0b3JFeHByZXNzaW9uc3EAfgAMo7fRpnQABkRpdmlkZXNxAH4ADCLR5Z10AAxzeW5jaHJvbml6ZWRzcQB+AAx97TXcdAAEbGVmdHNxAH4ADEScMZ50AA0kaXNJbnN0YW5jZU9mc3EAfgAMZbbEF3QAB2FuZFRoZW5zcQB+AAwCKjGsdAAKRXhwcmVzc2lvbnNxAH4ADEE5H5V0AAZ0dXBsZWRzcQB+AAzhB0LtdAAIY2FuRXF1YWxzcQB+AAzg4PG8dAAEbWFpbnNxAH4ADIfDxr50AA1wcm9kdWN0UHJlZml4c3EAfgAMzYqccnQACE11bHRpcGx5c3EAfgAM/HHm43QACW5vdGlmeUFsbHNxAH4ADGxR+C90AAtyZWFkUmVzb2x2ZXNxAH4ADGLBUQJ0AAxpc0luc3RhbmNlT2ZzcQB+AAxoOUJRdAAHb3BlcmF0ZXNxAH4ADE5Y3xh0AAY8aW5pdD5zcQB+AAzJ7N7mdAAJY2FsY3VsYXRlc3EAfgAMU4GJzHQABWFwcGx5c3EAfgAMe6cmOHQABXBhcnNlc3EAfgAMvgFS7XQAAj09c3EAfgAMuaw6hHQABWNsb25lc3EAfgAM4pdQCHQADmNvcHkkZGVmYXVsdCQzc3EAfgAM4eh7F3QABGNvcHlzcQB+AAyVZ4yWdAAIdG9TdHJpbmdzcQB+AAx1tQ6adAACIT1zcQB+AAydPXhKdAAIZ2V0Q2xhc3NzcQB+AAzzH9kEdAAOY29weSRkZWZhdWx0JDFzcQB+AAyeBcSvdAACbmVzcQB+AAyobuxVdAAJb3BlcmF0b3Jzc3EAfgAMoBLESXQABXZhbHVlc3EAfgAMiuI1KHQAB3RvSW5maXhzcQB+AAyYPsfVdAAQTnVtYmVyRXhwcmVzc2lvbnNxAH4ADPohki50AAJlcXNxAH4ADNolHFt0AA9wcm9kdWN0SXRlcmF0b3JzcQB+AAzhQzhbdAAFcmlnaHRzcQB+AAzvkktFdAACIyNzcQB+AAxYLWkrdAAIZmluYWxpemVzcQB+AAzQ+uhfdAAOcHJvZHVjdEVsZW1lbnRzcQB+AAx3ea/sdAAIaGFzaENvZGVzcQB+AAxrKUYCdAACb3BzcgATeHNidGkuYXBpLlNvdXJjZUFQSblep/kpIzikAgACWwALZGVmaW5pdGlvbnN0ABdbTHhzYnRpL2FwaS9EZWZpbml0aW9uO1sACHBhY2thZ2VzdAAUW0x4c2J0aS9hcGkvUGFja2FnZTt4cHVyABdbTHhzYnRpLmFwaS5EZWZpbml0aW9uO4jJXOe0414OAgAAeHAAAAABc3IAE3hzYnRpLmFwaS5DbGFzc0xpa2WDNByh37CXbAIABEwADmRlZmluaXRpb25UeXBldAAaTHhzYnRpL2FwaS9EZWZpbml0aW9uVHlwZTtbABBzYXZlZEFubm90YXRpb25zdAATW0xqYXZhL2xhbmcvU3RyaW5nO0wACHNlbGZUeXBldAAQTHhzYnRpL2FwaS9MYXp5O0wACXN0cnVjdHVyZXEAfgCHeHIAIXhzYnRpLmFwaS5QYXJhbWV0ZXJpemVkRGVmaW5pdGlvbvkRbrHVUDziAgABWwAOdHlwZVBhcmFtZXRlcnN0ABpbTHhzYnRpL2FwaS9UeXBlUGFyYW1ldGVyO3hyABR4c2J0aS5hcGkuRGVmaW5pdGlvbocqG+hxQuNGAgAETAAGYWNjZXNzdAASTHhzYnRpL2FwaS9BY2Nlc3M7WwALYW5ub3RhdGlvbnN0ABdbTHhzYnRpL2FwaS9Bbm5vdGF0aW9uO0wACW1vZGlmaWVyc3QAFUx4c2J0aS9hcGkvTW9kaWZpZXJzO0wABG5hbWVxAH4ADXhwc3IAEHhzYnRpLmFwaS5QdWJsaWO6WD2ubC1gQgIAAHhyABB4c2J0aS5hcGkuQWNjZXNz3WKa+B1jMUgCAAB4cHVyABdbTHhzYnRpLmFwaS5Bbm5vdGF0aW9uO+uX6xkQ9o1IAgAAeHAAAAAAc3IAE3hzYnRpLmFwaS5Nb2RpZmllcnPHERMhaZzcJAIAAUIABWZsYWdzeHAAdAAjbWFpbi5zY2FsYS5jYWN1bGF0b3IuQ2FsY3VsYXRvck9PUDJ1cgAaW0x4c2J0aS5hcGkuVHlwZVBhcmFtZXRlcjvZbSYPKJ3ytgIAAHhwAAAAAH5yABh4c2J0aS5hcGkuRGVmaW5pdGlvblR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AAhDbGFzc0RlZnVyABNbTGphdmEubGFuZy5TdHJpbmc7rdJW5+kde0cCAAB4cAAAAABzcgATeHNidGkuU2FmZUxhenkkSW1wbFACLpOXl0A/AgADWgAIYml0bWFwJDBMAAJfdHQAEkxqYXZhL2xhbmcvT2JqZWN0O0wABGV2YWx0ABFMc2NhbGEvRnVuY3Rpb24wO3hyABZ4c2J0aS5hcGkuQWJzdHJhY3RMYXp503e1AV+756ACAAB4cABwc3IAIHhzYnRpLlNhZmVMYXp5JCRhbm9uZnVuJHN0cmljdCQxAAAAAAAAAAACAAFMAAd2YWx1ZSQxcQB+AKB4cHNyABN4c2J0aS5hcGkuRW1wdHlUeXBlvP2eRkk7iSQCAAB4cgAUeHNidGkuYXBpLlNpbXBsZVR5cGVyeGKIISO/QAIAAHhyAA54c2J0aS5hcGkuVHlwZT9q2SEWSarKAgAAeHBzcQB+AJ8AcHNxAH4ApHNyABN4c2J0aS5hcGkuU3RydWN0dXJlqar5gJNv2AACAANMAAhkZWNsYXJlZHEAfgCHTAAJaW5oZXJpdGVkcQB+AIdMAAdwYXJlbnRzcQB+AId4cQB+AKhzcQB+AJ8AcHNxAH4ApHVxAH4AggAAAABzcQB+AJ8AcHNxAH4ApHVxAH4AggAAAABzcQB+AJ8AcHNxAH4ApHVyABFbTHhzYnRpLmFwaS5UeXBlO3T/pVp7+elBAgAAeHAAAAACc3IAFHhzYnRpLmFwaS5Qcm9qZWN0aW9u89KNVOlFpC0CAAJMAAJpZHEAfgANTAAGcHJlZml4dAAWTHhzYnRpL2FwaS9TaW1wbGVUeXBlO3hxAH4Ap3QABk9iamVjdHNyABN4c2J0aS5hcGkuU2luZ2xldG9u/Kdf+M9W5EYCAAFMAARwYXRodAAQTHhzYnRpL2FwaS9QYXRoO3hxAH4Ap3NyAA54c2J0aS5hcGkuUGF0aJs9XAjOpSeEAgABWwAKY29tcG9uZW50c3QAGltMeHNidGkvYXBpL1BhdGhDb21wb25lbnQ7eHB1cgAaW0x4c2J0aS5hcGkuUGF0aENvbXBvbmVudDtD2gl0LWcWdAIAAHhwAAAAA3NyAAx4c2J0aS5hcGkuSWSYMmyLN1PEQAIAAUwAAmlkcQB+AA14cgAXeHNidGkuYXBpLlBhdGhDb21wb25lbnRfmiJbLoafvAIAAHhwdAAEamF2YXNxAH4AxHQABGxhbmdzcgAOeHNidGkuYXBpLlRoaXPbCe2mzFpAXAIAAHhxAH4AxXNxAH4AuHQAA0FueXNxAH4AvHNxAH4Av3VxAH4AwgAAAAJzcQB+AMR0AAVzY2FsYXEAfgDLdXIAFFtMeHNidGkuYXBpLlBhY2thZ2U7WxMZN3CnJ6ECAAB4cAAAAANzcgAReHNidGkuYXBpLlBhY2thZ2V+WY/2rs45WAIAAUwABG5hbWVxAH4ADXhwdAAUbWFpbi5zY2FsYS5jYWN1bGF0b3JzcQB+ANVxAH4AP3NxAH4A1XQACm1haW4uc2NhbGFzcgAVeHNidGkuYXBpLkNvbXBpbGF0aW9u7frgw2rooEICAAJKAAlzdGFydFRpbWVbAAdvdXRwdXRzdAAaW0x4c2J0aS9hcGkvT3V0cHV0U2V0dGluZzt4cAAAAU6lr2apdXIAGltMeHNidGkuYXBpLk91dHB1dFNldHRpbmc7f2rC86eHpUICAAB4cAAAAAFzcgAXeHNidGkuYXBpLk91dHB1dFNldHRpbmd62ZpHdPsdewIAAkwAD291dHB1dERpcmVjdG9yeXEAfgANTAAPc291cmNlRGlyZWN0b3J5cQB+AA14cHQAR0M6XFVzZXJzXGt3amFuZ1xnaXRcU2hvd2Nhc2VzXFNjYWxhXFNjYWxhVGVzdFx0YXJnZXRcc2NhbGEtMi4xMFxjbGFzc2VzdAABL3VyAAJbQqzzF/gGCFTgAgAAeHAAAAAUe6WkaV1j7pcy3QYNPX2L8PIboQg=
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHAA6wpAAHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAANnNyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cMk+ECh0AAZub3RpZnlzcQB+AAx+45ZGdAAEd2FpdHNxAH4ADFOHDqt0AAhNZWFzdXJlZHNxAH4ADK6OP410AAI8PXNxAH4ADKeCpKZ0AANwYmpzcQB+AAzimqHkdAAOY29weSRkZWZhdWx0JDJzcQB+AAyOnbzFdAANJGFzSW5zdGFuY2VPZnNxAH4ADGs4aP50AAxzaG9wcGluZ0xpc3RzcQB+AAx8iDX7dAAMcHJvZHVjdEFyaXR5c3EAfgAMPGuxUnQABmVxdWFsc3NxAH4ADG0qsTl0AAtLaWxsb2dyYW1zMXNxAH4ADO2g/Wx0AApNaWxsaWdyYW1zc3EAfgAMXFQVKHQADGFzSW5zdGFuY2VPZnNxAH4ADBRjQt90AAE8c3EAfgAM1EUMD3QABE1hc3NzcQB+AAwy1DjLdAAMc3luY2hyb25pemVkc3EAfgAMjyzgQnQABUdyYW1zc3EAfgAMjfrYUHQADSRpc0luc3RhbmNlT2ZzcQB+AAwtOH/AdAACPj1zcQB+AAxPJ0Y5dAAKS2lsbG9ncmFtc3NxAH4ADDqvjAJ0AAZHcmFtczFzcQB+AAxVUwzfdAAIY2FuRXF1YWxzcQB+AAzklofvdAANcHJvZHVjdFByZWZpeHNxAH4ADK8rqKd0AAlub3RpZnlBbGxzcQB+AAzyNmDndAAGYW1vdW50c3EAfgAMHlHXMHQACWNvbXBhcmVUb3NxAH4ADDk0MlV0AAxpc0luc3RhbmNlT2ZzcQB+AAzW31x9dAAGc3ltYm9sc3EAfgAMaW8H03QAB3RvR3JhbXNzcQB+AAyYSF+MdAAGPGluaXQ+c3EAfgAM3SGlZXQAAj09c3EAfgAMf3v/03QABWNsb25lc3EAfgAM1pGf0nQABlJlY2lwZXNxAH4ADF7u6Sx0AAtpbmdyZWRpZW50c3NxAH4ADHQhHzl0AAYkaW5pdCRzcQB+AAx01cfjdAAFTWFzczFzcQB+AAzMbdPFdAAEY29weXNxAH4ADN//PIR0AAh0b1N0cmluZ3NxAH4ADE6RBiJ0AA5iYWNvblBhbmFjYWtlc3NxAH4ADK02ESh0AApkaXJlY3Rpb25zc3EAfgAMDrmCznQAAiE9c3EAfgAM+4RTgXQACGdldENsYXNzc3EAfgAM0n2TH3QADmNvcHkkZGVmYXVsdCQxc3EAfgAMWcmSbXQACENvb2tib29rc3EAfgAMt4+3xXQAAm5lc3EAfgAMQjEXRHQAC01pbGxpZ3JhbXMxc3EAfgAMHc/3W3QAAmVxc3EAfgAMp12I5nQAB2NvbXBhcmVzcQB+AAzIzz9VdAAPcHJvZHVjdEl0ZXJhdG9yc3EAfgAMRMnN4nQAAT5zcQB+AAw1Etp0dAACIyNzcQB+AAxkNpGtdAAIZmluYWxpemVzcQB+AAxPIj0YdAAOcHJvZHVjdEVsZW1lbnRzcQB+AAz/xP6tdAAIaGFzaENvZGVzcgATeHNidGkuYXBpLlNvdXJjZUFQSblep/kpIzikAgACWwALZGVmaW5pdGlvbnN0ABdbTHhzYnRpL2FwaS9EZWZpbml0aW9uO1sACHBhY2thZ2VzdAAUW0x4c2J0aS9hcGkvUGFja2FnZTt4cHVyABdbTHhzYnRpLmFwaS5EZWZpbml0aW9uO4jJXOe0414OAgAAeHAAAAALc3IAE3hzYnRpLmFwaS5DbGFzc0xpa2WDNByh37CXbAIABEwADmRlZmluaXRpb25UeXBldAAaTHhzYnRpL2FwaS9EZWZpbml0aW9uVHlwZTtbABBzYXZlZEFubm90YXRpb25zdAATW0xqYXZhL2xhbmcvU3RyaW5nO0wACHNlbGZUeXBldAAQTHhzYnRpL2FwaS9MYXp5O0wACXN0cnVjdHVyZXEAfgCDeHIAIXhzYnRpLmFwaS5QYXJhbWV0ZXJpemVkRGVmaW5pdGlvbvkRbrHVUDziAgABWwAOdHlwZVBhcmFtZXRlcnN0ABpbTHhzYnRpL2FwaS9UeXBlUGFyYW1ldGVyO3hyABR4c2J0aS5hcGkuRGVmaW5pdGlvbocqG+hxQuNGAgAETAAGYWNjZXNzdAASTHhzYnRpL2FwaS9BY2Nlc3M7WwALYW5ub3RhdGlvbnN0ABdbTHhzYnRpL2FwaS9Bbm5vdGF0aW9uO0wACW1vZGlmaWVyc3QAFUx4c2J0aS9hcGkvTW9kaWZpZXJzO0wABG5hbWVxAH4ADXhwc3IAEHhzYnRpLmFwaS5QdWJsaWO6WD2ubC1gQgIAAHhyABB4c2J0aS5hcGkuQWNjZXNz3WKa+B1jMUgCAAB4cHVyABdbTHhzYnRpLmFwaS5Bbm5vdGF0aW9uO+uX6xkQ9o1IAgAAeHAAAAAAc3IAE3hzYnRpLmFwaS5Nb2RpZmllcnPHERMhaZzcJAIAAUIABWZsYWdzeHAAdAAabWFpbi5zY2FsYS5jb29rYm9vay5SZWNpcGV1cgAaW0x4c2J0aS5hcGkuVHlwZVBhcmFtZXRlcjvZbSYPKJ3ytgIAAHhwAAAAAH5yABh4c2J0aS5hcGkuRGVmaW5pdGlvblR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AAhDbGFzc0RlZnVyABNbTGphdmEubGFuZy5TdHJpbmc7rdJW5+kde0cCAAB4cAAAAABzcgATeHNidGkuU2FmZUxhenkkSW1wbFACLpOXl0A/AgADWgAIYml0bWFwJDBMAAJfdHQAEkxqYXZhL2xhbmcvT2JqZWN0O0wABGV2YWx0ABFMc2NhbGEvRnVuY3Rpb24wO3hyABZ4c2J0aS5hcGkuQWJzdHJhY3RMYXp503e1AV+756ACAAB4cABwc3IAIHhzYnRpLlNhZmVMYXp5JCRhbm9uZnVuJHN0cmljdCQxAAA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AwHEAfgEBc3EAfgDAcQB+AMNzcQB+AMB0AAhjb29rYm9va3EAfgDFc3EAfgDwc3EAfgC0dAAHT3JkZXJlZHNxAH4AuHNxAH4Au3VxAH4AvgAAAANzcQB+AMBxAH4Aw3NxAH4AwHQABG1hdGhxAH4AxXVxAH4AsgAAAAFzcQB+ALR0AAVNYXNzMXEAfgHnc3EAfgDwc3EAfgC0dAAKQ29tcGFyYWJsZXNxAH4AuHNxAH4Au3VxAH4AvgAAAANzcQB+AMBxAH4Ay3NxAH4AwHEAfgDZcQB+AMV1cQB+ALIAAAABcQB+AfhzcQB+ALRxAH4A03EAfgH9c3EAfgC0cQB+ANtzcQB+ALhzcQB+ALt1cQB+AL4AAAACc3EAfgDAcQB+AMNxAH4AxXNxAH4AgHEAfgCNdXEAfgCOAAAAAHNxAH4AkAB0ABptYWluLnNjYWxhLmNvb2tib29rLkdyYW1zMXVxAH4AkwAAAABxAH4Al3VxAH4AmQAAAABzcQB+AJsAcHNxAH4AoHEAfgClc3EAfgCbAHBzcQB+AKBzcQB+AKhzcQB+AJsAcHNxAH4AoHVxAH4AfgAAAABzcQB+AJsAcHNxAH4AoHVxAH4AfgAAAABzcQB+AJsAcHNxAH4AoHVxAH4AsgAAAApzcQB+ALRxAH4At3NxAH4AuHNxAH4Au3VxAH4AvgAAAAJzcQB+AMBxAH4Aw3EAfgDFc3EAfgC0cQB+ALdzcQB+ALhzcQB+ALt1cQB+AL4AAAADc3EAfgDAcQB+AMtzcQB+AMB0AAJpb3EAfgDFc3EAfgC0cQB+AM9xAH4CHnNxAH4AtHQABkVxdWFsc3EAfgIec3EAfgC0dAAFTWFzczFzcQB+ALhzcQB+ALt1cQB+AL4AAAAEc3EAfgDAcQB+AQFzcQB+AMBxAH4Aw3NxAH4AwHQACGNvb2tib29rcQB+AMVzcQB+ALR0AAhNZWFzdXJlZHEAfgIuc3EAfgDwc3EAfgC0dAAHT3JkZXJlZHNxAH4AuHNxAH4Au3VxAH4AvgAAAANzcQB+AMBxAH4Aw3NxAH4AwHQABG1hdGhxAH4AxXVxAH4AsgAAAAFxAH4CLHNxAH4A8HNxAH4AtHQACkNvbXBhcmFibGVzcQB+ALhzcQB+ALt1cQB+AL4AAAADc3EAfgDAcQB+AMtzcQB+AMBxAH4A2XEAfgDFdXEAfgCyAAAAAXEAfgIsc3EAfgC0cQB+ANNxAH4CRHNxAH4AtHEAfgDbcQB+Ah5zcQB+AIBxAH4AjXVxAH4AjgAAAABzcQB+AJAAdAAfbWFpbi5zY2FsYS5jb29rYm9vay5NaWxsaWdyYW1zMXVxAH4AkwAAAABxAH4Al3VxAH4AmQAAAABzcQB+AJsAcHNxAH4AoHEAfgClc3EAfgCbAHBzcQB+AKBzcQB+AKhzcQB+AJsAcHNxAH4AoHVxAH4AfgAAAABzcQB+AJsAcHNxAH4AoHVxAH4AfgAAAABzcQB+AJsAcHNxAH4AoHVxAH4AsgAAAApzcQB+ALRxAH4At3NxAH4AuHNxAH4Au3VxAH4AvgAAAAJzcQB+AMBxAH4Aw3EAfgDFc3EAfgC0cQB+ALdzcQB+ALhzcQB+ALt1cQB+AL4AAAADc3EAfgDAcQB+AMtzcQB+AMB0AAJpb3EAfgDFc3EAfgC0cQB+AM9xAH4CYXNxAH4AtHQABkVxdWFsc3EAfgJhc3EAfgC0dAAFTWFzczFzcQB+ALhzcQB+ALt1cQB+AL4AAAAEc3EAfgDAcQB+AQFzcQB+AMBxAH4Aw3NxAH4AwHQACGNvb2tib29rcQB+AMVzcQB+ALR0AAhNZWFzdXJlZHEAfgJxc3EAfgDwc3EAfgC0dAAHT3JkZXJlZHNxAH4AuHNxAH4Au3VxAH4AvgAAAANzcQB+AMBxAH4Aw3NxAH4AwHQABG1hdGhxAH4AxXVxAH4AsgAAAAFxAH4Cb3NxAH4A8HNxAH4AtHQACkNvbXBhcmFibGVzcQB+ALhzcQB+ALt1cQB+AL4AAAADc3EAfgDAcQB+AMtzcQB+AMBxAH4A2XEAfgDFdXEAfgCyAAAAAXEAfgJvc3EAfgC0cQB+ANNxAH4Ch3NxAH4AtHEAfgDbcQB+AmFzcQB+AIBxAH4AjXVxAH4AjgAAAABzcQB+AJAAdAAfbWFpbi5zY2FsYS5jb29rYm9vay5LaWxsb2dyYW1zMXVxAH4AkwAAAABxAH4Al3VxAH4AmQAAAABzcQB+AJsAcHNxAH4AoHEAfgClc3EAfgCbAHBzcQB+AKBzcQB+AKhzcQB+AJsAcHNxAH4AoHVxAH4AfgAAAABzcQB+AJsAcHNxAH4AoHVxAH4AfgAAAABzcQB+AJsAcHNxAH4AoHVxAH4AsgAAAApzcQB+ALRxAH4At3NxAH4AuHNxAH4Au3VxAH4AvgAAAAJzcQB+AMBxAH4Aw3EAfgDFc3EAfgC0cQB+ALdzcQB+ALhzcQB+ALt1cQB+AL4AAAADc3EAfgDAcQB+AMtzcQB+AMB0AAJpb3EAfgDFc3EAfgC0cQB+AM9xAH4CpHNxAH4AtHQABkVxdWFsc3EAfgKkc3EAfgC0dAAFTWFzczFzcQB+ALhzcQB+ALt1cQB+AL4AAAAEc3EAfgDAcQB+AQFzcQB+AMBxAH4Aw3NxAH4AwHQACGNvb2tib29rcQB+AMVzcQB+ALR0AAhNZWFzdXJlZHEAfgK0c3EAfgDwc3EAfgC0dAAHT3JkZXJlZHNxAH4AuHNxAH4Au3VxAH4AvgAAAANzcQB+AMBxAH4Aw3NxAH4AwHQABG1hdGhxAH4AxXVxAH4AsgAAAAFxAH4CsnNxAH4A8HNxAH4AtHQACkNvbXBhcmFibGVzcQB+ALhzcQB+ALt1cQB+AL4AAAADc3EAfgDAcQB+AMtzcQB+AMBxAH4A2XEAfgDFdXEAfgCyAAAAAXEAfgKyc3EAfgC0cQB+ANNxAH4CynNxAH4AtHEAfgDbcQB+AqRzcQB+AIBxAH4AjXVxAH4AjgAAAABzcQB+AJAAdAAcbWFpbi5zY2FsYS5jb29rYm9vay5Db29rYm9va3VxAH4AkwAAAAB+cQB+AJV0AAZNb2R1bGV1cQB+AJkAAAAAc3EAfgCbAHBzcQB+AKBxAH4ApXNxAH4AmwBwc3EAfgCgc3EAfgCoc3EAfgCbAHBzcQB+AKB1cQB+AH4AAAAAc3EAfgCbAHBzcQB+AKB1cQB+AH4AAAAAc3EAfgCbAHBzcQB+AKB1cQB+ALIAAAACc3EAfgC0cQB+ANNzcQB+ALhzcQB+ALt1cQB+AL4AAAADc3EAfgDAcQB+AMtzcQB+AMBxAH4A2XEAfgDFc3EAfgC0cQB+ANtzcQB+ALhzcQB+ALt1cQB+AL4AAAACc3EAfgDAcQB+AMNxAH4AxXVyABRbTHhzYnRpLmFwaS5QYWNrYWdlO1sTGTdwpyehAgAAeHAAAAADc3IAEXhzYnRpLmFwaS5QYWNrYWdlflmP9q7OOVgCAAFMAARuYW1lcQB+AA14cHEAfgEBc3EAfgL1dAAKbWFpbi5zY2FsYXNxAH4C9XQAE21haW4uc2NhbGEuY29va2Jvb2tzcgAVeHNidGkuYXBpLkNvbXBpbGF0aW9u7frgw2rooEICAAJKAAlzdGFydFRpbWVbAAdvdXRwdXRzdAAaW0x4c2J0aS9hcGkvT3V0cHV0U2V0dGluZzt4cAAAAU6lr2apdXIAGltMeHNidGkuYXBpLk91dHB1dFNldHRpbmc7f2rC86eHpUICAAB4cAAAAAFzcgAXeHNidGkuYXBpLk91dHB1dFNldHRpbmd62ZpHdPsdewIAAkwAD291dHB1dERpcmVjdG9yeXEAfgANTAAPc291cmNlRGlyZWN0b3J5cQB+AA14cHQAR0M6XFVzZXJzXGt3amFuZ1xnaXRcU2hvd2Nhc2VzXFNjYWxhXFNjYWxhVGVzdFx0YXJnZXRcc2NhbGEtMi4xMFxjbGFzc2VzdAABL3VyAAJbQqzzF/gGCFTgAgAAeHAAAAAU+DAPKkt0l6Ub0vpLj/Nn0PIfWWs=
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHBA0/lvAHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAANXNyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cChLzld0AAZub3RpZnlzcQB+AAxAHo0LdAATT3BlcmF0aW9uRXhwcmVzc2lvbnNxAH4ADN5IAiV0AAd1bmFwcGx5c3EAfgAMovFXSnQAB2N1cnJpZWRzcQB+AAzbktoxdAAEd2FpdHNxAH4ADPsJfF50AARzdGVwc3EAfgAMisIkE3QADmNvcHkkZGVmYXVsdCQyc3EAfgAM/4daGXQADSRhc0luc3RhbmNlT2ZzcQB+AAxjdTQKdAAIT3BlcmF0b3JzcQB+AAxogt3MdAAHY29tcG9zZXNxAH4ADFNWPAp0AAxwcm9kdWN0QXJpdHlzcQB+AAz1gh/HdAAGZXF1YWxzc3EAfgAMyBZK6HQABk51bWJlcnNxAH4ADPVXJxN0AAxhc0luc3RhbmNlT2ZzcQB+AAx2zK4qdAAMc3luY2hyb25pemVkc3EAfgAMOAS2vXQABGxlZnRzcQB+AAxERwGndAANJGlzSW5zdGFuY2VPZnNxAH4ADPWQgkh0AAdhbmRUaGVuc3EAfgAMVNDqunQACkV4cHJlc3Npb25zcQB+AAyXW36MdAAGdHVwbGVkc3EAfgAMvW2BmnQACGNhbkVxdWFsc3EAfgAMhIwyU3QABG1haW5zcQB+AAyBMj9jdAANcHJvZHVjdFByZWZpeHNxAH4ADGweMad0AAlub3RpZnlBbGxzcQB+AAyweCTrdAALcmVhZFJlc29sdmVzcQB+AAwsusvGdAAMaXNJbnN0YW5jZU9mc3EAfgAMZzTcYHQABjxpbml0PnNxAH4ADEoG7Bd0AAljYWxjdWxhdGVzcQB+AAyYfT2NdAAFYXBwbHlzcQB+AAwubk/adAAFcGFyc2VzcQB+AAzZB5lVdAACPT1zcQB+AAzGs4WedAAFY2xvbmVzcQB+AAyvWLuCdAAOY29weSRkZWZhdWx0JDNzcQB+AAwVE97JdAAEY29weXNxAH4ADBn73RJ0AAZ0b2tlbnNzcQB+AAwGMhVRdAAIdG9TdHJpbmdzcQB+AAyg7WvfdAACIT1zcQB+AAwu9IIodAAIZ2V0Q2xhc3NzcQB+AAz8I32ydAAOY29weSRkZWZhdWx0JDFzcQB+AAzK/3LmdAACbmVzcQB+AAztdYrIdAAJb3BlcmF0b3Jzc3EAfgAMwjt2XHQABXZhbHVlc3EAfgAMXoSyLnQAB3RvSW5maXhzcQB+AAytljoBdAAQTnVtYmVyRXhwcmVzc2lvbnNxAH4ADKKlbbR0AAJlcXNxAH4ADP+whs10AApDYWxjdWxhdG9yc3EAfgAMtETb4XQAD3Byb2R1Y3RJdGVyYXRvcnNxAH4ADFTbd010AAVyaWdodHNxAH4ADMK+j3F0AAIjI3NxAH4ADBif48B0AAhmaW5hbGl6ZXNxAH4ADGaUGyF0AA5wcm9kdWN0RWxlbWVudHNxAH4ADEt3cDd0AAhoYXNoQ29kZXNxAH4ADOvtAFF0AAJvcHNyABN4c2J0aS5hcGkuU291cmNlQVBJuV6n+SkjOKQCAAJbAAtkZWZpbml0aW9uc3QAF1tMeHNidGkvYXBpL0RlZmluaXRpb247WwAIcGFja2FnZXN0ABRbTHhzYnRpL2FwaS9QYWNrYWdlO3hwdXIAF1tMeHNidGkuYXBpLkRlZmluaXRpb247iMlc57TjXg4CAAB4cAAAAAFzcgATeHNidGkuYXBpLkNsYXNzTGlrZYM0HKHfsJdsAgAETAAOZGVmaW5pdGlvblR5cGV0ABpMeHNidGkvYXBpL0RlZmluaXRpb25UeXBlO1sAEHNhdmVkQW5ub3RhdGlvbnN0ABNbTGphdmEvbGFuZy9TdHJpbmc7TAAIc2VsZlR5cGV0ABBMeHNidGkvYXBpL0xhenk7TAAJc3RydWN0dXJlcQB+AIF4cgAheHNidGkuYXBpLlBhcmFtZXRlcml6ZWREZWZpbml0aW9u+RFusdVQPOICAAFbAA50eXBlUGFyYW1ldGVyc3QAGltMeHNidGkvYXBpL1R5cGVQYXJhbWV0ZXI7eHIAFHhzYnRpLmFwaS5EZWZpbml0aW9uhyob6HFC40YCAARMAAZhY2Nlc3N0ABJMeHNidGkvYXBpL0FjY2VzcztbAAthbm5vdGF0aW9uc3QAF1tMeHNidGkvYXBpL0Fubm90YXRpb247TAAJbW9kaWZpZXJzdAAVTHhzYnRpL2FwaS9Nb2RpZmllcnM7TAAEbmFtZXEAfgANeHBzcgAQeHNidGkuYXBpLlB1YmxpY7pYPa5sLWBCAgAAeHIAEHhzYnRpLmFwaS5BY2Nlc3PdYpr4HWMxSAIAAHhwdXIAF1tMeHNidGkuYXBpLkFubm90YXRpb24765frGRD2jUgCAAB4cAAAAABzcgATeHNidGkuYXBpLk1vZGlmaWVyc8cREyFpnNwkAgABQgAFZmxhZ3N4cAB0ACNtYWluLnNjYWxhLmZ1bmN0aW9uYWxQcm8uQ2FsY3VsYXRvcnVyABpbTHhzYnRpLmFwaS5UeXBlUGFyYW1ldGVyO9ltJg8onfK2AgAAeHAAAAAAfnIAGHhzYnRpLmFwaS5EZWZpbml0aW9uVHlwZQAAAAAAAAAAEgAAeHIADmphdmEubGFuZy5FbnVtAAAAAAAAAAASAAB4cHQABk1vZHVsZXVyABNbTGphdmEubGFuZy5TdHJpbmc7rdJW5+kde0cCAAB4cAAAAABzcgATeHNidGkuU2FmZUxhenkkSW1wbFACLpOXl0A/AgADWgAIYml0bWFwJDBMAAJfdHQAEkxqYXZhL2xhbmcvT2JqZWN0O0wABGV2YWx0ABFMc2NhbGEvRnVuY3Rpb24wO3hyABZ4c2J0aS5hcGkuQWJzdHJhY3RMYXp503e1AV+756ACAAB4cABwc3IAIHhzYnRpLlNhZmVMYXp5JCRhbm9uZnVuJHN0cmljdCQxAAAAAAAAAAACAAFMAAd2YWx1ZSQxcQB+AJp4cHNyABN4c2J0aS5hcGkuRW1wdHlUeXBlvP2eRkk7iSQCAAB4cgAUeHNidGkuYXBpLlNpbXBsZVR5cGVyeGKIISO/QAIAAHhyAA54c2J0aS5hcGkuVHlwZT9q2SEWSarKAgAAeHBzcQB+AJkAcHNxAH4AnnNyABN4c2J0aS5hcGkuU3RydWN0dXJlqar5gJNv2AACAANMAAhkZWNsYXJlZHEAfgCBTAAJaW5oZXJpdGVkcQB+AIFMAAdwYXJlbnRzcQB+AIF4cQB+AKJzcQB+AJkAcHNxAH4AnnVxAH4AfAAAAAFzcgANeHNidGkuYXBpLkRlZlK+n+J8tDZpAgACTAAKcmV0dXJuVHlwZXQAEEx4c2J0aS9hcGkvVHlwZTtbAA92YWx1ZVBhcmFtZXRlcnN0ABpbTHhzYnRpL2FwaS9QYXJhbWV0ZXJMaXN0O3hxAH4AgnEAfgCLdXEAfgCMAAAAAHNxAH4AjgBxAH4AOXVxAH4AkQAAAABzcgAUeHNidGkuYXBpLlByb2plY3Rpb27z0o1U6UWkLQIAAkwAAmlkcQB+AA1MAAZwcmVmaXh0ABZMeHNidGkvYXBpL1NpbXBsZVR5cGU7eHEAfgChdAAEVW5pdHNyABN4c2J0aS5hcGkuU2luZ2xldG9u/Kdf+M9W5EYCAAFMAARwYXRodAAQTHhzYnRpL2FwaS9QYXRoO3hxAH4AoXNyAA54c2J0aS5hcGkuUGF0aJs9XAjOpSeEAgABWwAKY29tcG9uZW50c3QAGltMeHNidGkvYXBpL1BhdGhDb21wb25lbnQ7eHB1cgAaW0x4c2J0aS5hcGkuUGF0aENvbXBvbmVudDtD2gl0LWcWdAIAAHhwAAAAAnNyAAx4c2J0aS5hcGkuSWSYMmyLN1PEQAIAAUwAAmlkcQB+AA14cgAXeHNidGkuYXBpLlBhdGhDb21wb25lbnRfmiJbLoafvAIAAHhwdAAFc2NhbGFzcgAOeHNidGkuYXBpLlRoaXPbCe2mzFpAXAIAAHhxAH4Av3VyABpbTHhzYnRpLmFwaS5QYXJhbWV0ZXJMaXN0O/XTOh3ys3DuAgAAeHAAAAABc3IAF3hzYnRpLmFwaS5QYXJhbWV0ZXJMaXN01sW8HGRJdOMCAAJaAAppc0ltcGxpY2l0WwAKcGFyYW1ldGVyc3QAHFtMeHNidGkvYXBpL01ldGhvZFBhcmFtZXRlcjt4cAB1cgAcW0x4c2J0aS5hcGkuTWV0aG9kUGFyYW1ldGVyO8+4xV2l3bVtAgAAeHAAAAABc3IAGXhzYnRpLmFwaS5NZXRob2RQYXJhbWV0ZXIfRa4X00mw6gIABFoACmhhc0RlZmF1bHRMAAhtb2RpZmllcnQAHUx4c2J0aS9hcGkvUGFyYW1ldGVyTW9kaWZpZXI7TAAEbmFtZXEAfgANTAADdHBlcQB+AKx4cAB+cgAbeHNidGkuYXBpLlBhcmFtZXRlck1vZGlmaWVyAAAAAAAAAAASAAB4cQB+AJR0AAVQbGFpbnQABGFyZ3NzcgAXeHNidGkuYXBpLlBhcmFtZXRlcml6ZWQWbO5pA8m7fwIAAkwACGJhc2VUeXBlcQB+ALNbAA10eXBlQXJndW1lbnRzdAARW0x4c2J0aS9hcGkvVHlwZTt4cQB+AKFzcQB+ALJ0AAVBcnJheXEAfgC4dXIAEVtMeHNidGkuYXBpLlR5cGU7dP+lWnv56UECAAB4cAAAAAFzcQB+ALJ0AAZTdHJpbmdzcQB+ALZzcQB+ALl1cQB+ALwAAAADc3EAfgC+dAAEamF2YXNxAH4AvnQABGxhbmdxAH4Aw3NxAH4AmQBwc3EAfgCedXEAfgB8AAAAAHNxAH4AmQBwc3EAfgCedXEAfgDXAAAAAnNxAH4AsnQABk9iamVjdHEAfgDbc3EAfgCydAADQW55cQB+ALh1cgAUW0x4c2J0aS5hcGkuUGFja2FnZTtbExk3cKcnoQIAAHhwAAAAA3NyABF4c2J0aS5hcGkuUGFja2FnZX5Zj/auzjlYAgABTAAEbmFtZXEAfgANeHBxAH4AOXNxAH4A7nQACm1haW4uc2NhbGFzcQB+AO50ABhtYWluLnNjYWxhLmZ1bmN0aW9uYWxQcm9zcgAVeHNidGkuYXBpLkNvbXBpbGF0aW9u7frgw2rooEICAAJKAAlzdGFydFRpbWVbAAdvdXRwdXRzdAAaW0x4c2J0aS9hcGkvT3V0cHV0U2V0dGluZzt4cAAAAU6lr2apdXIAGltMeHNidGkuYXBpLk91dHB1dFNldHRpbmc7f2rC86eHpUICAAB4cAAAAAFzcgAXeHNidGkuYXBpLk91dHB1dFNldHRpbmd62ZpHdPsdewIAAkwAD291dHB1dERpcmVjdG9yeXEAfgANTAAPc291cmNlRGlyZWN0b3J5cQB+AA14cHQAR0M6XFVzZXJzXGt3amFuZ1xnaXRcU2hvd2Nhc2VzXFNjYWxhXFNjYWxhVGVzdFx0YXJnZXRcc2NhbGEtMi4xMFxjbGFzc2VzdAABL3VyAAJbQqzzF/gGCFTgAgAAeHAAAAAUccooEKfZdthtKjqkz6nHA0SEg8A=
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHAaogq6AHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAALHNyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cBPACqh0AAZub3RpZnlzcQB+AAzPhlmydAAHdW5hcHBseXNxAH4ADEKf2ll0AAR3YWl0c3EAfgAMnu9nNnQADSRhc0luc3RhbmNlT2ZzcQB+AAwLBuCldAADQm94c3EAfgAMFeq0oXQADHByb2R1Y3RBcml0eXNxAH4ADKA835N0AAZlcXVhbHNzcQB+AAyBJDIudAAMYXNJbnN0YW5jZU9mc3EAfgAMamLG/HQADHN5bmNocm9uaXplZHNxAH4ADLq78+d0AA0kaXNJbnN0YW5jZU9mc3EAfgAMMldaSHQACGNhbkVxdWFsc3EAfgAM80KH+HQABmdldERvZ3NxAH4ADCYtdsh0AA1wcm9kdWN0UHJlZml4c3EAfgAMYTor/3QACW5vdGlmeUFsbHNxAH4ADLxhMRp0AAtyZWFkUmVzb2x2ZXNxAH4ADHPixP90AApHZW5lcmljQm94c3EAfgAM/bQDX3QADGlzSW5zdGFuY2VPZnNxAH4ADGnMAlF0AAhjb250ZW50c3NxAH4ADJ5ZKAF0AAY8aW5pdD5zcQB+AAxdP1SidAAFUHVwcHlzcQB+AAwHnUVfdAADRG9nc3EAfgAMMUjgD3QABWFwcGx5c3EAfgAMfReLFnQAAj09c3EAfgAME9ESTXQABWNsb25lc3EAfgAMb2PsY3QACW1lbWJlcnMkMXNxAH4ADCYFxxV0AApjb250ZW50cyQxc3EAfgAMUtYOKnQABGNvcHlzcQB+AAw6PK0sdAADcHV0c3EAfgAMCDo7mnQAB21lbWJlcnNzcQB+AAxKM/TvdAAIdG9TdHJpbmdzcQB+AAxO1TindAACIT1zcQB+AAzI5bFUdAADZ2V0c3EAfgAM5BgENXQACGdldENsYXNzc3EAfgAMWfEGOXQADmNvcHkkZGVmYXVsdCQxc3EAfgAMGbqQwXQABUhvdXNlc3EAfgAMUA7nY3QACHB1dFB1cHB5c3EAfgAMjljAtHQAAm5lc3EAfgAM0lNJXXQAEVByaXZhdGVHZW5lcmljQm94c3EAfgAM5IMNsnQAAmVxc3EAfgAMOHHKD3QAD3Byb2R1Y3RJdGVyYXRvcnNxAH4ADPd6R0B0AAIjI3NxAH4ADFTF44t0AAhmaW5hbGl6ZXNxAH4ADOKbjf50AA5wcm9kdWN0RWxlbWVudHNxAH4ADESNQqN0AAhoYXNoQ29kZXNyABN4c2J0aS5hcGkuU291cmNlQVBJuV6n+SkjOKQCAAJbAAtkZWZpbml0aW9uc3QAF1tMeHNidGkvYXBpL0RlZmluaXRpb247WwAIcGFja2FnZXN0ABRbTHhzYnRpL2FwaS9QYWNrYWdlO3hwdXIAF1tMeHNidGkuYXBpLkRlZmluaXRpb247iMlc57TjXg4CAAB4cAAAAAhzcgATeHNidGkuYXBpLkNsYXNzTGlrZYM0HKHfsJdsAgAETAAOZGVmaW5pdGlvblR5cGV0ABpMeHNidGkvYXBpL0RlZmluaXRpb25UeXBlO1sAEHNhdmVkQW5ub3RhdGlvbnN0ABNbTGphdmEvbGFuZy9TdHJpbmc7TAAIc2VsZlR5cGV0ABBMeHNidGkvYXBpL0xhenk7TAAJc3RydWN0dXJlcQB+AG94cgAheHNidGkuYXBpLlBhcmFtZXRlcml6ZWREZWZpbml0aW9u+RFusdVQPOICAAFbAA50eXBlUGFyYW1ldGVyc3QAGltMeHNidGkvYXBpL1R5cGVQYXJhbWV0ZXI7eHIAFHhzYnRpLmFwaS5EZWZpbml0aW9uhyob6HFC40YCAARMAAZhY2Nlc3N0ABJMeHNidGkvYXBpL0FjY2VzcztbAAthbm5vdGF0aW9uc3QAF1tMeHNidGkvYXBpL0Fubm90YXRpb247TAAJbW9kaWZpZXJzdAAVTHhzYnRpL2FwaS9Nb2RpZmllcnM7TAAEbmFtZXEAfgANeHBzcgAQeHNidGkuYXBpLlB1YmxpY7pYPa5sLWBCAgAAeHIAEHhzYnRpLmFwaS5BY2Nlc3PdYpr4HWMxSAIAAHhwdXIAF1tMeHNidGkuYXBpLkFubm90YXRpb24765frGRD2jUgCAAB4cAAAAABzcgATeHNidGkuYXBpLk1vZGlmaWVyc8cREyFpnNwkAgABQgAFZmxhZ3N4cAB0ABZtYWluLnNjYWxhLmdlbmVyaWMuQm94dXIAGltMeHNidGkuYXBpLlR5cGVQYXJhbWV0ZXI72W0mDyid8rYCAAB4cAAAAAB+cgAYeHNidGkuYXBpLkRlZmluaXRpb25UeXBlAAAAAAAAAAASAAB4cgAOamF2YS5sYW5nLkVudW0AAAAAAAAAABIAAHhwdAAIQ2xhc3NEZWZ1cgATW0xqYXZhLmxhbmcuU3RyaW5nO63SVufpHXtHAgAAeHAAAAAAc3IAE3hzYnRpLlNhZmVMYXp5JEltcGxQAi6Tl5dAPwIAA1oACGJpdG1hcCQwTAACX3R0ABJMamF2YS9sYW5nL09iamVjdDtMAARldmFsdAARTHNjYWxhL0Z1bmN0aW9uMDt4cgAWeHNidGkuYXBpLkFic3RyYWN0TGF6edN3tQFfu+egAgAAeHAAcHNyACB4c2J0aS5TYWZlTGF6eSQkYW5vbmZ1biRzdHJpY3QkMQAAAAAAAAAAAgABTAAHdmFsdWUkMXEAfgCIeHBzcgATeHNidGkuYXBpLkVtcHR5VHlwZbz9nkZJO4kkAgAAeHIAFHhzYnRpLmFwaS5TaW1wbGVUeXBlcnhiiCEjv0ACAAB4cgAOeHNidGkuYXBpLlR5cGU/atkhFkmqygIAAHhwc3EAfgCHAHBzcQB+AIxzcgATeHNidGkuYXBpLlN0cnVjdHVyZamq+YCTb9gAAgADTAAIZGVjbGFyZWRxAH4Ab0wACWluaGVyaXRlZHEAfgBvTAA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
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHAy8Wi3AHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAJHNyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cCwAHJl0AAZub3RpZnlzcQB+AAzCjeVgdAAEd2FpdHNxAH4ADOUsUXV0AA0kYXNJbnN0YW5jZU9mc3EAfgAMtB1+knQABmVxdWFsc3NxAH4ADJckOxt0AAxhc0luc3RhbmNlT2ZzcQB+AAwGEiAMdAAMc3luY2hyb25pemVkc3EAfgAMfeFm/HQADSRpc0luc3RhbmNlT2ZzcQB+AAzymHBLdAAJZG9nR2V0Qm94c3EAfgAMo8gvL3QACVB1dEdldEJveHNxAH4ADBojGPp0AAdWYXJpZW50c3EAfgAMzXE+4XQACWRvZ1B1dEJveHNxAH4ADCc71fd0AAZnZXREb2dzcQB+AAyGpHxudAAGUHV0Qm94c3EAfgAMAAmvInQACW5vdGlmeUFsbHNxAH4ADGBCb7Z0AAxpc0luc3RhbmNlT2ZzcQB+AAzsU1vNdAAGPGluaXQ+c3EAfgAMPiNYvXQABVB1cHB5c3EAfgAMzMjRRnQAA0RvZ3NxAH4ADB2Gw/90AAtwdXBweUdldEJveHNxAH4ADNm+6+x0AAI9PXNxAH4ADBCsfg90AAVjbG9uZXNxAH4ADDzbr9h0AAYkaW5pdCRzcQB+AAzhj12TdAADcHV0c3EAfgAMMuitG3QABUJveGVzc3EAfgAMHbpbHnQABkdldEJveHNxAH4ADH/Cf9t0AAh0b1N0cmluZ3NxAH4ADLpbbUZ0AAIhPXNxAH4ADMuooid0AANnZXRzcQB+AAyJj3AkdAAIZ2V0Q2xhc3NzcQB+AAypWh2ndAALcHVwcHlQdXRCb3hzcQB+AAz5e+QVdAAIcHV0UHVwcHlzcQB+AAyMUaj2dAACbmVzcQB+AAzKaJuPdAACZXFzcQB+AAwKlAZxdAACIyNzcQB+AAwkcNo7dAAIZmluYWxpemVzcQB+AAwmE/IGdAAIaGFzaENvZGVzcgATeHNidGkuYXBpLlNvdXJjZUFQSblep/kpIzikAgACWwALZGVmaW5pdGlvbnN0ABdbTHhzYnRpL2FwaS9EZWZpbml0aW9uO1sACHBhY2thZ2VzdAAUW0x4c2J0aS9hcGkvUGFja2FnZTt4cHVyABdbTHhzYnRpLmFwaS5EZWZpbml0aW9uO4jJXOe0414OAgAAeHAAAAABc3IAE3hzYnRpLmFwaS5DbGFzc0xpa2WDNByh37CXbAIABEwADmRlZmluaXRpb25UeXBldAAaTHhzYnRpL2FwaS9EZWZpbml0aW9uVHlwZTtbABBzYXZlZEFubm90YXRpb25zdAATW0xqYXZhL2xhbmcvU3RyaW5nO0wACHNlbGZUeXBldAAQTHhzYnRpL2FwaS9MYXp5O0wACXN0cnVjdHVyZXEAfgBfeHIAIXhzYnRpLmFwaS5QYXJhbWV0ZXJpemVkRGVmaW5pdGlvbvkRbrHVUDziAgABWwAOdHlwZVBhcmFtZXRlcnN0ABpbTHhzYnRpL2FwaS9UeXBlUGFyYW1ldGVyO3hyABR4c2J0aS5hcGkuRGVmaW5pdGlvbocqG+hxQuNGAgAETAAGYWNjZXNzdAASTHhzYnRpL2FwaS9BY2Nlc3M7WwALYW5ub3RhdGlvbnN0ABdbTHhzYnRpL2FwaS9Bbm5vdGF0aW9uO0wACW1vZGlmaWVyc3QAFUx4c2J0aS9hcGkvTW9kaWZpZXJzO0wABG5hbWVxAH4ADXhwc3IAEHhzYnRpLmFwaS5QdWJsaWO6WD2ubC1gQgIAAHhyABB4c2J0aS5hcGkuQWNjZXNz3WKa+B1jMUgCAAB4cHVyABdbTHhzYnRpLmFwaS5Bbm5vdGF0aW9uO+uX6xkQ9o1IAgAAeHAAAAAAc3IAE3hzYnRpLmFwaS5Nb2RpZmllcnPHERMhaZzcJAIAAUIABWZsYWdzeHAAdAAabWFpbi5zY2FsYS5nZW5lcmljLlZhcmllbnR1cgAaW0x4c2J0aS5hcGkuVHlwZVBhcmFtZXRlcjvZbSYPKJ3ytgIAAHhwAAAAAH5yABh4c2J0aS5hcGkuRGVmaW5pdGlvblR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AAhDbGFzc0RlZnVyABNbTGphdmEubGFuZy5TdHJpbmc7rdJW5+kde0cCAAB4cAAAAABzcgATeHNidGkuU2FmZUxhenkkSW1wbFACLpOXl0A/AgADWgAIYml0bWFwJDBMAAJfdHQAEkxqYXZhL2xhbmcvT2JqZWN0O0wABGV2YWx0ABFMc2NhbGEvRnVuY3Rpb24wO3hyABZ4c2J0aS5hcGkuQWJzdHJhY3RMYXp503e1AV+756ACAAB4cABwc3IAIHhzYnRpLlNhZmVMYXp5JCRhbm9uZnVuJHN0cmljdCQxAAAAAAAAAAACAAFMAAd2YWx1ZSQxcQB+AHh4cHNyABN4c2J0aS5hcGkuRW1wdHlUeXBlvP2eRkk7iSQCAAB4cgAUeHNidGkuYXBpLlNpbXBsZVR5cGVyeGKIISO/QAIAAHhyAA54c2J0aS5hcGkuVHlwZT9q2SEWSarKAgAAeHBzcQB+AHcAcHNxAH4AfHNyABN4c2J0aS5hcGkuU3RydWN0dXJlqar5gJNv2AACAANMAAhkZWNsYXJlZHEAfgBfTAAJaW5oZXJpdGVkcQB+AF9MAAdwYXJlbnRzcQB+AF94cQB+AIBzcQB+AHcAcHNxAH4AfHVxAH4AWgAAAABzcQB+AHcAcHNxAH4AfHVxAH4AWgAAAABzcQB+AHcAcHNxAH4AfHVyABFbTHhzYnRpLmFwaS5UeXBlO3T/pVp7+elBAgAAeHAAAAACc3IAFHhzYnRpLmFwaS5Qcm9qZWN0aW9u89KNVOlFpC0CAAJMAAJpZHEAfgANTAAGcHJlZml4dAAWTHhzYnRpL2FwaS9TaW1wbGVUeXBlO3hxAH4Af3QABk9iamVjdHNyABN4c2J0aS5hcGkuU2luZ2xldG9u/Kdf+M9W5EYCAAFMAARwYXRodAAQTHhzYnRpL2FwaS9QYXRoO3hxAH4Af3NyAA54c2J0aS5hcGkuUGF0aJs9XAjOpSeEAgABWwAKY29tcG9uZW50c3QAGltMeHNidGkvYXBpL1BhdGhDb21wb25lbnQ7eHB1cgAaW0x4c2J0aS5hcGkuUGF0aENvbXBvbmVudDtD2gl0LWcWdAIAAHhwAAAAA3NyAAx4c2J0aS5hcGkuSWSYMmyLN1PEQAIAAUwAAmlkcQB+AA14cgAXeHNidGkuYXBpLlBhdGhDb21wb25lbnRfmiJbLoafvAIAAHhwdAAEamF2YXNxAH4AnHQABGxhbmdzcgAOeHNidGkuYXBpLlRoaXPbCe2mzFpAXAIAAHhxAH4AnXNxAH4AkHQAA0FueXNxAH4AlHNxAH4Al3VxAH4AmgAAAAJzcQB+AJx0AAVzY2FsYXEAfgCjdXIAFFtMeHNidGkuYXBpLlBhY2thZ2U7WxMZN3CnJ6ECAAB4cAAAAANzcgAReHNidGkuYXBpLlBhY2thZ2V+WY/2rs45WAIAAUwABG5hbWVxAH4ADXhwdAASbWFpbi5zY2FsYS5nZW5lcmljc3EAfgCtdAAEbWFpbnNxAH4ArXQACm1haW4uc2NhbGFzcgAVeHNidGkuYXBpLkNvbXBpbGF0aW9u7frgw2rooEICAAJKAAlzdGFydFRpbWVbAAdvdXRwdXRzdAAaW0x4c2J0aS9hcGkvT3V0cHV0U2V0dGluZzt4cAAAAU6lr2apdXIAGltMeHNidGkuYXBpLk91dHB1dFNldHRpbmc7f2rC86eHpUICAAB4cAAAAAFzcgAXeHNidGkuYXBpLk91dHB1dFNldHRpbmd62ZpHdPsdewIAAkwAD291dHB1dERpcmVjdG9yeXEAfgANTAAPc291cmNlRGlyZWN0b3J5cQB+AA14cHQAR0M6XFVzZXJzXGt3amFuZ1xnaXRcU2hvd2Nhc2VzXFNjYWxhXFNjYWxhVGVzdFx0YXJnZXRcc2NhbGEtMi4xMFxjbGFzc2VzdAABL3VyAAJbQqzzF/gGCFTgAgAAeHAAAAAUx931cPVj3PzevrtY95JZEGtdg3k=
+external apis:
+0 items
+source infos:
+7 items
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\Caculator.scala -> 
+AAAAAAAAAAA=
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP.scala -> 
+AAAAAAAAAAA=
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\caculator\CalculatorOOP2.scala -> 
+AAAAAAAAAAA=
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\cookbook\Cookbook.scala -> 
+AAAAAAAAAAA=
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\functionalPro\Calculator.scala -> 
+AAAAAAAAAAA=
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Box.scala -> 
+AAAAAAAAAAA=
+C:\Users\kwjang\git\Showcases\Scala\ScalaTest\src\main\scala\generic\Varient.scala -> 
+AAAAAAAAAAA=
+compilations:
+10 items
+0 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABTqBdzPl1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAR0M6XFVzZXJzXGt3amFuZ1xnaXRcU2hvd2Nhc2VzXFNjYWxhXFNjYWxhVGVzdFx0YXJnZXRcc2NhbGEtMi4xMFxjbGFzc2VzdAABLw==
+1 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABTqBgOet1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAR0M6XFVzZXJzXGt3amFuZ1xnaXRcU2hvd2Nhc2VzXFNjYWxhXFNjYWxhVGVzdFx0YXJnZXRcc2NhbGEtMi4xMFxjbGFzc2VzdAABLw==
+2 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABTqBjknR1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAR0M6XFVzZXJzXGt3amFuZ1xnaXRcU2hvd2Nhc2VzXFNjYWxhXFNjYWxhVGVzdFx0YXJnZXRcc2NhbGEtMi4xMFxjbGFzc2VzdAABLw==
+3 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABTqBpXP51cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAR0M6XFVzZXJzXGt3amFuZ1xnaXRcU2hvd2Nhc2VzXFNjYWxhXFNjYWxhVGVzdFx0YXJnZXRcc2NhbGEtMi4xMFxjbGFzc2VzdAABLw==
+4 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABTqB4il91cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAR0M6XFVzZXJzXGt3amFuZ1xnaXRcU2hvd2Nhc2VzXFNjYWxhXFNjYWxhVGVzdFx0YXJnZXRcc2NhbGEtMi4xMFxjbGFzc2VzdAABLw==
+5 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABTqDQAm91cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAR0M6XFVzZXJzXGt3amFuZ1xnaXRcU2hvd2Nhc2VzXFNjYWxhXFNjYWxhVGVzdFx0YXJnZXRcc2NhbGEtMi4xMFxjbGFzc2VzdAABLw==
+6 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABTqEAyn11cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAR0M6XFVzZXJzXGt3amFuZ1xnaXRcU2hvd2Nhc2VzXFNjYWxhXFNjYWxhVGVzdFx0YXJnZXRcc2NhbGEtMi4xMFxjbGFzc2VzdAABLw==
+7 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABTqES9Zx1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAR0M6XFVzZXJzXGt3amFuZ1xnaXRcU2hvd2Nhc2VzXFNjYWxhXFNjYWxhVGVzdFx0YXJnZXRcc2NhbGEtMi4xMFxjbGFzc2VzdAABLw==
+8 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABTqEkTct1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAR0M6XFVzZXJzXGt3amFuZ1xnaXRcU2hvd2Nhc2VzXFNjYWxhXFNjYWxhVGVzdFx0YXJnZXRcc2NhbGEtMi4xMFxjbGFzc2VzdAABLw==
+9 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABTqWvZql1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAR0M6XFVzZXJzXGt3amFuZ1xnaXRcU2hvd2Nhc2VzXFNjYWxhXFNjYWxhVGVzdFx0YXJnZXRcc2NhbGEtMi4xMFxjbGFzc2VzdAABLw==

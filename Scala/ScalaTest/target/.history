@@ -1,0 +1,12 @@
+eclipse
+run
+run hello
+run 1 1 _+
+run 1 1 +
+run "1 1 +"
+run "1 2 + 3 -"
+run "1 2 + 3 4 5 - - * 6 7 8 - * /"
+console
+import main.scala.cookbook
+console
+test
