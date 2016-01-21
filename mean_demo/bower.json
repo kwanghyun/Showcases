@@ -1,0 +1,43 @@
+{
+  "name": "mean-demo",
+  "version": "0.0.0",
+  "homepage": "https://github.com/mygithubhandlehere/mean-demo",
+  "authors": [
+    "First Last <first.last@email.com>"
+  ],
+  "description": "my really cool app!",
+  "keywords": [
+    "mean-seed",
+    "mean",
+    "mean-stack",
+    "generator-mean-seed",
+    "javascript",
+    "angular",
+    "node",
+    "app"
+  ],
+  "dependencies": {
+    "angular": "1.4.8",
+    "angular-animate": "1.4.8",
+    "angular-sanitize": "1.4.8",
+    "angular-touch": "1.4.8",
+    "angular-route": "1.4.8",
+    "angular-cookies": "1.4.8",
+	"angular-mocks": "1.4.8",
+    "lesshat": "latest",
+    "font-awesome": "latest",
+    "less-flexbox": "latest",
+    "momentjs": "latest",
+    "angular-string": "latest",
+    "angular-array": "latest",
+    "angular-forminput": "latest",
+    "angular-socket-io": "latest"
+  },
+  "license": "MIT",
+  "resolutions": {
+    "angular": "1.4.8",
+    "angular-animate": "1.4.8",
+    "angular-sanitize": "1.4.8",
+    "angular-touch": "1.4.8"
+  }
+}

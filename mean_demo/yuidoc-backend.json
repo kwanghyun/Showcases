@@ -1,0 +1,11 @@
+{
+    "name": "mean-demo",
+    "description": "my really cool app!",
+    "version": "0.0.0",
+    "url": "https://github.com/mygithubhandlehere/mean-demo",
+    "options": {
+        "paths": ".",
+        "outdir": "yuidocs/backend",
+        "exclude": "node_modules,public,src"
+    }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "dslink",
+  "version": "1.0.0",
+  "description": "DSLink IoT platform SDK for node.js and the Web",
+  "main": "dist/dslink.node.min.js",
+  "browser": {
+    "crypto": "./tool/js/crypto.browser.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Bullington",
+  "license": "MIT",
+  "dependencies": {
+    "dhcurve": "^1.2.0",
+    "es6-map": "^0.1.1",
+    "es6-promises": "^1.0.10",
+    "spawn-sync": "^1.0.11",
+    "ws": "^0.7.2",
+    "sha.js": "~2.4.2"
+  },
+  "devDependencies": {
+    "browserify": "^10.2.3",
+    "uglify-js": "^2.4.23"
+  }
+}
