@@ -11,23 +11,25 @@
 		"logfile": "forever.log"
 	},
 	"app": {
-		"name": "mean-demo",
-		"title": "mean-demo"
+		"name": "myproject",
+		"title": "My Project"
 	},
 	"platform":"",
 	"server": {
 		"domain": "localhost",
+		"_domain": "127.0.0.1",
+		"_domainComment": "Must use ip address for twitter (login, e2e testing)",
 		"scheme": "http",
-		"port": 3000,
+		"port": 3005,
 		"_vanityPortStringComment": "E.g. ':3000' or blank '' for no port - set an optional 'vanityPortString' key for port 80 redirects for production sites to hide port for social logins, user communication, etc.",
 		"_httpsPort": 443,
-		"httpPort": 3002,
-		"httpRedirectPort": 3000,
+		"httpPort": 3007,
+		"httpRedirectPort": 3005,
 		"_httpRedirectPortComment": "set to 'false' to have no port - i.e. for production use with iptables routing",
 		"socketIOEnabled": true,
-		"_socketPort": 3001,
+		"_socketPort": 3006,
 		"_socketPortComment": "Must be same port with express?",
-		"socketPort": 3000,
+		"socketPort": 3005,
 		"serverPath": "/",
 		"appPath": "/",
 		"staticFilePath": "/src/",
@@ -41,7 +43,7 @@
 		"fullURI": "",
 		"host": "localhost",
 		"port": 27017,
-		"database": "mean-demo",
+		"database": "test_temp",
 		"username": false,
 		"password": false
 	},
@@ -90,8 +92,8 @@
 		"addresses": {
 			"noReply": "noreply"
 		},
-		"from": "admin@mean-demo.com",
-		"from_name": "Admin",
+		"from": "admin@myproject.com",
+		"from_name": "Admin TEST",
 		"mandrillApiKey": "8X-1bNRWtA4rbneppkqahw",
 		"mandrillApiKeyComment":"Make sure to CHANGE this!"
 	},
@@ -107,14 +109,14 @@
 		"consumerKey": "4wTFTzPvchVYAECdulQBCVcpk",
 		"consumerSecret": "Sq1UeJbL4PSf5WyP6TUkAt8uFIxTFvzf2D8IBkvkZriu0WV0vr",
 		"consumerComment":"Make sure to CHANGE the key and secret!",
-		"callback_url": "http://127.0.0.1:3000/callback-twitter-auth",
+		"callback_url": "http://127.0.0.1:3005/callback-twitter-auth",
 		"handle": ""
 	},
 	"google":{
 		"clientId": "486630891328.apps.googleusercontent.com",
 		"clientIdComment":"Make sure to CHANGE this!",
 		"clientSecret": "uKWzHKd9hbF4dxCmxefrpkYh",
-		"callback_url": "http://localhost:3000/callback-google-auth"
+		"callback_url": "http://localhost:3005/callback-google-auth"
 	},
 	"sauceLabs": {
 		"user": "",

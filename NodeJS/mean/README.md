@@ -1,4 +1,4 @@
-# mean-demo
+# myproject
 
 ## Demo
 NOTE: replace all 'http' with 'https' if using 'https' (set in `config.json`)

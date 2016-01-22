@@ -1,9 +1,9 @@
 {
 	"author": "First Last <first.last@email.com>",
-	"name": "mean-demo",
+	"name": "myproject",
 	"version": "0.0.0",
 	"description": "my really cool app!",
-	"homepage": "https://github.com/mygithubhandlehere/mean-demo",
+	"homepage": "https://github.com/mygithubhandlehere/myproject",
 	"dependencies": {
 		"async": "1.5.0",
 		"body-parser": "1.14.1",
