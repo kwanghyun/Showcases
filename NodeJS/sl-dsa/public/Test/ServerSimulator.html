@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+	margin: 20px;
+	background-color: #000000;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-family: Calibri;
+	font-size: 17px;
+	word-wrap: break-word
+}
+
+input {
+	margin-left: 5px;
+}
+
+.doorOpen {
+	background-color : white;
+	color : black;
+}
+
+.doorClose {
+	background-color : black;
+	color : white;
+}
+
+</style>
+
+<meta charset="ISO-8859-1">
+<title>SL Server Simulator</title>
+<script src="jquery-1.10.2.min.js"></script>
+<script src="adopter/dslink.js"></script>
+<script type="text/javascript">
+
+document.addEventListener('DOMContentLoaded', function(event) {    
+    var server_id = "SmartLocker-Server"
+    var deviceId = "testSite-testBank";
+    // var brokerURL = 'http://localhost:8080';
+    // var brokerURL = "http://10.203.55.126:8080";
+    // var brokerURL = "http://10.203.31.192:8080";
+    // var brokerURL = 'http://10.106.9.143:8080';
+    // var brokerURL = "http://10.203.55.126:8080";
+    var brokerURL = "http://10.106.8.159:8080";
+    var keys;
+    var link;
+
+
+    var load = {
+        kiosk_version: {
+            '$type' : 'string',
+            '?value' : ''
+        },
+        'testSite-testBank':{
+            stagedPackage: {
+                '$type' : 'string',
+                '?value' : ''
+            },
+            canceledPackage: {
+                '$type' : 'string',
+                '?value' : ''
+            }            
+        }
+
+    };
+
+    link = new DS.LinkProvider(brokerURL + '/conn', 'link-' + server_id + '-', {
+        profiles: {},
+        defaultNodes: load,
+        token:"dQ3aj2WjvGO1NF9L6Kckwq5F4jHDisLsRT3vuFjZp8DEEONo"
+    });
+
+
+    var config_list = [];
+    
+    var config = {};
+    config.id = "sw_version";
+    config.label = "Version Change";
+    config_list.push(config);
+
+    var config1 = {};
+    config1.id = "staged_Pkg";
+    config1.label = "Staged Pkg";
+    config_list.push(config1);
+
+    var config2 = {};
+    config2.id = "canceled_Pkg";
+    config2.label = "Canceled Pkg";
+    config_list.push(config2);
+
+    function createRequestTableRows(config){
+		var str = '<tr><td><div id="'+ config.id +'_id">'+config.label+'</div></td>';
+		str += '<td ><input id="'+config.id+'_text" type="text" name="fname"></td>';
+		str += '<td ></td>';
+		str += '<td><input type = "button" id="'+config.id+'" value ="'+ config.label +'" class="versionChangeButton" /></td></tr>';
+		$('#config_list tr:last').after(str);
+	}
+
+	function generateTables(config_list){
+		for(var idx in config_list){
+			createRequestTableRows(config_list[idx]);	
+		}
+	}
+	generateTables(config_list);
+
+	// $(document).on('click', '.doorOpenButtons', function(){
+		
+	// });
+
+    document.querySelector('#sw_version').addEventListener('click', function() {
+        var nodePath = '/' + deviceId + '/build_version';
+        console.log(document.getElementById("sw_version_text").value);
+        link.updateValue(nodePath, document.getElementById("sw_version_text").value);
+    });
+
+    document.querySelector('#staged_Pkg').addEventListener('click', function() {
+        var nodePath = '/' + deviceId + '/stagedPackage';
+        console.log(document.getElementById("staged_Pkg_text").value);
+        link.updateValue(nodePath, document.getElementById("staged_Pkg_text").value);
+    });
+
+    document.querySelector('#canceled_Pkg').addEventListener('click', function() {
+      var nodePath = '/' + deviceId + '/canceledPackage';
+      console.log(document.getElementById("canceled_Pkg_text").value);
+      link.updateValue(nodePath, document.getElementById("canceled_Pkg_text").value);
+    });
+
+    keys = new DS.PrivateKey.loadFromString('rbKXu9ADtvRtHFVNGdTpmeSKRMGsfU7TNsxtgrsk+OM=');
+    link.privateKey = keys;
+
+    link.connect().then(function() {
+        return link.onRequesterReady;
+    }).then(function(requester) {
+
+        
+
+        requester.subscribe('/conns/link-' + deviceId + '/1/doorState', function(update) {
+            var data = update.value;
+
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - doorStatus update :: " + data);
+                $( "#doorStatus1" ).text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/1/occupancyStatus', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - package status update :: " + data);
+                $( "#pkgStatus1"  ).text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/1/alarmState', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - alarm update :: " + data);
+                $( "#alarmStatus1" ).text( data );
+            }
+            return;
+        });            
+                       
+
+       requester.subscribe('/conns/link-' + deviceId + '/2/doorState', function(update) {
+            var data = update.value;
+
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - doorStatus  update :: " + data);
+                $( "#doorStatus2" ).text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/2/occupancyStatus', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - package status update :: " + data);
+                $( "#pkgStatus2").text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/2/alarmState', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - alarm update :: " + data);
+                $( "#alarmStatus2").text( data );
+            }
+            return;
+        });            
+
+
+       requester.subscribe('/conns/link-' + deviceId + '/3/doorState', function(update) {
+            var data = update.value;
+
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - doorStatus  update :: " + data);
+                $( "#doorStatus3" ).text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/3/occupancyStatus', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - package status update :: " + data);
+                $( "#pkgStatus3").text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/3/alarmState', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - alarm update :: " + data);
+                $( "#alarmStatus3").text( data );
+            }
+            return;
+        });            
+
+
+       requester.subscribe('/conns/link-' + deviceId + '/4/doorState', function(update) {
+            var data = update.value;
+
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - doorStatus  update :: " + data);
+                $( "#doorStatus4" ).text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/4/occupancyStatus', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - package status update :: " + data);
+                $( "#pkgStatus4").text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/4/alarmState', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - alarm update :: " + data);
+                $( "#alarmStatus4").text( data );
+            }
+            return;
+        });            
+
+
+       requester.subscribe('/conns/link-' + deviceId + '/5/doorState', function(update) {
+            var data = update.value;
+
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - doorStatus  update :: " + data);
+                $( "#doorStatus5" ).text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/5/occupancyStatus', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - package status update :: " + data);
+                $( "#pkgStatus5").text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/5/alarmState', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - alarm update :: " + data);
+                $( "#alarmStatus5").text( data );
+            }
+            return;
+        });   
+         
+
+
+       requester.subscribe('/conns/link-' + deviceId + '/6/doorState', function(update) {
+            var data = update.value;
+
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - doorStatus  update :: " + data);
+                $( "#doorStatus6" ).text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/6/occupancyStatus', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - package status update :: " + data);
+                $( "#pkgStatus6").text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/6/alarmState', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - alarm update :: " + data);
+                $( "#alarmStatus6").text( data );
+            }
+            return;
+        });   
+
+
+       requester.subscribe('/conns/link-' + deviceId + '/7/doorState', function(update) {
+            var data = update.value;
+
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - doorStatus  update :: " + data);
+                $( "#doorStatus7" ).text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/7/occupancyStatus', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - package status update :: " + data);
+                $( "#pkgStatus7").text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/7/alarmState', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - alarm update :: " + data);
+                $( "#alarmStatus7").text( data );
+            }
+            return;
+        });   
+
+
+
+        requester.subscribe('/conns/link-' + deviceId + '/8/doorState', function(update) {
+            var data = update.value;
+
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - doorStatus  update :: " + data);
+                $( "#doorStatus8" ).text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/8/occupancyStatus', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - package status update :: " + data);
+                $( "#pkgStatus8").text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/8/alarmState', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - alarm update :: " + data);
+                $( "#alarmStatus8").text( data );
+            }
+            return;
+        });   
+       
+
+
+       requester.subscribe('/conns/link-' + deviceId + '/9/doorState', function(update) {
+            var data = update.value;
+
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - doorStatus  update :: " + data);
+                $( "#doorStatus9" ).text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/9/occupancyStatus', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - package status update :: " + data);
+                $( "#pkgStatus9").text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/9/alarmState', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - alarm update :: " + data);
+                $( "#alarmStatus9").text( data );
+            }
+            return;
+        });   
+
+
+
+       requester.subscribe('/conns/link-' + deviceId + '/10/doorState', function(update) {
+            var data = update.value;
+
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - doorStatus  update :: " + data);
+                $( "#doorStatus10" ).text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/10/occupancyStatus', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - package status update :: " + data);
+                $( "#pkgStatus10").text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/10/alarmState', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - alarm update :: " + data);
+                $( "#alarmStatus10").text( data );
+            }
+            return;
+        });   
+
+
+       requester.subscribe('/conns/link-' + deviceId + '/11/doorState', function(update) {
+            var data = update.value;
+
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - doorStatus  update :: " + data);
+                $( "#doorStatus11" ).text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/11/occupancyStatus', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - package status update :: " + data);
+                $( "#pkgStatus11").text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/11/alarmState', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - alarm update :: " + data);
+                $( "#alarmStatus11").text( data );
+            }
+            return;
+        });   
+
+
+       requester.subscribe('/conns/link-' + deviceId + '/12/doorState', function(update) {
+            var data = update.value;
+
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - doorStatus  update :: " + data);
+                $( "#doorStatus12" ).text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/12/occupancyStatus', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - package status update :: " + data);
+                $( "#pkgStatus12").text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/12/alarmState', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - alarm update :: " + data);
+                $( "#alarmStatus12").text( data );
+            }
+            return;
+        });   
+
+
+
+       requester.subscribe('/conns/link-' + deviceId + '/13/doorState', function(update) {
+            var data = update.value;
+
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - doorStatus  update :: " + data);
+                $( "#doorStatus13" ).text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/13/occupancyStatus', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - package status update :: " + data);
+                $( "#pkgStatus13").text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/13/alarmState', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - alarm update :: " + data);
+                $( "#alarmStatus13").text( data );
+            }
+            return;
+        });   
+
+
+       requester.subscribe('/conns/link-' + deviceId + '/14/doorState', function(update) {
+            var data = update.value;
+
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - doorStatus  update :: " + data);
+                $( "#doorStatus14" ).text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/14/occupancyStatus', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - package status update :: " + data);
+                $( "#pkgStatus14").text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/14/alarmState', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - alarm update :: " + data);
+                $( "#alarmStatus14").text( data );
+            }
+            return;
+        });   
+
+
+       requester.subscribe('/conns/link-' + deviceId + '/15/doorState', function(update) {
+            var data = update.value;
+
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - doorStatus  update :: " + data);
+                $( "#doorStatus15" ).text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/15/occupancyStatus', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - package status update :: " + data);
+                $( "#pkgStatus15").text( data );
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/15/alarmState', function(update) {
+            var data = update.value;            
+            
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - alarm update :: " + data);
+                $( "#alarmStatus15").text( data );
+            }
+            return;
+        });   
+
+
+
+        requester.subscribe('/conns/link-' + deviceId + '/packageUpdate', function(update) {
+            var data = update.value;            
+            console.log("#requester.subscribtion - packageUpdate :: " + data);
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - packageUpdate data :: " + data);
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/kpiPayload', function(update) {
+            var data = update.value;            
+            console.log("#requester.subscribtion - kpiPayload :: " + data);
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - kpiPayload data :: " + data);
+            }
+            return;
+        });
+
+        requester.subscribe('/conns/link-' + deviceId + '/auditPayload', function(update) {
+            var data = update.value;            
+            console.log("#requester.subscribtion - auditPayload :: " + data);
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - auditPayload data :: " + data);
+            }
+            return;
+        });
+
+    }).catch(function(reason) {
+      console.log(reason);
+    });
+});
+
+</script>
+</head>
+<body>
+	<h2>Server Simulator</h2>
+
+	<h3>Data List</h3>
+	<table id="config_list" BORDER=1 BORDERCOLOR=white>
+		<tr>
+			<th width="200px">Data Name</th>
+			<th width="200px">Data Value</th>
+			<th width="200px">Detail</th>
+			<th width="300px">Control</th>
+		</tr>
+	</table>
+    <hr/>
+    Locker Status Change Update
+    
+    <table id="statusTable" BORDER=1 BORDERCOLOR=white>
+        <tr>
+            <th width="200px">Locker</th>
+            <th width="200px">DOOR</th>
+            <th width="200px">PACKAGE</th>
+            <th width="300px">ALARM</th>
+        </tr>
+        <tr>
+            <th width="200px">LOCKER-1</th>
+            <th width="200px"><div id="doorStatus1"/></th>
+            <th width="200px"><div id="pkgStatus1"/></th>
+            <th width="300px"><div id="alarmStatus1"/></th>
+        </tr>
+        <tr>
+            <th width="200px">LOCKER-2</th>
+            <th width="200px"><div id="doorStatus2"/></th>
+            <th width="200px"><div id="pkgStatus2"/></th>
+            <th width="300px"><div id="alarmStatus2"/></th>
+        </tr>
+         <tr>
+            <th width="200px">LOCKER-3</th>
+            <th width="200px"><div id="doorStatus3"/></th>
+            <th width="200px"><div id="pkgStatus3"/></th>
+            <th width="300px"><div id="alarmStatus3"/></th>
+        </tr>
+        <tr>
+            <th width="200px">LOCKER-4</th>
+            <th width="200px"><div id="doorStatus4"/></th>
+            <th width="200px"><div id="pkgStatus4"/></th>
+            <th width="300px"><div id="alarmStatus4"/></th>
+        </tr>
+        <tr>
+            <th width="200px">LOCKER-5</th>
+            <th width="200px"><div id="doorStatus5"/></th>
+            <th width="200px"><div id="pkgStatus5"/></th>
+            <th width="300px"><div id="alarmStatus5"/></th>
+        </tr>
+        <tr>
+            <th width="200px">LOCKER-6</th>
+            <th width="200px"><div id="doorStatus6"/></th>
+            <th width="200px"><div id="pkgStatus6"/></th>
+            <th width="300px"><div id="alarmStatus6"/></th>
+        </tr>
+        <tr>
+            <th width="200px">LOCKER-7</th>
+            <th width="200px"><div id="doorStatus7"/></th>
+            <th width="200px"><div id="pkgStatus7"/></th>
+            <th width="300px"><div id="alarmStatus7"/></th>
+        </tr>
+        <tr>
+            <th width="200px">LOCKER-8</th>
+            <th width="200px"><div id="doorStatus8"/></th>
+            <th width="200px"><div id="pkgStatus8"/></th>
+            <th width="300px"><div id="alarmStatus8"/></th>
+        </tr>
+        <tr>
+            <th width="200px">LOCKER-9</th>
+            <th width="200px"><div id="doorStatus9"/></th>
+            <th width="200px"><div id="pkgStatus9"/></th>
+            <th width="300px"><div id="alarmStatus9"/></th>
+        </tr>
+        <tr>
+            <th width="200px">LOCKER-10</th>
+            <th width="200px"><div id="doorStatus10"/></th>
+            <th width="200px"><div id="pkgStatus10"/></th>
+            <th width="300px"><div id="alarmStatus10"/></th>
+        </tr>
+        <tr>
+            <th width="200px">LOCKER-11</th>
+            <th width="200px"><div id="doorStatus11"/></th>
+            <th width="200px"><div id="pkgStatus11"/></th>
+            <th width="300px"><div id="alarmStatus11"/></th>
+        </tr>
+        <tr>
+            <th width="200px">LOCKER-12</th>
+            <th width="200px"><div id="doorStatus12"/></th>
+            <th width="200px"><div id="pkgStatus12"/></th>
+            <th width="300px"><div id="alarmStatus12"/></th>
+        </tr>
+        <tr>
+            <th width="200px">LOCKER-13</th>
+            <th width="200px"><div id="doorStatus13"/></th>
+            <th width="200px"><div id="pkgStatus13"/></th>
+            <th width="300px"><div id="alarmStatus13"/></th>
+        </tr>
+         <tr>
+            <th width="200px">LOCKER-14</th>
+            <th width="200px"><div id="doorStatus14"/></th>
+            <th width="200px"><div id="pkgStatus14"/></th>
+            <th width="300px"><div id="alarmStatus14"/></th>
+        </tr>
+        <tr>
+            <th width="200px">LOCKER-15</th>
+            <th width="200px"><div id="doorStatus15"/></th>
+            <th width="200px"><div id="pkgStatus15"/></th>
+            <th width="300px"><div id="alarmStatus15"/></th>
+        </tr>                      
+    </table>
+
+</body>
+</html>

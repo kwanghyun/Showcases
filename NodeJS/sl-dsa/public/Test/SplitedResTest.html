@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+	margin: 20px;
+	background-color: #000000;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-family: Calibri;
+	font-size: 17px;
+	word-wrap: break-word
+}
+
+</style>
+
+<meta charset="ISO-8859-1">
+<title>Smart Locker Splitted Responses Unit Test</title>
+<script src="jquery-1.10.2.min.js"></script>
+<script src="panasonic/CommandModel.js"></script>
+<script src="panasonic/SerialConnection.js"></script>
+<script src="PanasonicLockerManager.js"></script>
+<script type="text/javascript">
+
+</script>
+</head>
+
+
+<body>
+	<h2>Smart Locker Splitted Responses Unit Test</h2>
+	
+	<input id="runTest" type="button" value="Run Test" /> 
+	<table>
+	<tr>
+		<td>SUCCESSED TEST </td>
+		<td>:</td>
+		<td><div id = "successCount">0</div></td>
+	</tr>
+		<tr>
+		<td>FAILED TEST </td>
+		<td>:</td>
+		<td><div id="failCount">0</div></td>
+	</tr>
+	
+	</table>
+	
+	<hr/>
+	<h4>SPLITTED RESPONSE HANDLING TEST</h4>
+	<table id="splittedResponseTable" BORDER=1 BORDERCOLOR=white>
+		<tr>
+			<th width="150px">Type</th>
+			<th width="300px">Input</th>
+			<th width="400px">Output</th>
+			<th width="300px">Expected</th>
+			<th width="100px">Result</th>
+		</tr>
+	</table>
+	<hr/>
+
+</body>
+</html>

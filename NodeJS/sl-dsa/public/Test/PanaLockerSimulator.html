@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+	margin: 20px;
+	background-color: #000000;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-family: Calibri;
+	font-size: 17px;
+	word-wrap: break-word;
+}
+
+input {
+	margin-left: 5px;
+}
+
+.locerk_state{
+	text-align: center;
+}
+
+.doorOpen {
+	background-color : white;
+	color : black;
+}
+
+.doorClose {
+	background-color : black;
+	color : white;
+}
+
+.pkg_in {
+	background-color : yellow;
+	color : black;
+}
+
+.pkg_out {
+	background-color : black;
+	color : white;
+}
+
+.alarm_on {
+	background-color : purple;
+	color : white;
+}
+
+.alarm_off {
+	background-color : black;
+	color : white;
+}
+
+.error {
+	background-color : black;
+	color : red;
+}
+
+</style>
+
+<meta charset="ISO-8859-1">
+<title>SL Locker Simulator</title>
+<script src="jquery-1.10.2.min.js"></script>
+<script src="PrinterManager.js"></script>
+<script src="panasonic/CommandModel.js"></script>
+<script src="panasonic/SerialConnection.js"></script>
+<script src="PanasonicLockerManager.js"></script>
+<script src="adopter/dslink.js"></script>
+<!-- <script src="adopter/dslink.browser.js"></script> -->
+<!-- <script src="adopter/dslink.browser.full.js"></script> -->
+
+<script src="DSAManager.js"></script>
+<script src="Locker.js"></script>
+<script src="PanasonicLockerSimulator.js"></script>
+<script type="text/javascript">
+
+
+</script>
+</head>
+<body>
+	<h2>Smart Locker Simulator</h2>
+
+	<h3>Locker State List</h3>
+	<input type="button" id = "bulkOpen" value="OPEN ALL"/>
+	<input type="button" id = "bulkClose" value="CLOSE ALL"/>
+	<input type="button" id = "getStatusALL" value="GET STATUS ALL"/>
+	<input type="button" id = "configChange" value ="CONFIG CHANGE" class="configChangeButton"/>
+	<input type="button" id = "updatePkg" value ="UPDATE PKG" class="updatePkgButton"/>
+	<input type="text" id = "updatePkgInput" />
+	<input type="button" id = "updateKpiPayload" value ="UPDATE KPI" class="updateKpiButton"/>
+	<input type="text" id = "updateKpiInput" />
+	<input type="button" id = "updateAuditPayload" value ="UPDATE Audit" class="updateAuditButton"/>
+	<input type="text" id = "updateAuditInput" />
+	<input type="button" id = "print" value ="PRINT" class="printButton"/>
+
+	<hr/>
+	<table id="lockerStateList" BORDER=1 BORDERCOLOR=white>
+		<tr>
+			<th width="80px">LockerId</th>
+			<th width="60px">Door</th>
+			<th width="60px">Package</th>
+			<th width="60px">Alarm</th>
+			<th width="600px">Control</th>
+		</tr>
+	</table>
+
+</body>
+</html>

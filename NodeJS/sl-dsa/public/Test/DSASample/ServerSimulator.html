@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+	margin: 20px;
+	background-color: #000000;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-family: Calibri;
+	font-size: 17px;
+	word-wrap: break-word
+}
+
+input {
+	margin-left: 5px;
+}
+
+.doorOpen {
+	background-color : white;
+	color : black;
+}
+
+.doorClose {
+	background-color : black;
+	color : white;
+}
+
+</style>
+
+<meta charset="ISO-8859-1">
+<title>SL Server Simulator</title>
+<script src="jquery-1.10.2.min.js"></script>
+<script src="dslink.js"></script>
+<script type="text/javascript">
+
+document.addEventListener('DOMContentLoaded', function(event) {    
+    var server_id = "server"
+    var deviceId = "testTV";
+    // var brokerURL = "http://localhost:8080";
+    var brokerURL = "http://10.106.8.159:8080";
+    // var brokerURL = "http://10.203.31.192:8080";
+    // var brokerURL = 'http://10.106.9.143:8080';
+    // var brokerURL = "http://10.194.170.132:8080";
+    // var brokerURL = "http://10.203.55.126:8080";
+
+    var keys;
+    var link;
+
+
+    var load = {
+        sw_version: {
+            '$type' : 'string',
+            '?value' : ''
+        }
+    };
+
+    link = new DS.LinkProvider(brokerURL + '/conn', 'link-' + server_id + '-', {
+        profiles: {},
+        defaultNodes: load,
+        token:"dQ3aj2WjvGO1NF9L6Kckwq5F4jHDisLsRT3vuFjZp8DEEONo"
+    });
+
+
+    var config_list = [];
+    
+    var config = {};
+    config.id = "sw_version";
+    config.label = "Version Change";
+    config_list.push(config);
+
+    function createRequestTableRows(config){
+		var str = '<tr><td><div id="'+ config.id +'_id">'+config.label+'</div></td>';
+		str += '<td ><input id="'+config.id+'_text" type="text" name="fname"></td>';
+		str += '<td ></td>';
+		str += '<td><input type = "button" id="'+config.id+'" value ="'+ config.label +'" class="versionChangeButton" /></td></tr>';
+		$('#config_list tr:last').after(str);
+	}
+
+	function generateTables(config_list){
+		for(var idx in config_list){
+			createRequestTableRows(config_list[idx]);	
+		}
+	}
+	generateTables(config_list);
+
+    document.querySelector('#sw_version').addEventListener('click', function() {
+        // var nodePath = '/' + deviceId + '/sw_version';
+        var nodePath = '/sw_version';
+        var version = document.getElementById("sw_version_text").value
+        console.log(version);
+        link.updateValue(nodePath, version);
+    });
+
+
+    keys = new DS.PrivateKey.loadFromString('rbKXu9ADtvRtHFVNGdTpmeSKRMGsfU7TNsxtgrsk+OM=');
+    link.privateKey = keys;
+
+    link.connect().then(function() {
+        return link.onRequesterReady;
+    }).then(function(requester) {
+        requester.subscribe('/conns/link-' + deviceId + '/deviceStatus', function(update) {
+            var data = update.value;            
+            console.log("#requester.subscribtion - deviceStatus :: " + data);
+            if(data !=null && data != undefined && data != ''){
+                console.log("##### Handle - deviceStatus data :: " + data);
+            }
+            return;
+        });
+        
+
+        document.querySelector('#turnOnTV').addEventListener('click', function() {
+            var nodePath = '/conns/link-' + deviceId + '/turnOn';
+            console.log(nodePath);
+            requester.invoke(nodePath);
+
+        });
+
+        document.querySelector('#turnOffTV').addEventListener('click', function() {
+            var nodePath = '/conns/link-' + deviceId + '/turnOff';
+            console.log(nodePath);
+            requester.invoke(nodePath);
+        });
+
+    }).catch(function(reason) {
+      console.log(reason);
+    });
+});
+
+</script>
+</head>
+<body>
+	<h2>Server Simulator</h2>
+
+	<h3>Data List</h3>
+    <input type="button" id="turnOnTV"  value ="TURN ON TV REMOTE" class="button"/>
+    <input type="button" id="turnOffTV"  value ="TURN OFF TV REMOTE" class="button"/>
+    <hr/>
+	<table id="config_list" BORDER=1 BORDERCOLOR=white>
+		<tr>
+			<th width="200px">Data Name</th>
+			<th width="200px">Data Value</th>
+			<th width="200px">Detail</th>
+			<th width="300px">Control</th>
+		</tr>
+	</table>
+
+</body>
+</html>

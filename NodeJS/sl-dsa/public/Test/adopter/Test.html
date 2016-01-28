@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+	margin: 20px;
+	background-color: #000000;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-family: Calibri;
+	font-size: 17px;
+	word-wrap: break-word
+}
+
+</style>
+
+<meta charset="ISO-8859-1">
+<title>Smart Locker Serial Commands Unit Test</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="MetaDataDefinition.js"></script>
+<script src="AdopterCore.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	initMetaDataDefinition();
+	intiMetaPropertyDefinition();
+
+	var successCount = 0;
+	var failCount = 0;
+	var RQ_TEST_DATA = new Array();
+	var RS_TEST_DATA = new Array();
+	var RSS_TEST_DATA = new Array();
+	
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * TEST DATA SET UP START
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+	function setRequestTestData(index){
+		
+		RQ_TEST_DATA.push({
+			type : 'OP1',
+			input : JSON.stringify({
+				action : 'OPEN', 
+				version : '1.0.0', 
+				lockerGroupNo : '01',
+				lockerNo : '1', 
+				interval : '1', 
+				lockerCondition : 'LOCKER_CONDITION.NONE', 
+				alarmControl : 'ALARM.CONTROL.OFF'
+		}),
+			expected : '#OP0110100'
+		});
+		
+		RQ_TEST_DATA.push({
+			type : 'OP2',
+			input : JSON.stringify({
+				action : 'OPEN', 
+				version : '1.0.0', 
+				lockerGroupNo : '01', 
+				lockerNo : '5', 
+				interval : '13', 
+				lockerCondition : 'LOCKER_CONDITION.PACKAGE_EXIST', 
+				alarmControl : 'ALARM.CONTROL.ON'
+		}),
+			expected : '#OP0151311'
+		});
+		
+		RQ_TEST_DATA.push({
+			type : 'OP3',
+			input : JSON.stringify({
+				action : 'OPEN', 
+				version : '1.0.0', 
+				lockerGroupNo : '05',
+				lockerNo : '5',
+				interval : '0', 
+				lockerCondition : 'LOCKER_CONDITION.PACKAGE_NOT_EXIST', 
+				alarmControl : 'ALARM.CONTROL.ON'
+		}),
+			expected : '#OP0550021'
+		});
+		
+		RQ_TEST_DATA.push({
+			type : 'CL1',
+			input : JSON.stringify({
+				action : 'CHANGE_LOCKER_CONDITION', 
+				version : '1.0.0', 
+				lockerGroupNo : '01', 
+				lockerNo : '1',
+				lockerCondition : 'LOCKER_CONDITION.PACKAGE_EXIST', 
+				alarmControl : 'ALARM.CONTROL.ON'
+		}),
+			expected : '#CL01111'
+		});
+		
+		RQ_TEST_DATA.push({
+			type : 'SB1',
+			input : JSON.stringify({
+				action : 'GET_STATUS', 
+				version : '1.0.0', 
+				lockerGroupNo : '02', 
+				lockerNo : '5',
+		}),
+			expected : '#SB025'
+		});
+		
+		RQ_TEST_DATA.push({
+			type : 'CW1',
+			input : JSON.stringify({
+				action : 'SET_CLOSE_FORGET', 
+				version : '1.0.0', 
+				alarmControl : 'ALARM.CONTROL.ON',
+				interval : '9',
+				duration : '3'
+		}),
+			expected : '#CW10903'
+		});
+		RQ_TEST_DATA.push({
+			type : 'CR1',
+			input : JSON.stringify({
+				action : 'GET_CLOSE_FORGET', 
+				version : '1.0.0'
+		}),
+			expected : '#CR'
+		});
+		
+		RQ_TEST_DATA.push({
+			type : 'FW1',
+			input : JSON.stringify({
+				action : 'SET_FORCE_OPEN', 
+				version : '1.0.0', 
+				alarmControl : 'ALARM.CONTROL.ON',
+				duration : '10'
+		}),
+			expected : '#FW110'
+		});
+		RQ_TEST_DATA.push({
+			type : 'FR1',
+			input : JSON.stringify({
+				action : 'GET_FORCE_OPEN', 
+				version : '1.0.0'
+		}),
+			expected : '#FR'
+		});
+		RQ_TEST_DATA.push({
+			type : 'RS1',
+			input : JSON.stringify({
+				action : 'GET_SYSTEM_STATUS', 
+				version : '1.0.0'
+		}),
+			expected : '#RS'
+		});
+		RQ_TEST_DATA.push({
+			type : 'RB1',
+			input : JSON.stringify({
+				action : 'SYSTEM_REBOOT', 
+				version : '1.0.0'
+		}),
+			expected : '#RB'
+		});
+		RQ_TEST_DATA.push({
+			type : 'AP1',
+			input : JSON.stringify({
+				action : 'GET_CONNECTED_LOCKER_GROUPS', 
+				version : '1.0.0'
+		}),
+			expected : '#AP'
+		});
+		RQ_TEST_DATA.push({
+			type : 'AB1',
+			input : JSON.stringify({
+				action : 'GET_LOCKERS_STATUS', 
+				version : '1.0.0',
+				lockerGroupNo : '02' 
+		}),
+			expected : '#AB02'
+		});
+		RQ_TEST_DATA.push({
+			type : 'WA1',
+			input : JSON.stringify({
+				action : 'SET_ALARM_CONTROL', 
+				version : '1.0.0',
+				lockerGroupNo : '02', 
+				lockerNo : '5',
+				alarmControl : 'ALARM.CONTROL.ON',
+				duration : '90'
+		}),
+			expected : '#WA025190'
+		});
+		
+		RQ_TEST_DATA.push({
+			type : 'NB1',
+			input : JSON.stringify({
+				action : 'GET_DOOR_OPEN_COUNT', 
+				version : '1.0.0',
+				lockerGroupNo : '02', 
+				lockerNo : '5'
+		}),
+			expected : '#NB025'
+		});
+		RQ_TEST_DATA.push({
+			type : 'NC1',
+			input : JSON.stringify({
+				action : 'SET_DOOR_OPEN_COUNT', 
+				version : '1.0.0',
+				lockerGroupNo : '02', 
+				lockerNo : '5',
+				doorOpenCount : "0"
+		}),
+			expected : '#NC02500000'
+		});
+		RQ_TEST_DATA.push({
+			type : 'EB1',
+			input : JSON.stringify({
+				action : 'NOTI_LOCKER_STATUS', 
+				response : 'RESPONSE.SUCCESS'
+		}),
+			expected : '#EB00'
+		});
+		RQ_TEST_DATA.push({
+			type : 'ES1',
+			input : JSON.stringify({
+				action : 'NOTI_SYSTEM_STATUS', 
+				response : 'RESPONSE.SUCCESS'
+		}),
+			expected : '#ES00'
+		});
+		
+
+	};
+	
+	function setResponseTestData(index){
+		
+		RS_TEST_DATA.push({
+			type : 'OP_R1',
+			input : '$OP00011BC0D',
+			expected : JSON.stringify({
+				action : 'OPEN',
+				response : 'RESPONSE.SUCCESS',
+				lockerGroupNo : '01', 
+				lockerNo : '1',
+			})
+		});
+		RS_TEST_DATA.push({
+			type : 'OP_R2',
+			input : '$OP11000BC0D',
+			expected : JSON.stringify({
+				action : 'OPEN',
+				response : 'RESPONSE.ERROR_SYNTAX'
+			})
+		});
+		RS_TEST_DATA.push({
+			type : 'OP_R3',
+			input : '$OP12000BC0D',
+			expected : JSON.stringify({
+				action : 'OPEN',
+				response : 'RESPONSE.ERROR_OVERFLOW'
+			})
+		});
+		RS_TEST_DATA.push({
+			type : 'OP_R4',
+			input : '$OP13000BC0D',
+			expected : JSON.stringify({
+				action : 'OPEN',
+				response : 'RESPONSE.ERROR_NO_CONNECTIVITY'
+			})
+		});
+		RS_TEST_DATA.push({
+			type : 'CL_R1',
+			input : '$CL00012BC0D',
+			expected : JSON.stringify({
+				action : 'CHANGE_LOCKER_CONDITION',
+				response : 'RESPONSE.SUCCESS',
+				lockerGroupNo : '01', 
+				lockerNo : '2',
+			})
+		});
+		RS_TEST_DATA.push({
+			type : 'SB_R1',
+			input : '$SB00025101BC0D',
+			expected : JSON.stringify({
+				action : 'GET_STATUS',
+				response : 'RESPONSE.SUCCESS',
+				lockerGroupNo : '02', 
+				lockerNo : '5',
+				door : 'DOOR.OPEN',
+				package : 'PACKAGE.NOT_EXIST',
+				alarmStatus : 'ALARM.STATUS.ON_CLOSE_FORGET'
+			})
+		});
+		RS_TEST_DATA.push({
+			type : 'SB_R2',
+			input : '$SB00025212BC0D',
+			expected : JSON.stringify({
+				action : 'GET_STATUS',
+				response : 'RESPONSE.SUCCESS',
+				lockerGroupNo : '02', 
+				lockerNo : '5',
+				door : 'DOOR.FORCE_OPEN',
+				package : 'PACKAGE.EXIST',
+				alarmStatus : 'ALARM.STATUS.ON_FORCE_OPEN'
+			})
+		});
+		RS_TEST_DATA.push({
+			type : 'SB_R3',
+			input : '$SB00025212BC0D',
+			expected : JSON.stringify({
+				action : 'GET_STATUS',
+				response : 'RESPONSE.SUCCESS',
+				lockerGroupNo : '02',
+				lockerNo : '5',
+				door : 'DOOR.FORCE_OPEN',
+				package : 'PACKAGE.EXIST',
+				alarmStatus : 'ALARM.STATUS.ON_FORCE_OPEN'
+			})
+		});
+		RS_TEST_DATA.push({
+			type : 'SB_R4',
+			input : '$SB00025999BC0D',
+			expected : JSON.stringify({
+				action : 'GET_STATUS',
+				response : 'RESPONSE.SUCCESS',
+				lockerGroupNo : '02', 
+				lockerNo : '5',
+				door : 'DOOR.CONNECTION_ERROR',
+				package : 'PACKAGE.CONNECTION_ERROR',
+				alarmStatus : 'ALARM.STATUS.CONNECTION_ERROR'
+			})
+		});
+		
+		RS_TEST_DATA.push({
+			type : 'CW_R1',
+			input : '$CW00BC0D',
+			expected : JSON.stringify({
+				action : 'SET_CLOSE_FORGET',
+				response : 'RESPONSE.SUCCESS'
+			})
+		});
+		RS_TEST_DATA.push({
+			type : 'CR_R1',
+			input : '$CR0010903BC0D',
+			expected : JSON.stringify({
+				action : 'GET_CLOSE_FORGET',
+				response : 'RESPONSE.SUCCESS',
+				alarmControl : 'ALARM.CONTROL.ON',
+				interval : '09',
+				duration : '03'
+			})
+		});
+		RS_TEST_DATA.push({
+			type : 'FW_R1',
+			input : '$FW00BC0D',
+			expected : JSON.stringify({
+				action : 'SET_FORCE_OPEN',
+				response : 'RESPONSE.SUCCESS'
+			})
+		});
+		RS_TEST_DATA.push({
+			type : 'FR_R1',
+			input : '$FR00190BC0D',
+			expected : JSON.stringify({
+				action : 'GET_FORCE_OPEN',
+				response : 'RESPONSE.SUCCESS',
+				alarmControl : 'ALARM.CONTROL.ON',
+				duration : '90'
+			})
+		});
+		RS_TEST_DATA.push({
+			type : 'RS_R1',
+			input : '$RS000BC0D',
+			expected : JSON.stringify({
+				action : 'GET_SYSTEM_STATUS',
+				response : 'RESPONSE.SUCCESS',
+				systemStatus : 'SYSTEM_STATUS.OK'
+			})
+		});
+		RS_TEST_DATA.push({
+			type : 'RS_R2',
+			input : '$RS002BC0D',
+			expected : JSON.stringify({
+				action : 'GET_SYSTEM_STATUS',
+				response : 'RESPONSE.SUCCESS',
+				systemStatus : 'SYSTEM_STATUS.HARDWARE_ERROR'
+			})
+		});
+		RS_TEST_DATA.push({
+			type : 'RB_R1',
+			input : '$RB00BC0D',
+			expected : JSON.stringify({
+				action : 'SYSTEM_REBOOT',
+				response : 'RESPONSE.SUCCESS'
+			})
+		});
+		RS_TEST_DATA.push({
+			type : 'AP_R1',
+			input : '$AP00111100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000BC0D',
+			expected : JSON.stringify({
+				  "action": "GET_CONNECTED_LOCKER_GROUPS",
+				  "response": "RESPONSE.SUCCESS",
+				  "lockerGroupStatus": [
+				    {
+				      "lockerGroupNo": "1",
+				      "lockerGroupStatus": "LOCKER_GROUP_STATUS.CONNECTED"
+				    },
+				    {
+				      "lockerGroupNo": "2",
+				      "lockerGroupStatus": "LOCKER_GROUP_STATUS.CONNECTED"
+				    },
+				    {
+				      "lockerGroupNo": "3",
+				      "lockerGroupStatus": "LOCKER_GROUP_STATUS.CONNECTED"
+				    },
+				    {
+				      "lockerGroupNo": "4",
+				      "lockerGroupStatus": "LOCKER_GROUP_STATUS.CONNECTED"
+				    }
+				  ]
+				})
+		});
+		RS_TEST_DATA.push({
+			type : 'AP_R2',
+			input : '$AP00100100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000BC0D',
+			expected : JSON.stringify({
+				  "action": "GET_CONNECTED_LOCKER_GROUPS",
+				  "response": "RESPONSE.SUCCESS",
+				  "lockerGroupStatus": [
+				    {
+				      "lockerGroupNo": "1",
+				      "lockerGroupStatus": "LOCKER_GROUP_STATUS.CONNECTED"
+				    },
+				    {
+				      "lockerGroupNo": "4",
+				      "lockerGroupStatus": "LOCKER_GROUP_STATUS.CONNECTED"
+				    }
+				  ]
+				})
+		});
+		RS_TEST_DATA.push({
+			type : 'AP_R3',
+			input : '$AP00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000BC0D',
+			expected : JSON.stringify({
+				  "action": "GET_CONNECTED_LOCKER_GROUPS",
+				  "response": "RESPONSE.SUCCESS",
+				  "lockerGroupStatus": []
+				})
+		});
+		RS_TEST_DATA.push({
+			type : 'AP_R1',
+			input : '$AB0002010110111000999999BC0D',
+			expected : JSON.stringify({
+				  "action": "GET_LOCKERS_STATUS",
+				  "response": "RESPONSE.SUCCESS",
+				  "lockerGroupNo": "02",
+				  "lockersStatus": [
+				    {
+				      "lockerNo": "1",
+				      "door": "DOOR.CLOSED",
+				      "package": "PACKAGE.EXIST",
+				      "alarmStatus": "ALARM.STATUS.OFF"
+				    },
+				    {
+				      "lockerNo": "2",
+				      "door": "DOOR.OPEN",
+				      "package": "PACKAGE.EXIST",
+				      "alarmStatus": "ALARM.STATUS.OFF"
+				    },
+				    {
+				      "lockerNo": "3",
+				      "door": "DOOR.OPEN",
+				      "package": "PACKAGE.EXIST",
+				      "alarmStatus": "ALARM.STATUS.ON_CLOSE_FORGET"
+				    },
+				    {
+				      "lockerNo": "4",
+				      "door": "DOOR.CLOSED",
+				      "package": "PACKAGE.NOT_EXIST",
+				      "alarmStatus": "ALARM.STATUS.OFF"
+				    },
+				    {
+				      "lockerNo": "5",
+				      "door": "DOOR.CONNECTION_ERROR",
+				      "package": "PACKAGE.CONNECTION_ERROR",
+				      "alarmStatus": "ALARM.STATUS.CONNECTION_ERROR"
+				    },
+				    {
+				      "lockerNo": "6",
+				      "door": "DOOR.CONNECTION_ERROR",
+				      "package": "PACKAGE.CONNECTION_ERROR",
+				      "alarmStatus": "ALARM.STATUS.CONNECTION_ERROR"
+				    }
+				  ]
+				})
+		});
+		
+		RS_TEST_DATA.push({
+			type : 'WA_R1',
+			input : '$WA00025BC0D',
+			expected : JSON.stringify({
+				  "action": "SET_ALARM_CONTROL",
+				  "response": "RESPONSE.SUCCESS",
+				  "lockerGroupNo": "02",
+				  "lockerNo": "5"
+			})
+		});
+		RS_TEST_DATA.push({
+			type : 'NB_R1',
+			input : '$NB0002500374BC0D',
+			expected : JSON.stringify({
+				  "action": "GET_DOOR_OPEN_COUNT",
+				  "response": "RESPONSE.SUCCESS",
+				  "lockerGroupNo": "02",
+				  "lockerNo": "5",
+				  "doorOpenCount" : "00374"
+			})				
+		});
+		RS_TEST_DATA.push({
+			type : 'NC_R1',
+			input : '$NC00025BC0D',
+			expected : JSON.stringify({
+				  "action": "SET_DOOR_OPEN_COUNT",
+				  "response": "RESPONSE.SUCCESS",
+				  "lockerGroupNo": "02",
+				  "lockerNo": "5"
+			})				
+		});
+		RS_TEST_DATA.push({
+			type : 'EB_R1',
+			input : '$EB021010BC0D',
+			expected : JSON.stringify({
+				  "action": "NOTI_LOCKER_STATUS",
+				  "lockerGroupNo": "02",
+				  "lockerNo": "1",
+				  "door" : 'DOOR.CLOSED',
+				  "package" : 'PACKAGE.EXIST',
+				  "alarmStatus" : 'ALARM.STATUS.OFF'
+			})				
+		});
+		RS_TEST_DATA.push({
+			type : 'EB_R2',
+			input : '$EB032101BC0D',
+			expected : JSON.stringify({
+				  "action": "NOTI_LOCKER_STATUS",
+				  "lockerGroupNo": "03",
+				  "lockerNo": "2",
+				  "door" : 'DOOR.OPEN',
+				  "package" : 'PACKAGE.NOT_EXIST',
+				  "alarmStatus" : 'ALARM.STATUS.ON_CLOSE_FORGET'
+			})				
+		});
+		RS_TEST_DATA.push({
+			type : 'ES_R1',
+			input : '$ES0BC0D',
+			expected : JSON.stringify({
+				  "action": "NOTI_SYSTEM_STATUS",
+				  "systemStatus": "SYSTEM_STATUS.OK"
+			})				
+		});
+		RS_TEST_DATA.push({
+			type : 'ES_R2',
+			input : '$ES1BC0D',
+			expected : JSON.stringify({
+				  "action": "NOTI_SYSTEM_STATUS",
+				  "systemStatus": "SYSTEM_STATUS.ON_INITIALIZATION"
+			})				
+		});
+	};
+	
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * TEST DATA SET UP END
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+	$("#runTest").click(function(){
+    	doTestAll();
+    });
+
+
+
+	function doTestAll() {
+
+		setRequestTestData();
+		setResponseTestData();
+
+		for ( index in RQ_TEST_DATA) {
+			createRequestTableRows(index);
+			doTest(index , "request", true);
+		}
+		
+		for ( index in RS_TEST_DATA) {
+			createResponseTableRows(index);
+			doTest(index , "response", true);
+		}
+				 
+		document.getElementById("successCount").innerHTML = successCount;
+		document.getElementById("failCount").innerHTML = failCount;
+	}
+	
+    
+	function doTest(index, testType, isJSON) {
+		var convertedStr = '';
+		var prefix = '';
+		
+		switch (testType){
+		case "request":
+			prefix = 'rq_';
+			if(isJSON){
+				var data = JSON.parse(RQ_TEST_DATA[index].input);
+				var interpreter = commandIntepreterManager.getCommandInterpreter("request",data.action);
+				var sequence = '\x23\x4f\x50\x30\x31\x31\x30\x31\x30\x30\x31\x35\x0d';
+				var arrs =new Array('\x23', '\x4f', '\x50', '\x30', '\x31');
+				//convertedStr = interpreter.convertStringToCommand(interpreter.interpreteRequest(data));
+				convertedStr =interpreter.interpreteRequest(data);
+				
+			}else{
+				throw "INVALID INPUT : DATA is not JSON TYPE"
+			}
+				
+			break;
+		case "response":
+			prefix = 'rs_';
+			//TODO Sanatize input string
+			
+			var interpreter = commandIntepreterManager.getCommandInterpreter("response", RS_TEST_DATA[index].input.substring(1, 3))
+			jsonResponse = interpreter.interpreteResponse(RS_TEST_DATA[index].input);
+			convertedStr = JSON.stringify(jsonResponse);
+			break;	   
+
+		default :
+			throw "NO TEST TYPE DEFINED"
+		} 
+		
+		document.getElementById(prefix +'output' + index).innerHTML = convertedStr;
+		
+		var expected = document.getElementById(prefix + 'expected' + index).innerHTML;
+
+		if(convertedStr == expected){
+			document.getElementById(prefix + 'result' + index).innerHTML = "TRUE";
+			successCount++
+		}
+		else{
+			var div = document.getElementById(prefix + 'result' + index);
+			div.innerHTML = "FALSE";
+			div.style.backgroundColor = 'RED';
+			failCount ++;
+		}		
+	}
+
+	function createRequestTableRows(index){
+		var str = '<tr><td>'+ RQ_TEST_DATA[index].type +'</td>';
+		str += '<td ><div id="rq_input'+index+'" style="width: 400px; word-wrap:break-word;"  >'+RQ_TEST_DATA[index].input+'</div></td>';
+		str += '<td ><div id="rq_output'+index+'"></div></td>';
+		str += '<td><div id="rq_expected'+index+'">'+RQ_TEST_DATA[index].expected+'</div></td>';
+		str += '<td><div id="rq_result'+index+'"></div></td></tr>'; 
+		$('#requestTable tr:last').after(str);
+	};
+	
+	function createResponseTableRows(index){
+		var str = '<tr><td>'+ RS_TEST_DATA[index].type +'</td>';
+		str += '<td ><div id="rs_input'+index+'" style="width: 200px; word-wrap:break-word;">'+RS_TEST_DATA[index].input+'</div></td>';
+		str += '<td ><div id="rs_output'+index+'" style="width: 350px; word-wrap:break-word;"></div></td>';
+		str += '<td><div id="rs_expected'+index+'" style="width: 350px; word-wrap:break-word;" >'+RS_TEST_DATA[index].expected+'</div></td>';
+		str += '<td><div id="rs_result'+index+'"></div></td></tr>'; 
+		$('#responseTable tr:last').after(str);
+	};
+
+});
+
+</script>
+</head>
+
+
+<body>
+	<h2>Smart Locker Serial Commands Unit Test</h2>
+	
+	<input id="runTest" type="button" value="Run Test" /> 
+	<table>
+	<tr>
+		<td>SUCCESSED TEST </td>
+		<td>:</td>
+		<td><div id = "successCount">0</div></td>
+	</tr>
+		<tr>
+		<td>FAILED TEST </td>
+		<td>:</td>
+		<td><div id="failCount">0</div></td>
+	</tr>
+	
+	</table>
+	
+	<hr/>
+	<h4>REQEUST to COMMAND TEST</h4>
+
+	<table id="requestTable" BORDER=1 BORDERCOLOR=white >
+		<tr>
+			<th width="150px">Type</th>
+			<th width="300px">Input</th>
+			<th width="400px">Output</th>
+			<th width="300px">Expected</th>
+			<th width="100px">Result</th>
+		</tr>
+	</table>
+
+	<hr/>
+	
+	<h4>RESPONSE to JSON TEST</h4>
+	<table id="responseTable" BORDER=1 BORDERCOLOR=white>
+		<tr>
+			<th width="150px">Type</th>
+			<th width="300px">Input</th>
+			<th width="400px">Output</th>
+			<th width="300px">Expected</th>
+			<th width="100px">Result</th>
+		</tr>
+	</table>
+	
+	<hr/>
+
+</body>
+</html>

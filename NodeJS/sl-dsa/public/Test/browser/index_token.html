@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script src="dslink.browser.js"></script>
+    <script>
+    var link;
+    var lastNum;
+
+        window.onload = function() {
+
+
+              var defaultNodes = {
+                'node':{
+                  '$type':'string'
+                }
+              };
+
+
+              link = new DS.LinkProvider('http://10.203.52.22:8080/conn', "token-resp", {isResponder: true, defaultNodes: defaultNodes, token:"cqX6VWe4s7GMOgTvyxPxbCAcAHi3MakVRvWPVDnpgVJ4cLSC"}); // get token first from other dslink
+              link.init().then(function(){
+                  valueNode = link.getNode('/node');
+                  setInterval(function(){
+                    var d = new Date();
+                    console.log(d);
+                    valueNode.updateValue(d.getHours()+":"+d.getMinutes()+":"+d.getSeconds());
+                  }, 1000);
+
+                  link.connect();
+              });
+
+        }
+    </script>
+</body>
+</html>

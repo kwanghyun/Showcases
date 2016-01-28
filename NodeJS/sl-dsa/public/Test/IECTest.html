@@ -1,0 +1,488 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+    <head>
+
+        <title>..:: global.serialPorts test ::..</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <style>
+
+    body
+    {
+        margin: 20px;
+        background-color: #000000;
+        color: #FFFFFF;
+        font-weight: bold;
+        font-family: Arial;
+        font-size: 20px;
+        color: #eeeeee;
+    }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="PrinterManager.js"></script>
+    <script type="text/javascript">
+
+    var deviceName;
+    var device;
+    var dataRead;
+    var dataToWrite;
+    var sendTo;
+
+    var _this = {
+        scanData : {
+            packageId : "12345667",
+            logicalId : "logical-id"
+        }
+    };
+
+    var win = {
+        AppSettings : {
+            site : "site-id",
+            bank : "bank-id"
+        }               
+    }
+
+    function init()
+    {
+         console.log("######### START :: VERSION 2.9");
+        //var socket = new WebSocket("ws://10.141.36.136:8080/websocket/smartlocker");
+        //var socket = new WebSocket("ws://10.141.36.136:1337");
+        //var socket = new WebSocket("ws://localhost:8080/websocket/smartlocker");
+        //socket.onmessage = onMessage;
+
+
+        PrinterManager.init();
+
+
+
+        var printingMessage = PrinterMessageBuilder.createInstance()
+            .appendMessage("Keep this receipt for your records")
+            .addLineFeed()
+            .appendMessage("The following order was returned by you:")
+            .appendMessage(_this.scanData.packageId)
+            .addLineFeed()
+            .appendMessage("At the following location")
+            .appendMessage("Site Id: " + win.AppSettings.site + ", Bank Id: " + win.AppSettings.bank + ", Locker Id" + _this.scanData.logicalId)
+            .build();
+
+        if(printingMessage === "0A20202020202020202020202020202020202020202020202020202020202020202020204B6565702074686973207265636569707420666F7220796F7572207265636F7264730D0D54686520666F6C6C6F77696E67206F72646572207761732072657475726E656420627920796F753A0D31323334353636370D0D41742074686520666F6C6C6F77696E67206C6F636174696F6E0D536974652049643A20736974652D69642C2042616E6B2049643A2062616E6B2D69642C204C6F636B65722049646C6F676963616C2D69640D0A0A0A0A0A0A1B69")
+            console.log("############################# TRUE");
+        else 
+            console.log("############################# FALSE");
+
+
+        try{
+            global.serialPorts.deleteAll();
+
+            deviceName = document.getElementById("deviceName");
+
+            var devices = global.serialPorts.availableDevices;
+            for (var i = 0; i < devices.length; ++i)
+            {
+                var opt = document.createElement("option");
+                opt.value = devices[i];
+                opt.innerHTML = opt.value;
+                deviceName.appendChild(opt);
+            }
+
+            var baudRates = global.serialPorts.standardBaudRates;
+            for (var i = 0; i < baudRates.length; ++i)
+            {
+                var opt = document.createElement("option");
+                opt.value = baudRates[i];
+                if (opt.value == 115200)
+                    opt.selected = true;
+                opt.innerHTML = opt.value;
+                baudRate.appendChild(opt);
+            }
+
+            sendTo = document.getElementById("sendTo");
+            dataRead = document.getElementById("dataRead");
+            dataToWrite = document.getElementById("dataToWrite");
+
+            /*******************************************
+            * AUTO APPLY 
+            *******************************************/
+            // autoApply();
+
+        }catch(e){
+            console.log(e);
+        }
+    }
+    
+
+    function read()
+    {
+        var data = device.readAll();
+
+        var str = "";
+        for (var i = 0; i < data.length; ++i){
+            str += data[i] < 32 ? '.' : String.fromCharCode(data[i]);
+        }
+        console.log("@@@@@@@@@@@@str :: [" + str + "]");
+		dataRead.value += "[" + str + "]" ;
+    };
+
+    function send(data)
+    {
+    	if(!data){
+    		var data = dataToWrite.value.toUpperCase();	
+    	}
+    	
+    	dataToWrite.value = data;
+        device.write(hex2a(data));
+        //dataToWrite.value = "";
+    };
+
+    function convertStringToCommand(str){
+        var command = '';
+        // str = str + this.getBCC(str);
+        console.log("[convertStringToCommand() :: str] : " + str);
+        
+        for (var i = 0; i < str.length; i++) {
+            var hex = str.charCodeAt(i).toString(16);
+            command += str.charCodeAt(i).toString(16);
+        }
+        console.log("[convertStringToCommand()] : " + command);
+
+        return command;
+    };
+
+    function hex2a(hex){
+        var str = '';
+        for (var i = 0; i < hex.length; i += 2)
+            str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+        return str;
+    };
+
+
+    function apply()
+    {
+        console.log("######### APPLY STRT #############");
+        if (!deviceName.value.length)
+            return;
+
+        var alreadyExists = global.serialPorts.contains(deviceName.value);
+
+        device = global.serialPorts.port(deviceName.value);
+
+        device.baudRate = parseInt(document.getElementById("baudRate").value);
+        console.log("device.baudRate :: " +  device.baudRate);
+        document.getElementById("baudRate").value = device.baudRate;
+
+        device.dataBits = parseInt(document.getElementById("dataBits").value);
+        document.getElementById("dataBits").value = device.dataBits;
+        console.log("device.dataBits :: " +  device.dataBits);
+        
+        device.flowControl = parseInt(document.getElementById("flowControl").value);
+        document.getElementById("flowControl").value = device.flowControl;
+        console.log("device.flowControl :: " +  device.flowControl);
+        
+        device.parity = parseInt(document.getElementById("parity").value);
+        document.getElementById("parity").value = device.parity;
+        console.log("device.parity :: " +  device.parity);
+
+        device.stopBits = parseInt(document.getElementById("stopBits").value);
+        document.getElementById("stopBits").value = device.stopBits;
+        console.log("device.stopBits :: " +  device.stopBits);
+        
+        if (!alreadyExists)
+            device.readyRead.connect(read);
+
+        console.log("######### APPLY END #############");
+    }
+
+    this.dataBits = 8;
+    this.flowControl = 0;
+    this.parity = 3;
+    this.stopBits = 1;
+
+    function autoApply()
+    {
+        console.log("[autoApply()] :: START");
+        var deviceName = "USB0";
+
+        var alreadyExists = global.serialPorts.contains(deviceName);
+        device = global.serialPorts.port(deviceName);
+
+        device.baudRate = 115200;
+        device.dataBits = 8;        
+        device.flowControl = 0;        
+        device.parity = 3;
+        device.stopBits = 1;
+        
+        if (!alreadyExists)
+            device.readyRead.connect(read);
+    }
+
+    
+    function onMessage(event) {
+        var command = JSON.parse(event.data);
+        if (command.action === "request") {
+        	//dataToWrite.value = "";
+        	dataToWrite.value = command.value;
+        }
+    }
+
+    // function sendCommand(sendTo, type, value) {
+    //     var Command = {
+    //         action: "command",
+    //         destination: sendTo,
+    //         type: type,
+    //         value: value
+    //     };
+    //     //socket.send(JSON.stringify(Command));
+    // }
+
+    function clearReadDiv() {
+    	document.getElementById('dataRead').value = "";
+    }
+    
+    function clearWriteDiv() {
+    	document.getElementById('dataToWrite').value = "";
+    }
+
+    function reset(){
+    	clearReadDiv();
+    	clearWriteDiv();
+    }
+
+
+    function openDoor(option){
+        console.log("option :: " + option);
+        if(option == "all"){
+            console.log("OPTION - ALL");
+            dataToWrite.value = '\x23\x4f\x50\x30\x31\x31\x30\x31\x30\x30\x2a\x2a\x0d';
+            device.write('\x23\x4f\x50\x30\x31\x31\x30\x31\x30\x30\x2a\x2a\x0d');
+            console.log(1);
+            dataToWrite.value = '\x23\x4f\x50\x30\x31\x32\x30\x31\x30\x30\x2a\x2a\x0d';
+            device.write('\x23\x4f\x50\x30\x31\x32\x30\x31\x30\x30\x2a\x2a\x0d');
+            console.log(2);
+            dataToWrite.value = '\x23\x4f\x50\x30\x31\x33\x30\x31\x30\x30\x2a\x2a\x0d';
+            device.write('\x23\x4f\x50\x30\x31\x33\x30\x31\x30\x30\x2a\x2a\x0d');
+            console.log(3);
+            dataToWrite.value = '\x23\x4f\x50\x30\x31\x34\x30\x31\x30\x30\x2a\x2a\x0d';
+            device.write('\x23\x4f\x50\x30\x31\x34\x30\x31\x30\x30\x2a\x2a\x0d');
+            console.log(4);
+            dataToWrite.value = '\x23\x4f\x50\x30\x31\x35\x30\x31\x30\x30\x2a\x2a\x0d';
+            device.write('\x23\x4f\x50\x30\x31\x36\x30\x31\x30\x30\x2a\x2a\x0d');
+            console.log(5);
+            dataToWrite.value = '\x23\x4f\x50\x30\x31\x36\x30\x31\x30\x30\x2a\x2a\x0d';
+            device.write('\x23\x4f\x50\x30\x31\x36\x30\x31\x30\x30\x2a\x2a\x0d');
+            console.log(6);
+        }else if(option == "1"){
+            dataToWrite.value = '\x23\x4f\x50\x30\x31\x31\x30\x31\x30\x30\x2a\x2a\x0d';
+            device.write('\x23\x4f\x50\x30\x31\x31\x30\x31\x30\x30\x2a\x2a\x0d');
+        }else if(option == "2"){
+            dataToWrite.value = '\x23\x4f\x50\x30\x31\x32\x30\x31\x30\x30\x2a\x2a\x0d';
+            device.write('\x23\x4f\x50\x30\x31\x32\x30\x31\x30\x30\x2a\x2a\x0d');
+        }else if(option == "3"){
+            dataToWrite.value = '\x23\x4f\x50\x30\x31\x33\x30\x31\x30\x30\x2a\x2a\x0d';
+            device.write('\x23\x4f\x50\x30\x31\x33\x30\x31\x30\x30\x2a\x2a\x0d');
+        }else if(option == "4"){
+            dataToWrite.value = '\x23\x4f\x50\x30\x31\x34\x30\x31\x30\x30\x2a\x2a\x0d';
+            device.write('\x23\x4f\x50\x30\x31\x34\x30\x31\x30\x30\x2a\x2a\x0d');
+        }else{
+            throw "No match found";
+        }
+    }
+
+    function print(option){
+
+        var cmd = "";
+        switch(option){
+            case 1 :
+                cmd =  
+                    "0A20202020202020202020202020202020202020202020202020202020202020202020204465617220437573746F6D65722C204461727368616E0D596F75722072656C6561736520636F6465206973202E2E0D5245524541534520434F4445203A2031323334353637380D0D20202020202020202020202020205448414E4B20594F550D2020202020436963736F20536D617274204C6F636B65720D0A0A0A0A0A0A1B69"
+                    console.log("CASE 1");
+                    break;
+            case 2 :
+                cmd =
+                    "0A20202020202020202020202020202020202020202020202020202020202020202020204B6565702074686973207265636569707420666F7220796F7572207265636F7264730D0D54686520666F6C6C6F77696E67206F72646572207761732072657475726E656420627920796F753A0D31323334353636370D0D41742074686520666F6C6C6F77696E67206C6F636174696F6E0D536974652049643A20736974652D69642C2042616E6B2049643A2062616E6B2D69642C204C6F636B65722049646C6F676963616C2D69640D0A0A0A0A0A0A1B69";
+                console.log("CASE 2");
+                break;
+            case 3 :
+                cmd = PrinterMessageBuilder.createInstance()
+                    .appendMessage("Keep this receipt for your records")
+                    .addLineFeed()
+                    .appendMessage("The following order was returned by you:")
+                    .appendMessage(_this.scanData.packageId)
+                    .addLineFeed()
+                    .appendMessage("At the following location")
+                    .appendMessage("Site Id: " + win.AppSettings.site + ", Bank Id: " + win.AppSettings.bank + ", Locker Id" + _this.scanData.logicalId)
+                    .build();
+                console.log("CASE 3");
+                break;
+            default :
+                console.log("NO MATCH");
+
+        } 
+        console.log("###### cmd :: "+cmd);
+
+        try{
+            send(cmd);
+        }catch(e){
+            console.log("EXCEPTION : " + e);
+        }  
+        
+    }
+
+	function ok(){
+		
+        var cmd = 
+        "0A" + // Line feed
+        "20202020202052454C4541534520434F4445203A2031323334353637380A" +
+        "0A" + // Line feed
+        "20202020202020202020202020202020202020205448414E4B20594F550A" + 
+        "0A" + // Line feed
+        "0A" + // Line feed
+        "0A" + // Line feed
+        "0A" + // Line feed
+        "0A"; // Line feed
+        "1B69"; // Page Cut
+         
+        // "0A20202020202020202020202020202020202020202020202020202020202020202020200A4B6565702074686973207265636569707420666F7220796F7572207265636F7264730D0D54686520666F6C6C6F77696E67206F72646572207761732072657475726E656420627920796F753A0D31323334353636370D0D41742074686520666F6C6C6F77696E67206C6F636174696F6E0D536974652049643A20736974652D69642C2042616E6B2049643A2062616E6B2D69642C204C6F636B65722049646C6F676963616C2D69640D0A0A0A0A0A0A";
+
+        console.log("###### cmd :: "+cmd);
+        send(cmd);
+        
+
+        // var sequence = "\x24\x45\x53\x30\x30\x2a\x2a\x0d"; //OK
+		//var sequence = "\x23\x4f\x50\x30\x31\x31\x30\x30\x30\x30\x2a\x2a\x0d"; //open
+		//var sequence = "\x23\x4f\x50\x30\x31\x31\x30\x30\x31\x30\x2a\x2a\x0d"; //open
+		// dataToWrite.value = sequence
+		// device.write(sequence);
+	}
+
+	// function openDoor(){
+	// 	var sequence = '\x23\x4f\x50\x30\x31\x31\x30\x31\x30\x30\x31\x35\x0d';
+	// 	//var sequence = "\x23\x4f\x50\x30\x31\x31\x30\x30\x30\x30\x2a\x2a\x0d"; //open
+	// 	dataToWrite.value = sequence
+	// 	device.write(sequence);
+	// }
+
+	function getStatus(){
+		var sequence = "\x23\x53\x42\x30\x31\x31\x2a\x2a\x0d"; 
+		dataToWrite.value = sequence
+		device.write(sequence);
+	}
+	
+	function getStatusAll(){
+		var sequence = "\x23\x41\x42\x30\x31\x2a\x2a\x0d";
+		dataToWrite.value = sequence
+		device.write(sequence);
+	}
+
+    
+    </script>
+
+    </head>
+
+    <body onload="init()">
+
+        <table cellpadding="2" cellspacing="0" border="1" align="center" width="50%">
+            <tr>
+                <td colspan="2" align="center">Serial port settings</td>
+            </tr>
+            <tr>
+                <td>Device</td>
+                <td>
+                    <select id="deviceName">
+                        <option value="">Not selected</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Baud rate</td>
+                <td>
+                    <select id="baudRate" />
+                </td>
+            </tr>
+            <tr>
+                <td>Data bits</td>
+                <td>
+                    <select id="dataBits">
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8" selected>8</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Flow control</td>
+                <td>
+                    <select id="flowControl">
+                        <option value="0" selected>No</option>
+                        <option value="1">Hardware</option>
+                        <option value="2">Software</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Parity</td>
+                <td>
+                    <select id="parity">
+                        <option value="0" selected>No</option>
+                        <option value="2">Even</option>
+                        <option value="3">Odd</option>
+                        <option value="4">Space</option>
+                        <option value="5">Mark</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Stop bits</td>
+                <td>
+                    <select id="stopBits">
+                        <option value="1" selected>1</option>
+                        <option value="3">1.5</option>
+                        <option value="2">2</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right">
+                    <input type="button" value="Apply" onclick="apply()" />
+                </td>
+        </table>
+
+        <br />
+
+        <table cellpadding="2" cellspacing="0" border="1" align="center" width="50%">
+            <tr>
+                <td>Send To</td>
+                <td>
+                    <input type="text" id="sendTo"></input>
+                </td>
+            </tr>
+            <tr>
+                <td>Data read</td>
+                <td>
+                    <textarea id="dataRead" rows = "5" cols="60" readonly ></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Data to write</td>
+                <td>
+                    <textarea id="dataToWrite" cols="60" ></textarea>
+                    <br />
+                    <input type="button" value="Send" onclick="send()" />
+                    <input type="button" value="Reset" onclick="reset()" />
+                    <input type="button" value="Open1" onclick="openDoor(1)" />
+                    <input type="button" value="OK" onclick="ok()" />
+                    <input type="button" value="Print1" onclick="print(1)" />
+                    <input type="button" value="Print2" onclick="print(2)" />
+                    <input type="button" value="Print3" onclick="print(3)" />
+                    <input type="button" value="OpenAll" onclick="openDoor('all')" />
+                    <input type="button" value="GetStatus" onclick="getStatus()" />
+                    <input type="button" value="GetStatusAll" onclick="getStatusAll()" />
+                </td>
+            </tr>
+        </table>
+
+    </body>
+
+</html>

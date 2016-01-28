@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+	margin: 20px;
+	background-color: #000000;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-family: Calibri;
+	font-size: 17px;
+	word-wrap: break-word;
+}
+
+input {
+	margin-left: 5px;
+}
+
+.locerk_state{
+	text-align: center;
+}
+
+.doorOpen {
+	background-color : white;
+	color : black;
+}
+
+.doorClose {
+	background-color : black;
+	color : white;
+}
+
+.pkg_in {
+	background-color : yellow;
+	color : black;
+}
+
+.pkg_out {
+	background-color : black;
+	color : white;
+}
+
+.alarm_on {
+	background-color : purple;
+	color : white;
+}
+
+.alarm_off {
+	background-color : black;
+	color : white;
+}
+
+.error {
+	background-color : black;
+	color : red;
+}
+
+</style>
+
+<meta charset="ISO-8859-1">
+<title>SL Locker Simulator</title>
+<script src="jquery-1.10.2.min.js"></script>
+<script src="adopter/MetaDataDefinition.js"></script>
+<script src="adopter/AdopterCore.js"></script>
+<script src="adopter/IECAdopter.js"></script>
+<script src="adopter/IECAdopter.js"></script>
+<script src="adopter/IECAdopterSimluator.js"></script>
+<script src="adopter/dslink.js"></script>
+
+<script type="text/javascript">
+
+
+</script>
+</head>
+<body>
+	<h2>Smart Locker Simulator</h2>
+
+	<h3>Locker State List</h3>
+	<input type="button" id = "bulkOpen" value="Bulk Open"/>
+	<input type="button" id = "getStatusALL" value="getStatusALL"/>
+	<hr/>
+	<table id="lockerStateList" BORDER=1 BORDERCOLOR=white>
+		<tr>
+			<th width="140px">LockerId</th>
+			<th width="60px">Door</th>
+			<th width="60px">Package</th>
+			<th width="60px">Alarm</th>
+			<th width="600px">Control</th>
+		</tr>
+	</table>
+
+</body>
+</html>

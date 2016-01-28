@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+	margin: 20px;
+	background-color: #000000;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-family: Calibri;
+	font-size: 17px;
+	word-wrap: break-word;
+}
+
+input {
+	margin-left: 5px;
+}
+
+.locerk_state{
+	text-align: center;
+}
+
+.doorOpen {
+	background-color : white;
+	color : black;
+}
+
+.doorClose {
+	background-color : black;
+	color : white;
+}
+
+.pkg_in {
+	background-color : yellow;
+	color : black;
+}
+
+.pkg_out {
+	background-color : black;
+	color : white;
+}
+
+.alarm_on {
+	background-color : purple;
+	color : white;
+}
+
+.alarm_off {
+	background-color : black;
+	color : white;
+}
+
+.error {
+	background-color : black;
+	color : red;
+}
+
+</style>
+
+<meta charset="ISO-8859-1">
+<title>TV Simulator</title>
+<script src="jquery-1.10.2.min.js"></script>
+<script src="dslink.js"></script>
+<!-- <script src="adopter/dslink.browser.js"></script> -->
+<!-- <script src="adopter/dslink.browser.full.js"></script> -->
+<script src="Device.js"></script>
+<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', function(event) {    
+	    document.querySelector('#btnTurnOnTV').addEventListener('click', function() {
+	        MyTV.turnOn();        	
+	    });
+
+	    document.querySelector('#btnTurnOffTV').addEventListener('click', function() {
+	    	MyTV.turnOff();        	
+	    });
+
+	    $(document).off("stateChanged").on("stateChanged", function(event, deviceStatus) {
+	        console.log("Received DeviceStatusChanged event - deviceStatus:" + deviceStatus);       
+	        $("#lblstatus").text( deviceStatus );
+	    });
+
+	   	$(document).off("serverValueUpdate").on("serverValueUpdate", function(event, serverUpdate) {
+	        console.log("Received serverUpdateValueChanged event - serverUpdate:" + serverUpdate);       
+	    });
+
+	});
+</script>
+</head>
+<body>
+	<h2>TV Simulator</h2>
+
+	<h3>Locker State List</h3>
+	<input type="button" id = "btnTurnOnTV" value ="TURN ON TV" class="button"/>
+	<input type="button" id = "btnTurnOffTV" value ="TURN OFF TV" class="button"/>
+	<p>TV Status : <div id="lblstatus"></div></p>
+
+	<hr/>
+	
+
+</body>
+</html>
