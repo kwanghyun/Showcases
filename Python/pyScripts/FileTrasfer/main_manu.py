@@ -1,14 +1,16 @@
 import socket
 
-my_hostname = socket.gethostname()
-my_ip_address = socket.gethostbyname(socket.gethostname())
+# my_hostname = socket.gethostname()
+# print my_hostname
+# my_ip_address = socket.gethostbyname(my_hostname)
+# print my_ip_address
 sl_server = '10.106.8.212'
 demo_tomacat_server = '10.106.8.53'
 spark_master = '10.106.8.158'
 
 
 print('========================================================================')
-print('Welcome to File Trasfer Menu ('+ my_hostname + '::' + my_ip_address +')') 
+print('Welcome to File Trasfer Menu')
 print('========================================================================')
 print('1. [Copy file] : Copy DSA files to Kiosk UI for SL git repo')
 print(' 		@filename => 1_copy_files_dsa.py <int>')
