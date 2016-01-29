@@ -13,13 +13,13 @@ import io.vertx.core.logging.LoggerFactory;
 import io.vertx.ext.mongo.MongoClient;
 import io.vertx.ext.web.Router;
 
-public class StagedOrderController extends AbstractVertxController{
+public class LockersController extends AbstractVertxController{
 
-	private static final Logger logger = LoggerFactory.getLogger(StagedOrderController.class);
-	private static final String API_NAME = "/staged";
-	private static final String COLLECTION_NAME = "staged";
+	private static final Logger logger = LoggerFactory.getLogger(LockersController.class);
+	private static final String API_NAME = "/lockers";
+	private static final String COLLECTION_NAME = "lockers";
 
-	public StagedOrderController(Router router, MongoClient mongo) {
+	public LockersController(Router router, MongoClient mongo) {
 		super(router, mongo);
 	}
 	
@@ -73,7 +73,7 @@ public class StagedOrderController extends AbstractVertxController{
 		router.post(Properties.API_ROOT + API_NAME).handler(ctx -> {
 			JsonObject newJsonObj = ctx.getBodyAsJson();
 			
-			logger.info(API_NAME + " :: " + newJsonObj.encodePrettily());
+			logger.info("@@@["+API_NAME + "] :: " + newJsonObj.encodePrettily());
 
 			mongo.findOne(COLLECTION_NAME, new JsonObject().put("packageId", newJsonObj.getString("packageId")),
 					null, lookup -> {
@@ -91,7 +91,9 @@ public class StagedOrderController extends AbstractVertxController{
 					// already exists
 					ctx.fail(500);
 				} else {
-
+					
+					logger.info(API_NAME + " :: POST :: newJsonObj => " + newJsonObj.encodePrettily());
+					
 					mongo.insert(COLLECTION_NAME, newJsonObj, insert -> {
 						// error handling
 						if (insert.failed()) {
@@ -128,7 +130,7 @@ public class StagedOrderController extends AbstractVertxController{
 				} else {
 					logger.info(API_NAME + "[PUT] :: " + jsonObj);
 					JsonObject update = ctx.getBodyAsJson();
-
+					
 					// TODO null check.
 //					reservation.put("site", update.getString("site").isEmpty() 
 //							? reservation.getString("site") : update.getString("site"));

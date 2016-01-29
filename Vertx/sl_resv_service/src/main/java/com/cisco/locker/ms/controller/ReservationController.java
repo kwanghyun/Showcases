@@ -136,8 +136,8 @@ public class ReservationController extends AbstractVertxController {
 //							? reservation.getString("site") : update.getString("site"));
 //					reservation.put("bank", update.getString("bank").isEmpty() 
 //							? reservation.getString("bank"): update.getString("bank"));
-					jsonObj.put("size", update.getString("size").isEmpty() 
-							? jsonObj.getString("size"): update.getString("size"));
+					jsonObj.put("size", update.getInteger("size") != null ? jsonObj.getInteger("size")
+							: update.getInteger("size"));
 //					reservation.put("packageId", update.getString("packageId").isEmpty()
 //							? reservation.getString("packageId") : update.getString("packageId"));
 //					reservation.put("reservationDate", update.getString("reservationDate").isEmpty()

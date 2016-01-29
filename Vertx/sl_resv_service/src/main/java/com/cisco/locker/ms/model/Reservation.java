@@ -8,7 +8,7 @@ public class Reservation {
 	String id;
 	String site;
 	String bank;
-	String size;
+	int size;
 	String packageId;
 	String reservationDate;
 	String expiryDate;
@@ -34,10 +34,10 @@ public class Reservation {
 	public void setBank(String bank) {
 		this.bank = bank;
 	}
-	public String getSize() {
+	public int getSize() {
 		return size;
 	}
-	public void setSize(String size) {
+	public void setSize(int size) {
 		this.size = size;
 	}
 	public String getPackageId() {

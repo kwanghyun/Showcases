@@ -10,6 +10,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.cisco.locker.ms.model.Locker;
 import com.cisco.locker.ms.model.LockerOrder;
 import com.cisco.locker.ms.model.Reservation;
 import com.cisco.locker.ms.util.Properties;
@@ -65,11 +66,11 @@ public class ControllersTest {
 		vertx.close(context.asyncAssertSuccess());
 	}
 
-	@Test
+//	@Test
 	public void testReservationRestAPIs() {
 
-		String TEST_SIZE = "M";
-		String TEST_CHG_SIZE = "L";
+		int TEST_SIZE = 1;
+		int TEST_CHG_SIZE = 2;
 		String TEST_API_NAME = "/reservations/";
 
 		JsonObject reservation = new JsonObject();
@@ -87,7 +88,7 @@ public class ControllersTest {
 
 		assertThat(reserv.getSite()).isEqualToIgnoringCase(TEST_SITE);
 		assertThat(reserv.getBank()).isEqualToIgnoringCase(TEST_BANK);
-		assertThat(reserv.getSize()).isEqualToIgnoringCase(TEST_SIZE);
+		assertThat(reserv.getSize() == TEST_SIZE);
 		assertThat(reserv.getPackageId()).isEqualToIgnoringCase(TEST_PKG_ID);
 		assertThat(reserv.getReservationDate()).isNotNull();
 		assertThat(reserv.getExpiryDate()).isNotNull();
@@ -104,7 +105,7 @@ public class ControllersTest {
 		Reservation resultResrv = given().body(modResv.encode()).request()
 				.put(Properties.API_ROOT + TEST_API_NAME + reserv.getPackageId()).thenReturn().as(Reservation.class);
 
-		assertThat(resultResrv.getSize()).isEqualToIgnoringCase(TEST_CHG_SIZE);
+		assertThat(resultResrv.getSize() == TEST_CHG_SIZE);
 
 		// Delete
 		delete(Properties.API_ROOT + TEST_API_NAME + TEST_PKG_ID).then().assertThat().statusCode(204);
@@ -116,8 +117,8 @@ public class ControllersTest {
 	@Test
 	public void testStagedRestAPIs() {
 
-		String TEST_SIZE = "M";
-		String TEST_CHG_SIZE = "L";
+		int TEST_SIZE = 1;
+		int TEST_CHG_SIZE = 2;
 		String TEST_API_NAME = "/staged/";
 
 		String TEST_EXPECTED_DATE = LocalDateTime.now().toString();
@@ -130,6 +131,7 @@ public class ControllersTest {
 		stagedOrder.put("site", TEST_SITE);
 		stagedOrder.put("bank", TEST_BANK);
 		stagedOrder.put("size", TEST_SIZE);
+		stagedOrder.put("orderDate", TEST_EXPECTED_DATE);
 		stagedOrder.put("packageId", TEST_PKG_ID);
 		stagedOrder.put("expectedDepositDate", TEST_EXPECTED_DATE);
 		stagedOrder.put("depositReleaseCode", TEST_DEPOSIT_CODE);
@@ -138,7 +140,7 @@ public class ControllersTest {
 
 		// DELETE : JUST IN CASE
 		delete(Properties.API_ROOT + TEST_API_NAME + TEST_PKG_ID);
-		
+
 		logger.info(TEST_API_NAME + " :: stagedOrder => " + stagedOrder.encodePrettily());
 
 		// POST
@@ -147,34 +149,110 @@ public class ControllersTest {
 
 		assertThat(order.getSite()).isEqualToIgnoringCase(TEST_SITE);
 		assertThat(order.getBank()).isEqualToIgnoringCase(TEST_BANK);
-		assertThat(order.getSize()).isEqualToIgnoringCase(TEST_SIZE);
+		assertThat(order.getSize() == TEST_SIZE);
+		assertThat(order.getOrderDate()).isEqualToIgnoringCase(TEST_EXPECTED_DATE);
 		assertThat(order.getPackageId()).isEqualToIgnoringCase(TEST_PKG_ID);
 		assertThat(order.getExpectedDepositDate()).isEqualToIgnoringCase(TEST_EXPECTED_DATE);
 		assertThat(order.getDepositReleaseCode()).isEqualToIgnoringCase(TEST_DEPOSIT_CODE);
 		assertThat(order.getPickupReleaseCode()).isEqualToIgnoringCase(TEST_PICKUP_CODE);
+		assertThat(order.getOrderType() == TEST_ORDER_TYPE);
 
 		get(Properties.API_ROOT + TEST_API_NAME + order.getPackageId()).then().assertThat().statusCode(200)
 				.body("site", equalTo(TEST_SITE)).body("bank", equalTo(TEST_BANK))
 				.body("packageId", equalTo(TEST_PKG_ID)).body("size", equalTo(TEST_SIZE))
 				.body("expectedDepositDate", equalTo(TEST_EXPECTED_DATE))
 				.body("depositReleaseCode", equalTo(TEST_DEPOSIT_CODE))
-				.body("pickupReleaseCode", equalTo(TEST_PICKUP_CODE))
-				.body("orderType", equalTo(TEST_ORDER_TYPE));
+				.body("pickupReleaseCode", equalTo(TEST_PICKUP_CODE)).body("orderType", equalTo(TEST_ORDER_TYPE));
 
 		logger.info(TEST_API_NAME + " :: POST :: DONE");
-		
+
 		// PUT
 		JsonObject modifedOrder = new JsonObject();
-		stagedOrder.put("packageId", TEST_PKG_ID);
+		modifedOrder.put("packageId", TEST_PKG_ID);
 		modifedOrder.put("size", TEST_CHG_SIZE);
 
-		LockerOrder resultResrv = given().body(modifedOrder.encode()).request()
+		LockerOrder resultOrder = given().body(modifedOrder.encode()).request()
 				.put(Properties.API_ROOT + TEST_API_NAME + order.getPackageId()).thenReturn().as(LockerOrder.class);
 
-		assertThat(resultResrv.getSize()).isEqualToIgnoringCase(TEST_CHG_SIZE);
+		assertThat(resultOrder.getSize() == TEST_CHG_SIZE);
 
 		logger.info(TEST_API_NAME + " :: PUT :: DONE");
-		
+
+		// Delete
+		delete(Properties.API_ROOT + TEST_API_NAME + TEST_PKG_ID).then().assertThat().statusCode(204);
+
+		logger.info(TEST_API_NAME + " :: DELETE :: DONE");
+
+		// GET : NOT FOUND
+		get(Properties.API_ROOT + TEST_API_NAME + TEST_PKG_ID).then().assertThat().statusCode(404);
+	}
+
+	@Test
+	public void testLockersRestAPIs() {
+
+		int TEST_SIZE = 1;
+		int TEST_CHG_SIZE = 2;
+		String TEST_API_NAME = "/lockers/";
+
+		int TEST_LOCKER_ID = 1;
+		String TEST_EXPECTED_DATE = LocalDateTime.now().toString();
+		String TEST_DEPOSIT_CODE = "D12345";
+		String TEST_PICKUP_CODE = "P67890";
+
+		int TEST_ORDER_TYPE = 2;
+
+		JsonObject lockerObj = new JsonObject();
+		lockerObj.put("lockerId", TEST_LOCKER_ID);
+		lockerObj.put("site", TEST_SITE);
+		lockerObj.put("bank", TEST_BANK);
+		lockerObj.put("size", TEST_SIZE);
+		lockerObj.put("orderDate", TEST_EXPECTED_DATE);
+		lockerObj.put("packageId", TEST_PKG_ID);
+		lockerObj.put("expectedDepositDate", TEST_EXPECTED_DATE);
+		lockerObj.put("depositReleaseCode", TEST_DEPOSIT_CODE);
+		lockerObj.put("pickupReleaseCode", TEST_PICKUP_CODE);
+		lockerObj.put("orderType", TEST_ORDER_TYPE);
+
+		// DELETE : JUST IN CASE
+		delete(Properties.API_ROOT + TEST_API_NAME + TEST_PKG_ID);
+
+		logger.info(TEST_API_NAME + " :: lockerObj => " + lockerObj.encodePrettily());
+
+		// POST
+		Locker locker = given().body(lockerObj.encode()).request().post(Properties.API_ROOT + TEST_API_NAME).thenReturn()
+				.as(Locker.class);
+		assertThat(locker.getLockerId() == TEST_LOCKER_ID);
+		assertThat(locker.getSite()).isEqualToIgnoringCase(TEST_SITE);
+		assertThat(locker.getBank()).isEqualToIgnoringCase(TEST_BANK);
+		assertThat(locker.getSize() == TEST_SIZE);
+		assertThat(locker.getOrderDate()).isEqualToIgnoringCase(TEST_EXPECTED_DATE);
+		assertThat(locker.getPackageId()).isEqualToIgnoringCase(TEST_PKG_ID);
+		assertThat(locker.getExpectedDepositDate()).isEqualToIgnoringCase(TEST_EXPECTED_DATE);
+		assertThat(locker.getDepositReleaseCode()).isEqualToIgnoringCase(TEST_DEPOSIT_CODE);
+		assertThat(locker.getPickupReleaseCode()).isEqualToIgnoringCase(TEST_PICKUP_CODE);
+		assertThat(locker.getOrderType() == TEST_ORDER_TYPE);
+
+		get(Properties.API_ROOT + TEST_API_NAME + locker.getPackageId()).then().assertThat().statusCode(200)
+				.body("lockerId", equalTo(TEST_LOCKER_ID)).body("site", equalTo(TEST_SITE)).body("bank", equalTo(TEST_BANK))
+				.body("packageId", equalTo(TEST_PKG_ID)).body("size", equalTo(TEST_SIZE))
+				.body("expectedDepositDate", equalTo(TEST_EXPECTED_DATE))
+				.body("depositReleaseCode", equalTo(TEST_DEPOSIT_CODE))
+				.body("pickupReleaseCode", equalTo(TEST_PICKUP_CODE)).body("orderType", equalTo(TEST_ORDER_TYPE));
+
+		logger.info(TEST_API_NAME + " :: POST :: DONE");
+
+		// PUT
+		JsonObject modifiedLocker = new JsonObject();
+		modifiedLocker.put("packageId", TEST_PKG_ID);
+		modifiedLocker.put("size", TEST_CHG_SIZE);
+
+		Locker resultLocker = given().body(modifiedLocker.encode()).request()
+				.put(Properties.API_ROOT + TEST_API_NAME + locker.getPackageId()).thenReturn().as(Locker.class);
+
+		assertThat(resultLocker.getSize() == TEST_CHG_SIZE);
+
+		logger.info(TEST_API_NAME + " :: PUT :: DONE");
+
 		// Delete
 		delete(Properties.API_ROOT + TEST_API_NAME + TEST_PKG_ID).then().assertThat().statusCode(204);
 

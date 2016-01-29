@@ -11,6 +11,7 @@ import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.BodyHandler;
 import io.vertx.ext.web.handler.StaticHandler;
 
+import com.cisco.locker.ms.controller.LockersController;
 import com.cisco.locker.ms.controller.ReservationController;
 import com.cisco.locker.ms.controller.StagedOrderController;
 import com.cisco.locker.ms.util.Properties;
@@ -41,6 +42,9 @@ public class Server extends AbstractVerticle {
 		StagedOrderController soc = new StagedOrderController(router, mongo);
 		soc.loadRoutes();
 		
+		LockersController lc = new LockersController(router, mongo);
+		lc.loadRoutes();
+		
 		// Create a router endpoint for the static content.
 		router.route().handler(StaticHandler.create());
 
@@ -54,6 +58,7 @@ public class Server extends AbstractVerticle {
 		MessageConsumer<String> consumer = eb.consumer("channel.sl.edge.events");
 		consumer.handler(message -> {
 			logger.info("I have received a edge message: " + message.body());
+			message.reply("I've got your message yo!!!");
 		});
 
 		consumer.completionHandler(res -> {
