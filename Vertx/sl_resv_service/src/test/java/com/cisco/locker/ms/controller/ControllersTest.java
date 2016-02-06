@@ -14,6 +14,7 @@ import com.cisco.locker.ms.model.Locker;
 import com.cisco.locker.ms.model.LockerOrder;
 import com.cisco.locker.ms.model.Reservation;
 import com.cisco.locker.ms.util.Properties;
+import com.cisco.locker.ms.web.Server;
 import com.jayway.restassured.RestAssured;
 
 import io.vertx.core.DeploymentOptions;
@@ -21,7 +22,7 @@ import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
-import io.vertx.example.web.Server;
+
 import io.vertx.ext.unit.TestContext;
 import io.vertx.ext.unit.junit.VertxUnitRunner;
 
@@ -66,7 +67,7 @@ public class ControllersTest {
 		vertx.close(context.asyncAssertSuccess());
 	}
 
-//	@Test
+	@Test
 	public void testReservationRestAPIs() {
 
 		int TEST_SIZE = 1;

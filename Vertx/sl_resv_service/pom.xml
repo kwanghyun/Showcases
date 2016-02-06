@@ -5,6 +5,11 @@
 	<artifactId>SLReservationService</artifactId>
 	<version>3.2.0</version>
 
+	<properties>
+		<jersey.version>2.5.1</jersey.version>
+	</properties>
+
+
 	<dependencies>
 		<dependency>
 			<groupId>io.vertx</groupId>
@@ -23,6 +28,7 @@
 			<artifactId>vertx-mongo-client</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+
 
 		<!-- For the tests -->
 		<dependency>
@@ -58,6 +64,40 @@
 			<version>1.50.2</version>
 		</dependency>
 
+
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-all</artifactId>
+			<version>5.13.0</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.iot-dsa</groupId>
+			<artifactId>dslink</artifactId>
+			<version>0.13.0</version>
+		</dependency>
+
+		<!-- For consul -->
+		<dependency>
+			<groupId>com.orbitz.consul</groupId>
+			<artifactId>consul-client</artifactId>
+			<version>0.9.16</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-rs-client</artifactId>
+			<version>3.0.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http-hc</artifactId>
+			<version>3.0.3</version>
+		</dependency>
+		<!-- For consul -->
+
 	</dependencies>
 
 	<build>
@@ -92,11 +132,24 @@
 							<goal>shade</goal>
 						</goals>
 						<configuration>
+							<filters>
+								<filter>
+									<!-- Exclude files that sign a jar (one or multiple of the dependencies). 
+										One may not repack a signed jar without this, or you will get a SecurityException 
+										at program start. -->
+									<artifact>*:*</artifact>
+									<excludes>
+										<exclude>META-INF/*.SF</exclude>
+										<exclude>META-INF/*.RSA</exclude>
+										<exclude>META-INF/*.INF</exclude> <!-- This one may not be required -->
+									</excludes>
+								</filter>
+							</filters>
 							<transformers>
 								<transformer
 									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
 									<manifestEntries>
-										<Main-Class>io.vertx.example.web.Server</Main-Class>
+										<Main-Class>com.cisco.locker.ms.web.Server</Main-Class>
 									</manifestEntries>
 								</transformer>
 								<transformer

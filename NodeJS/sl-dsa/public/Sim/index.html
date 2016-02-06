@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../bootstrap/favicon.ico">
+
+    <title>SmartLocker Simulator</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap theme -->
+    <link href="../bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../bootstrap/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="theme.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="../Test/jquery-1.10.2.min.js"></script>
+    <script src="../Test/PrinterManager.js"></script>
+    <script src="../Test/panasonic/CommandModel.js"></script>
+    <script src="../Test/panasonic/SerialConnection.js"></script>
+    <script src="../Test/PanasonicLockerManager.js"></script>
+    <script src="../Test/adopter/dslink.js"></script>
+    <!-- <script src="adopter/dslink.browser.js"></script> -->
+    <!-- <script src="adopter/dslink.browser.full.js"></script> -->
+
+    <script src="../Test/DSAManager.js"></script>
+    <script src="../Test/Locker.js"></script>
+    <script src="PanasonicLockerSimulator.js"></script>
+    <styel>
+
+    </styel>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body role="document">
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Smart Locker Demo</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container theme-showcase" role="main">
+
+      <div ng-app="LockerSimApp" ng-controller="lockerCtrl">
+
+        <h3>Smartlocker Simulator</h3>
+
+        <div class="alert alert-success" role="alert" ng-show="status" >
+            <p>{{status}}</p>
+        </div>
+
+        <input type="text" ng-model="package">
+        <button ng-click="fireStaged()" class="btn btn-sm btn-info">Fire Staged</button>
+        <input type="text" ng-model="kpiEvent">
+        <button ng-click="fireKpi()" class="btn btn-sm btn-info">Fire KPI</button>
+        <input type="text" ng-model="auditEvent">
+        <button ng-click="fireAudit()" class="btn btn-sm btn-info">Fire Audit</button>
+        <button ng-click="print()" class="btn btn-sm btn-default">Print</button>
+        </br></br>
+        <button ng-click="openAll()" class="btn btn-sm btn-primary">Open ALL</button>
+        <button ng-click="closeAll()" class="btn btn-sm btn-primary">Close ALL</button>
+        <button ng-click="getStatusAll()" class="btn btn-sm btn-primary">Get Status ALL</button>
+        <button ng-click="pushConfig()" class="btn btn-sm btn-primary">Config Push</button>
+        
+        </br></br>
+        <table class="table table-striped center">
+            <thead>
+              <tr>
+                <th >LockerId</th>
+                <th >Door</th>
+                <th >Package</th>
+                <th >Alarm</th>
+                <th >Control</th>
+              </tr>
+            <thead>
+          <tr ng-repeat="locker in lockerList">
+            <td>{{ locker.physicalId }}</td>
+            <td ng-class="{doorOpen : locker.doorState === 'OPEN'}">{{ locker.doorState }}</td>
+            <td ng-class="{pkgIn : locker.occupancyStatus === 'IN'}">{{ locker.occupancyStatus }}</td>
+            <td ng-class="{alarmOn : locker.alarmState === 'ON'}">{{ locker.alarmState }}</td>
+            <td>
+                <button ng-click="openDoor(locker.logicalId)" class="btn btn-xs btn-success">Open</button>
+                <button ng-click="closeDoor(locker)" class="btn btn-xs btn-success">Close</button>
+                <button ng-click="getStatus(locker.logicalId)" class="btn btn-xs btn-success">Status</button>
+                <label>Package : <input type="checkbox" ng-click="togglePackageStatus(locker)" ></label></label>
+                <label>Alarm : <input type="checkbox" ng-click="toggleAlarmStatus(locker)" ></label></label>
+            </td>
+
+            <td></td>
+          </tr>
+        </table>
+
+      </div>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

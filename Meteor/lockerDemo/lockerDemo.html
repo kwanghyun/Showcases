@@ -1,0 +1,157 @@
+<head>
+  <title>SmartLocker Staging Packages</title>
+</head>
+<body>
+<div class="container"
+     ng-app="testapp"
+     ng-controller="testappCtrl">
+  <header>
+    <h1>Lockers</h1>
+  <!-- add a form below the h1 -->
+<!--    <form class="new-task" ng-submit="addTask(newTask); newTask='';">
+      <input ng-model="newTask" type="text"
+             name="text" placeholder="Type to add new tasks" />
+    </form> -->
+  </header>
+    <form class="form-group new-order" id="new-order" ng-submit="addOrder();">
+          <h4>Staged Order</h4>
+      <input ng-model="order_site" type="text"
+             name="text" placeholder="Enter Site" />
+      <input ng-model="order_bank" type="text"
+             name="text" placeholder="Enter Bank" />
+      <input ng-model="order_packageid" type="text"
+             name="text" placeholder="Enter Package ID" />
+      <input ng-model="order_lockersize" type="text"
+             name="text" placeholder="Enter Locker Size" />
+      <input ng-model="order_depositreleasecode" type="text"
+             name="text" placeholder="Enter Deposit Releasecode" />
+      <input ng-model="order_pickupreleasecode" type="text"
+             name="text" placeholder="Enter Pickup Releasecode" />
+      <input ng-model="order_expecteddepositdate" type="text"
+             name="text" placeholder="Enter Exp Deposit Date" />
+      <input ng-model="order_packagestatus" type="text"
+             name="text" placeholder="Enter Order Type" /><br/><br/>
+      <button>Add Staged Order Details</button>
+    </form><br/><br/>
+    <h4>Staged Orders for Current Site and Bank</h4>
+    <!--
+    <ul>
+      <li ng-repeat="order in orders">
+        <button class="delete" ng-click="orders.remove(order)">&times;</button>       
+        <span class="text">Site {{order.site}}</span> <span class="text">Bank : {{order.bank}}</span><span class="text">Package ID : {{order.packageid}}</span><span class="text">Size : {{order.lockersize}}</span><span class="text">Deposit Releasecode : {{order.depositreleasecode}}</span><span class="text">Pickup Releasecode : {{order.pickupreleasecode}}</span><span class="text">Status : {{order.ordertype}}</span>
+      </li>
+    </ul>
+  -->
+        <table id="datatable" class="table table-striped">
+        <thead>
+          <tr>
+          <th>Site</th>
+          <th>Bank</th>
+          <th>Package No</th>
+          <th>Locker Size</th>
+          <th>Deposit ReleaseCode</th>
+          <th>Pickup ReleaseCode</th>
+          <th>Expected DepositDate</th>
+          <th>Order Type</th>
+          <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="order in orders">
+          <td>{{order.site}}</td>
+          <td>{{order.bank}}</td>
+          <td>{{order.packageid}}</td>
+          <td>{{order.lockersize}}</td>
+          <td>{{order.depositreleasecode}}</td>
+          <td>{{order.pickupreleasecode}}</td>
+          <td>{{order.expdepositdate}}</td>
+          <td>{{order.ordertype}}</td>
+          <td><button class="delete" style="width:100%;" ng-click="orders.remove(order)">&times;</button></td>
+        </tr>
+      </tbody>
+      </table>
+
+<br/><br/>
+      <button ng-submit="customerDeposit();">Customer Deposit</button>
+      <button ng-submit="courierDeposit();">Courier Deposit</button>
+<br/><br/>
+    <h4>Lockers in the Current Site and Bank</h4>
+
+      <table id="datatable" class="table table-striped">
+        <thead>
+          <tr>
+          <th>Site</th>
+          <th>Bank</th>
+          <th>Locker</th>
+          <th>Package No</th>
+          <th>Locker Size</th>
+          <th>Deposit ReleaseCode</th>
+          <th>Pickup ReleaseCode</th>
+          <th>Expected DepositDate</th>
+          <th>Package DepositDate</th>
+          <th>Package ExpiryDate</th>
+          <th>Package Status</th>
+          <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="locker in lockers">
+          <td>{{locker.site}}</td>
+          <td>{{locker.bank}}</td>
+          <td>{{locker.logicalid}}</td>
+          <td>{{locker.packageid}}</td>
+          <td>{{locker.lockersize}}</td>
+          <td>{{locker.depositreleasecode}}</td>
+          <td>{{locker.pickupreleasecode}}</td>
+          <td>{{locker.expdepositdate}}</td>
+          <td>{{locker.packagedepositdate}}</td>
+          <td>{{locker.packageexpirydate}}</td>
+          <td>{{locker.packagestatus}}</td>
+          <td>
+            <button class="delete" ng-click="lockers.remove(locker)">Delete &times;</button>
+            <button ng-click="customerRetrieval(locker)">Customer Retrieval</button>
+            <button ng-click="courierRetrieval(locker)">Courier Retrieval</button>
+          </td>
+        </tr>
+      </tbody>
+      </table>
+<!--
+      <ul>
+        <span class="text">Site {{locker.site}}</span> <span class="text">Bank : {{locker.bank}}</span><span class="text">Locker : {{locker.logicalid}}</span><span class="text">Package ID : {{locker.packageid}}</span><span class="text">Size : {{locker.lockersize}}</span><span class="text">Deposit Releasecode : {{locker.depositreleasecode}}</span><span class="text">Pickup Releasecode : {{locker.pickupreleasecode}}</span><span class="text">Expected Deposit Dt : {{locker.expecteddepositdate}}</span><span class="text">Expected Pkg Deposit Dt : {{locker.packagedepositdate}}</span><span class="text">Pakage Expiry Dt : {{locker.packageexpirydate}}</span><span class="text">Status : {{locker.packagestatus}}</span>
+      </li></ul>
+-->
+    
+<br/><br/>
+    <button ng-submit="customerRetrieval();">Customer Retrieval</button>
+    <button ng-submit="courierRetrieval();">Courier Retrieval</button>
+<br/><br/>
+    <form class="form-group new-locker" id="new-locker" ng-submit="addLocker();">
+    <h4>Add Locker</h4>
+      <input ng-model="locker_site" type="text"
+             name="text" placeholder="Enter Site" />
+      <input ng-model="locker_bank" type="text"
+             name="text" placeholder="Enter Bank" />
+      <input ng-model="locker_logicalid" type="text"
+             name="text" placeholder="Enter Locker ID" />
+      <input ng-model="locker_packageid" type="text"
+             name="text" placeholder="Enter Package ID" disabled/>
+      <input ng-model="locker_lockersize" type="text"
+             name="text" placeholder="Enter Locker Size" />
+      <input ng-model="locker_depositreleasecode" type="text"
+             name="text" placeholder="Enter Deposit Releasecode" disabled/>
+      <input ng-model="locker_pickupreleasecode" type="text"
+             name="text" placeholder="Enter Pickup Releasecode" disabled/>
+      <input ng-model="locker_expecteddepositdate" type="text"
+             name="text" placeholder="Enter Exp Deposit Date" disabled/>
+      <input ng-model="locker_packagedepositdate" type="text"
+             name="text" placeholder="Enter Package Deposit Date" disabled/>
+      <input ng-model="locker_packageexpirydate" type="text"
+             name="text" placeholder="Enter package Expiry Date" disabled/>
+      <input ng-model="locker_packagestatus" type="text"
+             name="text" placeholder="Enter Package Status"  disabled/><br/>
+      <button>Add Locker Details</button>
+    </form>
+    <br/><br/>
+
+</div>
+</body>
