@@ -26,16 +26,14 @@ import java.util.TreeMap;
 public class OauthService {
 
     private static final Logger logger = LoggerFactory.getLogger(OauthService.class);
-
-    private Map<Long, Event> eventMap = new TreeMap<Long, Event>();
     private Vertx vertx;
 
     public OauthService(Vertx vertx) {
         this.vertx = vertx;
     }
 
-    @RequestMapping("/test")
-    public void test() {
+    @RequestMapping("/code")
+    public void testAuthenticationCodeFlow() {
         OAuth2Auth oauth2 = OAuth2Auth.create(vertx, OAuth2FlowType.AUTH_CODE, new JsonObject()
                 .put("clientID", "1015c2b97bd1f36eb883")
                 .put("clientSecret", "dcb58dcee5eeae69d1fd7778dbd0e3a2462c683e")
@@ -65,6 +63,31 @@ public class OauthService {
                 // Get the access token object (the authorization code is given from the previous step).
                 AccessToken token = res.result();
                 logger.info("Access Token GET: " + token.principal());
+            }
+        });
+    }
+
+    @RequestMapping("/client")
+    public void testClientCredentailCodeFlow() {
+        logger.info("[Client Credential flow] started...");
+
+        OAuth2Auth oauth2 = OAuth2Auth.create(vertx, OAuth2FlowType.CLIENT, new JsonObject()
+                .put("clientID", "1015c2b97bd1f36eb883")
+                .put("clientSecret", "dcb58dcee5eeae69d1fd7778dbd0e3a2462c683e")
+                .put("site", "https://github.com/login")
+        );
+
+        JsonObject tokenConfig = new JsonObject();
+
+        // Callbacks
+        // Save the access token
+        oauth2.getToken(tokenConfig, res -> {
+            if (res.failed()) {
+                logger.info("[Access Token Error]: " + res.cause().getMessage());
+            } else {
+                // Get the access token object (the authorization code is given from the previous step).
+                AccessToken token = res.result();
+                logger.info("[Access Token Error]: " + token.toString());
             }
         });
     }
