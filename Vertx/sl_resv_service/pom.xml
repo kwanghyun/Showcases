@@ -78,25 +78,6 @@
 			<version>0.13.0</version>
 		</dependency>
 
-		<!-- For consul -->
-		<dependency>
-			<groupId>com.orbitz.consul</groupId>
-			<artifactId>consul-client</artifactId>
-			<version>0.9.16</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-rs-client</artifactId>
-			<version>3.0.3</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-transports-http-hc</artifactId>
-			<version>3.0.3</version>
-		</dependency>
-		<!-- For consul -->
 
 	</dependencies>
 

@@ -21,10 +21,6 @@ import com.cisco.locker.ms.controller.ReservationController;
 import com.cisco.locker.ms.controller.StagedOrderController;
 import com.cisco.locker.ms.util.Properties;
 import com.cisco.locker.ms.util.Runner;
-import com.orbitz.consul.Consul;
-import com.orbitz.consul.HealthClient;
-import com.orbitz.consul.StatusClient;
-import com.orbitz.consul.model.health.ServiceHealth;
 
 public class Server extends AbstractVerticle {
 
@@ -40,46 +36,36 @@ public class Server extends AbstractVerticle {
 
 		initEventBus();
 
-//		vertx.deployVerticle("com.cisco.common.acmq.ACMQProducer");
-//		vertx.deployVerticle("com.cisco.common.acmq.ACMQConsumer");
+		vertx.deployVerticle("com.cisco.common.acmq.ACMQProducer");
+		vertx.deployVerticle("com.cisco.common.acmq.ACMQConsumer");
 
-//		mongo = MongoClient.createShared(vertx,
-//				new JsonObject().put("db_name", "demo").put("host", Properties.MONGODB_HOST));
-//
-//		logger.info("Properties.MONGODB_HOST => " + Properties.MONGODB_HOST);
-//
-//		router = Router.router(vertx);
-//
-//		// Allow outbound traffic to the news-feed address
-//		BridgeOptions options = new BridgeOptions()
-//				.addOutboundPermitted(new PermittedOptions().setAddress("channel.sl.edge.events"))
-//				.addInboundPermitted(new PermittedOptions().setAddress("channel.sl.edge.events"));
-//
-//		router.route("/eventbus/*").handler(SockJSHandler.create(vertx).bridge(options));
-//		router.route().handler(BodyHandler.create());
-//
-//		ReservationController rs = new ReservationController(router, mongo);
-//		rs.loadRoutes();
-//
-//		StagedOrderController soc = new StagedOrderController(router, mongo);
-//		soc.loadRoutes();
-//
-//		LockersController lc = new LockersController(router, mongo);
-//		lc.loadRoutes();
-//
-//		// Create a router endpoint for the static content.
-//		router.route().handler(StaticHandler.create());
-//		vertx.createHttpServer().requestHandler(router::accept).listen(8080);
-//
-//		Consul consul = Consul.builder().build(); 
-		Consul consul = Consul.builder().withUrl("http://10.106.8.80:8500").build(); 
-		HealthClient healthClient = consul.healthClient();
+		mongo = MongoClient.createShared(vertx,
+				new JsonObject().put("db_name", "demo").put("host", Properties.MONGODB_HOST));
 
-		// discover olny passing nodes
-		List<ServiceHealth> nodes = healthClient.getHealthyServiceInstances("meteor").getResponse(); 
+		logger.info("Properties.MONGODB_HOST => " + Properties.MONGODB_HOST);
 
-		nodes.stream().forEach(s -> System.out.println("@@" + s.toString()));
+		router = Router.router(vertx);
 
+		// Allow outbound traffic to the news-feed address
+		BridgeOptions options = new BridgeOptions()
+				.addOutboundPermitted(new PermittedOptions().setAddress("channel.sl.edge.events"))
+				.addInboundPermitted(new PermittedOptions().setAddress("channel.sl.edge.events"));
+
+		router.route("/eventbus/*").handler(SockJSHandler.create(vertx).bridge(options));
+		router.route().handler(BodyHandler.create());
+
+		ReservationController rs = new ReservationController(router, mongo);
+		rs.loadRoutes();
+
+		StagedOrderController soc = new StagedOrderController(router, mongo);
+		soc.loadRoutes();
+
+		LockersController lc = new LockersController(router, mongo);
+		lc.loadRoutes();
+
+		// Create a router endpoint for the static content.
+		router.route().handler(StaticHandler.create());
+		vertx.createHttpServer().requestHandler(router::accept).listen(8080);
 	}
 
 	private void initEventBus() {
