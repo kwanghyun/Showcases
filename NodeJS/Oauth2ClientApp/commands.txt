@@ -1,2 +1,2 @@
 # Github user info
-curl -v -H "Authorization: token 7c4c5a733e5a22ed092e766c335be525580eeebd" https://api.github.com/user
+curl -v -H "Authorization: token <access token>" https://api.github.com/user
