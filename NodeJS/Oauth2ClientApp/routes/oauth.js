@@ -13,13 +13,6 @@ var credentials = {
   tokenPath: '/oauth2/token'
 };
 
-// var credentials = {
-//   'clientID': '1015c2b97bd1f36eb883',
-//   'clientSecret': 'dcb58dcee5eeae69d1fd7778dbd0e3a2462c683e',
-//   'site': 'https://github.com/login',
-//   'tokenPath': '/oauth/access_token',
-//   'authorizationPath': '/oauth/authorize'
-// };
 
 // Initialize the OAuth2 Library 
 var oauth2 = require('simple-oauth2')(credentials);
