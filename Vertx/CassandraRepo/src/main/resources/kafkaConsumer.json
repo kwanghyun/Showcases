@@ -1,0 +1,10 @@
+{
+  "zookeeper.host" : "10.106.9.157:2181",
+  "group.id" : "testGroup",
+  "bootstrap.servers" "localhost:9092",
+  "backoff.increment.ms" : "100",
+  "autooffset.reset" : "smallest",
+  "topics" : ["demoTopic"],
+  "eventbus.address" : "kafka.to.vertx.bridge",
+  "consumer.poll.interval.ms" : 1000
+}

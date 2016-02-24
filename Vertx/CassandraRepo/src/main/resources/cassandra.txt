@@ -1,0 +1,20 @@
+ ./cqlsh 10.106.9.157
+
+CREATE  KEYSPACE event_ks WITH REPLICATION =  { 'class' : 'SimpleStrategy', 'replication_factor' : 3 };
+
+use event_ks;
+
+CREATE TABLE users (
+  user_name varchar PRIMARY KEY,
+  age int,
+  gender varchar,
+  email varchar,
+  firstname varchar,
+  birth_year bigint
+);
+
+DESCRIBE KEYSPACES;
+DESCRIBE TABLE users;
+
+
+DROP TABLE users;

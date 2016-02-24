@@ -1,0 +1,39 @@
+# To see health for this service:
+curl http://localhost:8080/__health
+
+# See health over admin back-end port, it returns "true" if all registered health systems nodes are healthy.
+$ curl http://localhost:7777/__admin/ok
+
+# Show service stats and metrics
+curl http://localhost:8080/__stats/instance
+
+#To see swagger file for this service:
+curl http://localhost:7777/__admin/meta/
+
+# Show all nodes
+curl http://localhost:7777/__admin/all-nodes/
+
+# List healthy nodes by name:
+curl http://localhost:7777/__admin/healthy-nodes/
+
+# List complete node information:
+http://localhost:7777/__admin/load-nodes/
+
+-----------------------------------------
+
+# Consul client CLI
+consul members -rpc-addr=10.106.8.158:8400
+
+# Leader
+10.106.8.158:8500/v1/status/leader
+
+# Peers
+10.106.8.158:8500/v1/status/peers
+
+# My laptop
+consul agent -ui -config-dir=/Users/jangkwanghyun/software/consul/conf
+
+
+curl http://localhost:8500/v1/catalog/service/meteor
+
+ netstat -anp | grep :8080

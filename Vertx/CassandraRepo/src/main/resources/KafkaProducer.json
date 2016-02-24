@@ -1,0 +1,5 @@
+{
+  "serializer.class":"org.apache.kafka.common.serialization.StringSerializer",
+  "bootstrap.servers":"10.106.9.157:9092",
+  "default_topic":"demoTopic"
+}
