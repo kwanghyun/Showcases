@@ -42,7 +42,7 @@ public class PeekableIterator<E> implements Iterator<E> {
 		}
 		return nextElement;
 	}
-
+	
 	public void remove() {
 		iterator.remove();
 	}

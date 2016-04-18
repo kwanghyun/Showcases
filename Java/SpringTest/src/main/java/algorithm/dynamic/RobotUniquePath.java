@@ -14,6 +14,10 @@ public class RobotUniquePath {
 		return dfs(0, 0, m, n);
 	}
 
+	public int uniquePaths_2(int m, int n) {
+		return dfs2(0, 0, m, n);
+	}
+
 	public int dfs(int i, int j, int m, int n) {
 		if (i == m - 1 && j == n - 1) {
 			return 1;
@@ -23,6 +27,7 @@ public class RobotUniquePath {
 			return dfs(i + 1, j, m, n) + dfs(i, j + 1, m, n);
 		}
 
+		/* i is still smaller than m-1 so back to loop */
 		if (i < m - 1) {
 			return dfs(i + 1, j, m, n);
 		}
@@ -34,6 +39,13 @@ public class RobotUniquePath {
 		return 0;
 	}
 
+	public int dfs2(int i, int j, int m, int n) {
+		if (i == m - 1 && j == n - 1) {
+			return 1;
+		}
+		return dfs(i + 1, j, m, n) + dfs(i, j + 1, m, n);
+	}
+
 	public int uniquePaths2(int m, int n) {
 		if (m == 0 || n == 0)
 			return 0;
@@ -42,7 +54,7 @@ public class RobotUniquePath {
 			return 1;
 
 		int[][] dp = new int[m][n];
-		
+
 		// left column
 		for (int i = 0; i < m; i++) {
 			dp[i][0] = 1;
@@ -60,5 +72,14 @@ public class RobotUniquePath {
 			}
 		}
 		return dp[m - 1][n - 1];
+	}
+
+	public static void main(String[] args) {
+		RobotUniquePath ob = new RobotUniquePath();
+		int x = 4;
+		int y = 4;
+		System.out.println(ob.uniquePaths(x, y));
+		System.out.println(ob.uniquePaths_2(x, y));
+		System.out.println(ob.uniquePaths2(x, y));
 	}
 }

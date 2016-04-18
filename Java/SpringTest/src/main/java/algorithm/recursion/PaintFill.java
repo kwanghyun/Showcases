@@ -28,16 +28,21 @@ public class PaintFill {
 			return;
 		}else if (screen[y][x] == oldColor) { 
 			screen[y][x] = newColor;
-			paint(screen, x - 1, y, oldColor, newColor); // left
 			paint(screen, x + 1, y, oldColor, newColor); // right
-			paint(screen, x, y - 1, oldColor, newColor); // top
 			paint(screen, x, y + 1, oldColor, newColor); // bottom
+			/*
+			 * Minus are when the start x,y is other than 0,0.
+			 * You can not travel back to 0,0 with Plus recursion only
+			 */
+			paint(screen, x - 1, y, oldColor, newColor); // left
+			paint(screen, x, y - 1, oldColor, newColor); // top
+			
 		}
 	}
 
 	public static void main(String args[]) {
 		PaintFill obj = new PaintFill();
-		obj.paint(screen, 1, 1, Color.White, Color.Green);
+		obj.paint(screen, 2, 2, Color.White, Color.Green);
 		for (Color[] arr : obj.screen)
 			System.out.println(Arrays.toString(arr));
 	}

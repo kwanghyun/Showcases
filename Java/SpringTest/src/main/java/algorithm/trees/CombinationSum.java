@@ -17,10 +17,10 @@ import java.util.Arrays;
  The first impression of this problem should be depth-first search(DFS). To solve DFS
  problem, recursion is a normal implementation.
  Note that the candidates array is not sorted, we need to sort it first.
+  
  */
 public class CombinationSum {
-	public ArrayList<ArrayList<Integer>> combinationSum(int[] candidates,
-			int target) {
+	public ArrayList<ArrayList<Integer>> combinationSum(int[] candidates, int target) {
 
 		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
 
@@ -35,36 +35,34 @@ public class CombinationSum {
 		return result;
 	}
 
-	public void combinationSum(int[] candidates, int target, int j,
-			ArrayList<Integer> curr, ArrayList<ArrayList<Integer>> result) {
+	public void combinationSum(int[] candidates, int target, int startIdx, ArrayList<Integer> curr,
+			ArrayList<ArrayList<Integer>> result) {
 
 		if (target == 0) {
 			ArrayList<Integer> temp = new ArrayList<Integer>(curr);
-			System.out.println("Add   : target => " + target + ", j => " + j
-					+ ", curr : " + curr);
 			result.add(temp);
 			return;
 		}
 
-		for (int i = j; i < candidates.length; i++) {
+		for (int i = startIdx; i < candidates.length; i++) {
 			if (target < candidates[i]) {
-				System.out.println("Return: target => " + target + ", i => "
-						+ i + ", curr : " + curr);
 				return;
 			}
 
 			curr.add(candidates[i]);
-			System.out.println("Before : target => " + target + ", i => " + i
-					+ ", curr : " + curr);
-			System.out.println("-----------------");
+			/*
+			 * Note : this startIdx make it return the unique combination
+			 */
 			combinationSum(candidates, target - candidates[i], i, curr, result);
 			curr.remove(curr.size() - 1);
-			System.out.println("After   : target => " + target + ", i => " + i
-					+ ", curr : " + curr);
-			System.out.println("-----------------");
 		}
 	}
+	/* Result : [[2, 2, 3], [3, 4], [7]] */
 
+	/*
+	 * Result : [[2, 2, 3], [2, 3, 2], [3, 2, 2], [3, 4], [4, 3], [7]]
+	 * 
+	 */
 	public ArrayList<ArrayList<Integer>> solution(int[] arr, int sum) {
 
 		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
@@ -74,8 +72,7 @@ public class CombinationSum {
 		return result;
 	}
 
-	public void solution(int[] arr, int sum,
-			ArrayList<ArrayList<Integer>> result, ArrayList<Integer> list) {
+	public void solution(int[] arr, int sum, ArrayList<ArrayList<Integer>> result, ArrayList<Integer> list) {
 
 		if (sum == 0) {
 			ArrayList<Integer> newlist = new ArrayList<Integer>();
@@ -95,11 +92,11 @@ public class CombinationSum {
 
 	public static void main(String[] args) {
 		CombinationSum obj = new CombinationSum();
-		int[] candidates = { 2, 3, 6 };
-		ArrayList<ArrayList<Integer>> result1 = obj.solution(candidates, 7);
-		 obj.combinationSum(candidates, 7);
-		 System.out.println(result1);
-		 System.out.println("---------------------------------------------");
+		int[] candidates = { 2, 3, 4, 7 };
+		ArrayList<ArrayList<Integer>> result1 = obj.combinationSum(candidates, 7);
+		obj.combinationSum(candidates, 7);
+		System.out.println(result1);
+		System.out.println("---------------------------------------------");
 		ArrayList<ArrayList<Integer>> result2 = obj.solution(candidates, 7);
 		System.out.println(result2);
 

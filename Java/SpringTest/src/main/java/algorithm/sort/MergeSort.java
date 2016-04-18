@@ -50,4 +50,16 @@ public class MergeSort {
 
 		return result;
 	}
+	
+	public static void main(String[] args) {
+		MergeSort ob = new MergeSort();
+		int[] data = {4,3,5,6,2,7,1,8};
+		int[] result = ob.mergeSort(data);
+		for(int i : result)
+			System.out.print(i);
+		System.out.println("--------------------------");
+		for(int i : data)
+			System.out.print(i);	
+		
+	}
 }

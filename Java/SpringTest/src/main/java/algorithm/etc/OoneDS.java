@@ -10,57 +10,60 @@ import java.util.Random;
  * in the 0(1) time a) Insert b) Delete c) Search d) getRandom
  */
 
-public class OoneDS {
-	ArrayList<Integer> arr;
-	HashMap<Integer, Integer> map;
+public class OoneDS<T> {
+	ArrayList<T> list;
+	HashMap<T, Integer> map;
 
 	public OoneDS() {
-		arr = new ArrayList<Integer>();
-		map = new HashMap<Integer, Integer>();
+		list = new ArrayList<T>();
+		map = new HashMap<T, Integer>();
 	}
 
-	void add(int x) {
-		if (map.get(x) != null)
+	public void insert(T val) {
+		if (map.get(val) != null)
+			return;
+		
+		//get index before add element
+		int idx = list.size();
+		list.add(val);
+		map.put(val, idx);
+	}
+
+	public void remove(T val) {
+		Integer oldIdx = map.get(val);
+		if (oldIdx == null)
 			return;
 
-		int idx = arr.size();
-		arr.add(x);
+		int lastIdx = list.size();
+		T lastVal = list.get(lastIdx - 1);
 
-		map.put(x, idx);
+		list.set(oldIdx, lastVal);
+		map.put(lastVal, oldIdx);
+
+		list.remove(lastIdx - 1);
+		map.remove(val);
+
 	}
 
-	void remove(int x) {
-		Integer index = map.get(x);
-		if (index == null)
-			return;
-
-		map.remove(x);
-
-		int size = arr.size();
-		Integer last = arr.get(size - 1);
-		arr.set(index, last);
-		arr.remove(size - 1);
-		map.put(last, index);
-	}
-
-	int getRandom() {
+	public T getRandom() {
 		Random rand = new Random();
-		int index = rand.nextInt(arr.size());
+		int index = rand.nextInt(list.size());
 
-		return arr.get(index);
+		return list.get(index);
 	}
 
-	Integer search(int x) {
-		return map.get(x);
+	public Integer search(int val) {
+		return map.get(val);
 	}
 
 	public static void main(String[] args) {
-		OoneDS obj = new OoneDS();
-		obj.add(1);
-		obj.add(2);
-		obj.add(3);
-		obj.add(4);
-		obj.add(5);
+		OoneDS<Integer> obj = new OoneDS<>();
+		obj.insert(1);
+
+		obj.insert(2);
+		obj.insert(3);
+		obj.insert(4);
+		obj.insert(5);
 		System.out.println(obj.getRandom());
 		System.out.println(obj.getRandom());
 		System.out.println(obj.getRandom());
@@ -72,6 +75,7 @@ public class OoneDS {
 		System.out.println(obj.getRandom());
 		obj.remove(2);
 		System.out.println(obj.getRandom());
-		
+		obj.remove(1);
+
 	}
 }

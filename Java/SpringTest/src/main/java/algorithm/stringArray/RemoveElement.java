@@ -7,13 +7,13 @@ package algorithm.stringArray;
  */
 public class RemoveElement {
 	
-	public int removeElement(int[] A, int elem) {
+	public int removeElement(int[] arr, int elem) {
 		int i = 0;
 		int j = 0;
 		
-		while (j < A.length) {
-			if (A[j] != elem) {
-				A[i] = A[j];
+		while (j < arr.length) {
+			if (arr[j] != elem) {
+				arr[i] = arr[j];
 				i++;
 			}
 			j++;

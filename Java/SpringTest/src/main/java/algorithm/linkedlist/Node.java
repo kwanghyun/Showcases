@@ -6,6 +6,7 @@ public class Node {
 	public Node next;
 	public Node previous;
 	public Node random;
+	public int min;
 
 	public Node(int x) {
 		val = x;
@@ -18,4 +19,11 @@ public class Node {
 		next = null;
 		previous = null;
 	}
+
+	@Override
+	public String toString() {
+		return "Node [val=" + val + ", ch=" + ch + ", next=" + next + ", previous=" + previous + ", random=" + random
+				+ ", min=" + min + "]";
+	}
+
 }

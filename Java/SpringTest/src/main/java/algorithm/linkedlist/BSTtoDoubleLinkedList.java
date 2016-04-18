@@ -26,6 +26,16 @@ public class BSTtoDoubleLinkedList {
 		convert(root.right);
 	}
 	
+	public Node convert2(TreeNode root){
+		if(root == null)
+			return null; 
+		
+		Node node = new Node(root.value);
+		node.previous = convert2(root.left);
+		node.next = convert2(root.right);
+		
+		return node;
+	}
 	
 	public static void main(String args[]){
 		BSTtoDoubleLinkedList bdl = new BSTtoDoubleLinkedList();
@@ -33,10 +43,17 @@ public class BSTtoDoubleLinkedList {
 		
 		Node temp = bdl.head;
 		while (temp != null){
-			System.out.println(temp.val);
+			System.out.println("convert1 : " + temp.val);
 			temp = temp.next;
 		}
 		
+		//Not working!!
+		Node head = bdl.convert2(bdl.generateBST());
+		while (head != null){
+			System.out.println("convert2 : " + head.val);
+			head = head.next;
+		}
+			
 	}
 	
 	public TreeNode generateBST() {

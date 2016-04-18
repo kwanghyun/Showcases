@@ -7,19 +7,6 @@ import java.util.List;
 /*[1,2,3] have the following permutations:
  [1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], and [3,2,1].
 
- We can get all permutations by the following steps:
- [1]
- [2, 1]
- [1, 2]
- [3, 2, 1]
- [2, 3, 1]
- [2, 1, 3]
- [3, 1, 2]
- [1, 3, 2]
- [1, 2, 3]
-
- Loop through the array, in each iteration, a new number is added to different locations
- of results of previous iteration. Start from an empty List.
  */
 public class CC_8_4_Permutation {
 
@@ -80,26 +67,52 @@ public class CC_8_4_Permutation {
 		return permutations;
 	}
 
-	public void printPermuation(char[] inputs, int index) {
-		// before start, check if currentFocus come to the last char
-		if (index == inputs.length - 1) {
-			System.out.println(new String(inputs));
-			return;
+	public void permutationI(String str) {
+		char[] chs = new char[str.length()];
+		permutationI(chs, str, 0);
+	}
+
+	private void permutationI(char[] chs, String str, int idx) {
+		int n = str.length();
+		if (n == 0)
+			System.out.println(chs);
+		else {
+			for (int i = 0; i < n; i++) {
+				chs[idx] = str.charAt(i);
+				permutationI(chs, str.substring(0, i) + str.substring(i + 1, n), idx + 1);
+			}
 		}
+	}
 
-		// now first keep the current char order in the array and proceed to
-		// next
+	public void permutationII(String str) {
+		List<Character> list = new ArrayList<>();
+		permutationII(list, str);
+	}
 
-		printPermuation(inputs, index + 1);
+	private void permutationII(List<Character> list, String str) {
+		int n = str.length();
+		if (n == 0)
+			System.out.println(list);
+		else {
+			for (int i = 0; i < n; i++) {
+				list.add(str.charAt(i));
+				permutationII(list, str.substring(0, i) + str.substring(i + 1, n));
+				list.remove(list.size() - 1);
+			}
+		}
+	}
 
-		// new need swap each next char with currentFocus
-		for (int i = index + 1; i < inputs.length; i++) {
-			// swap the char pair of position(currentFocus, i)
-			char temp = inputs[index];
-			inputs[index] = inputs[i];
-			inputs[i] = temp;
+	public void permutationIII(String str) {
+		permutationIII("", str);
+	}
 
-			printPermuation(inputs, index + 1);
+	private void permutationIII(String prefix, String str) {
+		int n = str.length();
+		if (n == 0)
+			System.out.println(prefix);
+		else {
+			for (int i = 0; i < n; i++)
+				permutationIII(prefix + str.charAt(i), str.substring(0, i) + str.substring(i + 1, n));
 		}
 	}
 
@@ -114,15 +127,21 @@ public class CC_8_4_Permutation {
 		list2.add(" ");
 
 		CC_8_4_Permutation p = new CC_8_4_Permutation();
-		ArrayList<String> list = p.permutation("1234");
 
-		 p.printPermuation("123".toCharArray(), 0);
+		System.out.println("---------------------------");
+		p.permutationIII("1234");
+
+		System.out.println("---------------------------");
+		p.permutationI("1234");
+
+		System.out.println("---------------------------");
+		p.permutationII("1234");
 
 		// System.out.println("COUNT : " + list.size());
 		// System.out.println("===================");
-//		for (String str : list)
-//			System.out.println("String : [" + str + "] " + "Length : ["
-//					+ str.length() + "]");
+		// for (String str : list)
+		// System.out.println("String : [" + str + "] " + "Length : ["
+		// + str.length() + "]");
 		//
 
 		// int[] arr = {1,2,3};

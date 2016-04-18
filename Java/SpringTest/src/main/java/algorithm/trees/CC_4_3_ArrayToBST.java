@@ -17,8 +17,8 @@ public class CC_4_3_ArrayToBST {
 		if (end < start)
 			return null;
 
-		int middle = start + (end - start) / 2;
-
+//		int middle = start + (end - start) / 2;
+		int middle = (start + end) / 2;
 		root = new TreeNode(arr[middle]);
 
 		root.left = insertToBST(arr, root.left, start, middle - 1);

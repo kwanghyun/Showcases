@@ -37,7 +37,8 @@ public class CountAndSay {
 			i++;
 		}
 		return result;
-	}
+	}	
+	
 	public static void main(String[] args) {
 		CountAndSay obj = new CountAndSay();
 		System.out.println(obj.countAndSay(7));

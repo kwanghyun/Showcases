@@ -28,4 +28,9 @@ public class ReverseInteger {
 
 		return result;
 	}
+	
+	public static void main(String[] args) {
+		ReverseInteger ob = new ReverseInteger();
+		System.out.println(ob.reverseInteger(123));
+	}
 }

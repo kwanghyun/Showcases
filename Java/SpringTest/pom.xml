@@ -320,13 +320,13 @@
 			<version>3.2.1.Final</version>
 		</dependency>
 
-		<!--Hazelcast Cache-->
+		<!--Hazelcast Cache -->
 		<dependency>
 			<groupId>com.hazelcast</groupId>
 			<artifactId>hazelcast</artifactId>
 			<version>3.2.4</version>
 		</dependency>
-		
+
 		<!-- Testing dependencies -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -339,6 +339,18 @@
 			<artifactId>jmock-junit4</artifactId>
 			<version>2.5.1</version>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>4.1.0.CR3</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.typesafe.akka</groupId>
+			<artifactId>akka-actor_2.10</artifactId>
+			<version>2.2.3</version>
 		</dependency>
 	</dependencies>
 

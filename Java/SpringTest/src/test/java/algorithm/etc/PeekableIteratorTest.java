@@ -31,7 +31,7 @@ public class PeekableIteratorTest {
 			System.out.println(str);
 		}
 		Iterator<String> iterator = list.iterator();
-		PeekableIterator<String> pIterator = new PeekableIterator<String>(iterator);
+		PeekableIterator<String> pIterator = new PeekableIterator<>(iterator);
 		assertEquals("A", pIterator.peek().toString());
 		assertEquals("A", pIterator.peek().toString());
 		assertEquals("A", pIterator.next().toString());

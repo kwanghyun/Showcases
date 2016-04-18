@@ -20,34 +20,31 @@ public class PrinterAllFactors {
 			}
 		}
 	}
-	
-	public void solution2(int n, ArrayList<Integer> list) {
-		for (int i = 2; i <= n / 2; i++) {
-			if (n % i == 0) {
-				list.add(i);
-				if (isPrime(n / i)) {
-					list.add(n / i);
-					System.out.println(list);
-					list.remove(list.size() - 1);
-				} else {
-					solution2(n / i, list);
-				}
+
+public void solution2(int n, ArrayList<Integer> list) {
+	for (int i = 2; i <= n / 2; i++) {
+		if (n % i == 0) {
+			list.add(i);
+			if (isPrime(n / i)) {
+				list.add(n / i);
+				System.out.println(list);
 				list.remove(list.size() - 1);
+			} else {
+				solution2(n / i, list);
 			}
+			list.remove(list.size() - 1);
 		}
 	}
-
+}
 
 	public boolean isPrime(int n) {
-		for (int i = 2; i < n/2; i++) {
+		for (int i = 2; i < n / 2; i++) {
 			if (n % i == 0) {
 				return false;
 			}
 		}
 		return true;
 	}
-
-
 
 	public static void main(String[] args) {
 		PrinterAllFactors obj = new PrinterAllFactors();
@@ -57,7 +54,7 @@ public class PrinterAllFactors {
 		System.out.println("---------------------");
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		obj.solution2(12, list);
-		
+
 		// obj.solution2(12, 0, arr);
 
 		// System.out.println("--------------------------");

@@ -8,9 +8,9 @@ package algorithm.trees;
  */
 public class MinWeight {
 
-	public int findMinWeight(TreeNode root1, TreeNode root2){
-		return Math.min(findWeight(root1, 1), findWeight(root2, 1));
-	}
+public int findMinWeight(TreeNode root1, TreeNode root2){
+	return Math.min(findWeight(root1, 1), findWeight(root2, 1));
+}
 
 	public int findWeight(TreeNode root, int level) {
 		if (root == null)
