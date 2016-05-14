@@ -45,4 +45,11 @@ public class LongestCommonPrefix {
 
 		return strs[0].substring(0, minLen);
 	}
+	
+	public static void main(String[] args) {
+		String[] strs = {"ABCDEF", "ABCDEFHJDR", "ABCDEFDSD", "ABCDEFABCDEF"};
+		LongestCommonPrefix ob = new LongestCommonPrefix();
+		System.out.println(ob.longestCommonPrefix(strs));
+		
+	}
 }

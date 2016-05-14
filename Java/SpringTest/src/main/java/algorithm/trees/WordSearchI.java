@@ -27,43 +27,38 @@ This problem can be solve by using a typical DFS method.
 public class WordSearchI {
 
 	public boolean exist(char[][] board, String word) {
-		int m = board.length;
-		int n = board[0].length;
 
 		boolean result = false;
-		for (int i = 0; i < m; i++) {
-			for (int j = 0; j < n; j++) {
-				if (dfs(board, word, i, j, 0)) {
+		for (int r = 0; r < board.length; r++) {
+			for (int c = 0; c < board[0].length; c++) {
+				if (dfs(board, word, r, c, 0)) {
 					result = true;
 				}
 			}
 		}
-
 		return result;
 	}
 
-	public boolean dfs(char[][] board, String word, int i, int j, int k) {
-		int m = board.length;
-		int n = board[0].length;
+	public boolean dfs(char[][] board, String word, int r, int c, int i) {
 
-		if (i < 0 || j < 0 || i >= m || j >= n) {
+		if (r < 0 || c < 0 || r >= board.length || c >= board[0].length) {
 			return false;
 		}
 
-		if (board[i][j] == word.charAt(k)) {
-			char temp = board[i][j];
-			board[i][j] = '#';
-			if (k == word.length() - 1) {
+		if (board[r][c] == word.charAt(i)) {
+			char temp = board[r][c];
+			//Change it temporary
+			board[r][c] = '#';
+			if (i == word.length() - 1) {
 				return true;
-			} else if (dfs(board, word, i - 1, j, k + 1) 
-					|| dfs(board, word, i + 1, j, k + 1)
-					|| dfs(board, word, i, j - 1, k + 1) 
-					|| dfs(board, word, i, j + 1, k + 1)) {
+			} else if (dfs(board, word, r - 1, c, i + 1) 
+					|| dfs(board, word, r + 1, c, i + 1)
+					|| dfs(board, word, r, c - 1, i + 1) 
+					|| dfs(board, word, r, c + 1, i + 1)) {
 				return true;
 			}
-			board[i][j] = temp;
+			board[r][c] = temp;
 		}
-
 		return false;
 	}
 }

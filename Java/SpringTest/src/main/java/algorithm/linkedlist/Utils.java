@@ -16,7 +16,7 @@ public class Utils {
 		return node1;
 	}
 
-	public static Node generateOddList() {
+	public static Node generate5List() {
 		Node node1 = new Node(1);
 		Node node2 = new Node(2);
 		Node node3 = new Node(3);
@@ -30,7 +30,7 @@ public class Utils {
 		return node1;
 	}
 
-	public static Node generateEvenList() {
+	public static Node generate6List() {
 		Node node1 = new Node(1);
 		Node node2 = new Node(2);
 		Node node3 = new Node(3);
@@ -62,6 +62,7 @@ public class Utils {
 
 		return node1;
 	}
+	
 
 	public static void printNodes(Node head) {
 		while (head != null) {

@@ -1,119 +1,122 @@
 package algorithm.trees;
 
 /*
- * Serializing/deserializing binary tree in most space-efficient way
+ * Given a binary search tree (BST), how can you serialize and deserialize
+ * it in O(n) time?
+ * 
+ * For example, for the following BST, 5 2 7 1 3 6 8 4
  */
 public class SerializeDeserialize {
 
-	int index = 0;
-
-	public String serialize(TreeNode root) {
-
-		if (root == null)
-			return "#";
-		return root.value + serialize(root.left)
-				+ serialize(root.right);
-	}
-
-	public TreeNode deserialize(char[] arr) {
-		if (index >= arr.length)
-			return null;
-
-		if (arr[index] == '#') {
-			index++;
-			System.out.println("#hit : " + index);
-			return deserialize(arr);
-		} else {
-			TreeNode node = new TreeNode(Character.getNumericValue(arr[index]));
-			index++;
-			node.left = deserialize(arr);
-			index++;
-			node.right = deserialize(arr);
-			return node;
-		}
-	}
-
-	int idx = 0;
-
-	public TreeNode dese(String str) {
-		if (idx > str.length() - 1)
-			return null;
-
-		if (str.charAt(idx) == '#') {
-			idx++;
-			return dese(str);
-		}
-
-		TreeNode node = new TreeNode(Character.getNumericValue(str.charAt(idx)));
-		idx++;
-		node.left = dese(str);
-		idx++;
-		node.right = dese(str);
-
-		return node;
-	}
-
-	int i = 0;
-
-	public TreeNode dese2(String str) {
-		TreeNode node = null;
-		if (i == str.length() - 1)
-			return node;
-
-		if (str.charAt(i) == '#') {
-			return node;
-		} else {
-			node = new TreeNode(Character.getNumericValue(str.charAt(i)));
-			i++;
-			node.left = dese2(str);
-			i++;
-			node.right = dese2(str);
-		}
-
-		return node;
-	}
-
-	// NOTE : by using local param "index" it will start -f
-	public boolean dese(String str, int index) {
-		if (index > str.length() - 1)
-			return false;
-
-		if (str.charAt(index) == '#') {
-			return false;
-		}
-
-		TreeNode node = new TreeNode(Character.getNumericValue(str
-				.charAt(index)));
-
-		if (dese(str, index + 1))
-			node.left = node;
-		if (dese(str, index + 1))
-			node.right = node;
-
-		return true;
-	}
-
-	public static void main(String args[]) {
-		SerializeDeserialize mw = new SerializeDeserialize();
-		String serializedStr = "";
-		serializedStr = mw.serialize(mw.createTestTree());
-		System.out.println("serializedStr :: " + serializedStr);
-		System.out.println("--------------------------");
-		char[] arr = serializedStr.toCharArray();
-		mw.printPreOrder(mw.deserialize(arr));
-		// System.out.println("--------------------------");
-		// mw.printPreOrder(mw.dese(serializedStr, 0));
-		System.out.println("--------------------------");
-		TreeNode root = mw.dese2(serializedStr);
-		mw.printPreOrder(root);
-		System.out.println("--------------------------");
-		mw.printInOrder(root);
-	}
-
+    class TreeNode
+    {
+        TreeNode left;
+        TreeNode right;
+        int val;
+     
+        public TreeNode(int x)
+        {
+            this.val = x;
+        }
+    }
+ 
+    private void printInorder(TreeNode root)
+    {
+        if (root == null) return;
+         
+        printInorder(root.left);
+        System.out.print(" "+ root.val + ",");
+	    printInorder(root.right);
+    }
+     
+    private void printPreorder(TreeNode root)
+    {
+        if (root == null) return;
+         
+        System.out.print(" "+ root.val + ",");
+        printPreorder(root.left);
+        printPreorder(root.right);
+    }
+     
+    private TreeNode deserializeArrayOptimized(int[] preorder, int[] currIndex, int min, int max)
+    {
+        if (currIndex[0] >= preorder.length) return null;
+         
+        TreeNode root = null;
+         
+        if ((preorder[currIndex[0]] > min) && (preorder[currIndex[0]] < max))
+        {
+            root = new TreeNode(preorder[currIndex[0]]);
+            currIndex[0] += 1;
+            root.left = deserializeArrayOptimized(preorder, currIndex, min, root.val);
+            root.right = deserializeArrayOptimized(preorder, currIndex, root.val, max);
+        }
+         
+        return root;
+    }
+     
+    private int findDivision(int[] preorder, int value, int low, int high)
+    {
+        int i;
+        for (i = low; i <= high; i++)
+        {
+            if (value < preorder[i])
+                break;
+        }
+        return i;
+    }
+ 
+    private TreeNode deserializeArray(int[] preorder, int low, int high)
+    {
+        if (low > high) return null;
+         
+        TreeNode root = new TreeNode(preorder[low]);
+         
+        int divIndex = findDivision(preorder, root.val, low+1, high);
+         
+        root.left = deserializeArray(preorder, low + 1, divIndex - 1);
+        root.right = deserializeArray(preorder, divIndex, high);
+ 
+        return root;
+    }
+     
+    public static void main (String[] args)
+    {
+        /*
+                5
+          2            7
+        1   3        6    8
+              4
+        */
+         
+        int[] preorder = {5,2,1,3,4,7,6,8};
+         
+        SerializeDeserialize solution = new SerializeDeserialize();
+         
+        int[] currIndex = new int[1];
+        currIndex[0] = 0;
+         
+        int min  = Integer.MIN_VALUE;
+        int max  = Integer.MAX_VALUE;
+ 
+        TreeNode root = solution.deserializeArrayOptimized(preorder, currIndex, min, max);
+         
+        // TreeNode root = solution.deserializeArray(preorder, 0, preorder.length - 1);
+         
+        System.out.print("Inorder array for constructed BST is:");
+        solution.printInorder(root);
+         
+        System.out.println("");
+         
+        System.out.print("Preorder array for constructed BST is:");
+        solution.printPreorder(root);
+ 
+    }
+    
 	public void printPreOrder(TreeNode root) {
 		if (root == null)
 			return;
-		System.out.println(root.value);
+		System.out.println(root.val);
 		printPreOrder(root.left);
 		printPreOrder(root.right);
 	}
@@ -122,36 +125,36 @@ public class SerializeDeserialize {
 		if (root == null)
 			return;
 		printPreOrder(root.left);
-		System.out.println(root.value);
+		System.out.println(root.val);
 		printPreOrder(root.right);
 	}
 
-	//         1
-	//       /   \
-	//      2     3
-	//     / \    /
-	//    4  5  6
-	//   /   / \
-	// 7   8   9
-	public TreeNode createTestTree() {
-		TreeNode one = new TreeNode(1);
-		TreeNode two = new TreeNode(2);
-		TreeNode three = new TreeNode(3);
-		TreeNode four = new TreeNode(4);
-		TreeNode five = new TreeNode(5);
-		TreeNode six = new TreeNode(6);
-		TreeNode seven = new TreeNode(7);
-		TreeNode eight = new TreeNode(8);
-		TreeNode nine = new TreeNode(9);
-		one.setLeft(two);
-		one.setRight(three);
-		two.setLeft(four);
-		two.setRight(five);
-		three.setLeft(six);
-		four.setLeft(seven);
-		six.setLeft(eight);
-		six.setRight(nine);
-		return one;
-	}
+	// 1
+	// / \
+	// 2 3
+	// / \ /
+	// 4 5 6
+	// / / \
+	// 7 8 9
+//	public TreeNode createTestTree() {
+//		TreeNode one = new TreeNode(1);
+//		TreeNode two = new TreeNode(2);
+//		TreeNode three = new TreeNode(3);
+//		TreeNode four = new TreeNode(4);
+//		TreeNode five = new TreeNode(5);
+//		TreeNode six = new TreeNode(6);
+//		TreeNode seven = new TreeNode(7);
+//		TreeNode eight = new TreeNode(8);
+//		TreeNode nine = new TreeNode(9);
+//		one.setLeft(two);
+//		one.setRight(three);
+//		two.setLeft(four);
+//		two.setRight(five);
+//		three.setLeft(six);
+//		four.setLeft(seven);
+//		six.setLeft(eight);
+//		six.setRight(nine);
+//		return one;
+//	}
 
 }

@@ -56,4 +56,13 @@ public class MedianFinder {
 			return maxHeap.peek();
 		}
 	}
+
+	public static void main(String[] args) {
+		int[] arr = { 2, 4, 5, 7, 8, 1, 3, 6, 9 };
+		MedianFinder ob = new MedianFinder();
+		for (int num : arr)
+			ob.addNum(num);
+
+		System.out.println(ob.findMedian());
+	}
 }

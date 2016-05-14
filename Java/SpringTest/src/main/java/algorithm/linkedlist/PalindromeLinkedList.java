@@ -31,6 +31,7 @@ public class PalindromeLinkedList {
 			originH = originH.next;
 			reverseH = reverseH.next;
 		}
+		
 		return true;
 	}
 

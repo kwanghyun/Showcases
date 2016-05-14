@@ -5,6 +5,7 @@ public class TreeNode {
 	String str;
 	public TreeNode left;
 	public TreeNode right;
+	public TreeNode neighbor;
 
 	public TreeNode(int value) {
 		this.left = null;
