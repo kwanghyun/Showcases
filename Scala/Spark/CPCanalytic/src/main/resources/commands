@@ -1,0 +1,117 @@
+###############################[ SPARK ]#################################
+
+spark.executor.instances to configure the number of instances in the spark config.
+
+# Start Spark shell
+bin/spark-shell --jars lib/spark-cassandra-connector_2.10-1.6.0-M2.jar, lib/cassandra-driver-core-3.0.0.jar
+
+
+# Run Apps
+scp /Users/jangkwanghyun/Showcases/Scala/Spark/CPCanalytic/target/scala-2.10/CPCanalytic-assembly-1.0.jar scc-dev@spark2://home/scc-dev/softwares/spark-1.6.0-bin-hadoop2.6/myapps
+
+./bin/spark-submit --class "com.cisco.analytic.amqp.RabbitMQStreaming" --num-executors 2 --deploy-mode cluster ~/softwares/spark-1.6.0-bin-hadoop2.6/myapps/CPCanalytic-assembly-1.0.jar
+./bin/spark-submit --class "com.cisco.analytic.amqp.MqttStreaming" --num-executors 2 --deploy-mode cluster ~/softwares/spark-1.6.0-bin-hadoop2.6/CPCanalytic-assembly-1.0.jar
+
+# Spark Default configuration
+vi conf/spark-defaults.conf
+spark.cassandra.connection.host spark2
+spark.driver.extraClassPath     /Users/jangkwanghyun/software/spark-1.6.0-bin-hadoop2.6/lib/guava-18.0.jar:/Users/jangkwanghyun/software/spark-1.6.0-bin-hadoop2.6/lib/jsr166e-1.1.0.jar
+spark.executor.extraClassPath   /Users/jangkwanghyun/software/spark-1.6.0-bin-hadoop2.6/lib/guava-18.0.jar:/Users/jangkwanghyun/software/spark-1.6.0-bin-hadoop2.6/lib/jsr166e-1.1.0.jar
+
+## My Laptop
+# Start Spark
+./sbin/start-master.sh
+./sbin/start-slave.sh spark://KWJANG-M-H7CW:7077
+
+./bin/spark-submit --class "com.cisco.analytic.amqp.RabbitMQStreaming" ~/Showcases/Scala/Spark/CPCanalytic/target/scala-2.10/CPCanalytic-assembly-1.0.jar
+./bin/spark-submit --class "com.cisco.analytic.amqp.MqttStreaming" ~/Showcases/Scala/Spark/CPCanalytic/target/scala-2.10/CPCanalytic-assembly-1.0.jar
+
+
+# Test Command
+import com.datastax.spark.connector._
+import org.apache.spark.sql.{SQLContext, Row}
+val rawJson = sc.parallelize(Seq(
+  """{"event_name":"StaffDepartureEvent", "timestamp":"2016-04-19T19:30:00Z", "payload":"payload"}"""))
+
+val rawJson = sc.parallelize(Seq(
+  """{"event_name":"StaffDepartureEvent", "timestamp":"2016-04-19T19:40:00Z" }"""))
+
+val sqlContext = new SQLContext(sc)
+val ctxJson = sqlContext.read.json(rawJson)
+
+ctxJson.write.format("org.apache.spark.sql.cassandra").options(Map("table" -> "demo_tb", "keyspace" -> "demo_ks")).save()
+
+
+import com.datastax.spark.connector._
+import com.datastax.spark.connector.cql._
+
+val c = CassandraConnector(sc.getConf)
+c.withSessionDo ( session => session.execute("CREATE KEYSPACE test WITH replication={'class':'SimpleStrategy', 'replication_factor':1}"))
+c.withSessionDo ( session => session.execute("CREATE TABLE test.fun (k int PRIMARY KEY, v int)"))
+val data = c.withSessionDo ( session => session.execute("SELECT * FROM demo_ks.demo_tb"))
+
+###############################[ CASSANDRA ]#################################
+
+## DML
+CREATE KEYSPACE demo_ks WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 3 };
+USE demo_ks;
+DESCRIBE TABLE demo_tb;
+CREATE TABLE demo_tb (
+   event_name text,
+   timestamp bigint,
+   payload text,
+   PRIMARY KEY ((event_name), timestamp)
+) WITH CLUSTERING ORDER BY (timestamp DESC);
+
+DROP TABLE demo_ks.demo_tb;
+TRUNCATE demo_ks.demo_tb;
+
+
+## DDL
+SELECT * FROM demo_tb;
+
+
+
+###############################[ SBT ]#################################
+
+sbt compile
+sbt assembly
+scp /Users/jangkwanghyun/Showcases/Scala/Spark/CPCanalytic/target/scala-2.11/CPCanalytic-assembly-1.0.jar scc-dev@spark2://home/scc-dev/softwares/spark-1.6.0-bin-hadoop2.6/myapps
+
+./bin/spark-submit --class "RabbitMQConsumer" --master spark://spark2:7077 --deploy-mode client /home/scc-dev/softwares/spark-1.6.0-bin-hadoop2.6/myapps/CPCanalytic-assembly-1.0.jar
+./bin/spark-submit --class "RabbitMQConsumer" --master spark://spark2:7077 --deploy-mode cluster /home/scc-dev/softwares/spark-1.6.0-bin-hadoop2.6/myapps/CPCanalytic-assembly-1.0.jar
+
+
+
+
+
+###############################[ MAVEN ]#################################
+
+# Maven local install
+mvn install:install-file "-Dfile=/Users/jangkwanghyun/software/jars/spark-rabbitmq_1.5-0.3.0-SNAPSHOT.jar"  "-DgroupId=com.stratio.receiver" "-DartifactId=rabbitmq_2.10" "-Dversion=0.3.0-SNAPSHOT" "-Dpackaging=jar"
+mvn install:install-file "-Dfile=/Users/jangkwanghyun/software/jars/spark-streaming-mqtt_2.10-1.6.0.jar"  "-DgroupId=org.apache.spark" "-DartifactId=spark-streaming_mqtt" "-Dversion=1.6.0" "-Dpackaging=jar"
+mvn install:install-file "-Dfile=/Users/jangkwanghyun/software/jars/spark-streaming-mqtt_2.10-1.6.0.jar"  "-DgroupId=org.apache.spark" "-DartifactId=spark-streaming_mqtt_2.10" "-Dversion=1.6.0" "-Dpackaging=jar"
+mvn install:install-file "-Dfile=/Users/jangkwanghyun/software/jars/scalatest_2.10-2.2.6.jar"  "-DgroupId=org.apache.spark" "-DartifactId=scalatest_2.10" "-Dversion=2.2.6" "-Dpackaging=jar"
+
+
+
+
+
+
+
+
+
+###############################[ SCRIPT ]#################################
+#!/usr/bin/env bash
+
+FWDIR="$(cd "`dirname "$0"`"/..; pwd)"
+
+rm "$FWDIR"/myData/catalina.out
+scp scc-dev@10.106.8.142:/opt/cisco/apache/tomcat/logs/catalina.out "$FWDIR"/myData
+
+rm -rf "$FWDIR"/myResult
+
+
+"$FWDIR"/bin/spark-submit --class "DsaPerfAnalysticApp" --master local[*] "$FWDIR"/myApps/dsa_performance_analystic_2.10-1.0.jar "$1"
+
+~
