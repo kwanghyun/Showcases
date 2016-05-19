@@ -1,0 +1,71 @@
+[
+{
+  "eventName": "PhoneCallEvent",
+  "uid": "ref,MRN_,$user_userId",
+  "version": "1.0",
+  "timestamp": "ref,,$startTimestamp",
+  "user_userId": "long,345293789,0,9",
+  "user_userIdNamespace": "MRN",
+  "hadPhoneCall_withNumber": "int,1000,9999",
+  "hadPhoneCall_speedDialName": "string,Nurse Station-,0,99",
+  "hadPhoneCall_incomingCall": "boolean, true, false",
+  "hadPhoneCall_usedVideo": "boolean, true, false",
+  "onDevice_deviceId": "string,USI01111, 10,99",
+  "onDevice_deviceIdNamespace": "IEC_SERIAL_NUMBER",
+  "onDevice_deviceType": "MEDIA_PLAYER",
+  "startTimestamp": "timestamp,2016-05-16T20:00:00.000Z,2016-05-17T20:00:00.000Z",
+  "endTimestamp": "timestamp,2016-05-17T21:00:00.000Z,now"
+},
+{
+  "eventName": "ViewTvEvent",
+  "uid": "ref,MRN_,$viewer_userId",
+  "version": "1.0",
+  "timestamp": "ref,,$startTimestamp",
+  "viewer_userId": "long,345293789,0,9",
+  "viewer_userIdNamespace": "MRN",
+  "viewedTVChannel_channelId": "int,1,28",
+  "viewedTVChannel_channelName": "HBO",
+  "onDevice_deviceId": "string,USI01111, 10,99",
+  "onDevice_deviceIdNamespace": "IEC_SERIAL_NUMBER",
+  "onDevice_deviceType": "MEDIA_PLAYER",
+  "startTimestamp": "timestamp,2016-05-16T20:00:00.000Z,2016-05-17T20:00:00.000Z",
+  "endTimestamp": "timestamp,2016-05-17T21:00:00.000Z,now"
+},
+{
+  "eventName": "ViewFoodMenuEvent",
+  "uid": "ref,MRN_,$user_userId",
+  "version": "1.0",
+  "timestamp": "ref,,$startTimestamp",
+  "user_userId": "string,USI01111, 10,99",
+  "user_userIdNamespace": "MRN",
+  "onDevice_deviceId": "USI0543993",
+  "onDevice_deviceIdNamespace": "IEC_SERIAL_NUMBER",
+  "onDevice_deviceType": "MEDIA_PLAYER",
+  "startTimestamp": "timestamp,2016-05-16T20:00:00.000Z,2016-05-17T20:00:00.000Z",
+  "endTimestamp": "timestamp,2016-05-17T21:00:00.000Z,now"
+},
+{
+  "eventName": "OrderFoodEvent",
+  "uid": "ref,MRN_,$user_userId",
+  "version": "1.0",
+  "timestamp": "ref,,$startTimestamp",
+  "user_userId": "3452937896",
+  "user_userIdNamespace": "MRN",
+  "onDevice_deviceId": "USI0543993",
+  "onDevice_deviceIdNamespace": "IEC_SERIAL_NUMBER",
+  "onDevice_deviceType": "MEDIA_PLAYER",
+  "startTimestamp": "timestamp,2016-05-16T20:00:00.000Z,2016-05-17T20:00:00.000Z",
+  "endTimestamp": "timestamp,2016-05-17T21:00:00.000Z,now"
+},
+{
+  "eventName": "ViewScheduleEvent",
+  "version": "1",
+  "user_userId": "3452937896",
+  "user_userIdNamespace": "MRN",
+  "onDevice_deviceId": "USI0543993",
+  "onDevice_deviceIdNamespace": "IEC_SERIAL_NUMBER",
+  "onDevice_deviceType": "MEDIA_PLAYER",
+  "startTimestamp": "timestamp,2016-05-16T20:00:00.000Z,2016-05-17T20:00:00.000Z",
+  "endTimestamp": "timestamp,2016-05-17T21:00:00.000Z,now"
+}
+]
