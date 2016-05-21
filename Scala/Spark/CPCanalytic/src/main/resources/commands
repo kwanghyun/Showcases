@@ -9,8 +9,9 @@ bin/spark-shell --jars lib/spark-cassandra-connector_2.10-1.6.0-M2.jar, lib/cass
 # Run Apps
 scp /Users/jangkwanghyun/Showcases/Scala/Spark/CPCanalytic/target/scala-2.10/CPCanalytic-assembly-1.0.jar scc-dev@spark2://home/scc-dev/softwares/spark-1.6.0-bin-hadoop2.6/myapps
 
-./bin/spark-submit --class "com.cisco.analytic.amqp.RabbitMQStreaming" --num-executors 2 --deploy-mode cluster ~/softwares/spark-1.6.0-bin-hadoop2.6/myapps/CPCanalytic-assembly-1.0.jar
-./bin/spark-submit --class "com.cisco.analytic.amqp.MqttStreaming" --num-executors 2 --deploy-mode cluster ~/softwares/spark-1.6.0-bin-hadoop2.6/CPCanalytic-assembly-1.0.jar
+./bin/spark-submit --class "com.cisco.analytic.amqp.RabbitMQStreaming" --num-executors 2 --deploy-mode client ~/softwares/spark-1.6.0-bin-hadoop2.6/myapps/CPCanalytic-assembly-1.0.jar 10.106.8.80 topic raw-event-exchange raw-event-q admin admin demo_ks demo_tb
+./bin/spark-submit --class "com.cisco.analytic.amqp.RabbitMQStreaming" --num-executors 2 --deploy-mode client ~/softwares/spark-1.6.0-bin-hadoop2.6/myapps/CPCanalytic-assembly-1.0.jar 10.106.8.80 topic raw-event-exchange raw-event-comsumer-q admin admin demo_ks demo_tb
+./bin/spark-submit --class "com.cisco.analytic.amqp.RabbitMQStreaming" --num-executors 2 --deploy-mode cluster ~/softwares/spark-1.6.0-bin-hadoop2.6/myapps/CPCanalytic-assembly-1.0.jar 10.106.8.80 topic raw-event-exchange raw-event-q admin admin demo_ks demo_tb
 
 # Spark Default configuration
 vi conf/spark-defaults.conf
@@ -27,35 +28,13 @@ spark.executor.extraClassPath   /Users/jangkwanghyun/software/spark-1.6.0-bin-ha
 ./bin/spark-submit --class "com.cisco.analytic.amqp.MqttStreaming" ~/Showcases/Scala/Spark/CPCanalytic/target/scala-2.10/CPCanalytic-assembly-1.0.jar
 
 
-# Test Command
-import com.datastax.spark.connector._
-import org.apache.spark.sql.{SQLContext, Row}
-val rawJson = sc.parallelize(Seq(
-  """{"event_name":"StaffDepartureEvent", "timestamp":"2016-04-19T19:30:00Z", "payload":"payload"}"""))
-
-val rawJson = sc.parallelize(Seq(
-  """{"event_name":"StaffDepartureEvent", "timestamp":"2016-04-19T19:40:00Z" }"""))
-
-val sqlContext = new SQLContext(sc)
-val ctxJson = sqlContext.read.json(rawJson)
-
-ctxJson.write.format("org.apache.spark.sql.cassandra").options(Map("table" -> "demo_tb", "keyspace" -> "demo_ks")).save()
-
-
-import com.datastax.spark.connector._
-import com.datastax.spark.connector.cql._
-
-val c = CassandraConnector(sc.getConf)
-c.withSessionDo ( session => session.execute("CREATE KEYSPACE test WITH replication={'class':'SimpleStrategy', 'replication_factor':1}"))
-c.withSessionDo ( session => session.execute("CREATE TABLE test.fun (k int PRIMARY KEY, v int)"))
-val data = c.withSessionDo ( session => session.execute("SELECT * FROM demo_ks.demo_tb"))
-
 ###############################[ CASSANDRA ]#################################
 
 ## DML
 CREATE KEYSPACE demo_ks WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 3 };
 USE demo_ks;
 DESCRIBE TABLE demo_tb;
+
 CREATE TABLE demo_tb (
    event_name text,
    timestamp bigint,
@@ -66,9 +45,201 @@ CREATE TABLE demo_tb (
 DROP TABLE demo_ks.demo_tb;
 TRUNCATE demo_ks.demo_tb;
 
+INSERT INTO demo_tb (event_name, timestamp, payload, temp)
+  VALUES ('StaffDepartureEvent',1463168476792, 'payload-temp', 'temp')
+  USING TTL 86400;
+
 
 ## DDL
 SELECT * FROM demo_tb;
+
+
+CREATE TABLE IF NOT EXISTS demo_ks.demo_tb (
+"eventName" text,
+"uid" text,
+"eventTimestamp" timestamp,
+"assignedBy" text,
+"assignedLocation_department" text,
+"assignedLocation_facility" text,
+"assignedLocation_locationId" text,
+"assignedLocation_locationIdNameSpace" text,
+"assignedLocation_locationType" text,
+"assignedLocation_room" text,
+"assignedUser_administrativeDepartment" text,
+"assignedUser_userAge" int,
+"assignedUser_userGender" text,
+"assignedUser_userId" text,
+"assignedUser_userIdNamespace" text,
+"assignedUser_userType" text,
+"assignedVideo_category" text,
+"assignedVideo_subCategory" text,
+"assignedVideo_title" text,
+"assignedVideo_totalDuration" int,
+"assignedVideo_videoId" text,
+"assignedVideo_videoIdNamespace" text,
+"assignee_administrativeDepartment" text,
+"assignee_userAge" int,
+"assignee_userGender" text,
+"assignee_userId" text,
+"assignee_userIdNamespace" text,
+"assignee_userType" text,
+"assigner_administrativeDepartment" text,
+"assigner_userIdNamespace" text,
+"assigner_userId" text,
+"assigner_userType" text,
+"assignmentTimestamp" timestamp,
+"assistedByStaff_administrativeDepartment" text,
+"assistedByStaff_userIdNamespace" text,
+"assistedByStaff_userId" text,
+"assistedByStaff_userType" text,
+"completionPercentage" int,
+"completionTimestamp" timestamp,
+"departureReadinessPercent" int,
+"device_deviceIdNamespace" text,
+"device_deviceId" text,
+"device_deviceType" text,
+"device_hardwareModel" text,
+"device_hardwareVersion" text,
+"device_softwareModel" text,
+"device_softwareVersion" text,
+"diagnosisReason_code" text,
+"diagnosisReason_method" text,
+"diagnosisReason_name" text,
+"endTimestamp" timestamp,
+"escalationTimestamp" timestamp,
+"forCustomer_administrativeDepartment" text,
+"forCustomer_userAge" int,
+"forCustomer_userGender" text,
+"forCustomer_userId" text,
+"forCustomer_userIdNamespace" text,
+"forCustomer_userType" text,
+"fromViewer_administrativeDepartment" text,
+"fromViewer_userAge" int,
+"fromViewer_userGender" text,
+"fromViewer_userId" text,
+"fromViewer_userIdNamespace" text,
+"fromViewer_userType" text,
+"hadPhoneCall_incomingCall" boolean,
+"hadPhoneCall_speedDialName" text,
+"hadPhoneCall_usedVideo" boolean,
+"hadPhoneCall_withNumber" text,
+"initiabedBy_administrativeDepartment" text,
+"initiatedBy_userIdNamespace" text,
+"initiatedBy_userId" text,
+"initiatedBy_userType" text,
+"location_department" text,
+"location_facility" text,
+"location_locationId" text,
+"location_locationIdNameSpace" text,
+"location_locationType" text,
+"location_room" text,
+"mandatoryFlag" boolean,
+"newDevice_deviceIdNamespace" text,
+"newDevice_deviceId" text,
+"newDevice_deviceType" text,
+"newDevice_hardwareModel" text,
+"newDevice_hardwareVersion" text,
+"newDevice_softwareModel" text,
+"newDevice_softwareVersion" text,
+"newStatus" text,
+"notificationType" text,
+"oldStatus" text,
+"onDevice_deviceIdNamespace" text,
+"onDevice_deviceId" text,
+"onDevice_deviceType" text,
+"onDevice_hardwareModel" text,
+"onDevice_hardwareVersion" text,
+"onDevice_installLocation_department" text,
+"onDevice_installLocation_facility" text,
+"onDevice_installLocation_locationId" text,
+"onDevice_installLocation_locationIdNameSpace" text,
+"onDevice_installLocation_locationType" text,
+"onDevice_installLocation_room" text,
+"onDevice_softwareModel" text,
+"onDevice_softwareVersion" text,
+"originalAssignee_userIdNamespace" text,
+"originalAssignee_userId" text,
+"percentViewed" int,
+"previousDevice_deviceIdNamespace" text,
+"previousDevice_deviceId" text,
+"previousDevice_deviceType" text,
+"previousDevice_hardwareModel" text,
+"previousDevice_hardwareVersion" text,
+"previousDevice_softwareModel" text,
+"previousDevice_softwareVersion" text,
+"previousLocation_department" text,
+"previousLocation_facility" text,
+"previousLocation_locationId" text,
+"previousLocation_locationIdNameSpace" text,
+"previousLocation_locationType" text,
+"previousLocation_room" text,
+"requestTimestamp" timestamp,
+"responseTimestamp" timestamp,
+"staff_administrativeDepartment" text,
+"staff_userIdNamespace" text,
+"staff_userId" text,
+"staff_userType" text,
+"startTimestamp" timestamp,
+"surveyId" text,
+"surveyIdNamespace" text,
+"taskDescription" text,
+"taskId" text,
+"taskType" text,
+"toDevice_deviceIdNamespace" text,
+"toDevice_deviceId" text,
+"toDevice_deviceType" text,
+"toDevice_hardwareModel" text,
+"toDevice_hardwareVersion" text,
+"toDevice_installLocation_department" text,
+"toDevice_installLocation_facility" text,
+"toDevice_installLocation_locationId" text,
+"toDevice_installLocation_locationIdNameSpace" text,
+"toDevice_installLocation_locationType" text,
+"toDevice_installLocation_room" text,
+"toDevice_softwareModel" text,
+"toDevice_softwareVersion" text,
+"toViewer_administrativeDepartment" text,
+"toViewer_userAge" int,
+"toViewer_userGender" text,
+"toViewer_userId" text,
+"toViewer_userIdNamespace" text,
+"toViewer_userType" text,
+"unassignedVideo_category" text,
+"unassignedVideo_subCategory" text,
+"unassignedVideo_title" text,
+"unassignedVideo_totalDuration" int,
+"unassignedVideo_videoId" text,
+"unassignedVideo_videoIdNamespace" text,
+"user_administrativeDepartment" text,
+"user_userAge" int,
+"user_userGender" text,
+"user_userId" text,
+"user_userIdNamespace" text,
+"user_userType" text,
+"version" text,
+"video_category" text,
+"video_subCategory" text,
+"video_title" text,
+"video_totalDuration" int,
+"video_videoId" text,
+"video_videoIdNamespace" text,
+"viewedTVChannel_channelId" text,
+"viewedTVChannel_channelName" text,
+"viewedTVChannel_channelNamespace" text,
+"viewedVideo_category" text,
+"viewedVideo_subCategory" text,
+"viewedVideo_title" text,
+"viewedVideo_totalDuration" int,
+"viewedVideo_videoId" text,
+"viewedVideo_videoIdNamespace" text,
+"viewer_administrativeDepartment" text,
+"viewer_userAge" int,
+"viewer_userGender" text,
+"viewer_userId" text,
+"viewer_userIdNamespace" text,
+"viewer_userType" text,
+PRIMARY KEY ("eventName", "uid", "eventTimestamp")
+) WITH CLUSTERING ORDER BY (uid ASC, "eventTimestamp" DESC);
 
 
 
@@ -97,9 +268,45 @@ mvn install:install-file "-Dfile=/Users/jangkwanghyun/software/jars/scalatest_2.
 
 
 
+###############################[ ELASTIC ]#################################
+curl -XPUT http://10.106.8.80:9200/shakespeare -d '
+{
+ "mappings" : {
+  "_default_" : {
+   "properties" : {
+    "speaker" : {"type": "string", "index" : "not_analyzed" },
+    "play_name" : {"type": "string", "index" : "not_analyzed" },
+    "line_id" : { "type" : "integer" },
+    "speech_number" : { "type" : "integer" }
+   }
+  }
+ }
+}
 
 
+curl -XPUT http://10.106.8.80:9200/logstash-2015.05.20 -d '
+{
+  "mappings": {
+    "log": {
+      "properties": {
+        "geo": {
+          "properties": {
+            "coordinates": {
+              "type": "geo_point"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+';
 
+curl -XPOST '10.106.8.80:9200/bank/account/_bulk?pretty' --data-binary @accounts.json
+curl -XPOST '10.106.8.80:9200/shakespeare/_bulk?pretty' --data-binary @shakespeare.json
+curl -XPOST '10.106.8.80:9200/_bulk?pretty' --data-binary @logs.jsonl
+
+curl '10.106.8.80:9200/_cat/indices?v'
 
 ###############################[ SCRIPT ]#################################
 #!/usr/bin/env bash

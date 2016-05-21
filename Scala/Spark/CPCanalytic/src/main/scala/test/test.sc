@@ -22,19 +22,14 @@ import scala.util.parsing.json.JSON
 
 val data = Seq(("cat",30), ("fox",40))
 data.foreach(println(_))
-
 //  val rawJson = Seq( """{"name":"Yang","address":{"city":"San Jose","state":"CA"}}""")
 var collections = new ArrayBuffer[Any]()
 var keys:Seq[String] = Seq.empty
-
-
 var col = new ArrayBuffer[Any]()
 col += List(1,2,3)
 col += List(3,4,5)
 println(col)
-
 //foreach(k => println(s"", k , m(k))
-
 //    rawJson.foreach(x => {
 //      val parsed = JSON.parseFull(x)
 //      println(parsed)
@@ -47,15 +42,8 @@ println(col)
 //      }
 //    })
 
-
-def testMe = {
-  var arr = new ArrayBuffer[Any]()
-
-  (1 to 10).foreach(x => {
-    arr += x
-  })
-  arr
-}
-
-val d = testMe
-println(d)
+var args = new Array[String](3)
+args(0) = "1"
+//args += "2"
+//args += "3"
+println(args.size)
