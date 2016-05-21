@@ -34,19 +34,19 @@ public class MsgPublishingTask implements Runnable {
 	private static final Logger LOG = LoggerFactory.getLogger(MsgPublishingTask.class);
 
 	@Value("${rabbitmq.publisher.host}")
-	private static final String rabbitMqHost = "10.106.8.80";
+	private String rabbitMqHost;
 
 	@Value("${rabbitmq.publisher.qname}")
-	private final static String queueName = "spring-boot";
+	private String queueName;
 
 	@Value("${rabbitmq.publisher.topicname}")
-	private final static String topicName = "spring-boot-exchange";
+	private String topicName;
 
 	@Value("${rabbitmq.publisher.username}")
-	private final static String username = "admin";
+	private String username;
 
 	@Value("${rabbitmq.publisher.password}")
-	private final static String password = "admin";
+	private String password;
 
 	@Autowired
 	RabbitTemplate rabbitTemplate;
@@ -54,32 +54,30 @@ public class MsgPublishingTask implements Runnable {
 	@Autowired
 	RandomEventGenerator eventGenerator;
 	
-//	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-
-	@Bean
-	Queue queue() {
-		return new Queue(queueName, false);
-	}
+//	@Bean
+//	Queue queue() {
+//		return new Queue(queueName, false);
+//	}
 
 	@Bean
 	TopicExchange exchange() {
 		return new TopicExchange(topicName);
 	}
 
-	@Bean
-	Binding binding(Queue queue, TopicExchange exchange) {
-		return BindingBuilder.bind(queue).to(exchange).with(queueName);
-	}
+//	@Bean
+//	Binding binding(Queue queue, TopicExchange exchange) {
+//		return BindingBuilder.bind(queue).to(exchange).with(queueName);
+//	}
 
-	@Bean
-	SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
-			MessageListenerAdapter listenerAdapter) {
-		SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
-		container.setConnectionFactory(connectionFactory);
-		container.setQueueNames(queueName);
-		container.setMessageListener(listenerAdapter);
-		return container;
-	}
+//	@Bean
+//	SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
+//			MessageListenerAdapter listenerAdapter) {
+//		SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
+//		container.setConnectionFactory(connectionFactory);
+//		container.setQueueNames(queueName);
+//		container.setMessageListener(listenerAdapter);
+//		return container;
+//	}
 
 	@Bean
 	public ConnectionFactory rabbitConnectionFactory() {
@@ -88,16 +86,16 @@ public class MsgPublishingTask implements Runnable {
 		connectionFactory.setPassword(password);
 		return connectionFactory;
 	}
+    
+//	@Bean
+//	Receiver receiver() {
+//		return new Receiver();
+//	}
 
-	@Bean
-	Receiver receiver() {
-		return new Receiver();
-	}
-
-	@Bean
-	MessageListenerAdapter listenerAdapter(Receiver receiver) {
-		return new MessageListenerAdapter(receiver, "receiveMessage");
-	}
+//	@Bean
+//	MessageListenerAdapter listenerAdapter(Receiver receiver) {
+//		return new MessageListenerAdapter(receiver, "receiveMessage");
+//	}
 
 	@Override
 	public void run() {
@@ -115,7 +113,7 @@ public class MsgPublishingTask implements Runnable {
 					.writeValueAsString(eventGenerator.generateRandomData(metaIdx));
 			LOG.info("Generated DATA :: \n {} ", json);
 
-			// rabbitTemplate.convertAndSend(queueName, json);
+			 rabbitTemplate.convertAndSend("raw-event-comsumer-q", json);
 
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block

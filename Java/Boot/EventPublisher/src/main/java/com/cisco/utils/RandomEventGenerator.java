@@ -183,18 +183,18 @@ public class RandomEventGenerator {
 		this.metaInfos = metaInfos;
 	}
 
-	public static void main(String[] args) throws JsonProcessingException {
-
-		RandomEventGenerator reg = new RandomEventGenerator();
-		reg.init();
-
-		for (int i = 0; i < 10; i++) {
-			Random r = new Random();
-			int metaIdx = r.nextInt(reg.getMetaInfos().size());
-
-			ObjectMapper mapper = new ObjectMapper();
-			String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(reg.generateRandomData(metaIdx));
-			LOG.info("Generated DATA :: \n {} ", json);
-		}
-	}
+//	public static void main(String[] args) throws JsonProcessingException {
+//
+//		RandomEventGenerator reg = new RandomEventGenerator();
+//		reg.init();
+//
+//		for (int i = 0; i < 10; i++) {
+//			Random r = new Random();
+//			int metaIdx = r.nextInt(reg.getMetaInfos().size());
+//
+//			ObjectMapper mapper = new ObjectMapper();
+//			String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(reg.generateRandomData(metaIdx));
+//			LOG.info("Generated DATA :: \n {} ", json);
+//		}
+//	}
 }
