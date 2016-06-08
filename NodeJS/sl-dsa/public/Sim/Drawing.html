@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../bootstrap/favicon.ico">
 
-    <title>SmartLocker Simulator</title>
+    <title>Drawing Game</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -29,17 +29,7 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="../Test/jquery-1.10.2.min.js"></script>
-    <script src="../Test/PrinterManager.js"></script>
-    <script src="../Test/panasonic/CommandModel.js"></script>
-    <script src="../Test/panasonic/SerialConnection.js"></script>
-    <script src="../Test/PanasonicLockerManager.js"></script>
-    <script src="../Test/adopter/dslink.js"></script>
-    <!-- <script src="adopter/dslink.browser.js"></script> -->
-    <!-- <script src="adopter/dslink.browser.full.js"></script> -->
-
-    <script src="../Test/DSAManager.js"></script>
-    <script src="../Test/Locker.js"></script>
-    <script src="PanasonicLockerSimulator.js"></script>
+    <script src="http://zwibbler.com/zwibbler-demo.js"></script>
     <styel>
 
     </styel>
@@ -89,57 +79,33 @@
 
     <div class="container theme-showcase" role="main">
 
-      <div ng-app="LockerSimApp" ng-controller="lockerCtrl">
+    <div id="zwibbler" style="margin-left:auto;margin-right:auto;border:2px solid red;width:800px;height:600px;"></div>
+    <input type="button" onclick="onSave()" value="Save"/>
+    <input id="loadButton" type="button" onclick="onLoad()" disabled="disabled" value="Load"/>
+    <input type="button" onclick="onImage()" value="Open as image"/>
+    <input type="button" onclick="zwibbler.onResize()" value="Open as image"/>
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="zwibbler2.js"></script>
+    <script type="text/javascript">
+        var zwibbler = Zwibbler.create("zwibbler", {
+            showPropertyPanel: true
+        });
 
-        <h3>Smartlocker Simulator</h3>
+        var saved = null;
+        function onSave() {
+            saved = zwibbler.save("zwibbler3");
+            $("#loadButton").removeAttr("disabled");
+        }
 
-        <div class="alert alert-success" role="alert" ng-show="status" >
-            <p>{{status}}</p>
-        </div>
+        function onLoad() {
+            zwibbler.load("zwibbler3", saved);
+        }
 
-        <input type="text" ng-model="package">
-        <button ng-click="fireStaged()" class="btn btn-sm btn-info">Fire Staged</button>
-        <input type="text" ng-model="kpiEvent">
-        <button ng-click="fireKpi()" class="btn btn-sm btn-info">Fire KPI</button>
-        <input type="text" ng-model="auditEvent">
-        <button ng-click="fireAudit()" class="btn btn-sm btn-info">Fire Audit</button>
-        <button ng-click="print()" class="btn btn-sm btn-default">Print</button>
-        </br></br>
-        <button ng-click="openAll()" class="btn btn-sm btn-primary">Open ALL</button>
-        <button ng-click="closeAll()" class="btn btn-sm btn-primary">Close ALL</button>
-        <button ng-click="getStatusAll()" class="btn btn-sm btn-primary">Get Status ALL</button>
-        <button ng-click="pushConfig()" class="btn btn-sm btn-primary">Config Push</button>
-        <button ng-click="doRandomActions()" class="btn btn-sm btn-primary">Do Random Actions(Infintely)</button>
-        
-        </br></br>
-        <table class="table table-striped center">
-            <thead>
-              <tr>
-                <th >LockerId</th>
-                <th >Door</th>
-                <th >Package</th>
-                <th >Alarm</th>
-                <th >Control</th>
-              </tr>
-            <thead>
-          <tr ng-repeat="locker in lockerList">
-            <td>{{ locker.physicalId }}</td>
-            <td ng-class="{doorOpen : locker.doorState === 'OPEN'}">{{ locker.doorState }}</td>
-            <td ng-class="{pkgIn : locker.occupancyStatus === 'IN'}">{{ locker.occupancyStatus }}</td>
-            <td ng-class="{alarmOn : locker.alarmState === 'ON'}">{{ locker.alarmState }}</td>
-            <td>
-                <button ng-click="openDoor(locker.logicalId)" class="btn btn-xs btn-success">Open</button>
-                <button ng-click="closeDoor(locker)" class="btn btn-xs btn-success">Close</button>
-                <button ng-click="getStatus(locker.logicalId)" class="btn btn-xs btn-success">Status</button>
-                <label>Package : <input type="checkbox" ng-click="togglePackageStatus(locker)" ></label></label>
-                <label>Alarm : <input type="checkbox" ng-click="toggleAlarmStatus(locker)" ></label></label>
-            </td>
-
-            <td></td>
-          </tr>
-        </table>
-
-      </div>
+        function onImage() {
+            var dataUrl = zwibbler.save("png");
+            window.open(dataUrl, "other");
+        }
+    </script>
 
     </div> <!-- /container -->
 
@@ -154,3 +120,11 @@
     <script src="../bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
+  
+
+
+
+
+    
+
+            

@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../bootstrap/favicon.ico">
 
-    <title>SmartLocker Simulator</title>
+    <title>Father's Mobile</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -39,7 +39,7 @@
 
     <script src="../Test/DSAManager.js"></script>
     <script src="../Test/Locker.js"></script>
-    <script src="PanasonicLockerSimulator.js"></script>
+    <script src="FatherMobile.js"></script>
     <styel>
 
     </styel>
@@ -63,7 +63,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Smart Locker Demo</a>
+          <a class="navbar-brand" href="#">Father Mobile</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -89,27 +89,27 @@
 
     <div class="container theme-showcase" role="main">
 
-      <div ng-app="LockerSimApp" ng-controller="lockerCtrl">
+      <div ng-app="FatherMobilemApp" ng-controller="lockerCtrl">
 
-        <h3>Smartlocker Simulator</h3>
+        <h3>Father's Mobile</h3>
 
+        <div class="alert alert-danger" role="alert" ng-show="error">
+            <p><span ng-cloak>{{error}}</span></p>
+        </div>
         <div class="alert alert-success" role="alert" ng-show="status" >
-            <p>{{status}}</p>
+            <p><span ng-cloak>{{status}}</span></p>
         </div>
 
-        <input type="text" ng-model="package">
-        <button ng-click="fireStaged()" class="btn btn-sm btn-info">Fire Staged</button>
-        <input type="text" ng-model="kpiEvent">
-        <button ng-click="fireKpi()" class="btn btn-sm btn-info">Fire KPI</button>
-        <input type="text" ng-model="auditEvent">
-        <button ng-click="fireAudit()" class="btn btn-sm btn-info">Fire Audit</button>
-        <button ng-click="print()" class="btn btn-sm btn-default">Print</button>
-        </br></br>
-        <button ng-click="openAll()" class="btn btn-sm btn-primary">Open ALL</button>
-        <button ng-click="closeAll()" class="btn btn-sm btn-primary">Close ALL</button>
-        <button ng-click="getStatusAll()" class="btn btn-sm btn-primary">Get Status ALL</button>
-        <button ng-click="pushConfig()" class="btn btn-sm btn-primary">Config Push</button>
-        <button ng-click="doRandomActions()" class="btn btn-sm btn-primary">Do Random Actions(Infintely)</button>
+        DSA Name : <select ng-model="dsaName">
+        <option ng-repeat="link in dslinks" value="{{link}}">{{link}}</option>
+        </select>
+
+        Permission : <select ng-model="permission">
+        <option ng-repeat="p in permissions" value="{{p}}">{{p}}</option>
+        </select>
+
+        <button ng-click="updatePermssion()" class="btn btn-sm btn-primary">Update Permission</button>
+
         
         </br></br>
         <table class="table table-striped center">
@@ -123,13 +123,13 @@
               </tr>
             <thead>
           <tr ng-repeat="locker in lockerList">
-            <td>{{ locker.physicalId }}</td>
-            <td ng-class="{doorOpen : locker.doorState === 'OPEN'}">{{ locker.doorState }}</td>
-            <td ng-class="{pkgIn : locker.occupancyStatus === 'IN'}">{{ locker.occupancyStatus }}</td>
-            <td ng-class="{alarmOn : locker.alarmState === 'ON'}">{{ locker.alarmState }}</td>
+            <td><span ng-cloak>{{ locker.physicalId }}</span></td>
+            <td ng-class="{doorOpen : locker.doorState === 'OPEN'}"><span ng-cloak>{{ locker.doorState }}</span></td>
+            <td ng-class="{pkgIn : locker.occupancyStatus === 'IN'}"><span ng-cloak>{{ locker.occupancyStatus }}</span></td>
+            <td ng-class="{alarmOn : locker.alarmState === 'ON'}"><span ng-cloak>{{ locker.alarmState }}</span></td>
             <td>
                 <button ng-click="openDoor(locker.logicalId)" class="btn btn-xs btn-success">Open</button>
-                <button ng-click="closeDoor(locker)" class="btn btn-xs btn-success">Close</button>
+                <button ng-click="closeDoor(locker.logicalId)" class="btn btn-xs btn-success">Close</button>
                 <button ng-click="getStatus(locker.logicalId)" class="btn btn-xs btn-success">Status</button>
                 <label>Package : <input type="checkbox" ng-click="togglePackageStatus(locker)" ></label></label>
                 <label>Alarm : <input type="checkbox" ng-click="toggleAlarmStatus(locker)" ></label></label>

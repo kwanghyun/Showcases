@@ -102,9 +102,9 @@ app.controller('lockerCtrl', function($scope) {
 
     $scope.openAll = function() {
     	console.log("openAll()....");
-		// var logical_id_List = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"];
+		var logical_id_List = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"];
 		// var logical_id_List = ["1","2","3","4","5","6","7","8","9","10","11","12"]; //You can open 12 door at maximum.
-		var logical_id_List = ["1","2","3","4","5","6"];
+		// var logical_id_List = ["1","2","3","4","5","6"];
 		// var logical_id_List = ["1"];
 		// lockerManager.updateLockerStateForBulkOpen(logical_id_List);
 		
@@ -119,9 +119,9 @@ app.controller('lockerCtrl', function($scope) {
 
     $scope.closeAll = function() {
     	console.log("closeAll()....");
-		// var logical_id_List = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"];
+		var logical_id_List = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"];
 		
-		var logical_id_List = ["1","2","3","4","5","6"];
+		// var logical_id_List = ["1","2","3","4","5","6"];
 		// lockerManager.updateLockerStateForBulkOpen(logical_id_List);
 		for( var idx in logical_id_List)
 			lockerManager.getConnection().onResponseSimulator("#CL", lockers.getLockerById(logical_id_List[idx]));
@@ -130,6 +130,32 @@ app.controller('lockerCtrl', function($scope) {
     $scope.closeDoor = function(locker) {
 		lockerManager.getConnection().onResponseSimulator("#CL", locker);
     } 
+
+    $scope.doRandomActions = function() {
+    	var interval = 3000;
+
+		var logical_id_List = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"];
+		var lockerId = logical_id_List[Math.floor(Math.random()*logical_id_List.length)]; 
+    	var locker;
+    	$scope.lockerList.forEach(function(_locker){
+    		if(_locker.logicalId == lockerId)
+    			locker = _locker;
+    	});
+    	
+		console.log("doRandomActions::open door => " + lockerId);
+		$scope.openDoor(lockerId);
+
+	   	setTimeout(function () {
+	   		$scope.closeDoor(locker);	
+	    	console.log("doRandomActions::close door => " + lockerId);
+
+	    }, 2000);
+
+	   	setTimeout(function () {
+	    	$scope.doRandomActions();
+	    }, interval);
+
+    }    
 
     $scope.getStatusAll = function() {
     	console.log("getStatusAll()....");
@@ -183,13 +209,15 @@ app.controller('lockerCtrl', function($scope) {
 var main = function(list){
 
 	// var brokerHost = "http://localhost:8080";
-	var brokerHost = "http://10.106.8.159:8080";
+	var brokerHost = "http://localhost:8088";
+	// var brokerHost = "http://10.106.8.159:8080";
 	// var brokerHost = "http://10.106.9.143:8080";
 	// var brokerHost = "dglux.directcode.org/conn";
-
-	// var brok/erHost = "https://hostssl.dglux.com"
-	// var brokerHost = "http://rnd.iot-dsa.org:8081";
 	
+	// var brokerHost = "https://hostssl.dglux.com"
+	// var brokerHost = "http://rnd.iot-dsa.org:8081";
+	console.log("brokerHost => " + brokerHost);
+
 	var lockerMode = "PanasonicLockerSimulator";
 	// var lockerMode = "PanasonicLockerManager";
 	lockerList = getLockerList();
@@ -210,7 +238,7 @@ var main = function(list){
 	
 	// var serverDSLinkName = "SmartLocker-Server";
 	var deviceId = "testSite-testBank";
-	var serverDSLinkName = "server";
+	var serverDSLinkName = "Demo-Server";
 	// var deviceId = "nodeResponder-1";
 
 
