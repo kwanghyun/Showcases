@@ -1,13 +1,17 @@
 "use strict";
 
-
-
-var app = angular.module('FatherMobilemApp', []);
+var app = angular.module('BobMobilemApp', []);
 var link;
+var LOCAL_ACCESS_MODE = false;
 var downstreamName = "downstream";	
-var app_id = "Father-mobile"
-var deviceId = "Responder-DEMO";
+var app_id = "Bob-mobile"
+var deviceId = "bob-device";
+var cloud_broker_prefix = "/downstream/local-broker";
 var scope = null;
+
+// var brokerURL = 'http://localhost:8080';
+// var brokerURL = 'http://10.106.9.143:8080';
+var brokerURL = "http://10.106.8.160:8080";
 
 var LOCKER_STATE = {
 	DOOR : {
@@ -36,25 +40,30 @@ app.controller('lockerCtrl', function($scope, dsaService) {
     $scope.status = ""
     scope = $scope;
 
+    if(LOCAL_ACCESS_MODE){
+    	cloud_broker_prefix = "";
+    	brokerURL = 'http://10.106.9.143:8080';
+    }
+
     $scope.lockerList = [];
     // main($scope.lockerList);
     dsaService.init($scope.lockerList);
 
     console.log("$scope.lockerList Size => " + $scope.lockerList.length);  
 
-    $scope.dslinks = ["son-mobile","guest-mobile"];
-    $scope.permissions = [":write",":read"];
+    $scope.dslinks = ["bob-son-mobile","alice-mobile"];
+    $scope.permissions = ["bob:write","bob:read"];
 
     $scope.openDoor = function(logical_id) {
     	console.log("openDoor() logical_id => " + logical_id);
-		var nodePath = '/' + downstreamName +'/' + deviceId + '/command';
+		var nodePath = cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/command';
         link.requester.invoke(nodePath,{command:"/" + logical_id +"/doorState-OPEN"});
 		return;
     }
 
     $scope.closeDoor = function(logical_id) {
     	console.log("openDoor() logical_id => " + logical_id);
-		var nodePath = '/' + downstreamName +'/' + deviceId + '/command';
+		var nodePath = cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/command';
         console.log(nodePath);
         link.requester.invoke(nodePath,{command:"/" + logical_id +"/doorState-CLOSE"});
 		return;
@@ -62,7 +71,7 @@ app.controller('lockerCtrl', function($scope, dsaService) {
 
     $scope.togglePackageStatus = function(locker) {
     	console.log("openDoor() logical_id => " + locker.logicalId);
-		var nodePath = '/' + downstreamName +'/' + deviceId + '/command';
+		var nodePath = cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/command';
     	if(locker.occupancyStatus === LOCKER_STATE.PACKAGE.OUT)
     		value = LOCKER_STATE.PACKAGE.IN;
     	else
@@ -73,7 +82,7 @@ app.controller('lockerCtrl', function($scope, dsaService) {
 
     $scope.toggleAlarmStatus = function(locker) {
     	console.log("openDoor() logical_id => " + locker.logicalId);
-		var nodePath = '/' + downstreamName +'/' + deviceId + '/command';
+		var nodePath = cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/command';
 		var value;
     	if(locker.alarmState === LOCKER_STATE.ALARM.OFF)
     		value = LOCKER_STATE.ALARM.ON;
@@ -85,7 +94,7 @@ app.controller('lockerCtrl', function($scope, dsaService) {
 
     $scope.updatePermssion = function() {
     	console.log("updatePermssion() started.... -> " + $scope.dsaName + " - " + $scope.permission);
-		var nodePath = "/sys/updateGroup";
+		var nodePath = cloud_broker_prefix + "/sys/updateGroup";
 		if($scope.dsaName == undefined || $scope.permission == undefined){
 			$scope.error = "Please check your input"
 		}
@@ -118,13 +127,6 @@ app.service('dsaService',function(){
 	this.init = function(list){
 		console.log("init started......");
 
-	    // var brokerURL = 'http://localhost:8080';
-	    // var brokerURL = "http://10.203.55.126:8080";
-	    // var brokerURL = "http://10.203.31.192:8080";
-	    var brokerURL = 'http://10.106.9.143:8080';
-	    // var brokerURL = "http://10.203.55.126:8080";
-	    // var brokerURL = "http://10.106.8.159:8080";
-		
 		var propertyNames = ["doorState", "occupancyStatus", "alarmState"];
 
 	    var keys;
@@ -147,17 +149,16 @@ app.service('dsaService',function(){
 
 	    link = new DS.LinkProvider(brokerURL + '/conn', app_id + '-', {
 	        profiles: {},
-	        defaultNodes: load,
-	        token:"dQ3aj2WjvGO1NF9L6Kckwq5F4jHDisLsRT3vuFjZp8DEEONo"
+	        defaultNodes: load
 	    });
 
-	    keys = new DS.PrivateKey.loadFromString('rbKXu9ADtvRtHFVNGdTpmeSKRMGsfU7TNsxtgrsk+OM=');
+	    keys = new DS.PrivateKey.loadFromString('rbKXu9ADtvRtHFVNGdTpmeSddsfdddU7TNsxtgrsk+OM=');
 	    link.privateKey = keys;
 
 	    link.connect().then(function() {
 	        return link.onRequesterReady;
 	    }).then(function(requester) {
-	       requester.subscribe('/' + downstreamName +'/' + deviceId + '/1/doorState', function(update) {
+	       requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/1/doorState', function(update) {
 	            var data = update.value;
 	            
 	            if(data !=null && data != undefined && data != ''){
@@ -168,7 +169,7 @@ app.service('dsaService',function(){
 	            return;
 	        });
 
-	        requester.subscribe('/' + downstreamName +'/' + deviceId + '/1/occupancyStatus', function(update) {
+	        requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/1/occupancyStatus', function(update) {
 	            var data = update.value;            
 	            
 	            if(data !=null && data != undefined && data != ''){
@@ -179,7 +180,7 @@ app.service('dsaService',function(){
 	            return;
 	        });
 
-	        requester.subscribe('/' + downstreamName +'/' + deviceId + '/1/alarmState', function(update) {
+	        requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/1/alarmState', function(update) {
 	            var data = update.value;            
 	            
 	            if(data !=null && data != undefined && data != ''){
@@ -191,7 +192,7 @@ app.service('dsaService',function(){
 	        });            
 	                       
 
-	       requester.subscribe('/' + downstreamName +'/' + deviceId + '/2/doorState', function(update) {
+	       requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/2/doorState', function(update) {
 	            var data = update.value;
 
 	            
@@ -203,7 +204,7 @@ app.service('dsaService',function(){
 	            return;
 	        });
 
-	        requester.subscribe('/' + downstreamName +'/' + deviceId + '/2/occupancyStatus', function(update) {
+	        requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/2/occupancyStatus', function(update) {
 	            var data = update.value;            
 	            
 	            if(data !=null && data != undefined && data != ''){
@@ -214,7 +215,7 @@ app.service('dsaService',function(){
 	            return;
 	        });
 
-	        requester.subscribe('/' + downstreamName +'/' + deviceId + '/2/alarmState', function(update) {
+	        requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/2/alarmState', function(update) {
 	            var data = update.value;            
 	            
 	            if(data !=null && data != undefined && data != ''){
@@ -226,7 +227,7 @@ app.service('dsaService',function(){
 	        });            
 
 
-	       requester.subscribe('/' + downstreamName +'/' + deviceId + '/3/doorState', function(update) {
+	       requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/3/doorState', function(update) {
 	            var data = update.value;
 
 	            
@@ -238,7 +239,7 @@ app.service('dsaService',function(){
 	            return;
 	        });
 
-	        requester.subscribe('/' + downstreamName +'/' + deviceId + '/3/occupancyStatus', function(update) {
+	        requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/3/occupancyStatus', function(update) {
 	            var data = update.value;            
 	            
 	            if(data !=null && data != undefined && data != ''){
@@ -249,7 +250,7 @@ app.service('dsaService',function(){
 	            return;
 	        });
 
-	        requester.subscribe('/' + downstreamName +'/' + deviceId + '/3/alarmState', function(update) {
+	        requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/3/alarmState', function(update) {
 	            var data = update.value;            
 	            
 	            if(data !=null && data != undefined && data != ''){
@@ -261,7 +262,7 @@ app.service('dsaService',function(){
 	        });            
 
 
-	       requester.subscribe('/' + downstreamName +'/' + deviceId + '/4/doorState', function(update) {
+	       requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/4/doorState', function(update) {
 	            var data = update.value;
 
 	            
@@ -273,7 +274,7 @@ app.service('dsaService',function(){
 	            return;
 	        });
 
-	        requester.subscribe('/' + downstreamName +'/' + deviceId + '/4/occupancyStatus', function(update) {
+	        requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/4/occupancyStatus', function(update) {
 	            var data = update.value;            
 	            
 	            if(data !=null && data != undefined && data != ''){
@@ -284,7 +285,7 @@ app.service('dsaService',function(){
 	            return;
 	        });
 
-	        requester.subscribe('/' + downstreamName +'/' + deviceId + '/4/alarmState', function(update) {
+	        requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/4/alarmState', function(update) {
 	            var data = update.value;            
 	            
 	            if(data !=null && data != undefined && data != ''){
@@ -296,7 +297,7 @@ app.service('dsaService',function(){
 	        });            
 
 
-	       requester.subscribe('/' + downstreamName +'/' + deviceId + '/5/doorState', function(update) {
+	       requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/5/doorState', function(update) {
 	            var data = update.value;
 
 	            
@@ -308,7 +309,7 @@ app.service('dsaService',function(){
 	            return;
 	        });
 
-	        requester.subscribe('/' + downstreamName +'/' + deviceId + '/5/occupancyStatus', function(update) {
+	        requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/5/occupancyStatus', function(update) {
 	            var data = update.value;            
 	            
 	            if(data !=null && data != undefined && data != ''){
@@ -319,7 +320,7 @@ app.service('dsaService',function(){
 	            return;
 	        });
 
-	        requester.subscribe('/' + downstreamName +'/' + deviceId + '/5/alarmState', function(update) {
+	        requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/5/alarmState', function(update) {
 	            var data = update.value;            
 	            
 	            if(data !=null && data != undefined && data != ''){
@@ -332,7 +333,7 @@ app.service('dsaService',function(){
 	         
 
 
-	       requester.subscribe('/' + downstreamName +'/' + deviceId + '/6/doorState', function(update) {
+	       requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/6/doorState', function(update) {
 	            var data = update.value;
 
 	            
@@ -344,7 +345,7 @@ app.service('dsaService',function(){
 	            return;
 	        });
 
-	        requester.subscribe('/' + downstreamName +'/' + deviceId + '/6/occupancyStatus', function(update) {
+	        requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/6/occupancyStatus', function(update) {
 	            var data = update.value;            
 	            
 	            if(data !=null && data != undefined && data != ''){
@@ -355,7 +356,7 @@ app.service('dsaService',function(){
 	            return;
 	        });
 
-	        requester.subscribe('/' + downstreamName +'/' + deviceId + '/6/alarmState', function(update) {
+	        requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/6/alarmState', function(update) {
 	            var data = update.value;            
 	            
 	            if(data !=null && data != undefined && data != ''){
@@ -367,7 +368,7 @@ app.service('dsaService',function(){
 	        });   
 
 
-	       requester.subscribe('/' + downstreamName +'/' + deviceId + '/7/doorState', function(update) {
+	       requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/7/doorState', function(update) {
 	            var data = update.value;
 
 	            
@@ -379,7 +380,7 @@ app.service('dsaService',function(){
 	            return;
 	        });
 
-	        requester.subscribe('/' + downstreamName +'/' + deviceId + '/7/occupancyStatus', function(update) {
+	        requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/7/occupancyStatus', function(update) {
 	            var data = update.value;            
 	            
 	            if(data !=null && data != undefined && data != ''){
@@ -390,7 +391,7 @@ app.service('dsaService',function(){
 	            return;
 	        });
 
-	        requester.subscribe('/' + downstreamName +'/' + deviceId + '/7/alarmState', function(update) {
+	        requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/7/alarmState', function(update) {
 	            var data = update.value;            
 	            
 	            if(data !=null && data != undefined && data != ''){
@@ -403,7 +404,7 @@ app.service('dsaService',function(){
 
 
 
-	        requester.subscribe('/' + downstreamName +'/' + deviceId + '/8/doorState', function(update) {
+	        requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/8/doorState', function(update) {
 	            var data = update.value;
 
 	            
@@ -415,7 +416,7 @@ app.service('dsaService',function(){
 	            return;
 	        });
 
-	        requester.subscribe('/' + downstreamName +'/'+ deviceId + '/8/occupancyStatus', function(update) {
+	        requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/'+ deviceId + '/8/occupancyStatus', function(update) {
 	            var data = update.value;            
 	            
 	            if(data !=null && data != undefined && data != ''){
@@ -426,7 +427,7 @@ app.service('dsaService',function(){
 	            return;
 	        });
 
-	        requester.subscribe('/' + downstreamName +'/' + deviceId + '/8/alarmState', function(update) {
+	        requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/8/alarmState', function(update) {
 	            var data = update.value;            
 	            
 	            if(data !=null && data != undefined && data != ''){
@@ -438,7 +439,7 @@ app.service('dsaService',function(){
 	        });   
 	       
 
-	        requester.subscribe('/' + downstreamName +'/' + deviceId + '/packageUpdate', function(update) {
+	        requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/packageUpdate', function(update) {
 	            var data = update.value;            
 	            console.log("#requester.subscribtion - packageUpdate :: " + data);
 	            if(data !=null && data != undefined && data != ''){
@@ -447,7 +448,7 @@ app.service('dsaService',function(){
 	            return;
 	        });
 
-	        requester.subscribe('/' + downstreamName +'/' + deviceId + '/kpiPayload', function(update) {
+	        requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/kpiPayload', function(update) {
 	            var data = update.value;            
 	            console.log("#requester.subscribtion - kpiPayload :: " + data);
 	            if(data !=null && data != undefined && data != ''){
@@ -456,7 +457,7 @@ app.service('dsaService',function(){
 	            return;
 	        });
 
-	        requester.subscribe('/' + downstreamName +'/' + deviceId + '/auditPayload', function(update) {
+	        requester.subscribe(cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/auditPayload', function(update) {
 	            var data = update.value;            
 	            console.log("#requester.subscribtion - auditPayload :: " + data);
 	            if(data !=null && data != undefined && data != ''){

@@ -1,10 +1,10 @@
 "use strict";
 
-var app = angular.module('BobSonMobilemApp', []);
+var app = angular.module('AliceMobilemApp', []);
 var link;
 var LOCAL_ACCESS_MODE = false;
 var downstreamName = "downstream";	
-var app_id = "BobSon-mobile"
+var app_id = "Alice-mobile"
 var deviceId = "bob-device";
 var cloud_broker_prefix = "/downstream/local-broker";
 var scope = null;
@@ -516,5 +516,6 @@ app.service('dsaService',function(){
 	}
 
 });
+
 
 

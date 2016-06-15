@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../bootstrap/favicon.ico">
 
-    <title>Bob's Son Mobile</title>
+    <title>Alice's Mobile</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -39,7 +39,7 @@
 
     <script src="../Test/DSAManager.js"></script>
     <script src="../Test/Locker.js"></script>
-    <script src="SonMobile.js"></script>
+    <script src="AliceMobile.js"></script>
     <styel>
 
     </styel>
@@ -63,7 +63,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Bob's Son Mobile</a>
+          <a class="navbar-brand" href="#">Alice Mobile</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -89,13 +89,27 @@
 
     <div class="container theme-showcase" role="main">
 
-      <div ng-app="BobSonMobilemApp" ng-controller="lockerCtrl">
+      <div ng-app="AliceMobilemApp" ng-controller="lockerCtrl">
 
-        <h3>Bob's Son Mobile</h3>
+        <h3>Alice's Mobile</h3>
 
+        <div class="alert alert-danger" role="alert" ng-show="error">
+            <p><span ng-cloak>{{error}}</span></p>
+        </div>
         <div class="alert alert-success" role="alert" ng-show="status" >
             <p><span ng-cloak>{{status}}</span></p>
         </div>
+
+        DSA Name : <select ng-model="dsaName">
+        <option ng-repeat="link in dslinks" value="{{link}}">{{link}}</option>
+        </select>
+
+        Permission : <select ng-model="permission">
+        <option ng-repeat="p in permissions" value="{{p}}">{{p}}</option>
+        </select>
+
+        <button ng-click="updatePermssion()" class="btn btn-sm btn-primary">Update Permission</button>
+
         
         </br></br>
         <table class="table table-striped center">
