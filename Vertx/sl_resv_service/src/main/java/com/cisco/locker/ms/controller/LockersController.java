@@ -1,28 +1,26 @@
 package com.cisco.locker.ms.controller;
 
-import java.time.LocalDateTime;
 
+import org.apache.log4j.Logger;
 import com.cisco.locker.ms.util.Properties;
-import com.cisco.locker.ms.util.TimeUtils;
 
 import io.vertx.core.http.HttpHeaders;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
+
 import io.vertx.ext.mongo.MongoClient;
 import io.vertx.ext.web.Router;
 
-public class LockersController extends AbstractVertxController{
+public class LockersController extends AbstractVertxController {
 
-	private static final Logger logger = LoggerFactory.getLogger(LockersController.class);
+	private static final Logger logger = Logger.getLogger(LockersController.class);
 	private static final String API_NAME = "/lockers";
 	private static final String COLLECTION_NAME = "lockers";
 
 	public LockersController(Router router, MongoClient mongo) {
 		super(router, mongo);
 	}
-	
+
 	@Override
 	public void loadRoutes() {
 
@@ -43,7 +41,7 @@ public class LockersController extends AbstractVertxController{
 				for (JsonObject o : lookup.result()) {
 					jsonArr.add(o);
 				}
-				
+
 				ctx.response().putHeader(HttpHeaders.CONTENT_TYPE, "application/json");
 				ctx.response().end(jsonArr.encodePrettily());
 			});
@@ -72,11 +70,11 @@ public class LockersController extends AbstractVertxController{
 
 		router.post(Properties.API_ROOT + API_NAME).handler(ctx -> {
 			JsonObject newJsonObj = ctx.getBodyAsJson();
-			
-			logger.info("@@@["+API_NAME + "] :: " + newJsonObj.encodePrettily());
 
-			mongo.findOne(COLLECTION_NAME, new JsonObject().put("packageId", newJsonObj.getString("packageId")),
-					null, lookup -> {
+			logger.info("@@@[" + API_NAME + "] :: " + newJsonObj.encodePrettily());
+
+			mongo.findOne(COLLECTION_NAME, new JsonObject().put("packageId", newJsonObj.getString("packageId")), null,
+					lookup -> {
 				// error handling
 				if (lookup.failed()) {
 					logger.error("Lookup Failed....");
@@ -91,9 +89,9 @@ public class LockersController extends AbstractVertxController{
 					// already exists
 					ctx.fail(500);
 				} else {
-					
+
 					logger.info(API_NAME + " :: POST :: newJsonObj => " + newJsonObj.encodePrettily());
-					
+
 					mongo.insert(COLLECTION_NAME, newJsonObj, insert -> {
 						// error handling
 						if (insert.failed()) {
@@ -130,23 +128,33 @@ public class LockersController extends AbstractVertxController{
 				} else {
 					logger.info(API_NAME + "[PUT] :: " + jsonObj);
 					JsonObject update = ctx.getBodyAsJson();
-					
-					// TODO null check.
-//					reservation.put("site", update.getString("site").isEmpty() 
-//							? reservation.getString("site") : update.getString("site"));
-//					reservation.put("bank", update.getString("bank").isEmpty() 
-//							? reservation.getString("bank"): update.getString("bank"));
-					jsonObj.put("size", update.getInteger("size") != null ? jsonObj.getInteger("size")
-							: update.getInteger("size"));
-//					reservation.put("packageId", update.getString("packageId").isEmpty()
-//							? reservation.getString("packageId") : update.getString("packageId"));
-//					reservation.put("reservationDate", update.getString("reservationDate").isEmpty()
-//							? reservation.getString("reservationDate") : update.getString("reservationDate"));
-//					reservation.put("expiryDate", update.getString("expiryDate").isEmpty()
-//							? reservation.getString("expiryDate") : update.getString("expiryDate"));
 
-					mongo.replace(COLLECTION_NAME, new JsonObject().put("_id", jsonObj.getString("_id")),
-							jsonObj, replace -> {
+					// TODO null check.
+					// reservation.put("site",
+					// update.getString("site").isEmpty()
+					// ? reservation.getString("site") :
+					// update.getString("site"));
+					// reservation.put("bank",
+					// update.getString("bank").isEmpty()
+					// ? reservation.getString("bank"):
+					// update.getString("bank"));
+					jsonObj.put("size",
+							update.getInteger("size") != null ? jsonObj.getInteger("size") : update.getInteger("size"));
+					// reservation.put("packageId",
+					// update.getString("packageId").isEmpty()
+					// ? reservation.getString("packageId") :
+					// update.getString("packageId"));
+					// reservation.put("reservationDate",
+					// update.getString("reservationDate").isEmpty()
+					// ? reservation.getString("reservationDate") :
+					// update.getString("reservationDate"));
+					// reservation.put("expiryDate",
+					// update.getString("expiryDate").isEmpty()
+					// ? reservation.getString("expiryDate") :
+					// update.getString("expiryDate"));
+
+					mongo.replace(COLLECTION_NAME, new JsonObject().put("_id", jsonObj.getString("_id")), jsonObj,
+							replace -> {
 						// error handling
 						if (replace.failed()) {
 							ctx.fail(500);
@@ -171,14 +179,14 @@ public class LockersController extends AbstractVertxController{
 
 				JsonObject jsonObj = lookup.result();
 				logger.info(API_NAME + " :: DELETE :: jsonObj => " + jsonObj);
-				
+
 				if (jsonObj == null) {
 					// does not exist
 					ctx.fail(404);
 				} else {
 
-					mongo.remove(COLLECTION_NAME, new JsonObject().put("packageId", ctx.request().getParam("packageId")),
-							remove -> {
+					mongo.remove(COLLECTION_NAME,
+							new JsonObject().put("packageId", ctx.request().getParam("packageId")), remove -> {
 						// error handling
 						if (remove.failed()) {
 							ctx.fail(500);

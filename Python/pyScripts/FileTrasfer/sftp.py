@@ -46,7 +46,6 @@ class SftpManager:
     def download(self, fileMap):
         logging.info("[Download] src ::: %s" % fileMap['src'])
         logging.info("[Download] dest::: %s" % fileMap['dest'])
-        # file['dest'] = 'C:\\Users\\kwjang\\Desktop\\filelog-info_' + now.strftime('%Y%m%d_%H%M%S') + '.log'
         self.sftp.get(fileMap['src'], fileMap['dest'])
 
     def downloads(self, file_list):
@@ -54,7 +53,7 @@ class SftpManager:
             self.download(fileMap)
 
     def remove(self, path):
-        logging.info("Deleting a file => " + path)
+        logging.info("[Delete]Deleting a file => " + path)
         self.sftp.remove(path)
 
     def upload(self, fileMap):
@@ -75,54 +74,5 @@ class SftpManager:
 
 
 if __name__ == "__main__":
-    # main()
-
-# def downloadBrokerPerfStat(host, file_list):
-# 	try:
-# 		connect(host);
-# 		for fileMap in file_list:
-# 			download(fileMap)
-# 			remove(fileMap['src']);
-
-# 	except IOError, e:
-# 		logging.error("######Oops! %s" % e)
-# 	finally:
-# 		close()
-
-
-# def downloadApplogs(host, file_list):
-# 	try:
-# 		connect(host);
-# 		for fileMap in file_list:
-# 			fileMap['dest'] = 'C:\\Users\\kwjang\\Desktop\\logs\\filelog-info_' + host + '.log'
-# 			download(fileMap)
-# 			remove(fileMap['src']);
-
-# 	except IOError, e:
-# 		logging.error("######Oops! %s" % e)
-# 	finally:
-# 		close()
-
-
-
-# hosts = ["10.106.8.158", "10.106.8.160"]
-# hosts = ["10.106.8.158"]
-# file_list = []
-# file_list.append({
-#       'src' : '/home/scc-dev/softwares/monitorTools/memory.log',
-#       'dest' : 'C:\\Users\\kwjang\\Desktop\\logs\\memory.log'
-# })
-# 
-# sm = SftpManager()
-# 
-# for host in hosts:
-# 	try:
-# 		sm.connect(hosts[0]);
-# 		for fileMap in file_list:
-# 			sm.download(fileMap)
-# 			# sm.remove(fileMap['src']);
-# 
-# 	except IOError, e:
-# 		logging.error("######Oops! %s" % e)
-# 	finally:
-# 		sm.close()
+    # execute only if run as a script
+    logging.info("Running as script")

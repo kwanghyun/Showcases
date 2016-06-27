@@ -1,0 +1,47 @@
+{
+  "name": "template-dslink-java",
+  "version": "0.0.1",
+  "description": "An example template for Java DSLinks",
+  "license": "Apache",
+  "author": {
+    "name": "YOUR NAME",
+    "email": "YOUR EMAIL"
+  },
+  "main": "bin/template-dslink-java",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IOT-DSA/template-dslink-java"
+  },
+  "bugs": {
+    "url": "https://github.com/IOT-DSA/template-dslink-java/issues"
+  },
+  "configs": {
+    "name": {
+      "type": "string",
+      "default": "template"
+    },
+    "broker": {
+      "type": "url"
+    },
+    "token": {
+      "type": "string"
+    },
+    "nodes": {
+      "type": "path",
+      "default": "nodes.json"
+    },
+    "key": {
+      "type": "path",
+      "default": ".key"
+    },
+    "log": {
+      "type": "enum",
+      "default": "info"
+    },
+    "handler_class": {
+      "type": "string",
+      "default": "com.cisco.locker.ms.dsa.DsaHandler"
+    }
+  }
+}
+

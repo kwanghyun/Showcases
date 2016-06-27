@@ -2,20 +2,20 @@ package com.cisco.locker.ms.controller;
 
 import java.time.LocalDateTime;
 
+import org.apache.log4j.Logger;
+
 import com.cisco.locker.ms.util.Properties;
 import com.cisco.locker.ms.util.TimeUtils;
 
 import io.vertx.core.http.HttpHeaders;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
 import io.vertx.ext.mongo.MongoClient;
 import io.vertx.ext.web.Router;
 
 public class StagedOrderController extends AbstractVertxController{
 
-	private static final Logger logger = LoggerFactory.getLogger(StagedOrderController.class);
+	private static final Logger logger = Logger.getLogger(StagedOrderController.class);
 	private static final String API_NAME = "/staged";
 	private static final String COLLECTION_NAME = "staged";
 

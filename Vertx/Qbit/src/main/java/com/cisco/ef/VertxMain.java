@@ -1,5 +1,6 @@
 package com.cisco.ef;
 
+import com.cisco.ef.service.DsaService;
 import com.cisco.ef.service.EventHandleService;
 
 import com.cisco.ef.service.OauthService;
@@ -14,6 +15,10 @@ import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;
 
 import io.vertx.core.http.HttpServerResponse;
+import io.vertx.core.json.JsonObject;
+import io.vertx.ext.auth.oauth2.AccessToken;
+import io.vertx.ext.auth.oauth2.OAuth2Auth;
+import io.vertx.ext.auth.oauth2.OAuth2FlowType;
 import io.vertx.ext.web.Route;
 import io.vertx.ext.web.Router;
 import org.apache.log4j.Logger;
@@ -71,7 +76,7 @@ public class VertxMain extends AbstractVerticle {
 
         latch.await(5, TimeUnit.SECONDS);
 
-        System.out.println("QBit and Vertx are open for e-Busbies");
+        logger.info("QBit and Vertx are open for e-Busbies");
     }
 
 
@@ -91,7 +96,7 @@ public class VertxMain extends AbstractVerticle {
         systemManager = managedServiceBuilder.getSystemManager();
 
         managedServiceBuilder.addEndpointService(new EventHandleService());
-        managedServiceBuilder.addEndpointService(new OauthService(vertx));
+//        managedServiceBuilder.addEndpointService(new OauthService(vertx));
 
         /*
         * Create and start new service endpointServer.
@@ -109,7 +114,36 @@ public class VertxMain extends AbstractVerticle {
         vertxHttpServer.requestHandler(router::accept).listen(
                 managedServiceBuilder.getPort());
 
+        logger.info("[Client Credential flow] started...");
+
+        OAuth2Auth oauth2 = OAuth2Auth.create(vertx, OAuth2FlowType.CLIENT, new JsonObject()
+                .put("clientID", "f4f9ea5a8e2fe081f337")
+                .put("clientSecret", "df8aadec3990f219b9326b67a0c7506356d14215")
+                .put("site", "https://github.com/login")
+                .put("tokenPath", "/oauth/access_token")
+                .put("authorizationPath", "/oauth/authorize")
+
+        );
+
+        JsonObject tokenConfig = new JsonObject();
+
+        // Callbacks
+        // Save the access token
+        oauth2.getToken(tokenConfig, res -> {
+            if (res.failed()) {
+                logger.info("[Access Token Error]: " + res.cause().getMessage());
+            } else {
+                // Get the access token object (the authorization code is given from the previous step).
+                AccessToken token = res.result();
+                logger.info("[Access Token SUCCESS]: principal => " + token.principal().encodePrettily());
+                logger.info("[Access Token SUCCESS]: expired => " + token.expired());
+            }
+        });
+
+//        vertx.deployVerticle("com.cisco.ef.service.OauthService");
         vertx.deployVerticle("com.cisco.ef.service.ConsulService", new DeploymentOptions().setWorker(true));
+//        DsaService dsaService = new DsaService();
+//        dsaService.start();
 
     }
 
@@ -155,6 +189,10 @@ public class VertxMain extends AbstractVerticle {
                 ManagedServiceBuilder.managedServiceBuilder()
                         .setRootURI("/v1") //Defaults to services
                         .setPort(8888); //Defaults to 8080 or environment variable PORT
+
+        /* Start the admin builder which exposes health
+        end-points and swagger meta data. */
+        managedServiceBuilder.getAdminBuilder().build().startServer();
 
         /* Context meta builder to document this endpoint.
         * Gets used by swagger support.

@@ -9,14 +9,14 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.log4j.Logger;
 
 import io.vertx.core.AbstractVerticle;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
+
 
 public class ACMQConsumer extends AbstractVerticle {
 
-	private static final Logger logger = LoggerFactory.getLogger(ACMQConsumer.class);
+	private static final Logger logger = Logger.getLogger(ACMQConsumer.class);
 
 	ActiveMQConnectionFactory connectionFactory;
 	Connection connection;

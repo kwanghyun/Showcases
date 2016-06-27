@@ -8,17 +8,17 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.log4j.Logger;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.eventbus.EventBus;
 import io.vertx.core.eventbus.MessageConsumer;
 import io.vertx.core.json.JsonObject;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
+
 
 public class ACMQProducer extends AbstractVerticle {
-
-	private static final Logger logger = LoggerFactory.getLogger(ACMQProducer.class);
+	
+	private static final Logger logger = Logger.getLogger(ACMQProducer.class);
 	private static final String ACMQ_EVENT_CHANNEL= "TEST.FOO";
 	EventBus eb;
 	

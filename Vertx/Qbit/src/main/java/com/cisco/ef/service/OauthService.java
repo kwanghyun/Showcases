@@ -6,6 +6,7 @@ import io.advantageous.qbit.annotation.RequestMapping;
 import io.advantageous.qbit.annotation.RequestMethod;
 import io.advantageous.qbit.annotation.RequestParam;
 import io.advantageous.qbit.reactive.Callback;
+import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.auth.oauth2.AccessToken;
@@ -22,17 +23,23 @@ import java.util.TreeMap;
  * Created by kwjang on 2/6/16.
  */
 
-@RequestMapping(value = "/api/auth", description = "Oauth service")
-public class OauthService {
+//@RequestMapping(value = "/api/auth", description = "Oauth service")
+public class OauthService extends AbstractVerticle{
 
     private static final Logger logger = LoggerFactory.getLogger(OauthService.class);
-    private Vertx vertx;
+//    private Vertx vertx;
+//
+//    public OauthService(Vertx vertx) {
+//        this.vertx = vertx;
+//    }
 
-    public OauthService(Vertx vertx) {
-        this.vertx = vertx;
+    @Override
+    public void start() throws Exception {
+        logger.info("START");
+        testClientCredentailCodeFlow();
     }
 
-    @RequestMapping("/code")
+//    @RequestMapping("/code")
     public void testAuthenticationCodeFlow() {
         OAuth2Auth oauth2 = OAuth2Auth.create(vertx, OAuth2FlowType.AUTH_CODE, new JsonObject()
                 .put("clientID", "1015c2b97bd1f36eb883")
@@ -67,7 +74,7 @@ public class OauthService {
         });
     }
 
-    @RequestMapping("/client")
+//    @RequestMapping("/client")
     public void testClientCredentailCodeFlow() {
         logger.info("[Client Credential flow] started...");
 
@@ -92,7 +99,7 @@ public class OauthService {
         });
     }
 
-    @RequestMapping("/callback")
+//    @RequestMapping("/callback")
     public void callback() {
         logger.info("CALL BACL CALLED..................");
 

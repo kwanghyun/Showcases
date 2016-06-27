@@ -4,9 +4,9 @@ var app = angular.module('BobMobilemApp', []);
 var link;
 var LOCAL_ACCESS_MODE = false;
 var downstreamName = "downstream";	
-var app_id = "Bob-mobile"
+var app_id = "bob-mobile"
 var deviceId = "bob-device";
-var cloud_broker_prefix = "/downstream/local-broker";
+var cloud_broker_prefix = "/downstream/bob-broker";
 var scope = null;
 
 // var brokerURL = 'http://localhost:8080';
@@ -52,7 +52,7 @@ app.controller('lockerCtrl', function($scope, dsaService) {
     console.log("$scope.lockerList Size => " + $scope.lockerList.length);  
 
     $scope.dslinks = ["bob-son-mobile","alice-mobile"];
-    $scope.permissions = ["bob:write","bob:read"];
+    $scope.permissions = [":bob:config",":bob:write",":bob:read"];
 
     $scope.openDoor = function(logical_id) {
     	console.log("openDoor() logical_id => " + logical_id);
@@ -70,8 +70,9 @@ app.controller('lockerCtrl', function($scope, dsaService) {
     }
 
     $scope.togglePackageStatus = function(locker) {
-    	console.log("openDoor() logical_id => " + locker.logicalId);
+    	console.log("togglePackageStatus() logical_id => " + locker.logicalId);
 		var nodePath = cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/command';
+		var value;
     	if(locker.occupancyStatus === LOCKER_STATE.PACKAGE.OUT)
     		value = LOCKER_STATE.PACKAGE.IN;
     	else
@@ -81,7 +82,7 @@ app.controller('lockerCtrl', function($scope, dsaService) {
     } 
 
     $scope.toggleAlarmStatus = function(locker) {
-    	console.log("openDoor() logical_id => " + locker.logicalId);
+    	console.log("toggleAlarmStatus() logical_id => " + locker.logicalId);
 		var nodePath = cloud_broker_prefix + '/' + downstreamName +'/' + deviceId + '/command';
 		var value;
     	if(locker.alarmState === LOCKER_STATE.ALARM.OFF)
@@ -94,7 +95,7 @@ app.controller('lockerCtrl', function($scope, dsaService) {
 
     $scope.updatePermssion = function() {
     	console.log("updatePermssion() started.... -> " + $scope.dsaName + " - " + $scope.permission);
-		var nodePath = cloud_broker_prefix + "/sys/updateGroup";
+		var nodePath = "/sys/updateGroup";
 		if($scope.dsaName == undefined || $scope.permission == undefined){
 			$scope.error = "Please check your input"
 		}

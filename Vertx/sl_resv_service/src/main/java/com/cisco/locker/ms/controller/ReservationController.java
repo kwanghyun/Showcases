@@ -4,20 +4,20 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.cisco.locker.ms.util.TimeUtils;
 import com.cisco.locker.ms.util.Properties;
 
 import io.vertx.core.http.HttpHeaders;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
 import io.vertx.ext.mongo.MongoClient;
 import io.vertx.ext.web.Router;
 
 public class ReservationController extends AbstractVertxController {
 
-	private static final Logger logger = LoggerFactory.getLogger(ReservationController.class);
+	private static final Logger logger = Logger.getLogger(ReservationController.class);
 	private static final String API_NAME =  "/reservations";
 	private static final String COLLECTION_NAME = "reservations";
 	

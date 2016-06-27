@@ -4,13 +4,14 @@ var unirest = require('unirest');
 
 // Set the configuration settings 
 var CALLBACK_URL = 'http://localhost:3000/oauth/callback';
+// var CALLBACK_URL = 'http://10.106.8.53:3000/oauth/callback';
 
 var credentials = {
-  clientID: '7gq5zLlAxAhJVLfqkcldnPjCYgEa',
-  clientSecret: 'EXXOJ4GQfWcXjIy7Qqyu6p9z0fUa',
-  site: 'https://10.106.8.53:9443/login',
+  clientID: 'TVTGu9ZvLUWKPl4cK4JZbmlsmsoa',
+  clientSecret: '76NPGQzWuaZgbpDufUSVImVKVDAa',
+  site: 'https://10.106.8.53:9443',
   authorizationPath: '/oauth2/authorize',
-  tokenPath: '/oauth2/token'
+  tokenPath : '/oauth2/token'
 };
 
 
@@ -49,21 +50,22 @@ router.get('/callback', function (req, res) {
  
   function saveToken(error, result) {
     if (error) { 
-    	console.log('Access Token Error', error.message); 
-    }
-    token = oauth2.accessToken.create(result);
-    console.log('[Token]' +  token);
-    console.log('[Token.token]' +  token.token);
-    console.log('[Token.token.access_token]' +  getAccessToekn(token.token));
-	  
-	unirest.get('https://api.github.com/user')
-		.headers({'Authorization' : 'token ' + getAccessToekn(token.token),
-			'User-Agent': 'nodejs oauth test'
-		}).end(function (data) {
-		console.log("[RES] => " + JSON.stringify(data));
-		res.send("<b>Hello " + data.body.login + "</b></br>" + JSON.stringify(data));
-	});
-	
+    	console.log('[Access Token Error]', error.message); 
+    	res.send(error);
+    }else{
+	    token = oauth2.accessToken.create(result);
+	    console.log('[Token]' +  token);
+	    console.log('[Token.token]' +  token.token);
+	    console.log('[Token.token.access_token]' +  getAccessToekn(token.token));
+		  
+		unirest.get('https://api.github.com/user')
+			.headers({'Authorization' : 'token ' + getAccessToekn(token.token),
+				'User-Agent': 'nodejs oauth test'
+			}).end(function (data) {
+			console.log("[RES] => " + JSON.stringify(data));
+			res.send("<b>Hello " + data.body.login + "</b></br>" + JSON.stringify(data));
+		});
+    }	
   }
   
 });

@@ -26,7 +26,6 @@ public class KafkaMain extends AbstractVerticle {
 
     @Override
     public void start() throws Exception {
-//        vertx = Vertx.vertx();
 
         // Kafka Consumer sample config
         JsonObject consumerConfig = new JsonObject();

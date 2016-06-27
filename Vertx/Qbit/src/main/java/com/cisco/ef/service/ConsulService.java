@@ -28,10 +28,10 @@ public class ConsulService extends AbstractVerticle {
         client.agent().registerService(8888, 10000L, "sl-reservation-service", serviceId);
         client.agent().pass(serviceId);
 
-//        vertx.setPeriodic(5000, id -> {
-//            // This handler will get called every second
-//            client.agent().pass(serviceId);
-//        });
+        vertx.setPeriodic(5000, id -> {
+            // This handler will get called every second
+            client.agent().pass(serviceId);
+        });
 
         CatalogEndpoint catalogClient = client.catalog();
         ConsulResponse<List<CatalogService>> services = catalogClient.getService("meteor");
