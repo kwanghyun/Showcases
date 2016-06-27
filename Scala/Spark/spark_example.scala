@@ -169,8 +169,6 @@ val kafkaStream = KafkaUtils.createStream(ssc, "10.106.9.157:2181","audit-group"
 kafkaStream.print()
 ssc.start()
 
-
-
 val zkQuorum = "10.106.9.157:2181"
 val group = "test-group"
 val topics = "test"
