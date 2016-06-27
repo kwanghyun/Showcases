@@ -22,57 +22,49 @@ public class MaximalSqaure {
 	public int maximalSquare(int[][] matrix) {
 		if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
 			return 0;
-	 
-		int r = matrix.length;
-		int c = matrix[0].length;
-	 
-		int[][] t = new int[r][c];
-	 
-		//top row
-		for (int rIdx = 0; rIdx < r; rIdx++) {
-			t[rIdx][0] = matrix[rIdx][0];
+
+		int rlen = matrix.length;
+		int clen = matrix[0].length;
+
+		int[][] dp = new int[rlen][clen];
+
+		for (int r = 0; r < rlen; r++) {
+			dp[r][0] = matrix[r][0];
 		}
-	 
-		//left column
-		for (int cIdx = 0; cIdx < c; cIdx++) {
-			t[0][cIdx] = matrix[0][cIdx];
+
+		for (int c = 0; c < clen; c++) {
+			dp[0][c] = matrix[0][c];
 		}
-	 
-		//cells inside
-		for (int rIdx = 1; rIdx < r; rIdx++) {
-			for (int cIdx = 1; cIdx < c; cIdx++) {
-				if (matrix[rIdx][cIdx] == 1) {
-					int min = Math.min(t[rIdx - 1][cIdx], t[rIdx - 1][cIdx - 1]);
-					min = Math.min(min,t[rIdx][cIdx - 1]);
-					t[rIdx][cIdx] = min + 1;
+
+		for (int r = 1; r < rlen; r++) {
+			for (int c = 1; c < clen; c++) {
+				if (matrix[r][c] == 1) {
+					int min = Math.min(dp[r - 1][c], dp[r - 1][c - 1]);
+					min = Math.min(min, dp[r][c - 1]);
+					dp[r][c] = min + 1;
 				} else {
-					t[rIdx][cIdx] = 0;
+					dp[r][c] = 0;
 				}
 			}
 		}
-	 
+
 		int max = 0;
-		
-		//get maximal length
-		for (int i = 0; i < r; i++) {
-			for (int j = 0; j < c; j++) {
-				if (t[i][j] > max) {
-					max = t[i][j];
+
+		// get maximal length
+		for (int r = 0; r < rlen; r++) {
+			for (int c = 0; c < clen; c++) {
+				if (dp[r][c] > max) {
+					max = dp[r][c];
 				}
 			}
 		}
-	 
+
 		return max * max;
 	}
 
 	public static void main(String[] args) {
-		int matrix[][] = { 
-				{ 0, 1, 1, 0, 1, 1 }, 
-				{ 1, 1, 0, 1, 1, 1 }, 
-				{ 0, 1, 1, 1, 0, 0 }, 
-				{ 1, 1, 1, 1, 0, 0 },
-				{ 1, 1, 1, 1, 1, 0 }, 
-				{ 0, 1, 1, 1, 0, 1 } };
+		int matrix[][] = { { 0, 1, 1, 0, 1, 1 }, { 1, 1, 0, 1, 1, 1 }, { 0, 1, 1, 1, 0, 0 }, { 1, 1, 1, 1, 0, 0 },
+				{ 1, 1, 1, 1, 1, 0 }, { 0, 1, 1, 1, 0, 1 } };
 		MaximalSqaure ob = new MaximalSqaure();
 		System.out.println(ob.maximalSquare(matrix));
 	}

@@ -15,7 +15,7 @@ public class CloneRandomLinkedList {
 		if (head == null)
 			return null;
 		
-		HashMap<Node, Node> map = new HashMap<Node, Node>();
+		HashMap<Node, Node> map = new HashMap<>();
 		Node clone_h = new Node(head.val);
 
 		Node origin_p = head;

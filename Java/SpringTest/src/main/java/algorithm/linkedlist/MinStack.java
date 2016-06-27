@@ -71,11 +71,15 @@ public class MinStack {
 		stack.push(3);
 		stack.push(6);
 		stack.printAll();
-
-		stack.pop();
-		System.out.println(stack.top());
 		System.out.println("-----------------------");
-		System.out.println(stack.getMin());
-		stack.printAll();
+		System.out.println("stack.top()" + stack.top());
+		System.out.println("stack.getMin() : " + stack.getMin());
+		System.out.println("-----------------------");
+		stack.pop();
+		stack.pop();
+		stack.pop();
+		System.out.println("stack.top()" + stack.top());
+		System.out.println("stack.getMin() : " + stack.getMin());
+		System.out.println("-----------------------");
 	}
 }

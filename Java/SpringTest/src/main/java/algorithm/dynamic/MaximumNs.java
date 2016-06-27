@@ -30,46 +30,46 @@ public class MaximumNs {
 	private static int MAX = 10;
 
 	/*
-	 * f(N) 	= N if N < 7 
-	 * 			= max{2*f(N-3), 3*f(N-4),..., (N-2)*f(1)}
+	 * f(N) = N if N < 7 = max{2*f(N-3), 3*f(N-4),..., (N-2)*f(1)}
 	 */
-	public static int findMaxAs(int n, int[] maxAsSolution) {
+	public static int findMaxAs(int n, int[] dp) {
 		// base case
 		if (n < 7)
 			return n;
 
-		int maxSoFar = 0, maxAsWithThis_i = 0, multiplier = 2;
+		int max = 0, tempMax = 0, multiplier = 2;
 
 		// choose the critical point which produces maximum number of As
 		for (int i = n - 3; i >= 0; i--) {
 			// make recursive call if required
-			if (maxAsSolution[i] == -1) {
-				maxAsSolution[i] = findMaxAs(i, maxAsSolution);
+			if (dp[i] == -1) {
+				dp[i] = findMaxAs(i, dp);
 			}
 
-			maxAsWithThis_i = multiplier * maxAsSolution[i];
+			tempMax = multiplier * dp[i];
 
-			if (maxAsWithThis_i > maxSoFar) {
-				maxSoFar = maxAsWithThis_i;
+			if (tempMax > max) {
+				max = tempMax;
 			}
 			multiplier += 1;
 		}
-		return maxSoFar;
+		return max;
 	}
 
 	/*
 	 * Order of the Algorithm
 	 * 
-	 * Time Complexity is O(n^2) 
-	 * Space Complexity is O(n)
+	 * Time Complexity is O(n^2) Space Complexity is O(n)
 	 */
 	public static void main(String[] args) throws java.lang.Exception {
 		// assuming input n won't be greater than 10.
 		int[] maxAsSolution = new int[MAX];
+		int[] maxAsSolutionI = new int[MAX];
 		for (int i = 0; i < maxAsSolution.length; i++) {
 			// maxAsSolution[i] = -1 indicates that solution for this input =
 			// 'i' is not computed yet.
 			maxAsSolution[i] = -1;
+			maxAsSolutionI[i] = -1;
 		}
 
 		// find max number of As with 8 keystrokes allowed.

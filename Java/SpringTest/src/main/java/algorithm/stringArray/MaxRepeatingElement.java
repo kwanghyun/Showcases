@@ -1,6 +1,18 @@
 package algorithm.stringArray;
 
 /*
+ * Given an array of size n, the array contains numbers in range from 0 to
+ * k-1 where k is a positive integer and k <= n. Find the maximum repeating
+ * number in this array. For example, let k be 10 the given array be arr[] =
+ * {1, 2, 2, 2, 0, 2, 0, 2, 3, 8, 0, 9, 2, 3}, the maximum repeating number
+ * would be 2. Expected time complexity is O(n) and extra space allowed is
+ * O(1). Modifications to array are allowed.
+ * 
+ * The naive approach is to run two loops, the outer loop picks an element
+ * one by one, the inner loop counts number of occurrences of the picked
+ * element. Finally return the element with maximum count. Time complexity
+ * of this approach is O(n^2).
+ * 
  * A better approach is to create a count array of size k and initialize all
  * elements of count[] as 0. Iterate through all elements of input array,
  * and for every element arr[i], increment count[arr[i]]. Finally, iterate
@@ -29,6 +41,7 @@ package algorithm.stringArray;
  * element and all array elements are smaller than k.
  */
 public class MaxRepeatingElement {
+
 
 	// Returns maximum repeating element in arr[0..n-1].
 	// The array elements are in range from 0 to k-1

@@ -5,34 +5,34 @@ import java.util.Arrays;
 /*Given a matrix of mxn dimensions, print the elements of the matrix in diagonal order.*/
 public class PrintMatrixDiagonally {
 
-public static void printMatrixDiagonally(int[][] matrix) {
+	public static void printMatrixDiagonally(int[][] matrix) {
 
-	int row, col;
-	int rowCount = matrix.length;
-	int columnCount = matrix[0].length;
+		int r, c;
+		int row = matrix.length;
+		int col = matrix[0].length;
 
-	for (int k = 0; k < rowCount; k++) {
-		for (row = k, col = 0; row >= 0 && col < columnCount; row--, col++) {
-			System.out.print(matrix[row][col] + " ");
+		for (int i = 0; i < row; i++) {
+			for (r = i, c = 0; r >= 0 && c < col; r--, c++) {
+				System.out.print(matrix[r][c] + " ");
+			}
+			System.out.println();
 		}
-		System.out.println();
-	}
 
-	for (int k = 1; k < columnCount; k++) {
-		for (row = rowCount - 1, col = k; row >= 0 && col < columnCount; row--, col++) {
-			System.out.print(matrix[row][col] + " ");
+		for (int i = 1; i < col; i++) {
+			for (r = row - 1, c = i; r >= 0 && c < col; r--, c++) {
+				System.out.print(matrix[r][c] + " ");
+			}
+			System.out.println();
 		}
-		System.out.println();
 	}
-}
 
 	public static void main(String[] args) {
-		int row = 4, col = 5;
-		int k = 1;
+		int row = 4, col = 6;
+
 		int matrix[][] = new int[row][col];
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < col; j++) {
-				matrix[i][j] = k++;
+				matrix[i][j] = (i + 1) * 10 + j + 1;
 			}
 		}
 

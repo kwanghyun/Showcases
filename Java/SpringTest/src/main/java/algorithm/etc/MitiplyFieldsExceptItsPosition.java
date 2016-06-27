@@ -9,6 +9,9 @@ import java.util.Arrays;
  * EX)
  * input  { 1, 2, 3, 4 }
  * output [24, 12, 8, 6] 
+ * 
+ * Analysis
+ * Basically you are making (a * b * c * d) / a, (a * b * c * d)b, .... 
  */
 public class MitiplyFieldsExceptItsPosition {
 
@@ -32,8 +35,24 @@ public class MitiplyFieldsExceptItsPosition {
 		System.out.println(Arrays.toString(prodArray));
 	}
 
+	public static void prodI(int[] input) {
+		int len = input.length;
+		int[] resultArr = new int[len];
+		int total = 1;
+		
+		for (int num : input) {
+			total *= num;
+		}
+		for (int i = 0; i < len; i++) {
+			resultArr[i] = total/input[i];
+		}
+
+		System.out.println(Arrays.toString(resultArr));
+	}
+
 	public static void main(String args[]) {
 		int a[] = { 1, 2, 3, 4 };
 		prod(a);
+		prodI(a);
 	}
 }

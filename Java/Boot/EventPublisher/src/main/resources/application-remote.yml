@@ -1,5 +1,0 @@
-spring:
-  rabbitmq:
-    host: 10.106.8.80
-#    username: <tutorial-user>
-#    password: <tutorial-user>

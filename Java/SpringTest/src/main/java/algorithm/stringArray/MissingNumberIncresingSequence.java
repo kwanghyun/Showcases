@@ -12,14 +12,6 @@ package algorithm.stringArray;
  * number.
  */
 public class MissingNumberIncresingSequence {
-	private boolean correctlyPlaced(int index, int number) {
-		// remember we are using 0 based indexing scheme
-		if (number == (index + 1)) {
-			return true;
-		}
-
-		return false;
-	}
 
 	/*
 	 * In the given sequence, we search for the first element from the left
@@ -52,17 +44,8 @@ public class MissingNumberIncresingSequence {
 
 		int mid = (low + high) / 2;
 
-		/*
-		 * If the middle element is incorrectly placed, we search for the first
-		 * element in the given sequence which is incorrectly placed in the
-		 * first half(low to mid) of the given sequence. Because array[mid] also
-		 * could be the first element which is incorrectly placed, we need to
-		 * include that element in the search and hence we mark high as 'mid'.
-		 * --- If the middle element is correctly placed, we need to search in
-		 * the second half(mid+1 to high). Note that since middle element is
-		 * correctly placed, we don't need to include array[mid] in the search
-		 * and hence we mark low as 'mid + 1'
-		 */
+		// Array[mid] also could be the first element which is incorrectly
+		// placed, so we need to include that element in the search
 		if (!correctlyPlaced(mid, array[mid])) {
 			high = mid;
 		} else {
@@ -71,4 +54,14 @@ public class MissingNumberIncresingSequence {
 
 		return findMissingElement(array, low, high);
 	}
+
+	private boolean correctlyPlaced(int index, int number) {
+		// remember we are using 0 based indexing scheme
+		if (number == (index + 1)) {
+			return true;
+		}
+
+		return false;
+	}
+
 }

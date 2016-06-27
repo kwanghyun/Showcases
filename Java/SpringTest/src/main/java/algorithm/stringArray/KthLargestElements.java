@@ -88,10 +88,47 @@ public class KthLargestElements {
 
 		return q.peek();
 	}
-	
+
+	// quick select
+	public int findKthLargest(int[] nums, int k) {
+		if (nums == null || nums.length == 0 || nums.length < k)
+			return -1;
+		int l = 0, r = nums.length - 1;
+		while (true) {
+			int p = partition(nums, l, r);
+			if (p > k - 1) {
+				r = p - 1;
+			} else if (p < k - 1) {
+				l = p + 1;
+			} else {
+				break;
+			}
+		}
+		return nums[k - 1];
+	}
+
+	public int partition(int[] nums, int low, int high) {
+		int left = low, right = high + 1;
+		while (true) {
+			while (left < high && nums[++left] > nums[low]);
+			while (right > low && nums[--right] < nums[low]);
+			if (left >= right)
+				break;
+			_swap(nums, left, right);
+		}
+		_swap(nums, low, right);
+		return right;
+	}
+
+	public void _swap(int[] nums, int l, int r) {
+		int val = nums[l];
+		nums[l] = nums[r];
+		nums[r] = val;
+	}
+
 	public static void main(String[] args) {
 		KthLargestElements ob = new KthLargestElements();
-		int[] nums = {9,3,4,6,3,7,2,1};
+		int[] nums = { 9, 3, 4, 6, 3, 7, 2, 1 };
 		System.out.println(ob.findKthLargestIII(nums, 2));
 	}
 }

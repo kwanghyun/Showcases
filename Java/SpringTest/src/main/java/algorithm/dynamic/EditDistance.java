@@ -28,7 +28,45 @@ package algorithm.dynamic;
  */
 public class EditDistance {
 
-	public static int minDistance(String word1, String word2) {
+	public int minDistanceI(String src, String dst) {
+		int srcLen = src.length();
+		int dstLen = dst.length();
+
+		int[][] dp = new int[srcLen + 1][dstLen + 1];
+
+		for (int r = 0; r <= srcLen; r++) {
+			dp[r][0] = r;
+		}
+
+		for (int c = 0; c <= dstLen; c++) {
+			dp[0][c] = c;
+		}
+
+		// iterate though, and check last char
+		for (int r = 1; r <= srcLen; r++) {
+			char c_src = src.charAt(r - 1);
+			for (int c = 1; c <= dstLen; c++) {
+				char c_dst = dst.charAt(c - 1);
+
+				// if last two chars equal
+				if (c_src == c_dst) {
+					// update dp value for +1 length
+					dp[r][c] = dp[r - 1][c - 1];
+				} else {
+					int replace = dp[r - 1][c - 1] + 1;
+					int insert = dp[r][c - 1] + 1;
+					int delete = dp[r - 1][c] + 1;
+
+					int min = replace > insert ? insert : replace;
+					min = delete > min ? min : delete;
+					dp[r][c] = min;
+				}
+			}
+		}
+		return dp[srcLen][dstLen];
+	}
+
+	public int minDistance(String word1, String word2) {
 		int len1 = word1.length();
 		int len2 = word2.length();
 
@@ -66,5 +104,12 @@ public class EditDistance {
 		}
 
 		return dp[len1][len2];
+	}
+
+	public static void main(String[] args) {
+		EditDistance ob = new EditDistance();
+		System.out.println(ob.minDistance("abc", "dec"));
+		System.out.println("--------------------------------");
+		System.out.println(ob.minDistanceI("abc", "dec"));
 	}
 }

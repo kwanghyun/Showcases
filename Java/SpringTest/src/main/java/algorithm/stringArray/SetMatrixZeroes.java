@@ -16,8 +16,7 @@ package algorithm.stringArray;
  */
 public class SetMatrixZeroes {
 
-
-	int[][] matrix = { { 1, 1, 1, 1 }, { 1, 1, 0, 1 }, { 1, 1, 1, 1 } };
+	int[][] matrix = { { 0, 1, 0, 1 }, { 1, 1, 0, 1 }, { 1, 1, 1, 1 } };
 
 	public void solution(int[][] matrix) {
 
@@ -44,57 +43,57 @@ public class SetMatrixZeroes {
 		}
 
 	}
-	
-    public void setZeroes(int[][] matrix) {
-        boolean firstRowZero = false;
-        boolean firstColumnZero = false;
- 
-        //set first row and column zero or not
-        for(int i=0; i<matrix.length; i++){
-            if(matrix[i][0] == 0){
-                firstColumnZero = true;
-                break;
-            }
-        }
- 
-        for(int i=0; i<matrix[0].length; i++){
-            if(matrix[0][i] == 0){
-                firstRowZero = true;
-                break;
-            }
-        }
- 
-        //mark zeros on first row and column
-        for(int i=1; i<matrix.length; i++){
-            for(int j=1; j<matrix[0].length; j++){
-                if(matrix[i][j] == 0){
-                   matrix[i][0] = 0;
-                   matrix[0][j] = 0;
-                }
-            }
-        }
- 
-        //use mark to set elements
-        for(int i=1; i<matrix.length; i++){
-            for(int j=1; j<matrix[0].length; j++){
-                if(matrix[i][0] == 0 || matrix[0][j] == 0){
-                   matrix[i][j] = 0;
-                }
-            }
-        }
- 
-        //set first column and row
-        if(firstColumnZero){
-            for(int i=0; i<matrix.length; i++)
-                matrix[i][0] = 0;
-        }
- 
-        if(firstRowZero){
-            for(int i=0; i<matrix[0].length; i++)
-                matrix[0][i] = 0;
-        }
-    }
-    
+
+	public void setZeroes(int[][] matrix) {
+		boolean firstRowZero = false;
+		boolean firstColumnZero = false;
+
+		// set first row and column zero or not
+		for (int r = 0; r < matrix.length; r++) {
+			if (matrix[r][0] == 0) {
+				firstColumnZero = true;
+				break;
+			}
+		}
+
+		for (int c = 0; c < matrix[0].length; c++) {
+			if (matrix[0][c] == 0) {
+				firstRowZero = true;
+				break;
+			}
+		}
+
+		// mark zeros on first row and column
+		for (int r = 1; r < matrix.length; r++) {
+			for (int c = 1; c < matrix[0].length; c++) {
+				if (matrix[r][c] == 0) {
+					matrix[r][0] = 0;
+					matrix[0][c] = 0;
+				}
+			}
+		}
+
+		// use mark to set elements
+		for (int r = 1; r < matrix.length; r++) {
+			for (int c = 1; c < matrix[0].length; c++) {
+				if (matrix[r][0] == 0 || matrix[0][c] == 0) {
+					matrix[r][c] = 0;
+				}
+			}
+		}
+
+		// set first column and row
+		if (firstColumnZero) {
+			for (int r = 0; r < matrix.length; r++)
+				matrix[r][0] = 0;
+		}
+
+		if (firstRowZero) {
+			for (int c = 0; c < matrix[0].length; c++)
+				matrix[0][c] = 0;
+		}
+	}
+
 	public void printMatrix(int[][] matrix) {
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[0].length; j++) {
@@ -102,9 +101,10 @@ public class SetMatrixZeroes {
 
 			}
 
-			System.out.println("\n-----------");
+			System.out.println("");
 		}
 	}
+
 
 	public static void main(String args[]) {
 		SetMatrixZeroes ob = new SetMatrixZeroes();
@@ -112,7 +112,7 @@ public class SetMatrixZeroes {
 		System.out.println(ob.matrix.length); // 3
 
 		ob.printMatrix(ob.matrix);
-		ob.solution(ob.matrix);
+		ob.setZeroes(ob.matrix);
 		System.out.println("==============");
 		ob.printMatrix(ob.matrix);
 

@@ -26,17 +26,17 @@ public class AddSpaceToAllCombination {
 
 		if (str.length() == idx)
 			System.out.println(part);
-		else{
+		else {
 			printComb(str, part + str.charAt(idx), idx + 1);
 			printComb(str, part + " " + str.charAt(idx), idx + 1);
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		AddSpaceToAllCombination obj = new AddSpaceToAllCombination();
-
-		System.out.println("----------------------------------");
+		
 		obj.printComb("ABCD");
-
+		System.out.println("");
+		obj.printComb("ABCD");
 	}
 }

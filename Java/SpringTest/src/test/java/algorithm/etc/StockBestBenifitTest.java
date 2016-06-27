@@ -5,9 +5,11 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import algorithm.stringArray.StockBestBenifitI;
+
 public class StockBestBenifitTest {
 
-	StockBestBenifit obj = new StockBestBenifit();
+	StockBestBenifitI obj = new StockBestBenifitI();
 	@Before
 	public void setUp() throws Exception {
 	}

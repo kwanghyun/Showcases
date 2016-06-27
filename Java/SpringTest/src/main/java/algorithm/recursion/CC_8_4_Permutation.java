@@ -10,61 +10,26 @@ import java.util.List;
  */
 public class CC_8_4_Permutation {
 
-	public ArrayList<ArrayList<Integer>> permute(int[] num) {
-
-		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
-		// start from an empty list
-		result.add(new ArrayList<Integer>());
-
-		// num = [1,2,3]
-		for (int i = 0; i < num.length; i++) {
-			// list of list in current iteration of the array num
-			ArrayList<ArrayList<Integer>> current = new ArrayList<ArrayList<Integer>>();
-
-			for (ArrayList<Integer> item : result) {
-				// # of locations to insert is largest index + 1
-
-				for (int j = 0; j < item.size() + 1; j++) {
-					// + add num[i] to different locations
-					item.add(j, num[i]);
-
-					ArrayList<Integer> temp = new ArrayList<Integer>(item);
-					current.add(temp);
-					// System.out.println(temp);
-					// - remove num[i] add
-					item.remove(j);
-				}
-			}
-			result = new ArrayList<ArrayList<Integer>>(current);
-		}
-		return result;
+	public void permutation(String str) {
+		char[] chs = new char[str.length()];
+		boolean[] visit = new boolean[str.length()];
+		permutation(str, chs, 0, visit);
 	}
 
-	public ArrayList<String> permutation(String str) {
-		ArrayList<String> permutations = new ArrayList<String>();
-		if (str == null)
-			return null;
-
-		if (str.length() == 0) {
-			// without this size program doesn't work...
-			permutations.add(" ");
-			return permutations;
-		}
-
-		char first = str.charAt(0);
-		String remainder = str.substring(1);
-
-		ArrayList<String> candidates = permutation(remainder);
-
-		for (String candidate : candidates) {
-
-			for (int i = 0; i < candidate.length(); i++) {
-				String before = candidate.substring(0, i);
-				String end = candidate.substring(i, str.length());
-				permutations.add(new String(before + first + end));
+	public void permutation(String str, char[] chs, int idx, boolean[] visit) {
+		if (idx == str.length()) {
+			System.out.println(Arrays.toString(chs));
+		} else {
+			for (int i = 0; i < str.length(); i++) {
+				if(!visit[i]){
+					visit[i] = true;
+					chs[idx] = str.charAt(i);
+					permutation(str, chs, idx + 1, visit);
+					visit[i] = false;
+				}					
 			}
+
 		}
-		return permutations;
 	}
 
 	public void permutationI(String str) {
@@ -127,15 +92,17 @@ public class CC_8_4_Permutation {
 		list2.add(" ");
 
 		CC_8_4_Permutation p = new CC_8_4_Permutation();
-
-		System.out.println("---------------------------");
-		p.permutationIII("1234");
-
-		System.out.println("---------------------------");
+		System.out.println("------------permutation---------------");
+		p.permutation("1234");
+		
+		System.out.println("------------permutationI---------------");
 		p.permutationI("1234");
 
-		System.out.println("---------------------------");
+		System.out.println("------------permutationII---------------");
 		p.permutationII("1234");
+
+		System.out.println("------------permutationIII---------------");
+		p.permutationIII("1234");
 
 		// System.out.println("COUNT : " + list.size());
 		// System.out.println("===================");

@@ -13,48 +13,136 @@ package algorithm.dynamic;
  * the following rule 
  * palindrome[i][j] = true, if palindrome[i+1][j-1] and s[i] == s[j]
  * 5. after the loop, return the longest palindromic substring
+ * 
+ * 2. Dynamic Programming
+ * 
+ * Let s be the input string, i and j are two indices of the string. Define
+ * a 2-dimension array "table" and let table[i][j] denote whether a
+ * substring from i to j is palindrome.
+ * 
+ * Changing condition:
+ * 
+ * table[i+1][j-1] == 1 && s.charAt(i) == s.charAt(j)
+ * =>
+ * table[i][j] == 1
+ * 
+ * 1 0 0 0 0 0 
+ * 0 1 0 0 0 1 
+ * 0 0 1 0 1 0 
+ * 0 0 0 1 0 0 
+ * 0 0 0 0 1 0 
+ * 0 0 0 0 0 1 
  */
 public class LongestPalindromicSubstring {
 
-	public static String LPS(String s) {
-		int strLen = s.length();
-		int palindromeBeginsAt = 0; // index where the longest palindrome begins
+	/*
+	 * 1. Dynamic Programming
+	 * 
+	 * Let s be the input string, i and j are two indices of the string. Define
+	 * a 2-dimension array "table" and let table[i][j] denote whether a
+	 * substring from i to j is palindrome.
+	 * 
+	 * Changing condition:
+	 * 
+	 * table[i+1][j-1] == 1 && s.charAt(i) == s.charAt(j) => table[i][j] == 1
+	 * 
+	 * Time O(n^2) Space O(n^2)
+	 */
+	public String longestPalindrome(String s) {
+		if (s == null || s.length() <= 1)
+			return s;
+
+		int len = s.length();
 		int maxLen = 1;
-		boolean dp[][] = new boolean[strLen][strLen];
+		boolean[][] dp = new boolean[len][len];
 
-		// Trivial case: single letter palindromes
-		for (int i = 0; i < strLen; i++) {
-			dp[i][i] = true;
-		}
+		String longest = null;
+		for (int l = 0; l < s.length(); l++) {
+			for (int i = 0; i < len - l; i++) {
+				int j = i + l;
+				if (s.charAt(i) == s.charAt(j) && (j - i <= 2 || dp[i + 1][j - 1])) {
+					dp[i][j] = true;
 
-		// Finding palindromes of two characters.
-		for (int i = 0; i < strLen - 1; i++) {
-			if (s.charAt(i) == s.charAt(i + 1)) {
-				dp[i][i + 1] = true;
-				palindromeBeginsAt = i;
-				maxLen = 2;
-			}
-		}
-
-		// Finding palindromes of length 3 to n and saving the longest
-		for (int curLen = 3; curLen <= strLen; curLen++) {
-			for (int start = 0; start < strLen - curLen + 1; start++) {
-				int end = start + curLen - 1;
-				/*
-				 * 1. The first and last characters should match 
-				 * 2. Rest of the substring should be a palindrome
-				 */
-				if (s.charAt(start) == s.charAt(end) && dp[start + 1][end - 1]) {
-					dp[start][end] = true;
-					palindromeBeginsAt = start;
-					maxLen = curLen;
+					if (j - i + 1 > maxLen) {
+						maxLen = j - i + 1;
+						longest = s.substring(i, j + 1);
+					}
 				}
 			}
 		}
-		return s.substring(palindromeBeginsAt, maxLen + palindromeBeginsAt);
+
+		return longest;
+	}
+	
+	public String longestPalindromeMy(String s) {
+
+		if (s == null || s.length() <= 1)
+			return s;
+
+		int strlen = s.length();
+		int maxLen = 0;
+		boolean[][] dp = new boolean[strlen][strlen];
+		String maxStr = null;
+
+		for (int i = 0; i < strlen; i++) {
+			dp[i][i] = true;
+		}
+
+		for (int len = 1; len <= strlen; len++) {
+			for (int r = 0; r < strlen - len; r++) {
+				int start = r;
+				int end = r + len;
+				if (s.charAt(start) == s.charAt(end) && dp[start + 1][end - 1] == true) {
+					dp[start][end] = true;
+					if (maxLen < len) {
+						maxLen = len;
+						maxStr = s.substring(start, end + 1);
+					}
+				} else
+					dp[start][end] = false;
+			}
+		}
+		return maxStr;
+	}
+
+
+	public String longestPalindromeI(String s) {
+		if (s.isEmpty() || s.length() == 1) {
+			return s;
+		}
+
+		String longest = s.substring(0, 1);
+		for (int i = 0; i < s.length(); i++) {
+			// get longest palindrome with center of i
+			String tmp = helper(s, i, i);
+			if (tmp.length() > longest.length()) {
+				longest = tmp;
+			}
+
+			// get longest palindrome with center of i, i+1
+			tmp = helper(s, i, i + 1);
+			if (tmp.length() > longest.length()) {
+				longest = tmp;
+			}
+		}
+		return longest;
+	}
+
+	// Given a center, either one letter or two letter,
+	// Find longest palindrome
+	public String helper(String s, int begin, int end) {
+		while (begin >= 0 && end <= s.length() - 1 && s.charAt(begin) == s.charAt(end)) {
+			begin--;
+			end++;
+		}
+		return s.substring(begin + 1, end);
 	}
 
 	public static void main(String args[]) {
-		System.out.println(LPS("banana"));
+		LongestPalindromicSubstring ob = new LongestPalindromicSubstring();
+		System.out.println(ob.longestPalindromeI("banana"));
+		System.out.println("-------------------------");
+		System.out.println(ob.longestPalindromeMy("banana"));
+
 	}
 }

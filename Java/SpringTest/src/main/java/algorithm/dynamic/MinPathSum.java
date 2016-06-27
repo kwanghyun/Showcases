@@ -10,11 +10,42 @@ package algorithm.dynamic;
  * 
  * A native solution would be depth-first search. It's time is too expensive
  * and fails the online judgement.
+ * 
+ * {
+ * 		{ 1, 7, 9, 2 }, 
+ * 		{ 8, 6, 3, 2 }, 
+ * 		{ 1, 6, 7, 8 }, 
+ * 		{ 2, 9, 8, 2 }
+ * } 
  */
 public class MinPathSum {
 
 	public int minPathSum(int[][] grid) {
 		return dfs(0, 0, grid);
+	}
+
+	public int minPathSumI(int[][] grid) {
+		return dfsI(0, 0, grid);
+	}
+
+	private int dfsI(int r, int c, int[][] grid) {
+		if (r == grid.length - 1 && c == grid[0].length - 1) {
+			return grid[r][c];
+		}
+
+		if (r < grid.length - 1 && c < grid[0].length - 1) {
+			return Math.min(grid[r][c] + dfsI(r + 1, c, grid), grid[r][c] + dfsI(r, c + 1, grid));
+		}
+
+		if (r < grid.length - 1) {
+			return grid[r][c] + dfsI(r + 1, c, grid);
+		}
+
+		if (c < grid[0].length - 1) {
+			return grid[r][c] + dfsI(r, c + 1, grid);
+		}
+
+		return 0;
 	}
 
 	private int dfs(int r, int c, int[][] grid) {
@@ -73,6 +104,7 @@ public class MinPathSum {
 		int[][] grid = { { 1, 7, 9, 2 }, { 8, 6, 3, 2 }, { 1, 6, 7, 8 }, { 2, 9, 8, 2 } };
 		MinPathSum ob = new MinPathSum();
 		System.out.println(ob.minPathSum(grid));
+		System.out.println(ob.minPathSumI(grid));
 		System.out.println(ob.minPathSumDP(grid));
 	}
 }

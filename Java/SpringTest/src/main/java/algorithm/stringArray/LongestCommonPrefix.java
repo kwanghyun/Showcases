@@ -15,6 +15,30 @@ package algorithm.stringArray;
 
 public class LongestCommonPrefix {
 
+	public String longestCommonPrefixI(String[] strs) {
+		if (strs == null || strs.length == 0)
+			return "";
+
+		int minLen = Integer.MAX_VALUE;
+		int count = 0;
+		for (String str : strs) {
+			minLen = Math.min(minLen, str.length());
+		}
+
+		if (minLen == 0)
+			return "";
+
+		for (int idx = 0; idx < minLen; idx++) {
+			for (String str : strs) {
+				if (strs[0].charAt(idx) != str.charAt(idx)) {
+					break;
+				}
+			}
+			count ++;
+		}
+		return strs[0].substring(0, count );
+	}
+
 	public String longestCommonPrefix(String[] strs) {
 		if (strs == null || strs.length == 0)
 			return "";
@@ -45,11 +69,12 @@ public class LongestCommonPrefix {
 
 		return strs[0].substring(0, minLen);
 	}
-	
+
 	public static void main(String[] args) {
-		String[] strs = {"ABCDEF", "ABCDEFHJDR", "ABCDEFDSD", "ABCDEFABCDEF"};
+		String[] strs = { "ABCDEF", "ABCDEFHJDR", "ABCDEFDSD", "ABCDEFABCDEF" };
 		LongestCommonPrefix ob = new LongestCommonPrefix();
 		System.out.println(ob.longestCommonPrefix(strs));
-		
+		System.out.println("----------------------------------");
+		System.out.println(ob.longestCommonPrefixI(strs));
 	}
 }

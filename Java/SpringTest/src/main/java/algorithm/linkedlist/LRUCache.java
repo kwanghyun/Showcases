@@ -26,7 +26,7 @@ public class LRUCache {
 	int capacity;
 	HashMap<Integer, LRUNode> map = new HashMap<Integer, LRUNode>();
 	LRUNode head = null;
-	LRUNode end = null;
+	LRUNode tail = null;
 
 	public LRUCache(int capacity) {
 		this.capacity = capacity;
@@ -53,7 +53,7 @@ public class LRUCache {
 		if (n.next != null) {
 			n.next.pre = n.pre;
 		} else {
-			end = n.pre;
+			tail = n.pre;
 		}
 
 	}
@@ -67,8 +67,8 @@ public class LRUCache {
 
 		head = n;
 
-		if (end == null)
-			end = head;
+		if (tail == null)
+			tail = head;
 	}
 
 	public void set(int key, int value) {
@@ -80,8 +80,8 @@ public class LRUCache {
 		} else {
 			LRUNode created = new LRUNode(key, value);
 			if (map.size() >= capacity) {
-				map.remove(end.key);
-				remove(end);
+				map.remove(tail.key);
+				remove(tail);
 				setHead(created);
 
 			} else {

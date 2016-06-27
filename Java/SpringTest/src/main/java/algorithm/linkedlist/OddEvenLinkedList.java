@@ -70,9 +70,35 @@ public class OddEvenLinkedList {
 		return result;
 	}
 
+	public Node oddEvenListII(Node head) {
+		if (head == null)
+			return head;
+
+		Node oddHead = head;
+		Node p1 = head;
+		Node p2 = head.next;
+		Node evenHead = head.next;
+
+		while (p1.next != null && p2.next != null) {
+
+			p1.next = p2.next;
+			p1 = p2.next;
+
+			p2.next = p1.next;
+			p2 = p1.next;
+		}
+
+		p1.next = evenHead;
+
+		return oddHead;
+	}
+	
 	public static void main(String[] args) {
 		OddEvenLinkedList ob = new OddEvenLinkedList();
-		Node result = ob.oddEvenListI(Utils.generate6List());
-		Utils.printNodes(result);
+		Node resultI = ob.oddEvenListI(Utils.generate6List());
+		Utils.printNodes(resultI);
+		System.out.println("--------------------------------------");
+		Node resultII = ob.oddEvenListII(Utils.generate6List());
+		Utils.printNodes(resultII);
 	}
 }
