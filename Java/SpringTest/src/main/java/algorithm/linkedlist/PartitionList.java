@@ -1,5 +1,7 @@
 package algorithm.linkedlist;
 
+import algorithm.utils.LinkedListUtils;
+
 /*
  * Given a linked list and a value x, partition it such that all nodes less
  * than x come before nodes greater than or equal to x.
@@ -11,6 +13,32 @@ package algorithm.linkedlist;
  * 
  */
 public class PartitionList {
+
+	public Node partitionI(Node head, int x) {
+		if (head == null)
+			return null;
+
+		Node smaller = new Node(0);
+		Node bigger = new Node(0);
+		Node sHead = smaller;
+		Node bHead = bigger;
+
+		while (head != null) {
+			if (head.val < x) {
+				smaller.next = head;
+				smaller = smaller.next;
+			} else {
+				bigger.next = head;
+				bigger = bigger.next;
+			}
+			head = head.next;
+		}
+		bigger.next = null;
+		smaller.next = bHead.next;
+
+		return sHead.next;
+	}
+
 	public Node partition(Node head, int x) {
 		if (head == null)
 			return null;
@@ -43,5 +71,26 @@ public class PartitionList {
 		prev.next = fakeHead2.next;
 
 		return fakeHead1.next;
+	}
+
+	public static void main(String[] args) {
+		PartitionList ob = new PartitionList();
+
+		int[] arr1 = { 1, 4, 3, 2, 5, 2 };
+		Node head1 = LinkedListUtils.generateListFromArray(arr1);
+		LinkedListUtils.printNodes(head1);
+		System.out.println("");
+		ob.partitionI(head1, 3);
+		LinkedListUtils.printNodes(head1);
+		
+		System.out.println("");
+		
+		int[] arr = { 1, 4, 3, 2, 5, 2 };
+		Node head = LinkedListUtils.generateListFromArray(arr);
+		LinkedListUtils.printNodes(head);
+		System.out.println("");
+		ob.partition(head, 3);
+		LinkedListUtils.printNodes(head);
+
 	}
 }

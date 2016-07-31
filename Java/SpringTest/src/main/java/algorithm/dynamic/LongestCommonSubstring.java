@@ -91,5 +91,7 @@ public class LongestCommonSubstring {
 		}
 		System.out.println("-----------------------------------");
 		System.out.println(commonSubstringI("CLCL", "LCLC"));
+		
+		
 	}
 }

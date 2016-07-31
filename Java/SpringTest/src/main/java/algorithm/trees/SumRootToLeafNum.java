@@ -56,7 +56,6 @@ public class SumRootToLeafNum {
 		
 		num = num * 10 + node.value;
 		
-		// leaf
 		if (node.left == null && node.right == null) {
 			sum += num;
 			return sum;

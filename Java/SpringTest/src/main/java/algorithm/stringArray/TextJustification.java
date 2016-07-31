@@ -1,7 +1,9 @@
 package algorithm.stringArray;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /*
  * Given an array of words and a length L, format the text such that each
@@ -33,8 +35,18 @@ import java.util.List;
  * distributed to each word.
  */
 public class TextJustification {
-	public List<String> fullJustify(String[] words, int maxWidth) {
+	static Map<Integer, String> spaces = new HashMap<>();
+	static {
+		spaces.put(0, "");
+		spaces.put(1, " ");
+		spaces.put(2, "  ");
+		spaces.put(3, "   ");
+		spaces.put(4, "    ");
+		spaces.put(5, "     ");
+		spaces.put(6, "      ");
+	}
 
+	public List<String> fullJustify(String[] words, int maxWidth) {
 		int len = 0;
 		List<StringBuilder> words4line = new ArrayList<>();
 		List<String> resultList = new ArrayList<String>();
@@ -54,26 +66,23 @@ public class TextJustification {
 					eachSpace = (maxWidth - len) / (words4line.size() - 1);
 					extraSpace = (maxWidth - len) % (words4line.size() - 1);
 
-					while (eachSpace > 0) {
-						for (int i = 0; i < words4line.size() - 1; i++) {
-							words4line.get(i).append(" ");
-						}
-						eachSpace--;
+					for (int i = 0; i < words4line.size() - 1; i++) {
+						words4line.get(i).append(spaces.get(eachSpace));
+						// words4line.get(i).append(new String(new
+						// char[eachSpace]).replace("\0", " "));
 					}
 
 					int i = 0;
 					while (extraSpace > 0) {
 						words4line.get(i++ % (words4line.size() - 1)).append(" ");
 						extraSpace--;
-						i++;
 					}
 				} else {
 					extraSpace = maxWidth - len;
 					// single string leftover case
-					while (extraSpace > 0) {
-						words4line.get(0).append(" ");
-						extraSpace--;
-					}
+					words4line.get(0).append(spaces.get(extraSpace));
+					// words4line.get(0).append(new String(new
+					// char[extraSpace]).replace("\0", " "));
 				}
 
 				for (StringBuilder w : words4line) {
@@ -100,6 +109,12 @@ public class TextJustification {
 		System.out.println(list2);
 		for (String word : list2)
 			System.out.println(word.length());
+
+		String str = "abc";
+		String repeated = "";
+		repeated = new String(new char[10]).replace("\0", " ");
+		System.out.println(repeated + "abcabcabc");
+
 	}
 
 	public List<String> fullJustifyI(String[] words, int maxWidth) {

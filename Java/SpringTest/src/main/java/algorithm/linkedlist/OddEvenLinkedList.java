@@ -1,5 +1,7 @@
 package algorithm.linkedlist;
 
+import algorithm.utils.LinkedListUtils;
+
 /*
  * Problem
  * 
@@ -92,13 +94,13 @@ public class OddEvenLinkedList {
 
 		return oddHead;
 	}
-	
+
 	public static void main(String[] args) {
 		OddEvenLinkedList ob = new OddEvenLinkedList();
-		Node resultI = ob.oddEvenListI(Utils.generate6List());
-		Utils.printNodes(resultI);
+		Node resultI = ob.oddEvenListI(LinkedListUtils.generateOrderedList(6));
+		LinkedListUtils.printNodes(resultI);
 		System.out.println("--------------------------------------");
-		Node resultII = ob.oddEvenListII(Utils.generate6List());
-		Utils.printNodes(resultII);
+		Node resultII = ob.oddEvenListII(LinkedListUtils.generateOrderedList(6));
+		LinkedListUtils.printNodes(resultII);
 	}
 }

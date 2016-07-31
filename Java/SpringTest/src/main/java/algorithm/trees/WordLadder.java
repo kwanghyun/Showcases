@@ -2,6 +2,7 @@ package algorithm.trees;
 
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Queue;
 
 /*Given two words (start and end), and a dictionary, find the length of shortest transformation sequence from start to end, such that:
 
@@ -52,13 +53,14 @@ public class WordLadder {
 		return len;
 	}
 	
-	/*So we quickly realize that this looks like a tree searching problem for which breath
-	first guarantees the optimal solution.
-	Assuming we have some words in the dictionary, and the start is "hit" as shown in
-	the diagram below.
-	                             Start : hit
-	                          /        |       \
-	                        /          |          \
+	/***
+	 * So we quickly realize that this looks like a tree searching problem for which breath
+	 * 	first guarantees the optimal solution.
+	 * 	Assuming we have some words in the dictionary, and the start is "hit" as shown in
+	 * 	the diagram below.
+	 * 	                             Start : hit
+	 * 	                          /        |       \
+	 * 	                        /          |          \
 	*                   hot        hot       hot
 	*                   /\
 	*                ...  ...
@@ -69,15 +71,15 @@ public class WordLadder {
 	* What can be learned from this problem?
 	* • Use breath-first or depth-first search to solve problems
 	* • Use two queues, one for words and another for counting
- 	*/
+ 	***/
 	
 public int ladderLength2(String start, String end, HashSet<String> dict) {
 	if (dict.size() == 0)
 		return 0;
 	
 	dict.add(end);
-	LinkedList<String> wordQueue = new LinkedList<String>();
-	LinkedList<Integer> distanceQueue = new LinkedList<Integer>();
+	Queue<String> wordQueue = new LinkedList<>();
+	Queue<Integer> distanceQueue = new LinkedList<>();
 	
 	wordQueue.add(start);
 	distanceQueue.add(1);

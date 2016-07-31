@@ -1,5 +1,9 @@
 package algorithm.trees;
 
+import java.util.Arrays;
+
+import algorithm.utils.TreeUtils;
+
 /*
  * You have two very large binary trees: T1, with millions of nodes, and T2, 
  * with hundreds of nodes. Create an algorithm to decide if T2 is a subtree of T1.
@@ -11,15 +15,15 @@ package algorithm.trees;
  * 
  */
 public class CC_4_7_IsSubTree {
-	//          1
-	//         / \
-	//        /   \
-	//       /      \
-	//      2       3
-	//     / \      /
-	//    4  5   6
-	//   /       / \
-	// 7       8  9
+	// 1
+	// / \
+	// / \
+	// / \
+	// 2 3
+	// / \ /
+	// 4 5 6
+	// / / \
+	// 7 8 9
 	// Preorder: 1 2 4 7 5 3 6 8 9
 	// Inorder: 7 4 2 5 1 8 6 9 3
 	// Postorder: 7 4 5 2 8 9 6 3 1
@@ -60,19 +64,30 @@ public class CC_4_7_IsSubTree {
 		if (root1.value != root2.value)
 			return false;
 
-		return checkTrees(root1.left, root2.left)
-				&& checkTrees(root1.right, root2.right);
+		return checkTrees(root1.left, root2.left) && checkTrees(root1.right, root2.right);
 	}
 
 	public static void main(String args[]) {
 		CC_4_7_IsSubTree ist = new CC_4_7_IsSubTree();
-//		System.out.println(ist.isSubTree(ist.generateEntireTree(),
-//				ist.generatePartTree()));
-//
-//		System.out.println(ist.findNode(ist.generateEntireTree(),
-//				ist.generatePartTree()).value);
-		
-		System.out.println(ist.find(ist.generateEntireTree(), 7).value);
+
+		int[] big_preorder = { 5, 3, 1, 4, 7, 6, 8 };
+		TreeNode bigTree = TreeUtils.buildBstFromPreorder(big_preorder);
+		int[] small_preorder = { 3, 1, 4 };
+		TreeNode smallTree = TreeUtils.buildBstFromPreorder(small_preorder);
+		System.out.println(Arrays.toString(big_preorder));
+		System.out.println(Arrays.toString(small_preorder));
+		System.out.println("is Subtree? -> " + ist.isSubTree(bigTree, smallTree));
+
+		System.out.println("");
+
+		int[] big_preorder1 = { 5, 3, 1, 4, 7, 6, 8 };
+		TreeNode bigTree1 = TreeUtils.buildBstFromPreorder(big_preorder1);
+		int[] small_preorder1 = { 4, 1, 7 };
+		TreeNode smallTree1 = TreeUtils.buildBstFromPreorder(small_preorder1);
+		System.out.println(Arrays.toString(big_preorder1));
+		System.out.println(Arrays.toString(small_preorder1));
+		System.out.println("is Subtree? -> " + ist.isSubTree(bigTree1, smallTree1));
+
 	}
 
 	public TreeNode find(TreeNode node, int value) {
@@ -83,17 +98,11 @@ public class CC_4_7_IsSubTree {
 		if (node.value == value)
 			return node;
 
-//		if (node.left != null) {
-//			foundNode = find(node.left, value);
-//		}
-//		if (node.right != null) {
-//			foundNode = find(node.right, value);
-//		}
 		foundNode = find(node.left, value);
-		if(foundNode == null){
+		if (foundNode == null) {
 			foundNode = find(node.right, value);
 		}
-		
+
 		return foundNode;
 	}
 

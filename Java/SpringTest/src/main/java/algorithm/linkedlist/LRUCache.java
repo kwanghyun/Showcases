@@ -43,29 +43,29 @@ public class LRUCache {
 		return -1;
 	}
 
-	public void remove(LRUNode n) {
-		if (n.pre != null) {
-			n.pre.next = n.next;
+	public void remove(LRUNode node) {
+		if (node.prev != null) {
+			node.prev.next = node.next;
 		} else {
-			head = n.next;
+			head = node.next;
 		}
 
-		if (n.next != null) {
-			n.next.pre = n.pre;
+		if (node.next != null) {
+			node.next.prev = node.prev;
 		} else {
-			tail = n.pre;
+			tail = node.prev;
 		}
 
 	}
 
-	public void setHead(LRUNode n) {
-		n.next = head;
-		n.pre = null;
+	public void setHead(LRUNode node) {
+		node.next = head;
+		node.prev = null;
 
 		if (head != null)
-			head.pre = n;
+			head.prev = node;
 
-		head = n;
+		head = node;
 
 		if (tail == null)
 			tail = head;

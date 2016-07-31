@@ -27,9 +27,9 @@ public class Power {
 	public double power(double x, int n) {
 		if (n == 0)
 			return 1;
-
+		
 		double v = power(x, n / 2);
-
+		
 		if (n % 2 == 0) {
 			return v * v;
 		} else {
@@ -37,7 +37,7 @@ public class Power {
 		}
 	}
 
-	public double pow(double x, int n) {
+	public double powI(double x, int n) {
 		if (n < 0) {
 			return 1 / power(x, -n);
 		} else {
@@ -47,9 +47,10 @@ public class Power {
 
 	public static void main(String args[]) {
 		Power pw = new Power();
-		System.out.println(pw.pow(2, 4));
-		System.out.println(pw.pow(2, 8));
+		System.out.println(pw.powI(2, 4));
+		System.out.println(pw.powI(2, 8));
 		System.out.println(pw.recurPow(2, 4));
 		System.out.println(pw.recurPow(2, 8));
+
 	}
 }

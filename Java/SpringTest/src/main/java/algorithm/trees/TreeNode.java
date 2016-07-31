@@ -51,6 +51,21 @@ public class TreeNode {
 
 	public void printValue() {
 		System.out.println(value);
-
 	}
+
+	@Override
+	public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append("[value=" + value);
+		if (left != null) {
+			sb.append(" : left = " + left.value);
+		}
+		if (right != null) {
+			sb.append(" : right = " + right.value);
+		}
+		sb.append("]");
+		return sb.toString();
+	}
+
 }

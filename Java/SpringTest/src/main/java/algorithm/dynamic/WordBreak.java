@@ -58,13 +58,12 @@ public class WordBreak {
 	 */
 
 	public boolean wordBreakD(String inputStr, Set<String> dict) {
-		boolean[] t = new boolean[inputStr.length() + 1];
-		t[0] = true; // set first to be true, why?
+		boolean[] dp = new boolean[inputStr.length() + 1];
+		dp[0] = true; 
 
-		// Because we need initial state
 		for (int i = 0; i < inputStr.length(); i++) {
 			// should continue from match position
-			if (!t[i])
+			if (!dp[i])
 				continue;
 
 			for (String word : dict) {
@@ -73,14 +72,14 @@ public class WordBreak {
 
 				if (end > inputStr.length())
 					continue;
-				if (t[end])
+				if (dp[end])
 					continue;
 				if (inputStr.substring(i, end).equals(word)) {
-					t[end] = true;
+					dp[end] = true;
 				}
 			}
 		}
-		return t[inputStr.length()];
+		return dp[inputStr.length()];
 	}
 
 	/*

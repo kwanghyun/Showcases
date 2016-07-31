@@ -20,23 +20,72 @@ public class PalindromePartitioningII {
 		boolean dp[][] = new boolean[n][n];
 		int cut[] = new int[n];
 
-		for (int j = 0; j < n; j++) {
-			cut[j] = j; // set maximum # of cut
-			for (int i = 0; i <= j; i++) {
-				if (s.charAt(i) == s.charAt(j) && (j - i <= 1 || dp[i + 1][j - 1])) {
-					dp[i][j] = true;
+		for (int c = 0; c < n; c++) {
+			cut[c] = c; // set maximum # of cut
+			for (int r = 0; r <= c; r++) {
+				if (s.charAt(r) == s.charAt(c) && (c - r <= 1 || dp[r + 1][c - 1])) {
+					dp[r][c] = true;
 
 					// if need to cut, add 1 to the previous cut[i-1]
-					if (i > 0) {
-						cut[j] = Math.min(cut[j], cut[i - 1] + 1);
+					if (r > 0) {
+						cut[c] = Math.min(cut[c], cut[r - 1] + 1);
 					} else {
 						// if [0...j] is palindrome, no need to cut
-						cut[j] = 0;
+						cut[c] = 0;
 					}
 				}
 			}
 		}
 
 		return cut[n - 1];
+	}
+
+	public static int partition(String s) {
+		int n = s.length();
+		boolean palindrome[][] = new boolean[n][n]; // boolean table
+
+		// Trivial case: single letter palindromes
+		for (int i = 0; i < n; i++) {
+			palindrome[i][i] = true;
+		}
+
+		// Finding palindromes of two characters.
+		for (int i = 0; i < n - 1; i++) {
+			if (s.charAt(i) == s.charAt(i + 1)) {
+				palindrome[i][i + 1] = true;
+			}
+		}
+
+		// Finding palindromes of length 3 to n
+		for (int curr_len = 3; curr_len <= n; curr_len++) {
+			for (int r = 0; r < n - curr_len + 1; r++) {
+				int c = r + curr_len - 1;
+				// 1. The first and last characters should match
+				// 2. Rest of the substring should be a palindrome
+				if (s.charAt(r) == s.charAt(c) && palindrome[r + 1][c - 1]) {
+					palindrome[r][c] = true;
+				}
+			}
+		}
+
+		int[] cuts = new int[n];
+		for (int c = 0; c < n; c++) {
+			int temp = Integer.MAX_VALUE;
+			if (palindrome[0][c])
+				cuts[c] = 0;
+			else {
+				for (int r = 0; r < c; r++) {
+					if ((palindrome[r + 1][c]) && temp > cuts[r] + 1) {
+						temp = cuts[r] + 1;
+					}
+				}
+				cuts[c] = temp;
+			}
+		}
+		return cuts[n - 1];
+	}
+
+	public static void main(String args[]) {
+		System.out.println(partition("aab"));
 	}
 }

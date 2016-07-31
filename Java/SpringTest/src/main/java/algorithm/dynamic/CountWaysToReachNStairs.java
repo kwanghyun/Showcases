@@ -1,6 +1,8 @@
 package algorithm.dynamic;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /*
@@ -40,6 +42,28 @@ import java.util.Map;
  * ways(3) = fib(4) = 3
  */
 public class CountWaysToReachNStairs {
+
+	public static void count(int n) {
+		int[] steps = { 1, 2 };
+		List<Integer> list = new ArrayList<>();
+		count(n, list, 0, steps);
+	}
+
+	public static void count(int n, List<Integer> list, int idx, int[] steps) {
+
+		if (n == 0) {
+			System.out.println(list);
+			return;
+		}
+		for (int i = 0; i < steps.length; i++) {
+			if (steps[i] > n)
+				return;
+			list.add(steps[i]);
+			count(n - steps[i], list, idx + 1, steps);
+			list.remove(list.size() - 1);
+		}
+	}
+
 	static Map<Integer, Integer> map = new HashMap<>();
 
 	public static int countWays(int n) {
@@ -63,6 +87,7 @@ public class CountWaysToReachNStairs {
 
 	public static void main(String[] args) {
 		System.out.println(countWays(15));
-		System.out.println(countWaysI(15));
+		System.out.println(countWaysI(5));
+		count(6);
 	}
 }

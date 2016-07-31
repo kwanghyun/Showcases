@@ -52,19 +52,17 @@ public class Top5CustomersTreeMap {
 		}
 	}
 
-	public TreeMap<String, Double> getTop5Customers()
-			throws InterruptedException, ExecutionException {
+	public TreeMap<String, Double> getTop5Customers() throws InterruptedException, ExecutionException {
+//		String currDir =  System.getProperty("user.dir");
 
 		ExecutorService workers = Executors.newFixedThreadPool(3);
 		ArrayList<Future<HashMap<String, Double>>> results = new ArrayList<Future<HashMap<String, Double>>>();
 		HashMap<String, Double> aggregator = new HashMap<String, Double>();
-		TreeMap<String, Double> sortedList = new TreeMap<String, Double>(
-				new ValueComparator(aggregator));
-		TreeMap<String, Double> top5 = new TreeMap<String, Double>(
-				new ValueComparator(aggregator));
-
+		TreeMap<String, Double> sortedList = new TreeMap<String, Double>(new ValueComparator(aggregator));
+		TreeMap<String, Double> top5 = new TreeMap<String, Double>(new ValueComparator(aggregator));
+		
 		for (int i = 1; i <= 3; i++) {
-			File file = new File("C:/TestFiles/cust" + i + ".txt");
+			File file = new File("data" + i + ".csv");
 			results.add(workers.submit(new CustomerInfoMapTask(file)));
 		}
 

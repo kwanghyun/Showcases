@@ -20,7 +20,7 @@ public class BSTtoDoubleLinkedList {
 			head = newNode;
 		}else{
 			tail.next = newNode;
-			newNode.previous = tail;
+			newNode.prev = tail;
 			tail = newNode;
 		}
 		convert(root.right);
@@ -31,7 +31,7 @@ public class BSTtoDoubleLinkedList {
 			return null; 
 		
 		Node node = new Node(root.value);
-		node.previous = convert2(root.left);
+		node.prev = convert2(root.left);
 		node.next = convert2(root.right);
 		
 		return node;

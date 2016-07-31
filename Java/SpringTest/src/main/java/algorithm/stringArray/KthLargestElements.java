@@ -26,7 +26,7 @@ public class KthLargestElements {
 			return 0;
 		}
 
-		return getKth(nums.length - k + 1, nums, 0, nums.length - 1);
+		return getKth(nums.length - k, nums, 0, nums.length - 1);
 	}
 
 	/*
@@ -37,18 +37,18 @@ public class KthLargestElements {
 	 */
 	public int getKth(int k, int[] nums, int start, int end) {
 
-		int pivot = nums[end];
+		int pivot_val = nums[end];
 
 		int left = start;
 		int right = end;
 
 		while (true) {
 
-			while (nums[left] < pivot && left < right) {
+			while (nums[left] < pivot_val && left < right) {
 				left++;
 			}
 
-			while (nums[right] >= pivot && right > left) {
+			while (nums[right] >= pivot_val && right > left) {
 				right--;
 			}
 
@@ -61,9 +61,9 @@ public class KthLargestElements {
 
 		swap(nums, left, end);
 
-		if (k == left + 1) {
-			return pivot;
-		} else if (k < left + 1) {
+		if (k == left) {
+			return pivot_val;
+		} else if (k < left) {
 			return getKth(k, nums, start, left - 1);
 		} else {
 			return getKth(k, nums, left + 1, end);
@@ -109,9 +109,15 @@ public class KthLargestElements {
 
 	public int partition(int[] nums, int low, int high) {
 		int left = low, right = high + 1;
+
 		while (true) {
-			while (left < high && nums[++left] > nums[low]);
-			while (right > low && nums[--right] < nums[low]);
+
+			while (left < high && nums[left] > nums[low])
+				left++;
+
+			while (right > low && nums[right] < nums[low])
+				right--;
+
 			if (left >= right)
 				break;
 			_swap(nums, left, right);
@@ -129,6 +135,6 @@ public class KthLargestElements {
 	public static void main(String[] args) {
 		KthLargestElements ob = new KthLargestElements();
 		int[] nums = { 9, 3, 4, 6, 3, 7, 2, 1 };
-		System.out.println(ob.findKthLargestIII(nums, 2));
+		System.out.println(ob.findKthLargestII(nums, 2));
 	}
 }

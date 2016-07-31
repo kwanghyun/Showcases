@@ -2,6 +2,8 @@ package algorithm.dynamic;
 
 /*
  * Given a string S, find the longest palindromic substring.
+ * S = "BANANA"
+ * Longest palindrome substring is: ANANA
  * 
  * Algorithm/Insights
  * 
@@ -73,7 +75,7 @@ public class LongestPalindromicSubstring {
 
 		return longest;
 	}
-	
+
 	public String longestPalindromeMy(String s) {
 
 		if (s == null || s.length() <= 1)
@@ -104,7 +106,6 @@ public class LongestPalindromicSubstring {
 		}
 		return maxStr;
 	}
-
 
 	public String longestPalindromeI(String s) {
 		if (s.isEmpty() || s.length() == 1) {

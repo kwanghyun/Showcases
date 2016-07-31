@@ -23,7 +23,7 @@ public class MaxBinaryGap {
 
 			if (0 == r && count >= 0) {
 				count++;
-				
+
 			}
 
 			if (1 == r) {
@@ -35,9 +35,31 @@ public class MaxBinaryGap {
 		return max;
 	}
 
+	public static int solutionI(int num) {
+		int max = 0;
+		int count = 0;
+		int idx = 0;
+		while (num > 0) {
+			int t = (num >> idx) & 1;
+			if (t == 1) {
+				max = Math.max(max, count);
+				count = 0;
+			} else {
+				count++;
+			}
+		}
+		return max;
+	}
+
 	public static void main(String[] args) {
-		System.out.println("______________");
-		System.out.println(solution(9));
-		System.out.println(solution(8));
+		int TEST_INT1 = 99;
+		int TEST_INT2 = 9;
+		System.out.println("_______solution_______");
+		System.out.println(solution(TEST_INT1));
+		System.out.println(solution(TEST_INT2));
+		System.out.println("_______solutionI_______");
+		System.out.println(solution(TEST_INT1));
+		System.out.println(solution(TEST_INT2));
+
 	}
 }

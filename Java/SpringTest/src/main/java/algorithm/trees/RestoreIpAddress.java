@@ -15,7 +15,7 @@ import java.util.List;
  * This is a typical search problem and it can be solved by using DFS.
  */
 public class RestoreIpAddress {
-	
+
 	public List<String> restoreIpAddresses(String s) {
 		ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
 		ArrayList<String> t = new ArrayList<String>();
@@ -23,9 +23,9 @@ public class RestoreIpAddress {
 
 		ArrayList<String> finalResult = new ArrayList<String>();
 
-		for (ArrayList<String> l : result) {
+		for (ArrayList<String> r : result) {
 			StringBuilder sb = new StringBuilder();
-			for (String str : l) {
+			for (String str : r) {
 				sb.append(str + ".");
 			}
 			sb.setLength(sb.length() - 1);
@@ -33,6 +33,59 @@ public class RestoreIpAddress {
 		}
 
 		return finalResult;
+	}
+
+	public List<String> restoreIpAddressesI(String s) {
+		ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
+		ArrayList<String> t = new ArrayList<String>();
+		dfsI(result, s, t);
+
+		ArrayList<String> finalResult = new ArrayList<String>();
+
+		for (ArrayList<String> r : result) {
+			StringBuilder sb = new StringBuilder();
+			for (String str : r) {
+				sb.append(str + ".");
+			}
+			sb.setLength(sb.length() - 1);
+			finalResult.add(sb.toString());
+		}
+
+		return finalResult;
+	}
+
+	public void dfsI(ArrayList<ArrayList<String>> result, String str, ArrayList<String> list) {
+
+		if (list.size() > 4)
+			return;
+
+		if (list.size() == 4 && str.length() == 0) {
+			result.add(new ArrayList<>(list));
+			return;
+		}
+
+		for (int i = 1; i <= 3; i++) {
+			if (i > str.length())
+				return;
+			String s = str.substring(0, i);
+			if (!isValidIp(s))
+				return;
+			list.add(s);
+			dfsI(result, str.substring(i), list);
+			list.remove(list.size() - 1);
+
+		}
+	}
+
+	private boolean isValidIp(String ip_str) {
+		if (ip_str.startsWith("0"))
+			return false;
+
+		int ip = Integer.parseInt(ip_str);
+		if (ip > 255)
+			return false;
+
+		return true;
 	}
 
 	public void dfs(ArrayList<ArrayList<String>> result, String s, int start, ArrayList<String> t) {
@@ -71,5 +124,11 @@ public class RestoreIpAddress {
 			dfs(result, s, start + i, t);
 			t.remove(t.size() - 1);
 		}
+	}
+
+	public static void main(String[] args) {
+		RestoreIpAddress ob = new RestoreIpAddress();
+		System.out.println(ob.restoreIpAddresses("25525511135"));
+		System.out.println(ob.restoreIpAddressesI("25525511135"));
 	}
 }

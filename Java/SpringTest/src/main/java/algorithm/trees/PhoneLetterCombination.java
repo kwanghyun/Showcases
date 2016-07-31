@@ -4,15 +4,46 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-// Problem :
-//Given a digit string, return all possible letter combinations that the number could represent. 
-//(Check out your cellphone to see the mappings) 
-//Input:Digit string "23", Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
-// Analysis : 
-//This problem can be solves by a typical DFS algorithm. DFS problems are very 
-//similar and can be solved by using a simple recursion. 
-
+/*
+ * Problem : Given a digit string, return all possible letter combinations
+ * that the number could represent. (Check out your cellphone to see the
+ * mappings)
+ * Input:Digit string "23",
+ * Output: ["ad", "ae", "af", "bd", "be","bf", "cd", "ce", "cf"].
+ * 
+ * Analysis :
+ * 
+ * This problem can be solves by a typical DFS algorithm. DFS problems are
+ * very similar and can be solved by using a simple recursion.
+ */
 public class PhoneLetterCombination {
+
+	public void letterCombinations3(String digits) {
+		ArrayList<Character> list = new ArrayList<>();
+		if (digits == null || digits.length() == 0)
+			return;
+		getString3(digits, 0, list, getKeyMap());
+	}
+
+	public void getString3(String input, int idx, ArrayList<Character> list, HashMap<Integer, String> keyPadMap) {
+
+		if (idx == input.length()) {
+			count++;
+			System.out.println(count + " : " + list);
+			return;
+		}
+
+		// charAt() returns ASCII code i.e. 50 for "2"
+		Integer num = Integer.valueOf(input.substring(idx, idx + 1));
+		String letters = keyPadMap.get(num);
+
+		for (int i = 0; i < letters.length(); i++) {
+			list.add(letters.charAt(i));
+			getString3(input, idx + 1, list, keyPadMap);
+			list.remove(list.size() - 1);
+		}
+	}
+
 	public List<String> letterCombinations(String digits) {
 
 		ArrayList<String> result = new ArrayList<>();
@@ -77,6 +108,8 @@ public class PhoneLetterCombination {
 		}
 	}
 
+	int count = 0;
+
 	private HashMap<Integer, String> getKeyMap() {
 		HashMap<Integer, String> keyPadMap = new HashMap<>();
 		keyPadMap.put(2, "abc");
@@ -92,13 +125,17 @@ public class PhoneLetterCombination {
 	}
 
 	public static void main(String[] args) {
+		String TEST_DIGITS = "234";
 		PhoneLetterCombination obj = new PhoneLetterCombination();
-		List<String> result = obj.letterCombinations("234");
+		List<String> result = obj.letterCombinations(TEST_DIGITS);
 		System.out.println("size : " + result.size());
 		System.out.println(result);
 
-		List<String> result2 = obj.letterCombinations2("234");
+		List<String> result2 = obj.letterCombinations2(TEST_DIGITS);
 		System.out.println("size : " + result2.size());
 		System.out.println(result2);
+
+		obj.letterCombinations3(TEST_DIGITS);
+		System.out.println("-------------------------------------------");
 	}
 }

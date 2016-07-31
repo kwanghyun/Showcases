@@ -1,5 +1,7 @@
 package algorithm.stringArray;
 
+import java.util.Arrays;
+
 /*
  * Given an array of non-negative integers, you are initially positioned at
  * the first index of the array. Each element in the array represents your
@@ -15,14 +17,32 @@ package algorithm.stringArray;
  * 2) when the maximum index can reach the end (return true).
  * 
  * The largest index that can be reached is: i + A[i].
- */	
+ */
 public class JumpGame {
+
+	public boolean canJumpI(int[] arr) {
+		if (arr.length <= 1)
+			return true;
+
+		int maxIdx = 0;
+		for (int i = 0; i < arr.length; i++) {
+			maxIdx = Math.max(maxIdx, i + arr[i]);
+			if (arr[i] == 0 && maxIdx < arr.length)
+				return false;
+		}
+
+		if (maxIdx < arr.length)
+			return false;
+
+		return true;
+	}
 
 	public boolean canJump(int[] arr) {
 		if (arr.length <= 1)
 			return true;
 
-		int max = arr[0]; // max stands for the largest index that can be reached.
+		int max = arr[0]; // max stands for the largest index that can be
+							// reached.
 
 		for (int i = 0; i < arr.length; i++) {
 			// if not enough to go to next
@@ -40,5 +60,18 @@ public class JumpGame {
 		}
 
 		return false;
+	}
+
+	public static void main(String[] args) {
+		JumpGame ob = new JumpGame();
+		int[] arr1 = { 2, 3, 1, 1, 4 };
+		int[] arr2 = { 3, 2, 1, 0, 4 };
+		System.out.println("-------" + Arrays.toString(arr1) + "--------");
+		System.out.println(ob.canJump(arr1));
+		System.out.println(ob.canJumpI(arr1));
+		System.out.println("-------" + Arrays.toString(arr2) + "--------");
+		System.out.println(ob.canJump(arr2));
+		System.out.println(ob.canJumpI(arr2));
+
 	}
 }

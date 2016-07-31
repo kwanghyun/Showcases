@@ -1,5 +1,7 @@
 package algorithm.linkedlist;
 
+import algorithm.utils.LinkedListUtils;
+
 /*
  * Given a singly linked list, rotate the linked list counter-clockwise by k
  * nodes. Where k is a given positive integer. For example, if the given
@@ -79,10 +81,10 @@ public class RotateLinkedList {
 
 		return newH;
 	}
-	
+
 	public static void main(String[] args) {
 		RotateLinkedList ob = new RotateLinkedList();
-		Utils.printNodes(ob.rotateI(Utils.generate6List(), 4));
-		
+		LinkedListUtils.printNodes(ob.rotateI(LinkedListUtils.generateOrderedList(6), 4));
+
 	}
 }

@@ -1,5 +1,7 @@
 package algorithm.trees;
 
+import algorithm.utils.TreeUtils;
+
 /*
  * Two elements of a binary search tree (BST) are swapped by mistake.
  * Recover the tree without changing its structure.
@@ -51,11 +53,11 @@ public class RecoverBST {
 
 	public static void main(String[] args) {
 		RecoverBST ob = new RecoverBST();
-		TreeNode root = Utils.buildInOrderAscendingTree2_element_missplaced();
+		TreeNode root = TreeUtils.buildInOrderAscendingTree2_element_missplaced();
 		System.out.println("===Before Fix===");
-		Utils.printInOrder(root);
+		TreeUtils.printInorder(root);
 		ob.recoverTree(root);
 		System.out.println("\n===After Fix===");
-		Utils.printInOrder(root);
+		TreeUtils.printInorder(root);
 	}
 }

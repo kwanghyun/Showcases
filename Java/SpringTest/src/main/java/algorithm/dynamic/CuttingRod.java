@@ -1,5 +1,8 @@
 package algorithm.dynamic;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * Given a rod of length n inches and an array of prices that contains
  * prices of all pieces of size smaller than n. Determine the maximum value
@@ -63,19 +66,21 @@ public class CuttingRod {
 				max_val = max(max_val, price[j] + dp[i - j - 1]);
 				dp[i] = max_val;
 			}
-			
+
 		}
 
 		return dp[n];
 	}
 
 	public static void main(String args[]) {
+		List<Integer> list = new ArrayList<>();
 		CuttingRod cr = new CuttingRod();
 		int[] price = { 3, 5, 8, 9, 10, 20, 22, 25 };
 		long t1 = System.currentTimeMillis();
-		int r = cr.cutRodDP(price, 8);
+		 cr.cutRod(price, 8);
+		// int r = cr.cutRodDP(price, 8);
 		long t2 = System.currentTimeMillis();
-		System.out.println(r);
+		// System.out.println(r);
 		System.out.println(t2 - t1);
 	}
 }

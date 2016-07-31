@@ -29,6 +29,55 @@ import java.util.Set;
  * solution exceeds time limit.
  */
 public class WordSearchII {
+
+	public List<String> findWordsI(char[][] board, String[] words) {
+		ArrayList<String> result = new ArrayList<String>();
+
+		int m = board.length;
+		int n = board[0].length;
+
+		for (String word : words) {
+			for (int i = 0; i < m; i++) {
+				for (int j = 0; j < n; j++) {
+					if (dfsI(board, word, i, j, 0)) {
+						result.add(word);
+					}
+				}
+			}
+			printBoard(board);
+		}
+
+		return result;
+	}
+
+	public boolean dfsI(char[][] board, String word, int r, int c, int i) {
+		int m = board.length;
+		int n = board[0].length;
+
+		if (i == word.length() - 1) {
+			return true;
+		}
+
+		if (r < 0 || c < 0 || r >= m || c >= n || i > word.length() - 1) {
+			return false;
+		}
+
+		if (board[r][c] == word.charAt(i)) {
+			char temp = board[r][c];
+			board[r][c] = '#';
+
+			boolean found = dfsI(board, word, r - 1, c, i + 1) 
+					|| dfsI(board, word, r + 1, c, i + 1)
+					|| dfsI(board, word, r, c - 1, i + 1) 
+					|| dfsI(board, word, r, c + 1, i + 1);
+
+			board[r][c] = temp;
+			return found;
+		}
+
+		return false;
+	}
+
 	public List<String> findWords(char[][] board, String[] words) {
 		ArrayList<String> result = new ArrayList<String>();
 
@@ -49,6 +98,7 @@ public class WordSearchII {
 					}
 				}
 			}
+			printBoard(board);
 			if (flag) {
 				result.add(word);
 			}
@@ -80,8 +130,26 @@ public class WordSearchII {
 		} else {
 			return false;
 		}
-
 		return false;
+	}
+
+	private void printBoard(char[][] board) {
+		for (int r = 0; r < board.length; r++) {
+			for (int c = 0; c < board[0].length; c++) {
+				System.out.print("[" + board[r][c] + "]");
+			}
+			System.out.println("");
+		}
+	}
+
+	public static void main(String[] args) {
+		char[][] board = { { 'o', 'a', 'a', 'n' }, { 'e', 't', 'a', 'e' }, { 'i', 'h', 'k', 'r' },
+				{ 'i', 'f', 'l', 'v' } };
+		String[] words = { "oath", "pea", "eat", "rain" };
+		WordSearchII ob = new WordSearchII();
+		System.out.println(ob.findWords(board, words));
+		System.out.println("-------------------------------");
+		System.out.println(ob.findWordsI(board, words));
 	}
 
 	public class Solution {

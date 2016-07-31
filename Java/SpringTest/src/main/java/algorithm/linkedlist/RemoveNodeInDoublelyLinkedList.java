@@ -28,10 +28,10 @@ public class RemoveNodeInDoublelyLinkedList {
 			if(curr.val == val ){
 				
 				Node next = curr.next;
-				Node prev = curr.previous;
+				Node prev = curr.prev;
 				
 				prev.next = next;
-				next.previous = prev;
+				next.prev = prev;
 				
 				break;
 			}
@@ -49,15 +49,15 @@ public class RemoveNodeInDoublelyLinkedList {
 		Node node9 = new Node(9);
 		Node node11 = new Node(11);
 		node1.next = node3;
-		node3.previous = node1;
+		node3.prev = node1;
 		node3.next = node5;
-		node5.previous = node3;
+		node5.prev = node3;
 		node5.next = node7;
-		node7.previous = node5;
+		node7.prev = node5;
 		node7.next = node9;
-		node9.previous = node7;
+		node9.prev = node7;
 		node9.next = node11;
-		node11.previous = node9;
+		node11.prev = node9;
 		node11.next = null;
 		return node1;
 	}

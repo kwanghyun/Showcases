@@ -4,7 +4,7 @@ public class LRUNode {
 
 	int key;
 	int value;
-	LRUNode pre;
+	LRUNode prev;
 	LRUNode next;
 
 	public LRUNode(int key, int value) {

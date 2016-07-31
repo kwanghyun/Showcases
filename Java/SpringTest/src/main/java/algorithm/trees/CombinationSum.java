@@ -36,33 +36,31 @@ public class CombinationSum {
 		return result;
 	}
 
-	public void combinationSum(int[] candidates, int target, int startIdx, ArrayList<Integer> curr,
+	public void combinationSum(int[] arr, int target, int idx, ArrayList<Integer> list,
 			ArrayList<ArrayList<Integer>> result) {
 
 		if (target == 0) {
-			ArrayList<Integer> temp = new ArrayList<Integer>(curr);
-			result.add(temp);
+			result.add(new ArrayList<Integer>(list));
 			return;
 		}
 
-		for (int i = startIdx; i < candidates.length; i++) {
-			if (target < candidates[i]) {
+		for (int i = idx; i < arr.length; i++) {
+			if (target < arr[i]) {
 				return;
 			}
 
-			curr.add(candidates[i]);
-			/*
-			 * Note : this startIdx make it return the unique combination
-			 */
-			combinationSum(candidates, target - candidates[i], i, curr, result);
-			curr.remove(curr.size() - 1);
+			list.add(arr[i]);
+			System.out.println(list);
+			combinationSum(arr, target - arr[i], i, list, result);
+			list.remove(list.size() - 1);
 		}
 	}
 	/* Result : [[2, 2, 3], [3, 4], [7]] */
 
 	/*
-	 * Result : [[2, 2, 3], [2, 3, 2], [3, 2, 2], [3, 4], [4, 3], [7]]
-	 * 
+	 * Result : [[2, 2, 3], [2, 3, 2], [3, 2, 2], [3, 4], [4, 3], [7]] Replace
+	 * with 0 will return permutation (Different order is considered unique
+	 * count)
 	 */
 	public ArrayList<ArrayList<Integer>> solution(int[] arr, int sum) {
 

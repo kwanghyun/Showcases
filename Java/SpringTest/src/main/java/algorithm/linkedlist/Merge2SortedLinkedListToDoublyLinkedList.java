@@ -23,7 +23,7 @@ public class Merge2SortedLinkedListToDoublyLinkedList {
 				resultHeader = newNode;
 			}else{
 				newNode.next = resultHeader;
-				resultHeader.previous = newNode;
+				resultHeader.prev = newNode;
 				resultHeader = newNode;
 			}
 		}
@@ -32,7 +32,7 @@ public class Merge2SortedLinkedListToDoublyLinkedList {
 			newNode = new Node(head1.val);
 			head1 = head1.next;
 			newNode.next = resultHeader;
-			resultHeader.previous = newNode;
+			resultHeader.prev = newNode;
 			resultHeader = newNode;
 		}
 	
@@ -40,7 +40,7 @@ public class Merge2SortedLinkedListToDoublyLinkedList {
 			newNode = new Node(head2.val);
 			head2 = head2.next;
 			newNode.next = resultHeader;
-			resultHeader.previous = newNode;
+			resultHeader.prev = newNode;
 			resultHeader = newNode;
 		}
 	

@@ -50,7 +50,8 @@ public class ReorderList {
 			Node fast = head;
 
 			// use a fast and slow pointer to break the link to two parts.
-			while (fast != null && fast.next != null && fast.next.next != null) {
+			while (fast != null
+					&& fast.next != null /* && fast.next.next != null */) {
 				// why need third/second condition?
 				System.out.println("pre " + slow.val + " " + fast.val);
 				slow = slow.next;

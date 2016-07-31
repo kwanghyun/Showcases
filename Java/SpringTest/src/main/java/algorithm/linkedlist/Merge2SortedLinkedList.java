@@ -20,7 +20,7 @@ public class Merge2SortedLinkedList {
 				header = newNode;
 			}else{
 				newNode.next = header;
-				header.previous = newNode;
+				header.prev = newNode;
 				header = newNode;				
 			}
 		}
@@ -29,7 +29,7 @@ public class Merge2SortedLinkedList {
 			Node newNode = new Node(header1.val);
 			header1 = header1.next;
 			newNode.next = header;
-			header.previous = newNode;
+			header.prev = newNode;
 			header = newNode;
 		}
 		
@@ -37,7 +37,7 @@ public class Merge2SortedLinkedList {
 			Node newNode = new Node(header2.val);
 			header2 = header2.next;
 			newNode.next = header;
-			header.previous = newNode;
+			header.prev = newNode;
 			header = newNode;
 		}
 		

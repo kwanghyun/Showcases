@@ -49,16 +49,16 @@ import java.util.Arrays;
 */
 public class Permutations {
 	void generatePermutations(char[] arr, char[] branch, int level, boolean[] visited) {
-		if (level >= arr.length - 1) {
+		if (level >= arr.length ) {
 			System.out.println(branch);
 			return;
 		}
 
 		for (int i = 0; i < arr.length; i++) {
 			if (!visited[i]) {
-				branch[++level] = arr[i];
+				branch[level] = arr[i];
 				visited[i] = true;
-				generatePermutations(arr, branch, level, visited);
+				generatePermutations(arr, branch, level + 1, visited);
 				visited[i] = false;
 				level--;
 			}
@@ -87,7 +87,7 @@ public class Permutations {
 		for (int i = 0; i < n; i++)
 			visited[i] = false;
 		char[] branch = new char[n];
-		p.generatePermutations(arr, branch, -1, visited);
+		p.generatePermutations(arr, branch, 0, visited);
 		System.out.println("-------------------------");
 		p.generatePermutationsWithDup(arr, branch, -1);
 	}

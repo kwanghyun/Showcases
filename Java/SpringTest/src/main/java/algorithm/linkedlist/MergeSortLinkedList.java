@@ -1,5 +1,7 @@
 package algorithm.linkedlist;
 
+import algorithm.utils.LinkedListUtils;
+
 /*
  * Sort a linked list in O(n log n) time using constant space complexity.
  * 
@@ -9,6 +11,56 @@ package algorithm.linkedlist;
  * Merge the two sub lists This is my accepted answer for the problem.
  */
 public class MergeSortLinkedList {
+
+	public Node mergeSort(Node head) {
+		if (head == null || head.next == null)
+			return head;
+
+		Node slow = head;
+		Node fast = head;
+		Node left = head;
+
+		while (fast != null && fast.next != null && fast.next.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+
+		Node right = slow.next;
+		slow.next = null;
+
+		Node first = mergeSort(left);
+		Node second = mergeSort(right);
+
+		Node merged = mergeI(first, second);
+		return merged;
+	}
+
+	public Node mergeI(Node n1, Node n2) {
+		Node fakeHeader = new Node(0);
+		Node curr = fakeHeader;
+		while (n1 != null || n2 != null) {
+			if (n2 == null) {
+				curr.next = n1;
+				n1 = n1.next;
+				curr = curr.next;
+			} else if (n1 == null) {
+				curr.next = n2;
+				n2 = n2.next;
+				curr = curr.next;
+			} else {
+				if (n1.val < n2.val) {
+					curr.next = n1;
+					n1 = n1.next;
+					curr = curr.next;
+				} else {
+					curr.next = n2;
+					n2 = n2.next;
+					curr = curr.next;
+				}
+			}
+		}
+		return fakeHeader.next;
+	}
 
 	public static Node mergeSortList(Node head) {
 
@@ -93,34 +145,14 @@ public class MergeSortLinkedList {
 	}
 
 	public static void main(String[] args) {
-		Node n1 = new Node(2);
-		Node n2 = new Node(3);
-		Node n3 = new Node(4);
-
-		Node n4 = new Node(3);
-		Node n5 = new Node(4);
-		Node n6 = new Node(5);
-
-		n1.next = n2;
-		n2.next = n3;
-		n3.next = n4;
-		n4.next = n5;
-		n5.next = n6;
-
-		n1 = mergeSortList(n1);
-
-		printList(n1);
-	}
-
-	public static void printList(Node x) {
-		if (x != null) {
-			System.out.print(x.val + " ");
-			while (x.next != null) {
-				System.out.print(x.next.val + " ");
-				x = x.next;
-			}
-			System.out.println();
-		}
-
+		MergeSortLinkedList ob = new MergeSortLinkedList();
+		// int[] arr = { 3, 5, 2, 1, 4, 6 };
+		int[] arr = { 3, 5, 2, 7, 1, 4, 6 };
+		Node unsorted = LinkedListUtils.generateListFromArray(arr);
+		LinkedListUtils.printNodes(unsorted);
+		System.out.println("------------------------");
+		Node sorted = ob.mergeSort(unsorted);
+		// Node sorted = mergeSortList(unsorted);
+		LinkedListUtils.printNodes(sorted);
 	}
 }

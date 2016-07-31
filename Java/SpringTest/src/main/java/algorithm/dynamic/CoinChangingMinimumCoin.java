@@ -64,38 +64,38 @@ public class CoinChangingMinimumCoin {
 	 * possible.
 	 */
 	public int minimumCoinBottomUp(int total, int coins[]) {
-		int T[] = new int[total + 1];
-		int R[] = new int[total + 1];
-		T[0] = 0;
+		int dp[] = new int[total + 1];
+		int usedCoinIdx[] = new int[total + 1];
+		dp[0] = 0;
 		for (int i = 1; i <= total; i++) {
-			T[i] = Integer.MAX_VALUE - 1;
-			R[i] = -1;
+			dp[i] = Integer.MAX_VALUE - 1;
+			usedCoinIdx[i] = -1;
 		}
-		for (int j = 0; j < coins.length; j++) {
-			for (int i = 1; i <= total; i++) {
-				if (i >= coins[j]) {
-					if (T[i - coins[j]] + 1 < T[i]) {
-						T[i] = 1 + T[i - coins[j]];
-						R[i] = j;
+		for (int i = 0; i < coins.length; i++) {
+			for (int p = 1; p <= total; p++) {
+				if (p >= coins[i]) {
+					if (dp[p - coins[i]] + 1 < dp[p]) {
+						dp[p] = 1 + dp[p - coins[i]];
+						usedCoinIdx[p] = i;
 					}
 				}
 			}
 		}
-		printCoinCombination(R, coins);
-		return T[total];
+		printCoinCombination(usedCoinIdx, coins);
+		return dp[total];
 	}
 
-	private void printCoinCombination(int R[], int coins[]) {
-		if (R[R.length - 1] == -1) {
+	private void printCoinCombination(int usedCoinIdx[], int coins[]) {
+		if (usedCoinIdx[usedCoinIdx.length - 1] == -1) {
 			System.out.print("No solution is possible");
 			return;
 		}
-		int start = R.length - 1;
+		int start = usedCoinIdx.length - 1;
 		System.out.print("Coins used to form total ");
 		while (start != 0) {
-			int j = R[start];
-			System.out.print(coins[j] + " ");
-			start = start - coins[j];
+			int idx = usedCoinIdx[start];
+			System.out.print(coins[idx] + " ");
+			start = start - coins[idx];
 		}
 		System.out.print("\n");
 	}
