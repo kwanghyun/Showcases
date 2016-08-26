@@ -45,14 +45,26 @@ public class MaximumProduct {
 			return 0;
 
 		int tmpMax = arr[0];
-		int tmpMin = arr[0];
+		int min = arr[0];
 		int max = arr[0];
 
 		for (int i = 1; i < arr.length; i++) {
-			int temp = tmpMax;
-			tmpMax = Math.max(Math.max(arr[i] * tmpMax, arr[i]), arr[i] * tmpMin);
-			tmpMin = Math.min(Math.min(arr[i] * temp, arr[i]), arr[i] * tmpMin);
+			tmpMax = Math.max(Math.max(arr[i] * tmpMax, arr[i]), arr[i] * min);
+			min = Math.min(Math.min(arr[i] * tmpMax, arr[i]), arr[i] * min);
 			max = Math.max(max, tmpMax);
+		}
+		return max;
+	}
+
+	public int maxProduct_(int[] arr) {
+		if (arr == null || arr.length == 0)
+			return 0;
+
+		int max = 0;
+
+		for (int i = 0; i < arr.length; i++) {
+			int tmp_min = Math.min(max * arr[i], arr[i]);
+			max = Math.max(tmp_min * arr[i], max * arr[i]);
 		}
 		return max;
 	}
@@ -61,5 +73,6 @@ public class MaximumProduct {
 		MaximumProduct ob = new MaximumProduct();
 		int[] arr = { 2, 3, -2, 4 };
 		System.out.println(ob.maxProductI(arr));
+		System.out.println(ob.maxProduct_(arr));
 	}
 }

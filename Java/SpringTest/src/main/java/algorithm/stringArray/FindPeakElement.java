@@ -1,5 +1,9 @@
 package algorithm.stringArray;
 
+import java.util.Arrays;
+
+import algorithm.Utils;
+
 /*
  * A peak element is an element that is greater than its neighbors. Given an
  * input array where num[i] ≠ num[i+1], find a peak element and return its
@@ -37,5 +41,13 @@ public class FindPeakElement {
 		}
 
 		return index;
+	}
+
+	public static void main(String[] args) {
+		FindPeakElement ob = new FindPeakElement();
+		int[] nums = Utils.shuffleArray(Utils.createIntArrayFromRange(1, 8));
+		System.out.println(Arrays.toString(nums));
+
+		System.out.println(ob.findPeakElement(nums));
 	}
 }

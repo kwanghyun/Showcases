@@ -2,6 +2,8 @@ package algorithm.trees;
 
 import java.util.ArrayList;
 
+import algorithm.utils.TreeUtils;
+
 /*Given a binary tree containing digits from 0-9 only, each root-to-leaf path could
  represent a number. Find the total sum of all root-to-leaf numbers.
  For example,
@@ -16,81 +18,82 @@ import java.util.ArrayList;
 public class SumRootToLeafNum {
 
 	public int sumNumbers(TreeNode root) {
+
 		if (root == null)
 			return 0;
-		return dfs(root, 0, 0);
-	}
-	
-	public int sumNumbers2(TreeNode root) {
-		
-		if (root == null)
-			return 0;
-		return dfs2(root, 0, 0);
+		return dfs(root, 0);
 	}
 
-	public int sumNumbers3(TreeNode root) {
-		
+	public int dfs(TreeNode root, int num) {
 		if (root == null)
 			return 0;
-		return dfs3(root, 0, 0);
+
+		num = num * 10 + root.value;
+
+		if (root.left == null && root.right == null) {
+			return num;
+		}
+		return dfs(root.left, num) + dfs(root.right, num);
 	}
-	
-	public int dfs(TreeNode node, int num, int sum) {
+
+	public int sumNumbersI(TreeNode root) {
+		if (root == null)
+			return 0;
+		return dfsI(root, 0, 0);
+	}
+
+	public int sumNumbersII(TreeNode root) {
+
+		if (root == null)
+			return 0;
+		return dfsII(root, 0, 0);
+	}
+
+	public int dfsI(TreeNode node, int num, int sum) {
+
 		if (node == null)
-			return sum;
-		
+			return 0;
+
 		num = num * 10 + node.value;
-		
+
 		// leaf
 		if (node.left == null && node.right == null) {
 			sum += num;
 			return sum;
 		}
-		
+
 		// left subtree + right subtree
-		sum = dfs(node.left, num, sum) + dfs(node.right, num, sum);
+		sum = dfsI(node.left, num, sum) + dfsI(node.right, num, sum);
 		return sum;
 	}
-	
-	public int dfs2(TreeNode node, int num, int sum) {
-		
+
+	public int dfsII(TreeNode node, int num, int sum) {
+		if (node == null)
+			return 0;
+
 		num = num * 10 + node.value;
-		
+
 		if (node.left == null && node.right == null) {
 			sum += num;
 			return sum;
 		}
-		
-		return dfs2(node.left, num, sum) + dfs2(node.right, num, sum);
-	}
-	
-	public int dfs3(TreeNode node, int sum, int totalSum) {
-		
-		if (node.left == null && node.right == null) {
-			totalSum += sum;
-			return totalSum;
-		}
-		
-		return dfs2(node.left, sum * 10 + node.value, totalSum)
-				+ dfs2(node.right, sum * 10 + node.value, totalSum);
-	}
-	
-	public static void main(String[] args) {
-		SumRootToLeafNum ob = new SumRootToLeafNum();
-		System.out.println(ob.sumNumbers(ob.generatePartTree()));
-		System.out.println("---------------------------------------------");
-		System.out.println(ob.sumNumbers2(ob.generatePartTree()));
-		System.out.println("---------------------------------------------");
-		System.out.println(ob.sumNumbers3(ob.generatePartTree()));
-	}
-	
-	public TreeNode generatePartTree() {
-		TreeNode one = new TreeNode(1);
-		TreeNode two = new TreeNode(2);
-		TreeNode three = new TreeNode(3);
-		one.setLeft(two);
-		one.setRight(three);
-		return one;
+
+		return dfsII(node.left, num, sum) + dfsII(node.right, num, sum);
 	}
 
+	public static void main(String[] args) {
+		SumRootToLeafNum ob = new SumRootToLeafNum();
+		int[] inorder = { 2, 1, 3 };
+		int[] preorder = { 1, 2, 3 };
+		// TreeNode root = TreeUtils.buildInPreorderTree(inorder, preorder);
+		TreeNode root = TreeUtils.buildBstFromRange(1, 7);
+		TreeUtils.drawTree(root);
+		System.out.println("---------------------sumNumbers------------------------");
+		System.out.println(ob.sumNumbers(root));
+		System.out.println("---------------------sumNumbersI------------------------");
+		System.out.println(ob.sumNumbersI(root));
+		System.out.println("---------------------sumNumbersII------------------------");
+		System.out.println(ob.sumNumbersII(root));
+
+	}
 }

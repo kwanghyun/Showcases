@@ -19,7 +19,7 @@ public class MaxPointsOnAline {
 		if (points == null || points.length == 0)
 			return 0;
 
-		HashMap<Double, Integer> result = new HashMap<Double, Integer>();
+		HashMap<Double, Integer> map = new HashMap<Double, Integer>();
 		int max = 0;
 
 		for (int i = 0; i < points.length; i++) {
@@ -37,24 +37,35 @@ public class MaxPointsOnAline {
 					double slope = points[j].y == points[i].y ? 0.0
 							: (1.0 * (points[j].y - points[i].y)) / (points[j].x - points[i].x);
 
-					if (result.get(slope) != null) {
-						result.put(slope, result.get(slope) + 1);
+					if (map.get(slope) != null) {
+						map.put(slope, map.get(slope) + 1);
 					} else {
-						result.put(slope, 1);
+						map.put(slope, 1);
 					}
 				}
 			}
 
-			for (Integer count : result.values()) {
+			for (Integer count : map.values()) {
 				if (count + duplicate > max) {
 					max = count + duplicate;
 				}
 			}
 
 			max = Math.max(vertical + duplicate, max);
-			result.clear();
+			map.clear();
 		}
 
 		return max;
+	}
+
+	public static void main(String[] args) {
+		Point[] points = new Point[10];
+		for (int i = 0; i < 10; i++) {
+			Point p = new Point(i, i);
+			points[i] = p;
+		}
+
+		MaxPointsOnAline ob = new MaxPointsOnAline();
+		System.out.println(ob.maxPoints(points));
 	}
 }

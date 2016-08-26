@@ -19,28 +19,37 @@ public class SwapNodeInPairs {
 
 		Node prev = head;
 		Node curr = head.next;
+		Node n_head = curr;
 
-		while (curr.next != null && curr.next.next != null) {
+		while (curr != null) {
+			Node nxt = curr.next;
 			curr.next = prev;
-			prev.next = curr.next;
-			prev = prev.next;
-			curr = prev.next;
+
+			if (nxt == null || nxt.next == null) {
+				prev.next = nxt;
+				break;
+			} else {
+				prev.next = nxt.next;
+				prev = nxt;
+				curr = nxt.next;
+			}
 		}
-		return head;
+
+		return n_head;
 	}
 
 	public static void main(String[] args) {
 		SwapNodeInPairs obj = new SwapNodeInPairs();
-		Node head = LinkedListUtils.generateOrderedList(5);
+		Node head = LinkedListUtils.generateListFromRange(1, 5);
 		LinkedListUtils.printNodes(head);
-		System.out.println("\n----------------------------");
-		LinkedListUtils.printNodes(obj.swapPairs(head));
-		System.out.println("\n----------------------------");
+		System.out.println("\n--------------swapPairsI--------------");
+		LinkedListUtils.drawList(obj.swapPairsI(head));
+		System.out.println("\n--------------swapPairsI--------------");
 		Node head5 = LinkedListUtils.generateOrderedList(5);
-		LinkedListUtils.printNodes(obj.swapPairs(head5));
-		System.out.println("\n----------------------------");
+		LinkedListUtils.drawList(obj.swapPairsI(head5));
+		System.out.println("\n--------------swapPairsI--------------");
 		Node head6 = LinkedListUtils.generateOrderedList(6);
-		LinkedListUtils.printNodes(obj.swapPairs(head6));
+		LinkedListUtils.drawList(obj.swapPairsI(head6));
 	}
 
 	public Node swapPairs(Node head) {

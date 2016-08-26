@@ -1,6 +1,8 @@
 package algorithm.trees;
 
 import algorithm.linkedlist.Node;
+import algorithm.utils.LinkedListUtils;
+import algorithm.utils.TreeUtils;
 
 /*
  * Given a singly linked list where elements are sorted in ascending order,
@@ -40,7 +42,7 @@ public class ConvertSortedLinkedListToBST {
 	}
 
 	// build tree bottom-up
-	public TreeNode sortedListToBST(int start, int end) {
+	private TreeNode sortedListToBST(int start, int end) {
 		if (start > end)
 			return null;
 
@@ -56,5 +58,14 @@ public class ConvertSortedLinkedListToBST {
 		root.right = right;
 
 		return root;
+	}
+
+	public static void main(String[] args) {
+		ConvertSortedLinkedListToBST ob = new ConvertSortedLinkedListToBST();
+		Node node = LinkedListUtils.generateListFromRange(1, 8);
+		LinkedListUtils.printNodes(node);
+		TreeNode tnode = ob.sortedListToBST(node);
+		TreeUtils.printInorder(tnode);
+		TreeUtils.drawTree(tnode);
 	}
 }

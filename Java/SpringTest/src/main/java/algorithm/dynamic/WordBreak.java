@@ -3,83 +3,101 @@ package algorithm.dynamic;
 import java.util.HashSet;
 import java.util.Set;
 
-/*Given a string s and a dictionary of words dict, determine if s can be segmented into
- a space-separated sequence of one or more dictionary words. For example, given s =
- "leetcode", dict = ["leet", "code"]. Return true because "leetcode" can be segmented as
- "leet code".
-
- This problem can be solve by using a naive approach, which is trivial. A discussion
- can always start from that though.
+/*
+ * Given a string s and a dictionary of words dict, determine if s can be
+ * segmented into a space-separated sequence of one or more dictionary
+ * words. For example, given s = "leetcode", dict = ["leet", "code"]. Return
+ * true because "leetcode" can be segmented as "leet code".
+ * 
+ * This problem can be solve by using a naive approach, which is trivial. A
+ * discussion can always start from that though.
  */
 public class WordBreak {
 	public boolean wordBreak(String string, HashSet<String> dict) {
-		// return wordBreakHelper(string , dict, 0);
-		return wordBreak(string, dict, 0);
+		return dfs(string, dict);
 	}
 
-	public boolean wordBreak(String str, HashSet<String> dict, int start) {
-		if (start == str.length())
+	public boolean dfs(String str, HashSet<String> dict) {
+
+		if (str.length() == 0)
 			return true;
-		String part = "";
-		for (int i = 0; i < str.length(); i++) {
-			part = str.substring(0, i);
+
+		for (int i = 1; i <= str.length(); i++) {
+			String part = str.substring(0, i);
 			if (dict.contains(part)) {
-				if (wordBreak(part, dict, i))
+				if (dfs(str.substring(i), dict))
 					return true;
 			}
 		}
 		return false;
 	}
 
-	public boolean wordBreakHelper(String string, HashSet<String> dict, int start) {
-		if (start == string.length())
+	public boolean wordBreakI(String string, HashSet<String> dict) {
+		return dfsI(string, dict, 0);
+	}
+
+	public boolean dfsI(String str, HashSet<String> dict, int idx) {
+		if (idx == str.length())
 			return true;
 
-		for (String item : dict) {
-			int len = item.length();
-			int end = start + len;
-
-			// end index should be <= string length
-			if (end > string.length())
-				continue;
-
-			if (string.substring(start, start + len).equals(item))
-				if (wordBreakHelper(string, dict, start + len))
+		for (int i = idx + 1; i <= str.length(); i++) {
+			String part = str.substring(idx, i);
+			if (dict.contains(part)) {
+				if (dfsI(str, dict, i))
 					return true;
+			}
 		}
 		return false;
 	}
 
+	public String breakWordDP(String word, Set<String> dict) {
+		int dp[][] = new int[word.length()][word.length()];
 
-	/*
-	 * Dynamic Programming The key to solve this problem by using dynamic
-	 * programming approach: • Define an array t[] such that t[i]==true
-	 * =>0-(i-1) can be segmented using dictionary • Initial state t[0] == true
-	 */
+		for (int i = 0; i < dp.length; i++) {
+			for (int j = 0; j < dp[i].length; j++) {
+				dp[i][j] = -1; // -1 indicates string between i to j cannot be
+								// split
+			}
+		}
 
-	public boolean wordBreakD(String inputStr, Set<String> dict) {
-		boolean[] dp = new boolean[inputStr.length() + 1];
-		dp[0] = true; 
+		// fill up the matrix in bottom up manner
+		for (int len = 1; len <= word.length(); len++) {
+			for (int r = 0; r < word.length() - len + 1; r++) {
+				int c = r + len - 1;
+				String str = word.substring(r, c + 1);
 
-		for (int i = 0; i < inputStr.length(); i++) {
-			// should continue from match position
-			if (!dp[i])
-				continue;
-
-			for (String word : dict) {
-				int len = word.length();
-				int end = i + len;
-
-				if (end > inputStr.length())
+				if (dict.contains(str)) {
+					dp[r][c] = r;
 					continue;
-				if (dp[end])
-					continue;
-				if (inputStr.substring(i, end).equals(word)) {
-					dp[end] = true;
+				}
+
+				for (int k = r + 1; k <= c; k++) {
+					if (dp[r][k - 1] != -1 && dp[k][c] != -1) {
+						dp[r][c] = k;
+						break;
+					}
 				}
 			}
 		}
-		return dp[inputStr.length()];
+		if (dp[0][word.length() - 1] == -1) {
+			return null;
+		}
+
+		// create space separate word from string is possible
+		StringBuffer buffer = new StringBuffer();
+		int i = 0;
+		int j = word.length() - 1;
+		while (i < j) {
+			int k = dp[i][j];
+			if (i == k) {
+				buffer.append(word.substring(i, j + 1));
+				break;
+			}
+			buffer.append(word.substring(i, k) + " ");
+			i = k;
+		}
+
+		return buffer.toString();
 	}
 
 	/*
@@ -91,7 +109,16 @@ public class WordBreak {
 		HashSet<String> dict = new HashSet<String>();
 		dict.add("leet");
 		dict.add("code");
+		dict.add("le");
+		dict.add("co");
+		dict.add("de");
+		dict.add("none");
 		WordBreak obj = new WordBreak();
+		System.out.println("------------------wordBreak-----------------");
 		System.out.println(obj.wordBreak("leetcode", dict));
+		System.out.println("------------------wordBreakI----------------");
+		System.out.println(obj.wordBreakI("leetcode", dict));
+		System.out.println("------------------breakWordDP----------------");
+		System.out.println(obj.breakWordDP("leetcode", dict));
 	}
 }

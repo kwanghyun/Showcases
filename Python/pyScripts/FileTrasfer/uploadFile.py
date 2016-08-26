@@ -1,5 +1,6 @@
 import paramiko
 import logging
+import sys
 
 # logging.basicConfig(filename='log-file.log',level=logging.DEBUG)
 logging.basicConfig(level=logging.INFO)
@@ -74,12 +75,32 @@ class SftpManager:
 if __name__ == "__main__":
     # execute only if run as a script
     logging.info("Running as script")
-    sftp = SftpManager("10.106.8.80")
+
+    # Default
+    host = ""
+    fileName = ''
+
+    argList = sys.argv[1:]
+
+    if (len(argList) > 1):
+        host = argList[0]
+        fileName = argList[1]
+
+    logging.info("host -> %s " % host)
+    logging.info("fileName -> %s " % fileName)
+
+    if host == "" or fileName == "":
+        logging.error("<Usage> filename [host] [filename]")
+        exit(1)
+
+    sftp = SftpManager(host)
+
+
     fileMap = {
-        'src': '/Users/jangkwanghyun/Cisco/pme/spark-analytics/loadSimulatorApp/target/loadSimulator-1.0.0-SNAPSHOT.jar',
-        'dest': '/home/scc-dev/softwares/loadSimulator/loadSimulator-1.0.0-SNAPSHOT.jar'
+        'src': fileName,
+        'dest': '/home/scc-dev/softwares/' + fileName
     }
+
     sftp.connect()
     sftp.upload(fileMap)
     sftp.close()
-

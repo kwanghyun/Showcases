@@ -23,17 +23,6 @@ public class MaximumSubarray {
 		return maxSum;
 	}
 
-	public int maxSubArrayD2(int[] arr) {
-		int sum = 0;
-		int maxSum = Integer.MIN_VALUE;
-
-		for (int i = 0; i < arr.length; i++) {
-			sum = Math.max(sum + arr[i], arr[i]);
-			maxSum = Math.max(maxSum, sum);
-		}
-		return maxSum;
-	}
-
 	/*
 	 * The changing condition for dynamic programming is "We should ignore the
 	 * sum of the previous n-1 elements if nth element is greater than the sum."
@@ -50,12 +39,23 @@ public class MaximumSubarray {
 		return max;
 	}
 
+	public int maxSubArrayD2(int[] arr) {
+		int max_curr = arr[0];
+		int max = Integer.MIN_VALUE;
+
+		for (int i = 1; i < arr.length; i++) {
+			max_curr = Math.max(max_curr + arr[i], arr[i]);
+			max = Math.max(max, max_curr);
+		}
+		return max;
+	}
+
 	public static void main(String[] args) {
 		MaximumSubarray ms = new MaximumSubarray();
 
-		// int[] arr = {-2,1,-3,4,-1,2,1,-5,4};
+		int[] arr = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
 		// int[] arr = { 1, 2, 3, -3, -4, 5, 6 };
-		int[] arr = { -1, -2, -3, 4 };
+		// int[] arr = { -1, -2, -3, 4 };
 		System.out.println(ms.maxSubArray(arr));
 		System.out.println("-----------------------");
 		System.out.println(ms.maxSubArrayD(arr));

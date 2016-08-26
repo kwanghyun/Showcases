@@ -1,5 +1,7 @@
 package algorithm.recursion;
 
+import algorithm.Utils;
+
 /*
  * We have discussed Knight’s tour and Rat in a Maze problems in Set 1 and Set 2
  * respectively. Let us discuss N Queen as another example problem that can be
@@ -34,6 +36,56 @@ package algorithm.recursion;
  *
  */
 public class NQueenProblem {
+
+	public boolean findSolution(int board[][], int queens, int col) {
+		if (queens == 0) {
+			Utils.printMetrix(board);
+			return true;
+		}
+
+		if (col >= board[0].length)
+			return false;
+
+		for (int r = 0; r < board.length; r++) {
+			if (validPosition(board, r, col)) {
+				board[r][col] = 1;
+				if (findSolution(board, queens - 1, col + 1)) {
+					return true;
+				}
+				board[r][col] = 0;
+			}
+		}
+		return false;
+	}
+
+	public boolean validPosition(int board[][], int row, int col) {
+		// Check left top
+		for (int r = row, c = col; r >= 0 && c >= 0; r--, c--) {
+			if (board[r][c] == 1)
+				return false;
+		}
+
+		// Check right top
+		for (int r = row, c = col; r >= 0 && c < board[0].length; r--, c++) {
+			if (board[r][c] == 1)
+				return false;
+		}
+
+		// Check top
+		for (int r = row; r >= 0; r--) {
+			if (board[r][col] == 1)
+				return false;
+		}
+
+		// Check left
+		for (int c = col; c >= 0; c--) {
+			if (board[row][c] == 1)
+				return false;
+		}
+
+		return true;
+	}
+
 	final int nQueens = 4;
 
 	/*
@@ -133,5 +185,10 @@ public class NQueenProblem {
 	public static void main(String args[]) {
 		NQueenProblem Queen = new NQueenProblem();
 		Queen.solveNQ();
+		System.out.println("---------------------------------");
+		int board[][] = { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
+		int queens = 4;
+		Queen.findSolution(board, queens, 0);
+
 	}
 }

@@ -15,19 +15,6 @@ import algorithm.utils.TreeUtils;
  * 
  */
 public class CC_4_7_IsSubTree {
-	// 1
-	// / \
-	// / \
-	// / \
-	// 2 3
-	// / \ /
-	// 4 5 6
-	// / / \
-	// 7 8 9
-	// Preorder: 1 2 4 7 5 3 6 8 9
-	// Inorder: 7 4 2 5 1 8 6 9 3
-	// Postorder: 7 4 5 2 8 9 6 3 1
-	// Level-order: 1 2 3 4 5 6 7 8 9
 
 	public boolean isSubTree(TreeNode root1, TreeNode root2) {
 
@@ -39,7 +26,6 @@ public class CC_4_7_IsSubTree {
 	}
 
 	public TreeNode findNode(TreeNode root1, TreeNode root2) {
-		TreeNode foundNode = null;
 		if (root1 == null)
 			return null;
 
@@ -47,11 +33,13 @@ public class CC_4_7_IsSubTree {
 			return root1;
 		}
 
-		foundNode = findNode(root1.left, root2);
-		if (foundNode == null)
-			foundNode = findNode(root1.right, root2);
+		System.out.println(root1.value);
 
-		return foundNode;
+		if (root1.left != null)
+			return findNode(root1.left, root2);
+		else
+			return findNode(root1.right, root2);
+
 	}
 
 	public boolean checkTrees(TreeNode root1, TreeNode root2) {
@@ -72,10 +60,10 @@ public class CC_4_7_IsSubTree {
 
 		int[] big_preorder = { 5, 3, 1, 4, 7, 6, 8 };
 		TreeNode bigTree = TreeUtils.buildBstFromPreorder(big_preorder);
+		TreeUtils.drawTree(bigTree);
 		int[] small_preorder = { 3, 1, 4 };
 		TreeNode smallTree = TreeUtils.buildBstFromPreorder(small_preorder);
-		System.out.println(Arrays.toString(big_preorder));
-		System.out.println(Arrays.toString(small_preorder));
+		TreeUtils.drawTree(smallTree);
 		System.out.println("is Subtree? -> " + ist.isSubTree(bigTree, smallTree));
 
 		System.out.println("");
@@ -84,8 +72,7 @@ public class CC_4_7_IsSubTree {
 		TreeNode bigTree1 = TreeUtils.buildBstFromPreorder(big_preorder1);
 		int[] small_preorder1 = { 4, 1, 7 };
 		TreeNode smallTree1 = TreeUtils.buildBstFromPreorder(small_preorder1);
-		System.out.println(Arrays.toString(big_preorder1));
-		System.out.println(Arrays.toString(small_preorder1));
+		TreeUtils.drawTree(smallTree1);
 		System.out.println("is Subtree? -> " + ist.isSubTree(bigTree1, smallTree1));
 
 	}

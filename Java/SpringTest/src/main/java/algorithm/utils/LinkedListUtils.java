@@ -39,6 +39,18 @@ public class LinkedListUtils {
 		return fakeHeader.next;
 	}
 
+	public static Node generateListFromRange(int start, int end) {
+		Node fakeHeader = new Node(100);
+		Node p = fakeHeader;
+		while (start <= end) {
+			Node t = new Node(start);
+			p.next = t;
+			p = t;
+			start++;
+		}
+		return fakeHeader.next;
+	}
+
 	public static Node generateUnSortedList() {
 		Node node1 = new Node(1);
 		Node node2 = new Node(2);
@@ -62,6 +74,19 @@ public class LinkedListUtils {
 			System.out.println(p);
 			p = p.next;
 		}
+	}
+
+	public static void drawList(Node node) {
+		Node p = node;
+		while (p != null) {
+			if (p.next == null) {
+				System.out.print(p.val);
+			} else {
+				System.out.print(p.val + " -> ");
+			}
+			p = p.next;
+		}
+		System.out.println("");
 	}
 
 	public static void main(String[] args) {

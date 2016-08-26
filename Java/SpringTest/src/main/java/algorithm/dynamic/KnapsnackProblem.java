@@ -1,6 +1,8 @@
 package algorithm.dynamic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /*
  * Given a set of items, each with weight and benefit, determine the items
@@ -13,119 +15,109 @@ import java.util.ArrayList;
 
 public class KnapsnackProblem {
 
-	public int max(int a, int b) {
-		if (a > b)
-			return a;
-		return b;
-	}
-
-	public int min(int a, int b) {
-		if (a < b)
-			return a;
-		return b;
-	}
-
-	public class ListWithBenefit {
-		ArrayList<Integer> listItems;
-		int benefit;
-
-		public ListWithBenefit(int benefit) {
-			listItems = new ArrayList<>();
-			this.benefit = benefit;
-		}
-
-		public ListWithBenefit(ListWithBenefit obj) {
-			listItems = new ArrayList();
-			for (int i = 0; i < obj.listItems.size(); i++) {
-				listItems.add(obj.listItems.get(i));
+	public int bottomUpDP(int val[], int wt[], int W) {
+		int K[][] = new int[val.length + 1][W + 1];
+		for (int i = 0; i <= val.length; i++) {
+			for (int j = 0; j <= W; j++) {
+				if (i == 0 || j == 0) {
+					K[i][j] = 0;
+					continue;
+				}
+				if (j - wt[i - 1] >= 0) {
+					K[i][j] = Math.max(K[i - 1][j], K[i - 1][j - wt[i - 1]] + val[i - 1]);
+				} else {
+					K[i][j] = K[i - 1][j];
+				}
 			}
-			this.benefit = obj.benefit;
 		}
-
+		return K[val.length][W];
 	}
 
-	ListWithBenefit findOptimalItems(int w, int n, int[] val, int[] weight, ListWithBenefit[][] optimalKnapsack) {
-		// nothing can be added to Knapsack.
-		if (w == 0 || n == weight.length) {
-			optimalKnapsack[w][n] = new ListWithBenefit(0);
-			return optimalKnapsack[w][n];
+	/**
+	 * Key for memoization
+	 */
+	class Index {
+		int remainingWeight;
+		int remainingItems;
+
+		@Override
+		public boolean equals(Object o) {
+			if (this == o)
+				return true;
+			if (o == null || getClass() != o.getClass())
+				return false;
+
+			Index index = (Index) o;
+
+			if (remainingWeight != index.remainingWeight)
+				return false;
+			return remainingItems == index.remainingItems;
 
 		}
 
-		// this node can not be added to Knapsack.
-		if (weight[n] > w)
-			return (optimalKnapsack[w][n + 1] == null) ? findOptimalItems(w, n + 1, val, weight, optimalKnapsack)
-					: optimalKnapsack[w][n + 1];
-
-		// compute optimal knapsack if we want to include this item in it.
-		ListWithBenefit include_n_benefit = (optimalKnapsack[w - weight[n]][n + 1] == null)
-				? new ListWithBenefit(findOptimalItems(w - weight[n], n + 1, val, weight, optimalKnapsack))
-				: new ListWithBenefit(optimalKnapsack[w - weight[n]][n + 1]);
-
-		// now include this item and its benefit in the knapsack
-		include_n_benefit.listItems.add(weight[n]);
-		include_n_benefit.benefit += val[n];
-
-		// compute optimal knapsack if we do not want to include this item in
-		// it.
-		ListWithBenefit exclude_n_benefit = (optimalKnapsack[w][n + 1] == null)
-				? new ListWithBenefit(findOptimalItems(w, n + 1, val, weight, optimalKnapsack))
-				: new ListWithBenefit(optimalKnapsack[w][n + 1]);
-
-		// check which knapsack is gives us better benefit?
-		if (include_n_benefit.benefit > exclude_n_benefit.benefit) {
-			optimalKnapsack[w][n] = new ListWithBenefit(include_n_benefit);
-			return include_n_benefit;
+		@Override
+		public int hashCode() {
+			int result = remainingWeight;
+			result = 31 * result + remainingItems;
+			return result;
 		}
-
-		optimalKnapsack[w][n] = new ListWithBenefit(exclude_n_benefit);
-		return exclude_n_benefit;
 	}
 
-	public int findMaximumBenefit(int w, int n, int[] val, int[] weight) {
-		if (w == 0 || n == weight.length) {
+	/**
+	 * Solves 0/1 knapsack in top down DP
+	 */
+	public int topDownRecursive(int values[], int weights[], int W) {
+		// map of key(remainingWeight, remainingCount) to maximumValue they can
+		// get.
+		Map<Index, Integer> map = new HashMap<>();
+		return topDownRecursiveUtil(values, weights, W, values.length, 0, map);
+	}
+
+	public int topDownRecursiveUtil(int values[], int weights[], int remainingWeight, int totalItems, int currentItem,
+			Map<Index, Integer> map) {
+		// if currentItem exceeds total item count or remainingWeight is less
+		// than 0 then
+		// just return with 0;
+		if (currentItem >= totalItems || remainingWeight <= 0) {
 			return 0;
 		}
 
-		// if this item's weight is greater than weight limit available
-		// then this item cannot be included in the knapsack
-		if (weight[n] > w)
-			return findMaximumBenefit(w, n + 1, val, weight);
+		// fom a key based on remainingWeight and remainingCount
+		Index key = new Index();
+		key.remainingItems = totalItems - currentItem - 1;
+		key.remainingWeight = remainingWeight;
 
-		// Case1: maximum benefit possible by including current item in the
-		// knapsack
-		int includeCaseBenefit = val[n] + findMaximumBenefit(w - weight[n], n + 1, val, weight);
+		// see if key exists in map. If so then return the maximumValue for key
+		// stored in map.
+		if (map.containsKey(key)) {
+			return map.get(key);
+		}
+		int maxValue;
+		// if weight of item is more than remainingWeight then try next item by
+		// skipping current item
+		if (remainingWeight < weights[currentItem]) {
+			maxValue = topDownRecursiveUtil(values, weights, remainingWeight, totalItems, currentItem + 1, map);
+		} else {
+			// try to get maximumValue of either by picking the currentItem or
+			// not picking currentItem
+			maxValue = Math.max(
+					values[currentItem] + topDownRecursiveUtil(values, weights, remainingWeight - weights[currentItem],
+							totalItems, currentItem + 1, map),
+					topDownRecursiveUtil(values, weights, remainingWeight, totalItems, currentItem + 1, map));
+		}
+		// memoize the key with maxValue found to avoid recalculation
+		map.put(key, maxValue);
+		return maxValue;
 
-		// Case2: maximum benefit possible by excluding current item from the
-		// knapsack
-		int excludeCaseBenefit = findMaximumBenefit(w, n + 1, val, weight);
-
-		// return maximum of case1 and case2 values
-		return max(includeCaseBenefit, excludeCaseBenefit);
 	}
 
-	public static void main(String[] args) {
-		int[] val = { 3, 7, 2, 9 };
-		int[] weight = { 2, 2, 4, 5 };
-
-		int weightLimit = 10;
-		ListWithBenefit[][] optimalKnapsack = new ListWithBenefit[weightLimit + 1][val.length + 1];
-
-		// ArrayList<Integer> optimumWeights = new ArrayList();
-		KnapsnackProblem obj = new KnapsnackProblem();
-
-		// maximum benefit possible using simple recursion
-		// System.out.println(obj.findMaximumBenefit(weightLimit, 0, val,
-		// weight));
-
-		// maximum benefit possible using dynamic programming
-		ListWithBenefit sln = obj.findOptimalItems(weightLimit, 0, val, weight, optimalKnapsack);
-
-		System.out.println("Maximum benefit is " + sln.benefit);
-		System.out.println("And the weights to be included are");
-
-		for (int i = 0; i < sln.listItems.size(); i++)
-			System.out.println(sln.listItems.get(i));
-
+	public static void main(String args[]) {
+		KnapsnackProblem k = new KnapsnackProblem();
+		int val[] = { 22, 20, 15, 30, 24, 54, 21, 32, 18, 25 };
+		int wt[] = { 4, 2, 3, 5, 5, 6, 9, 7, 8, 10 };
+		int r = k.bottomUpDP(val, wt, 30);
+		int r1 = k.topDownRecursive(val, wt, 30);
+		System.out.println(r);
+		System.out.println(r1);
 	}
 }

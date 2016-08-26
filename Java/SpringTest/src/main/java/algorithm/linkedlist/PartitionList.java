@@ -18,23 +18,25 @@ public class PartitionList {
 		if (head == null)
 			return null;
 
-		Node smaller = new Node(0);
-		Node bigger = new Node(0);
-		Node sHead = smaller;
-		Node bHead = bigger;
+		Node sp = new Node(0);
+		Node bp = new Node(0);
+		Node sHead = sp;
+		Node bHead = bp;
 
-		while (head != null) {
+		Node p = head;
+
+		while (p != null) {
 			if (head.val < x) {
-				smaller.next = head;
-				smaller = smaller.next;
+				sp.next = p;
+				sp = sp.next;
 			} else {
-				bigger.next = head;
-				bigger = bigger.next;
+				bp.next = p;
+				bp = bp.next;
 			}
-			head = head.next;
+			p = p.next;
 		}
-		bigger.next = null;
-		smaller.next = bHead.next;
+		bp.next = null;
+		sp.next = bHead.next;
 
 		return sHead.next;
 	}
@@ -82,9 +84,9 @@ public class PartitionList {
 		System.out.println("");
 		ob.partitionI(head1, 3);
 		LinkedListUtils.printNodes(head1);
-		
+
 		System.out.println("");
-		
+
 		int[] arr = { 1, 4, 3, 2, 5, 2 };
 		Node head = LinkedListUtils.generateListFromArray(arr);
 		LinkedListUtils.printNodes(head);

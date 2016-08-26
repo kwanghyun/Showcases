@@ -13,32 +13,55 @@ public class TreeUtils {
 	public static void printPreorder(TreeNode root) {
 		if (root == null)
 			return;
+		printPreorder_(root);
+		System.out.println("");
+	}
+
+	private static void printPreorder_(TreeNode root) {
+		if (root == null)
+			return;
 
 		System.out.print(" " + root.value + " ");
-		printPreorder(root.left);
-		printPreorder(root.right);
+		printPreorder_(root.left);
+		printPreorder_(root.right);
 	}
 
 	public static void printInorder(TreeNode root) {
 		if (root == null)
 			return;
 
-		printInorder(root.left);
+		printInorder_(root);
+		System.out.println("");
+	}
+
+	public static void printInorder_(TreeNode root) {
+		if (root == null)
+			return;
+
+		printInorder_(root.left);
 		System.out.print(" " + root.value + " ");
-		printInorder(root.right);
+		printInorder_(root.right);
 	}
 
 	public static void printPostorder(TreeNode root) {
 		if (root == null)
 			return;
 
-		printPostorder(root.left);
-		printPostorder(root.right);
+		printPostorder_(root);
+		System.out.println("");
+	}
+
+	public static void printPostorder_(TreeNode root) {
+		if (root == null)
+			return;
+
+		printPostorder_(root.left);
+		printPostorder_(root.right);
 		System.out.print(" " + root.value + " ");
 	}
 
 	public static void drawTree(TreeNode root) {
-		int default_space = 2;
+
 		List<List<TreeNode>> lists = getTreeAsLeveledList(root);
 		int maxNodeCount = (int) Math.pow(2, lists.size() - 1);
 
@@ -77,14 +100,13 @@ public class TreeUtils {
 								System.out.print(spaces + "  ");
 							}
 						}
-					}else{
-						//Both null case
+					} else {
+						// Both null case
 						System.out.print(spaces + "  ");
 					}
 				}
 			}
 			System.out.println("");
-
 		}
 	}
 
@@ -121,8 +143,6 @@ public class TreeUtils {
 					q.add(new TreeNode(-1));
 				}
 			}
-
-			System.out.println(currList);
 			lists.add(new ArrayList<TreeNode>(currList));
 		}
 		return lists;

@@ -33,12 +33,13 @@ public class ConstructBinaryTreeFromPreInOrder {
 				break;
 			}
 		}
-//		System.out.println(preStart + (divIdx) + 1);
+		
 		p.left = construct(preorder, preStart + 1, preStart + (divIdx - inStart), inorder, inStart, divIdx - 1);
 		p.right = construct(preorder, preStart + (divIdx - inStart) + 1, preEnd, inorder, divIdx + 1, inEnd);
 
 		return p;
 	}
+
 
 	public TreeNode buildTree(int[] preorder, int[] inorder) {
 		int preStart = 0;

@@ -6,6 +6,7 @@ public class TreeNode {
 	public TreeNode left;
 	public TreeNode right;
 	public TreeNode neighbor;
+	public TreeNode parent;
 
 	public TreeNode(int value) {
 		this.left = null;
@@ -58,9 +59,15 @@ public class TreeNode {
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("[value=" + value);
+
+		if (parent != null) {
+			sb.append(" : parent = " + parent.value);
+		}
+
 		if (left != null) {
 			sb.append(" : left = " + left.value);
 		}
+
 		if (right != null) {
 			sb.append(" : right = " + right.value);
 		}

@@ -1,6 +1,10 @@
 package algorithm.recursion;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
+
+import algorithm.Utils;
 
 /*
  * You are given coins of different denominations and a total amount of
@@ -10,29 +14,29 @@ import java.util.LinkedList;
  */
 public class CoinMinimumCount {
 
-	public int minCoinChange(int[] coins, int target) {
+	public int minCoinChangeBFS(int[] coins, int target) {
 		if (target == 0)
 			return 0;
 		LinkedList<Integer> sums = new LinkedList<>();
-		LinkedList<Integer> steps = new LinkedList<>();
+		LinkedList<Integer> counts = new LinkedList<>();
 
 		sums.offer(0);
-		steps.offer(0);
+		counts.offer(0);
 
 		while (!sums.isEmpty()) {
 			int curr = sums.poll();
-			int step = steps.poll();
+			int count = counts.poll();
 
 			if (curr == target)
-				return step;
+				return count;
 
 			for (int coin : coins) {
 				if (curr > target) {
-					continue;
+					break;
 				} else {
 					if (!sums.contains(curr + coin)) {
 						sums.offer(curr + coin);
-						steps.offer(step + 1);
+						counts.offer(count + 1);
 					}
 				}
 			}
@@ -40,54 +44,82 @@ public class CoinMinimumCount {
 		return -1;
 	}
 
-	/**
-	 * minCoinChangeDP way of solving this problem. Keep input sorted. Otherwise
-	 * temp[j-arr[i]) + 1 can become Integer.Max_value + 1 which can be very low
-	 * negative number Returns Integer.MAX_VALUE - 1 if solution is not
-	 * possible.
-	 */
 	public int minCoinChangeDP(int total, int coins[]) {
-		int dp[] = new int[total + 1];
-		int usedCoinIdx[] = new int[total + 1];
-		dp[0] = 0;
-		for (int i = 1; i <= total; i++) {
-			dp[i] = Integer.MAX_VALUE - 1;
-			usedCoinIdx[i] = -1;
+		int dp[][] = new int[coins.length][total + 1];
+
+		for (int c = 0; c <= total; c++) {
+			dp[0][c] = c;
 		}
-		for (int i = 0; i < coins.length; i++) {
-			for (int p = 1; p <= total; p++) {
-				if (p >= coins[i]) {
-					if (dp[p - coins[i]] + 1 < dp[p]) {
-						dp[p] = 1 + dp[p - coins[i]];
-						usedCoinIdx[p] = i;
-					}
+
+		for (int r = 1; r < coins.length; r++) {
+			dp[r][0] = dp[r - 1][0];
+		}
+
+		for (int r = 1; r < coins.length; r++) {
+			for (int c = 1; c <= total; c++) {
+				// coin is smaller than total, use above row
+				if (coins[r] > c) {
+					dp[r][c] = dp[r - 1][c];
+				} else {
+					int min = Math.min(dp[r - 1][c], 1 + dp[r][c - coins[r]]);
+					dp[r][c] = min;
 				}
 			}
+			// Utils.printMetrix(dp);
 		}
-		printCoinCombination(usedCoinIdx, coins);
-		return dp[total];
+		return dp[coins.length - 1][total];
 	}
 
-	private void printCoinCombination(int usedCoinIdx[], int coins[]) {
-		if (usedCoinIdx[usedCoinIdx.length - 1] == -1) {
-			System.out.print("No solution is possible");
-			return;
+	public int minCoinChangeDFS(int[] coins, int target, int idx, ArrayList<Integer> list, int min) {
+		if (target == 0) {
+			min = Math.min(min, list.size());
+			System.out.println(list);
+			return min;
 		}
-		int start = usedCoinIdx.length - 1;
-		System.out.print("Coins used to form total ");
-		while (start != 0) {
-			int idx = usedCoinIdx[start];
-			System.out.print(coins[idx] + " ");
-			start = start - coins[idx];
+
+		for (int i = idx; i < coins.length; i++) {
+			if (coins[i] > target)
+				break;
+
+			list.add(coins[i]);
+			min = minCoinChangeDFS(coins, target - coins[i], i, list, min);
+			list.remove(list.size() - 1);
 		}
-		System.out.print("\n");
+		return min;
+	}
+
+	public int minCoinChangeDFSI(int[] coins, int target, int idx, ArrayList<Integer> list, int min) {
+		if (target == 0) {
+			min = Math.min(min, list.size());
+			System.out.println(list);
+			return min;
+		}
+
+		for (int i = idx; i < coins.length; i++) {
+			if (coins[i] > target)
+				break;
+
+			list.add(coins[i]);
+			min = minCoinChangeDFSI(coins, target - coins[i], idx + 1, list, min);
+			list.remove(list.size() - 1);
+		}
+		return min;
 	}
 
 	public static void main(String[] args) {
 		CoinMinimumCount ob = new CoinMinimumCount();
 		int[] coins = { 25, 10, 5, 1 };
-		int target = 46;
-		System.out.println(ob.minCoinChange(coins, target));
+		Arrays.sort(coins);
+		int target = 16;
+		System.out.println("------------------------------minCoinChangeBFS---------------------------");
+		System.out.println(ob.minCoinChangeBFS(coins, target));
+		System.out.println("------------------------------minCoinChangeDP---------------------------");
 		System.out.println(ob.minCoinChangeDP(target, coins));
+		ArrayList<Integer> list = new ArrayList<>();
+		System.out.println("------------------------------minCoinChangeDFS---------------------------");
+		System.out.println(ob.minCoinChangeDFS(coins, target, 0, list, Integer.MAX_VALUE));
+		System.out.println("------------------------------minCoinChangeDFSI---------------------------");
+		System.out.println(ob.minCoinChangeDFSI(coins, target, 0, list, Integer.MAX_VALUE));
+
 	}
 }

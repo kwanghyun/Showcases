@@ -21,6 +21,62 @@ import java.util.Arrays;
  */
 public class CombinationSum {
 
+	public void combinationSum(int[] arr, int target, int idx, ArrayList<Integer> list,
+			ArrayList<ArrayList<Integer>> result) {
+
+		if (target == 0) {
+			result.add(new ArrayList<Integer>(list));
+			return;
+		}
+
+		for (int i = idx; i < arr.length; i++) {
+			if (target < arr[i]) {
+				return;
+			}
+
+			list.add(arr[i]);
+			combinationSum(arr, target - arr[i], i, list, result);
+			list.remove(list.size() - 1);
+		}
+	}
+
+	public void combinationSumI(int[] arr, int target, int idx, ArrayList<Integer> list,
+			ArrayList<ArrayList<Integer>> result) {
+
+		if (target == 0) {
+			result.add(new ArrayList<Integer>(list));
+			return;
+		}
+
+		for (int i = idx; i < arr.length; i++) {
+			if (target < arr[i]) {
+				return;
+			}
+
+			list.add(arr[i]);
+			combinationSumI(arr, target - arr[i], idx + 1, list, result);
+			list.remove(list.size() - 1);
+		}
+	}
+
+	public void combinationSumII(int[] arr, int sum, ArrayList<ArrayList<Integer>> result, ArrayList<Integer> list) {
+
+		if (sum == 0) {
+			ArrayList<Integer> newlist = new ArrayList<Integer>();
+			newlist.addAll(list);
+			result.add(newlist);
+			return;
+		}
+
+		for (int i = 0; i < arr.length; i++) {
+			if (sum < arr[i])
+				return;
+			list.add(arr[i]);
+			combinationSumII(arr, sum - arr[i], result, list);
+			list.remove(list.size() - 1);
+		}
+	}
+
 	public ArrayList<ArrayList<Integer>> combinationSum(int[] candidates, int target) {
 
 		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
@@ -36,67 +92,41 @@ public class CombinationSum {
 		return result;
 	}
 
-	public void combinationSum(int[] arr, int target, int idx, ArrayList<Integer> list,
-			ArrayList<ArrayList<Integer>> result) {
+	public ArrayList<ArrayList<Integer>> combinationSumI(int[] candidates, int target) {
 
-		if (target == 0) {
-			result.add(new ArrayList<Integer>(list));
-			return;
-		}
+		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
 
-		for (int i = idx; i < arr.length; i++) {
-			if (target < arr[i]) {
-				return;
-			}
+		if (candidates == null || candidates.length == 0)
+			return result;
 
-			list.add(arr[i]);
-			System.out.println(list);
-			combinationSum(arr, target - arr[i], i, list, result);
-			list.remove(list.size() - 1);
-		}
+		ArrayList<Integer> current = new ArrayList<Integer>();
+		Arrays.sort(candidates);
+
+		combinationSumI(candidates, target, 0, current, result);
+
+		return result;
 	}
-	/* Result : [[2, 2, 3], [3, 4], [7]] */
 
-	/*
-	 * Result : [[2, 2, 3], [2, 3, 2], [3, 2, 2], [3, 4], [4, 3], [7]] Replace
-	 * with 0 will return permutation (Different order is considered unique
-	 * count)
-	 */
-	public ArrayList<ArrayList<Integer>> solution(int[] arr, int sum) {
+	public ArrayList<ArrayList<Integer>> combinationSumII(int[] arr, int sum) {
 
 		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		Arrays.sort(arr);
-		solution(arr, sum, result, list);
+		combinationSumII(arr, sum, result, list);
 		return result;
-	}
-
-	public void solution(int[] arr, int sum, ArrayList<ArrayList<Integer>> result, ArrayList<Integer> list) {
-
-		if (sum == 0) {
-			ArrayList<Integer> newlist = new ArrayList<Integer>();
-			newlist.addAll(list);
-			result.add(newlist);
-			return;
-		}
-
-		for (int i = 0; i < arr.length; i++) {
-			if (sum < arr[i])
-				return;
-			list.add(arr[i]);
-			solution(arr, sum - arr[i], result, list);
-			list.remove(list.size() - 1);
-		}
 	}
 
 	public static void main(String[] args) {
 		CombinationSum obj = new CombinationSum();
 		int[] candidates = { 2, 3, 4, 7 };
-		ArrayList<ArrayList<Integer>> result1 = obj.combinationSum(candidates, 7);
-		obj.combinationSum(candidates, 7);
+		System.out.println("----------------------combinationSum-----------------------");
+		ArrayList<ArrayList<Integer>> result = obj.combinationSum(candidates, 7);
+		System.out.println(result);
+		System.out.println("----------------------combinationSumI-----------------------");
+		ArrayList<ArrayList<Integer>> result1 = obj.combinationSumI(candidates, 7);
 		System.out.println(result1);
-		System.out.println("---------------------------------------------");
-		ArrayList<ArrayList<Integer>> result2 = obj.solution(candidates, 7);
+		System.out.println("----------------------combinationSumII-----------------------");
+		ArrayList<ArrayList<Integer>> result2 = obj.combinationSumII(candidates, 7);
 		System.out.println(result2);
 
 	}

@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class PrinterAllFactors {
 
-	public void solution3(int n, ArrayList<Integer> list) {
+	public void solution(int n, ArrayList<Integer> list) {
 		if (isPrime(n)) {
 			list.add(n);
 			System.out.println(list.toString().replace(",", " *"));
@@ -14,7 +14,7 @@ public class PrinterAllFactors {
 		for (int i = 2; i <= n / 2; i++) {
 			if (n % i == 0) {
 				list.add(i);
-				solution3(n / i, list);
+				solution(n / i, list);
 				list.remove(list.size() - 1);
 			}
 		}
@@ -29,7 +29,7 @@ public class PrinterAllFactors {
 		return true;
 	}
 
-	public void solution(int n, int[] arr, int idx) {
+	public void solutionI(int n, int[] arr, int idx) {
 		for (int i = 2; i <= n / 2; i++) {
 			if (n % i == 0) {
 				arr[idx] = i;
@@ -38,14 +38,14 @@ public class PrinterAllFactors {
 					System.out.println(Arrays.toString(arr).replace(",", " *"));
 					arr[idx + 1] = 0;
 				} else {
-					solution(n / i, arr, idx + 1);
+					solutionI(n / i, arr, idx + 1);
 				}
 				arr[idx] = 0;
 			}
 		}
 	}
 
-	public void solution2(int n, ArrayList<Integer> list) {
+	public void solutionII(int n, ArrayList<Integer> list) {
 		for (int i = 2; i <= n / 2; i++) {
 			if (n % i == 0) {
 				list.add(i);
@@ -54,7 +54,7 @@ public class PrinterAllFactors {
 					System.out.println(list);
 					list.remove(list.size() - 1);
 				} else {
-					solution2(n / i, list);
+					solutionII(n / i, list);
 				}
 				list.remove(list.size() - 1);
 			}
@@ -63,21 +63,14 @@ public class PrinterAllFactors {
 
 	public static void main(String[] args) {
 		PrinterAllFactors obj = new PrinterAllFactors();
-
-		int[] arr = new int[3];
-		obj.solution(12, arr, 0);
-		System.out.println("---------------------");
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		obj.solution2(12, list);
-
-		System.out.println("---------------------");
+		System.out.println("------------solution---------");
 		ArrayList<Integer> list1 = new ArrayList<Integer>();
-		obj.solution3(12, list1);
-
-		// obj.solution2(12, 0, arr);
-
-		// System.out.println("--------------------------");
-		// obj.printFactors(12, "", 12);
-
+		obj.solution(12, list1);
+		System.out.println("-----------solutionI----------");
+		int[] arr = new int[3];
+		obj.solutionI(12, arr, 0);
+		System.out.println("-----------solutionII----------");
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		obj.solutionII(12, list);
 	}
 }

@@ -12,11 +12,34 @@ import java.util.Set;
  */
 
 public class CoinCounter {
-
 	public void countCoins(int target) {
 		int[] coins = { 1, 5, 10, 25 };
 		List<Integer> list = new ArrayList<>();
 		countCoins(coins, target, list, 0);
+	}
+
+	public void countCoinsI(int target) {
+		int[] coins = { 1, 5, 10, 25 };
+		List<Integer> list = new ArrayList<>();
+		countCoinsI(coins, target, list, 0);
+	}
+
+	public void countCoinsII(int target) {
+		int[] coins = { 1, 5, 10, 25 };
+		List<Integer> list = new ArrayList<>();
+		countCoinsII(coins, target, list, 0);
+	}
+
+	public void countCoinsIV(int target) {
+		int[] coins = { 1, 5, 10, 25 };
+		List<Integer> list = new ArrayList<>();
+		countCoinsIV(coins, target, list);
+	}
+
+	public void countCoinsIII(int target) {
+		int[] coins = { 1, 5, 10, 25 };
+		List<Integer> list = new ArrayList<>();
+		countCoinsII(coins, target, list, 0);
 	}
 
 	public void countCoins(int[] coins, int target, List<Integer> list, int idx) {
@@ -28,21 +51,29 @@ public class CoinCounter {
 
 		for (int i = idx; i < coins.length; i++) {
 			list.add(coins[i]);
-
-			// Allow the same position re-selection. Let re-visit first idx "0"
-			// by using ++
-			countCoins(coins, target - coins[i], list, idx++);
+			countCoins(coins, target - coins[i], list, i); // same as idx++
 			list.remove(list.size() - 1);
 		}
 	}
 
-	public void countCoins2(int target) {
-		int[] coins = { 1, 5, 10, 25 };
-		List<Integer> list = new ArrayList<>();
-		countCoins2(coins, target, list, 0);
+	public void countCoinsI(int[] coins, int target, List<Integer> list, int idx) {
+		if (target < 0)
+			return;
+
+		if (target == 0)
+			System.out.println(list);
+
+		for (int i = idx; i < coins.length; i++) {
+			list.add(coins[i]);
+
+			// Allow the same position re-selection. Let re-visit first idx "0"
+			// by using ++,
+			countCoinsI(coins, target - coins[i], list, idx++);
+			list.remove(list.size() - 1);
+		}
 	}
 
-	public void countCoins2(int[] coins, int target, List<Integer> list, int idx) {
+	public void countCoinsII(int[] coins, int target, List<Integer> list, int idx) {
 		if (target < 0)
 			return;
 
@@ -52,15 +83,28 @@ public class CoinCounter {
 		for (int i = idx; i < coins.length; i++) {
 			list.add(coins[i]);
 			// Not allow the same position re-selection
-			countCoins2(coins, target - coins[i], list, idx + 1);
+			countCoinsII(coins, target - coins[i], list, idx + 1);
+			list.remove(list.size() - 1);
+		}
+	}
+
+	public void countCoinsIII(int[] coins, int target, List<Integer> list, int idx) {
+		if (target < 0)
+			return;
+
+		if (target == 0)
+			System.out.println(list);
+
+		for (int i = idx; i < coins.length; i++) {
+			list.add(coins[i]);
+			// Not allow the same position re-selection
+			countCoinsIII(coins, target - coins[i], list, ++idx);
 			list.remove(list.size() - 1);
 		}
 	}
 
 	// Permuations (Different order is considered as unique count)
-	List<Integer> coins = Arrays.asList(1, 5, 10, 25);
-
-	public void countCoins3(int target, List<Integer> list) {
+	public void countCoinsIV(int[] coins, int target, List<Integer> list) {
 
 		if (target < 0)
 			return;
@@ -68,10 +112,10 @@ public class CoinCounter {
 		if (target == 0)
 			System.out.println(list);
 
-		for (int i = 0; i < coins.size(); i++) {
-			int curr = coins.get(i);
+		for (int i = 0; i < coins.length; i++) {
+			int curr = coins[i];
 			list.add(curr);
-			countCoins3(target - curr, list);
+			countCoinsIV(coins, target - curr, list);
 			list.remove(list.size() - 1);
 		}
 	}
@@ -79,38 +123,21 @@ public class CoinCounter {
 	public static void main(String args[]) {
 
 		int TARGET_AMOUNT = 16;
-
 		CoinCounter counter = new CoinCounter();
 
 		System.out.println("------------------countCoins---------------------");
 		counter.countCoins(TARGET_AMOUNT);
 
-		System.out.println("------------------countCoins2---------------------");
-		counter.countCoins2(TARGET_AMOUNT);
+		System.out.println("------------------countCoinsI---------------------");
+		counter.countCoinsI(TARGET_AMOUNT);
 
-		System.out.println("------------------countCoins3---------------------");
-		List<Integer> list = new ArrayList<>();
-		counter.countCoins3(TARGET_AMOUNT, list);
+		System.out.println("------------------countCoinsII---------------------");
+		counter.countCoinsII(TARGET_AMOUNT);
+
+		System.out.println("------------------countCoinsIII---------------------");
+		counter.countCoinsII(TARGET_AMOUNT);
+
+		System.out.println("------------------countCoinsIV---------------------");
+		counter.countCoinsIV(TARGET_AMOUNT);
 	}
-
-	/*
-	 * 
-	 * 
-	 * The reason we getting duplicated numbers....
-	 * 
-	 * [5, 5, 1, 1, 1, 1, 1, 1] 0, 0, 2, 6 [5, 1, 5, 1, 1, 1, 1, 1] 0, 0, 2, 6
-	 * [5, 1, 1, 5, 1, 1, 1, 1] 0, 0, 2, 6 [5, 1, 1, 1, 5, 1, 1, 1] 0, 0, 2, 6
-	 * [5, 1, 1, 1, 1, 5, 1, 1] 0, 0, 2, 6 [5, 1, 1, 1, 1, 1, 5, 1] 0, 0, 2, 6
-	 * [5, 1, 1, 1, 1, 1, 1, 5] 0, 0, 2, 6 [1, 5, 5, 1, 1, 1, 1, 1] 0, 0, 2, 6
-	 * [1, 5, 1, 5, 1, 1, 1, 1] 0, 0, 2, 6 [1, 5, 1, 1, 5, 1, 1, 1] 0, 0, 2, 6
-	 * [1, 5, 1, 1, 1, 5, 1, 1] 0, 0, 2, 6 [1, 5, 1, 1, 1, 1, 5, 1] 0, 0, 2, 6
-	 * [1, 5, 1, 1, 1, 1, 1, 5] 0, 0, 2, 6 [1, 1, 5, 5, 1, 1, 1, 1] 0, 0, 2, 6
-	 * [1, 1, 5, 1, 5, 1, 1, 1] 0, 0, 2, 6 [1, 1, 5, 1, 1, 5, 1, 1] 0, 0, 2, 6
-	 * [1, 1, 5, 1, 1, 1, 5, 1] 0, 0, 2, 6 [1, 1, 5, 1, 1, 1, 1, 5] 0, 0, 2, 6
-	 * [1, 1, 1, 5, 5, 1, 1, 1] 0, 0, 2, 6 [1, 1, 1, 5, 1, 5, 1, 1] 0, 0, 2, 6
-	 * [1, 1, 1, 5, 1, 1, 5, 1] 0, 0, 2, 6 [1, 1, 1, 5, 1, 1, 1, 5] 0, 0, 2, 6
-	 * [1, 1, 1, 1, 5, 5, 1, 1] 0, 0, 2, 6 [1, 1, 1, 1, 5, 1, 5, 1] 0, 0, 2, 6
-	 * [1, 1, 1, 1, 5, 1, 1, 5] 0, 0, 2, 6 [1, 1, 1, 1, 1, 5, 5, 1] 0, 0, 2, 6
-	 * [1, 1, 1, 1, 1, 5, 1, 5] 0, 0, 2, 6 [1, 1, 1, 1, 1, 1, 5, 5] 0, 0, 2, 6
-	 */
 }

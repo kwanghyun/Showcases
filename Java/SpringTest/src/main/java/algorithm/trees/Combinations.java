@@ -168,13 +168,13 @@ public class Combinations {
 
 	public static void main(String[] args) {
 		Combinations ob = new Combinations();
-		System.out.println("-------------- ++idx ------------------");
+		System.out.println("-------------- (combinationI) ++idx ------------------");
 		System.out.println(ob.combinationI(4, 2));
-		System.out.println("-------------- idx++ ------------------");
+		System.out.println("-------------- (combinationII) idx++ ------------------");
 		System.out.println(ob.combinationII(4, 2));
-		System.out.println("-------------- idx + 1 ------------------");
+		System.out.println("-------------- (combinationIII) idx + 1 ------------------");
 		System.out.println(ob.combinationIII(4, 2));
-		System.out.println("-------------- i = 1 ------------------");
+		System.out.println("-------------- (combinationIV) i = 1 ------------------");
 		System.out.println(ob.combinationIV(4, 2));
 		System.out.println("-------------- ++idx ------------------");
 		ob.testI(0, 3);

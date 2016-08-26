@@ -22,6 +22,34 @@ import algorithm.utils.LinkedListUtils;
  * link and move the two pointers.
  */
 public class OddEvenLinkedList {
+	public Node oddEvenList_(Node head) {
+		if (head == null)
+			return head;
+
+		Node oddHead = head;
+		Node evenHead = head.next;
+
+		Node p = head;
+		Node oddLastNode = null;
+		boolean isOdd = true;
+
+		while (p != null && p.next != null) {
+
+			Node n = p.next;
+			p.next = p.next.next;
+
+			if (isOdd) {
+				oddLastNode = p;
+			}
+			isOdd = !isOdd;
+
+			p = n;
+		}
+
+		oddLastNode.next = evenHead;
+
+		return oddHead;
+	}
 
 	public Node oddEvenList(Node head) {
 		if (head == null)
@@ -97,10 +125,16 @@ public class OddEvenLinkedList {
 
 	public static void main(String[] args) {
 		OddEvenLinkedList ob = new OddEvenLinkedList();
+		System.out.println("-----------------oddEvenList_---------------------");
+		Node result = ob.oddEvenList_(LinkedListUtils.generateOrderedList(6));
+		LinkedListUtils.drawList(result);
+		Node result1 = ob.oddEvenList_(LinkedListUtils.generateOrderedList(5));
+		LinkedListUtils.drawList(result1);
+		System.out.println("-----------------oddEvenListI---------------------");
 		Node resultI = ob.oddEvenListI(LinkedListUtils.generateOrderedList(6));
-		LinkedListUtils.printNodes(resultI);
-		System.out.println("--------------------------------------");
+		LinkedListUtils.drawList(resultI);
+		System.out.println("-----------------oddEvenListII---------------------");
 		Node resultII = ob.oddEvenListII(LinkedListUtils.generateOrderedList(6));
-		LinkedListUtils.printNodes(resultII);
+		LinkedListUtils.drawList(resultII);
 	}
 }

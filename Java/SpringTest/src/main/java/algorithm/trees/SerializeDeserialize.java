@@ -10,11 +10,11 @@ import algorithm.utils.TreeUtils;
  */
 public class SerializeDeserialize {
 
-	public static TreeNode buildBstFromPreorder(int[] preorder) {
+	public TreeNode buildBstFromPreorder(int[] preorder) {
 		return buildBstFromPreorder(preorder, 0, preorder.length - 1);
 	}
 
-	private static int findDivision(int[] preoder, int start, int end) {
+	private int findDivision(int[] preoder, int start, int end) {
 		int idx;
 		for (idx = start + 1; idx < end; idx++) {
 			if (preoder[start] < preoder[idx]) {
@@ -24,12 +24,11 @@ public class SerializeDeserialize {
 		return idx;
 	}
 
-	private static TreeNode buildBstFromPreorder(int[] preoder, int start, int end) {
+	private TreeNode buildBstFromPreorder(int[] preoder, int start, int end) {
 		if (start > end)
 			return null;
 
 		int divisionIdx = findDivision(preoder, start, end);
-
 		TreeNode node = new TreeNode(preoder[start]);
 		node.left = buildBstFromPreorder(preoder, start + 1, divisionIdx - 1);
 		node.right = buildBstFromPreorder(preoder, divisionIdx, end);
@@ -75,15 +74,6 @@ public class SerializeDeserialize {
 		return root;
 	}
 
-	private void printPostoder(TreeNode root) {
-		if (root == null)
-			return;
-
-		printPostoder(root.left);
-		printPostoder(root.right);
-		System.out.println(root.value);
-	}
-
 	public static void main(String[] args) {
 
 		int[] preorder = { 5, 2, 1, 3, 4, 7, 6, 8 };
@@ -97,8 +87,10 @@ public class SerializeDeserialize {
 		int max = Integer.MAX_VALUE;
 
 		TreeNode rootO = solution.deserializeArrayOptimized(preorder, currIndex, min, max);
+		TreeUtils.drawTree(rootO);
 
-		TreeNode root = solution.deserializeArray(preorder, 0, preorder.length - 1);
+		TreeNode root = solution.buildBstFromPreorder(preorder, 0, preorder.length - 1);
+		TreeUtils.drawTree(root);
 
 		System.out.print("Inorder array for constructed BST is:");
 		TreeUtils.printInorder(root);
@@ -109,7 +101,7 @@ public class SerializeDeserialize {
 
 		System.out.print("Preorder array for constructed BST is:");
 		TreeUtils.printPreorder(root);
-		
+
 		System.out.println("");
 		TreeUtils.printPreorder(rootO);
 		System.out.println("\nPostorder");

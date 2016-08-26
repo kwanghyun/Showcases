@@ -17,6 +17,22 @@ import java.util.List;
  * Sn-1. The subset of Sn-1 is the union of {subset of Sn-1} and {each
  * element in Sn-1 + one more element}. 
  */
+/*
+ * - subsets(arr, 1, [1])					=> 1
+ * 		- subsets(arr, 2, [1,2])			=> 1,2
+ * 			- subsets(arr, 3, [1,2,3])		=> 1,2,3
+ * 			-  [1,2]
+ * 		- [1]
+ * 		- subsets(arr, 3, [1,3])			=> 1, 3
+ * 		- [1]
+ * 	- []
+ * 	- subsets(arr, 2, [2]) 					=> 2
+ * 		- subsets(arr, 3, [2,3])			=> 2,3
+ * 		- [2]
+ * - []
+ * - subsets(arr, 3, [3])					=> 3
+ * - [] 
+ * */
 public class Subsets {
 
 	public ArrayList<ArrayList<Integer>> subsets(int[] arr) {

@@ -45,50 +45,41 @@ import java.util.Arrays;
  * to the table.
  */
 public class DungeonGame {
-	//WHy return 6, let's chekc video tutorial
+
 	public int calculateMinimumHP(int[][] dungeon) {
-		int row = dungeon.length;
-		int col = dungeon[0].length;
+		int rlen = dungeon.length;
+		int clen = dungeon[0].length;
 
 		// init dp table
-		int[][] dp = new int[row][col];
+		int[][] h = new int[rlen][clen];
 
-		dp[row - 1][col - 1] = Math.max(1 - dungeon[row - 1][col - 1], 1);
+		h[rlen - 1][clen - 1] = Math.max(1 - dungeon[rlen - 1][clen - 1], 1);
 
 		// init last row
-		for (int r = row - 2; r >= 0; r--) {
-			dp[r][col - 1] = Math.max(dp[r + 1][col - 1] - dungeon[r][col - 1], 1);
+		for (int r = rlen - 2; r >= 0; r--) {
+			h[r][clen - 1] = Math.max(h[r + 1][clen - 1] - dungeon[r][clen - 1], 1);
 		}
 
 		// init last column
-		for (int c = col - 2; c >= 0; c--) {
-			dp[row - 1][c] = Math.max(dp[row - 1][c + 1] - dungeon[row - 1][c], 1);
+		for (int c = clen - 2; c >= 0; c--) {
+			h[rlen - 1][c] = Math.max(h[rlen - 1][c + 1] - dungeon[rlen - 1][c], 1);
 		}
 
 		// calculate dp table
-		for (int r = row - 2; r >= 0; r--) {
-			for (int c = col - 2; c >= 0; c--) {
-				int down = Math.max(dp[r + 1][c] - dungeon[r][c], 1);
-				int right = Math.max(dp[r][c + 1] - dungeon[r][c], 1);
-				dp[r][c] = Math.min(right, down);
+		for (int r = rlen - 2; r >= 0; r--) {
+			for (int c = clen - 2; c >= 0; c--) {
+				int down = Math.max(h[r + 1][c] - dungeon[r][c], 1);
+				int right = Math.max(h[r][c + 1] - dungeon[r][c], 1);
+				h[r][c] = Math.min(right, down);
 			}
 		}
 
-//		for (int r = row - 1; r >= 0; r--) {
-//			for (int c = col - 1; c >= 0; c--) {
-//				System.out.print(dp[r][c] + "  ");
-//			}
-//			System.out.println();
-//		}
-		return dp[0][0];
-
+		return h[0][0];
 	}
 
 	public static void main(String[] args) {
-		// int[][] dungeon = { { -2, -3, 3 }, { -5, -10, 1 }, { 10, 30, -5 } };
-		int[][] dungeon = { { -5, 30, 10 }, { 1, -10, -5 }, { 3, -3, -2 } };
+		int[][] dungeon = { { -2, -3, 3 }, { -5, -10, 1 }, { 10, 30, -5 } };
 		DungeonGame ob = new DungeonGame();
-
 		System.out.println(ob.calculateMinimumHP(dungeon));
 	}
 }

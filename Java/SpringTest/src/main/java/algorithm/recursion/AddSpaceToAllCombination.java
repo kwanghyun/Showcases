@@ -32,11 +32,26 @@ public class AddSpaceToAllCombination {
 		}
 	}
 
+	private void printCombI(String str, String part, int idx) {
+
+		if (str.length() == idx) {
+			System.out.println(part);
+			return;
+		}
+		part = part + str.charAt(idx);
+		printCombI(str, part, idx + 1);
+		part = part.substring(0, part.length() - 1);
+		part = part + "_" + str.charAt(idx);
+		printCombI(str, part, idx + 1);
+		part = part.substring(0, part.length() - 1);
+	}
+
 	public static void main(String[] args) {
 		AddSpaceToAllCombination obj = new AddSpaceToAllCombination();
-		
-		obj.printComb("ABCD");
-		System.out.println("");
-		obj.printComb("ABCD");
+
+		System.out.println("--------------------printComb------------------");
+		obj.printComb("ABC");
+		System.out.println("--------------------printCombI------------------");
+		obj.printCombI("ABC", "A", 1);
 	}
 }

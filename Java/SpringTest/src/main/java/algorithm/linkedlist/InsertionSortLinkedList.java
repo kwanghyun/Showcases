@@ -1,5 +1,7 @@
 package algorithm.linkedlist;
 
+import algorithm.utils.LinkedListUtils;
+
 /*
  * Insertion Sort List:
  * 
@@ -8,24 +10,35 @@ package algorithm.linkedlist;
  */
 public class InsertionSortLinkedList {
 
-	public static Node insertionSort(Node node) {
+	public static Node insertionSort(Node head) {
 
-		if (node == null || node.next == null)
-			return node;
+		if (head == null || head.next == null)
+			return head;
 
-		Node h = node;
-		Node p = node;
-		while (p != null) {
-			h = node;
-			while (h != p) {
-				if (h.val > h.next.val) {
-					swap(h, h.next);
+		Node prev = head;
+		Node curr = head.next;
+		while (curr != null) {
+			Node t_prv = head;
+			Node t_crr = head.next;
+			while (t_crr != curr) {
+				if (t_crr.val > curr.val) {
+					insert(t_prv, t_crr, prev, curr);
+					break;
 				}
-				h = h.next;
+				t_prv = t_prv.next;
+				t_crr = t_crr.next;
 			}
-			p = p.next;
+			prev = prev.next;
+			curr = curr.next;
 		}
-		return node;
+		return head;
+	}
+
+	public static void insert(Node prev1, Node curr1, Node prev2, Node curr2) {
+		Node t = curr2.next;
+		prev1.next = curr2;
+		curr2.next = curr1;
+		prev2.next = t;
 	}
 
 	public static void swap(Node n1, Node n2) {
@@ -79,25 +92,11 @@ public class InsertionSortLinkedList {
 	}
 
 	public static void main(String[] args) {
-		Node n1 = new Node(2);
-		Node n2 = new Node(3);
-		Node n3 = new Node(4);
 
-		Node n4 = new Node(3);
-		Node n5 = new Node(4);
-		Node n6 = new Node(5);
-
-		n1.next = n2;
-		n2.next = n3;
-		n3.next = n4;
-		n4.next = n5;
-		n5.next = n6;
-
-		// n1 = insertionSortList(n1);
-		n1 = insertionSort(n1);
-
-		printList(n1);
-
+		Node node = LinkedListUtils.generateUnSortedList();
+		LinkedListUtils.printNodes(node);
+		node = insertionSort(node);
+		LinkedListUtils.printNodes(node);
 	}
 
 	public static void printList(Node x) {

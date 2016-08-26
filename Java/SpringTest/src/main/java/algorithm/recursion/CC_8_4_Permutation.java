@@ -10,23 +10,6 @@ import java.util.List;
  */
 public class CC_8_4_Permutation {
 
-	public void permutation(String str) {
-		List<Character> list = new ArrayList<>();
-		permutation(str, list, 0);
-	}
-
-	public void permutationI(String str) {
-		List<Character> list = new ArrayList<>();
-		// No duplicated visit
-		boolean[] visited = new boolean[str.length()];
-		permutationI(str, list, 0, visited);
-	}
-
-	public void permutationII(String str) {
-		List<Character> list = new ArrayList<>();
-		permutationII(str, list, 0);
-	}
-
 	public void permutation(String str, List<Character> list, int idx) {
 		if (idx == str.length()) {
 			System.out.println(list);
@@ -71,22 +54,39 @@ public class CC_8_4_Permutation {
 
 	}
 
+	private void permutationIII(List<Character> list, String str) {
+		int strLen = str.length();
+		if (strLen == 0) {
+			System.out.println(list);
+			return;
+		}
+
+		for (int i = 0; i < strLen; i++) {
+			list.add(str.charAt(i));
+			permutationIII(list, str.substring(0, i) + str.substring(i + 1, strLen));
+			list.remove(list.size() - 1);
+		}
+	}
+
+	public void permutation(String str) {
+		List<Character> list = new ArrayList<>();
+		permutation(str, list, 0);
+	}
+
+	public void permutationI(String str) {
+		List<Character> list = new ArrayList<>();
+		boolean[] visited = new boolean[str.length()];
+		permutationI(str, list, 0, visited);
+	}
+
+	public void permutationII(String str) {
+		List<Character> list = new ArrayList<>();
+		permutationII(str, list, 0);
+	}
+	
 	public void permutationIII(String str) {
 		List<Character> list = new ArrayList<>();
 		permutationIII(list, str);
-	}
-
-	private void permutationIII(List<Character> list, String str) {
-		int n = str.length();
-		if (n == 0)
-			System.out.println(list);
-		else {
-			for (int i = 0; i < n; i++) {
-				list.add(str.charAt(i));
-				permutationIII(list, str.substring(0, i) + str.substring(i + 1, n));
-				list.remove(list.size() - 1);
-			}
-		}
 	}
 
 	public static void main(String[] args) {

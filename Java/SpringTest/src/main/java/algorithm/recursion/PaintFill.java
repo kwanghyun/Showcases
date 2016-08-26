@@ -15,28 +15,22 @@ public class PaintFill {
 		Black, White, Red, Yellow, Green
 	}
 
-	static Color[][] screen = {
-			{ Color.Black, Color.Black, Color.Black, Color.White},
+	static Color[][] screen = { { Color.Black, Color.Black, Color.Black, Color.White },
 			{ Color.Black, Color.White, Color.White, Color.Black },
 			{ Color.Black, Color.White, Color.White, Color.Black },
 			{ Color.Black, Color.Black, Color.White, Color.Black } };
-	
-	
-	void paint(Color[][] screen, int x, int y, Color oldColor, Color newColor) {
-	
-		if (x < 0 || x >= screen[0].length || y < 0 || y >= screen.length) {
+
+	public void paint(Color[][] screen, int c, int r, Color oldColor, Color newColor) {
+
+		if (c < 0 || c >= screen[0].length || r < 0 || r >= screen.length)
 			return;
-		}else if (screen[y][x] == oldColor) { 
-			screen[y][x] = newColor;
-			paint(screen, x + 1, y, oldColor, newColor); // right
-			paint(screen, x, y + 1, oldColor, newColor); // bottom
-			/*
-			 * Minus are when the start x,y is other than 0,0.
-			 * You can not travel back to 0,0 with Plus recursion only
-			 */
-			paint(screen, x - 1, y, oldColor, newColor); // left
-			paint(screen, x, y - 1, oldColor, newColor); // top
-			
+
+		if (screen[r][c] == oldColor) {
+			screen[r][c] = newColor;
+			paint(screen, c + 1, r, oldColor, newColor);
+			paint(screen, c, r + 1, oldColor, newColor);
+			paint(screen, c - 1, r, oldColor, newColor); 
+			paint(screen, c, r - 1, oldColor, newColor); 
 		}
 	}
 

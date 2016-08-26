@@ -47,18 +47,17 @@ public class WordSearchI {
 
 		if (board[r][c] == word.charAt(i)) {
 			char temp = board[r][c];
-			//Change it temporary
 			board[r][c] = '#';
-			if (i == word.length() - 1) {
-				return true;
-			} else if (dfs(board, word, r - 1, c, i + 1) 
+
+			boolean found = dfs(board, word, r - 1, c, i + 1) 
 					|| dfs(board, word, r + 1, c, i + 1)
 					|| dfs(board, word, r, c - 1, i + 1) 
-					|| dfs(board, word, r, c + 1, i + 1)) {
-				return true;
-			}
+					|| dfs(board, word, r, c + 1, i + 1);
+
 			board[r][c] = temp;
+			return found;
 		}
+
 		return false;
 	}
 }

@@ -2,6 +2,8 @@ package algorithm.trees;
 
 import java.util.Stack;
 
+import algorithm.utils.TreeUtils;
+
 /*
  * Given a binary tree, return the level order traversal of its nodes'
  * values. (ie, from left to right, level by level).
@@ -28,18 +30,18 @@ public class ZIgZagLevelOrder {
 			Stack<TreeNode> tempStack = new Stack<TreeNode>();
 
 			while (!stack.isEmpty()) {
-				TreeNode tempNode = stack.pop();
-				System.out.printf("%d ", tempNode.value);
+				TreeNode node = stack.pop();
+				System.out.printf("%d ", node.value);
 				if (!directionflag) {
-					if (tempNode.left != null)
-						tempStack.push(tempNode.left);
-					if (tempNode.right != null)
-						tempStack.push(tempNode.right);
+					if (node.left != null)
+						tempStack.push(node.left);
+					if (node.right != null)
+						tempStack.push(node.right);
 				} else {
-					if (tempNode.right != null)
-						tempStack.push(tempNode.right);
-					if (tempNode.left != null)
-						tempStack.push(tempNode.left);
+					if (node.right != null)
+						tempStack.push(node.right);
+					if (node.left != null)
+						tempStack.push(node.left);
 				}
 			}
 			// for changing direction
@@ -53,6 +55,7 @@ public class ZIgZagLevelOrder {
 		ZIgZagLevelOrder ob = new ZIgZagLevelOrder();
 		// Creating a binary tree
 		TreeNode rootNode = ob.createBinaryTree();
+		TreeUtils.drawTree(rootNode);
 		System.out.println("Spiral/Zigzag traversal of binary tree :");
 		ob.spiralOrZigzagLevelOrder(rootNode);
 	}

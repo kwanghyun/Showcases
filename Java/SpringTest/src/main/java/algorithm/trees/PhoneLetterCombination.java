@@ -18,14 +18,14 @@ import java.util.List;
  */
 public class PhoneLetterCombination {
 
-	public void letterCombinations3(String digits) {
+	public void letterCombinations(String digits) {
 		ArrayList<Character> list = new ArrayList<>();
 		if (digits == null || digits.length() == 0)
 			return;
-		getString3(digits, 0, list, getKeyMap());
+		dfs(digits, 0, list, getKeyMap());
 	}
 
-	public void getString3(String input, int idx, ArrayList<Character> list, HashMap<Integer, String> keyPadMap) {
+	public void dfs(String input, int idx, ArrayList<Character> list, HashMap<Integer, String> keyMap) {
 
 		if (idx == input.length()) {
 			count++;
@@ -35,28 +35,16 @@ public class PhoneLetterCombination {
 
 		// charAt() returns ASCII code i.e. 50 for "2"
 		Integer num = Integer.valueOf(input.substring(idx, idx + 1));
-		String letters = keyPadMap.get(num);
+		String letters = keyMap.get(num);
 
 		for (int i = 0; i < letters.length(); i++) {
 			list.add(letters.charAt(i));
-			getString3(input, idx + 1, list, keyPadMap);
+			dfs(input, idx + 1, list, keyMap);
 			list.remove(list.size() - 1);
 		}
 	}
 
-	public List<String> letterCombinations(String digits) {
-
-		ArrayList<String> result = new ArrayList<>();
-		if (digits == null || digits.length() == 0)
-			return result;
-
-		ArrayList<Character> temp = new ArrayList<>();
-		getString(digits, temp, result, getKeyMap());
-
-		return result;
-	}
-
-	public void getString(String digits, ArrayList<Character> temp, ArrayList<String> result,
+	public void getString3(String digits, ArrayList<Character> temp, ArrayList<String> result,
 			HashMap<Integer, String> keyPadMap) {
 
 		if (digits.length() == 0) {
@@ -73,9 +61,21 @@ public class PhoneLetterCombination {
 
 		for (int i = 0; i < letters.length(); i++) {
 			temp.add(letters.charAt(i));
-			getString(digits.substring(1), temp, result, keyPadMap);
+			getString3(digits.substring(1), temp, result, keyPadMap);
 			temp.remove(temp.size() - 1);
 		}
+	}
+
+	public List<String> letterCombinations3(String digits) {
+
+		ArrayList<String> result = new ArrayList<>();
+		if (digits == null || digits.length() == 0)
+			return result;
+
+		ArrayList<Character> temp = new ArrayList<>();
+		getString3(digits, temp, result, getKeyMap());
+
+		return result;
 	}
 
 	public List<String> letterCombinations2(String digits) {
@@ -125,17 +125,20 @@ public class PhoneLetterCombination {
 	}
 
 	public static void main(String[] args) {
-		String TEST_DIGITS = "234";
+		// String TEST_DIGITS = "234";
+		String TEST_DIGITS = "23";
 		PhoneLetterCombination obj = new PhoneLetterCombination();
-		List<String> result = obj.letterCombinations(TEST_DIGITS);
-		System.out.println("size : " + result.size());
-		System.out.println(result);
+		System.out.println("---------------------letterCombinations----------------------");
+		obj.letterCombinations(TEST_DIGITS);
 
+		System.out.println("---------------------letterCombinations2----------------------");
 		List<String> result2 = obj.letterCombinations2(TEST_DIGITS);
 		System.out.println("size : " + result2.size());
 		System.out.println(result2);
 
-		obj.letterCombinations3(TEST_DIGITS);
-		System.out.println("-------------------------------------------");
+		System.out.println("----------------------letterCombinations3---------------------");
+		List<String> result1 = obj.letterCombinations3(TEST_DIGITS);
+		System.out.println("size : " + result1.size());
+		System.out.println(result1);
 	}
 }
