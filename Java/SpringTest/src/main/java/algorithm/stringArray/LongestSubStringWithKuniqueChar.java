@@ -96,7 +96,7 @@ public class LongestSubStringWithKuniqueChar {
 
 			if (map.size() > k) {
 				maxLen = Math.max(maxLen, i - left);
-
+				System.out.println(s.substring(left, i));
 				while (map.size() > k) {
 
 					char fc = s.charAt(left);
@@ -118,11 +118,12 @@ public class LongestSubStringWithKuniqueChar {
 	}
 
 	public static void main(String[] args) {
-//		String target = "abcbbbbcccbdddadacb";
-//		String target = "abcbb";
+		// String target = "abcbbbbcccbdddadacb";
+		// String target = "abcbb";
 		String target = "abcbbbbcccbdddadcccbdddadacbcccbdddada";
 		LongestSubStringWithKuniqueChar ob = new LongestSubStringWithKuniqueChar();
 		System.out.println(ob.lengthOfLongestSubstringTwoDistinct(target));
 		System.out.println(ob.lengthOfLongestSubstringTwoDistinctI(target));
+		System.out.println(ob.lengthOfLongestSubstringKDistinct(target, 2));
 	}
 }

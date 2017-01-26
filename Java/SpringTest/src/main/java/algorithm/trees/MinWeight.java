@@ -15,7 +15,7 @@ public int findMinWeight(TreeNode root1, TreeNode root2){
 	public int findWeight(TreeNode root, int level) {
 		if (root == null)
 			return 0;
-		return level * root.value 
+		return level * root.val 
 				+ level * findWeight(root.left, level + 1) 
 				+ level * findWeight(root.right, level + 1);
 	}

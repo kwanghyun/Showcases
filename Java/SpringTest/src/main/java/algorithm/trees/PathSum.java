@@ -30,7 +30,7 @@ public class PathSum {
 		LinkedList<Integer> values = new LinkedList<Integer>();
 
 		nodes.add(root);
-		values.add(root.value);
+		values.add(root.val);
 
 		while (!nodes.isEmpty()) {
 			TreeNode curr = nodes.remove();
@@ -42,12 +42,12 @@ public class PathSum {
 
 			if (curr.left != null) {
 				nodes.add(curr.left);
-				values.add(sumValue + curr.left.value);
+				values.add(sumValue + curr.left.val);
 			}
 
 			if (curr.right != null) {
 				nodes.add(curr.right);
-				values.add(sumValue + curr.right.value);
+				values.add(sumValue + curr.right.val);
 			}
 		}
 		return false;
@@ -92,11 +92,11 @@ public class PathSum {
 		if (root == null)
 			return false;
 
-		if (root.value == sum && (root.left == null && root.right == null))
+		if (root.val == sum && (root.left == null && root.right == null))
 			return true;
 
-		return hasPathSumRe(root.left, sum - root.value)
-				|| hasPathSumRe(root.right, sum - root.value);
+		return hasPathSumRe(root.left, sum - root.val)
+				|| hasPathSumRe(root.right, sum - root.val);
 
 	}
 }

@@ -37,7 +37,8 @@ package algorithm.dynamic;
  * cost 		1	3	2	4	5
  */
 public class GasStation {
-	//Try to think to solve it by checking 2 different conditions(total, sum remaining)
+	// Try to think to solve it by checking 2 different conditions(total, sum
+	// remaining)
 	public int canCompleteCircuit(int[] gas, int[] cost) {
 		int sumRemaining = 0; // track current remaining
 		int total = 0; // track total remaining
@@ -51,6 +52,7 @@ public class GasStation {
 				sumRemaining += remaining;
 				// otherwise, reset start index to be current
 			} else {
+				System.out.println("i = " + i);
 				sumRemaining = remaining;
 				start = i;
 			}
@@ -63,11 +65,11 @@ public class GasStation {
 			return -1;
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		GasStation gs = new GasStation();
-		int[] gas = {1,2,3,4,5};
-		int[] cost = {1,3,2,4,5};
+		int[] gas = { 1, 2, 3, 4, 5 };
+		int[] cost = { 1, 3, 2, 4, 5 };
 		System.out.println(gs.canCompleteCircuit(gas, cost));
 	}
 }

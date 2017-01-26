@@ -11,27 +11,69 @@ import algorithm.Utils;
  * white, and blue respectively.
  */
 public class SortColors {
-	
-	public void sortColors(int[] nums) {
-		if (nums == null || nums.length < 2) {
-			return;
-		}
+    public void sortColors(int[] nums) {
+		int lo = 0;
+		int hi = nums.length - 1;
+		int mid = 0;
 
-		int[] countArray = new int[3];
-		for (int i = 0; i < nums.length; i++) {
-			countArray[nums[i]]++;
-		}
+		while (mid <= hi) {
 
-		int start = 0;
-		for (int i = 0; i < nums.length; i++) {
-			int count = countArray[start];
-			if (count == 0) {
-				start++;
+			switch (nums[mid]) {
+			case 0:
+				swap(nums, lo, mid);
+				lo++;
+				mid++;
+				break;
+
+			case 1:
+				mid++;
+				break;
+
+			case 2:
+				swap(nums, mid, hi);
+				hi--;
+				break;
+
 			}
-			countArray[start]--;
-			nums[i] = start;
+		}
+    }
+    
+	// Sort the input array, the array is assumed to
+	// have values in {0, 1, 2}
+	public void sort012(int a[]) {
+		int lo = 0;
+		int hi = a.length - 1;
+		int mid = 0;
+
+		while (mid <= hi) {
+
+			switch (a[mid]) {
+			case 0:
+				swap(a, lo, mid);
+				lo++;
+				mid++;
+				break;
+
+			case 1:
+				mid++;
+				break;
+
+			case 2:
+				swap(a, mid, hi);
+				hi--;
+				break;
+
+			}
 		}
 	}
+
+	public void swap(int[] arr, int a, int b) {
+		int temp = arr[a];
+		arr[a] = arr[b];
+		arr[b] = temp;
+	}
+
+
 
 	public void sortColorsI(int[] nums) {
 		if (nums == null || nums.length < 2) {
@@ -57,16 +99,19 @@ public class SortColors {
 		System.arraycopy(sorted, 0, nums, 0, nums.length);
 	}
 
-
 	public static void main(String[] args) {
 		SortColors ob = new SortColors();
 		int[] nums = { 1, 2, 0, 1, 1, 1, 2, 0, 0, 1 };
+		int[] nums1 = { 1, 2, 0, 1, 1, 1, 2, 0, 0, 1 };
 		int[] nums2 = { 1, 2, 0, 1, 1, 1, 2, 0, 0, 1 };
 
 		Utils.printArray(nums);
 		System.out.println("----------------sortColors---------------");
 		ob.sortColors(nums);
 		Utils.printArray(nums);
+		System.out.println("----------------sort012---------------");
+		ob.sort012(nums1);
+		Utils.printArray(nums1);
 		System.out.println("----------------sortColorsI---------------");
 		ob.sortColorsI(nums2);
 		Utils.printArray(nums2);

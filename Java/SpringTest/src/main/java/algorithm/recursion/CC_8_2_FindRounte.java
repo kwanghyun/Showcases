@@ -58,20 +58,21 @@ public class CC_8_2_FindRounte {
 		}
 	}
 	
-public void findRoutes(int x, int y, String str, ArrayList<String> list){
-	if(x > 3 || y > 3){
-		return;
+	public void findRoutes(int x, int y, String str, ArrayList<String> list){
+		if(x > 3 || y > 3){
+			return;
+		}
+		
+		str = str + "["+x + ", " + y +"] ";
+		
+		if(x == 3 && y ==3){
+			list.add(str);
+			
+		}else{
+			findRoutes(x +1, y, str, list);
+			findRoutes(x, y+1, str, list);			
+		}
 	}
-	
-	str = str + "["+x + ", " + y +"] ";
-	
-	if(x == 3 && y ==3){
-		list.add(str);
-	}else{
-		findRoutes(x +1, y, str, list);
-		findRoutes(x, y+1, str, list);			
-	}
-}
 
 
 	public static void main(String args[]) {

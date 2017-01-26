@@ -12,32 +12,32 @@ import algorithm.utils.LinkedListUtils;
  */
 public class MergeSortLinkedList {
 
-	public Node mergeSort(Node head) {
+	public ListNode mergeSort(ListNode head) {
 		if (head == null || head.next == null)
 			return head;
 
-		Node slow = head;
-		Node fast = head;
-		Node left = head;
+		ListNode slow = head;
+		ListNode fast = head;
+		ListNode left = head;
 
 		while (fast != null && fast.next != null && fast.next.next != null) {
 			slow = slow.next;
 			fast = fast.next.next;
 		}
 
-		Node right = slow.next;
+		ListNode right = slow.next;
 		slow.next = null;
 
-		Node first = mergeSort(left);
-		Node second = mergeSort(right);
+		ListNode first = mergeSort(left);
+		ListNode second = mergeSort(right);
 
-		Node merged = mergeI(first, second);
+		ListNode merged = mergeI(first, second);
 		return merged;
 	}
 
-	public Node mergeI(Node n1, Node n2) {
-		Node fakeHeader = new Node(0);
-		Node curr = fakeHeader;
+	public ListNode mergeI(ListNode n1, ListNode n2) {
+		ListNode fakeHeader = new ListNode(0);
+		ListNode curr = fakeHeader;
 		while (n1 != null || n2 != null) {
 			if (n2 == null) {
 				curr.next = n1;
@@ -62,14 +62,14 @@ public class MergeSortLinkedList {
 		return fakeHeader.next;
 	}
 
-	public static Node mergeSortList(Node head) {
+	public static ListNode mergeSortList(ListNode head) {
 
 		if (head == null || head.next == null)
 			return head;
 
 		// count total number of elements
 		int count = 0;
-		Node p = head;
+		ListNode p = head;
 		while (p != null) {
 			count++;
 			p = p.next;
@@ -78,12 +78,12 @@ public class MergeSortLinkedList {
 		// break up to two list
 		int middle = count / 2;
 
-		Node l = head, r = null;
-		Node p2 = head;
+		ListNode l = head, r = null;
+		ListNode p2 = head;
 		int countHalf = 0;
 		while (p2 != null) {
 			countHalf++;
-			Node next = p2.next;
+			ListNode next = p2.next;
 
 			if (countHalf == middle) {
 				p2.next = null;
@@ -93,47 +93,47 @@ public class MergeSortLinkedList {
 		}
 
 		// now we have two parts l and r, recursively sort them
-		Node h1 = mergeSortList(l);
-		Node h2 = mergeSortList(r);
+		ListNode h1 = mergeSortList(l);
+		ListNode h2 = mergeSortList(r);
 
 		// merge together
-		Node merged = merge(h1, h2);
+		ListNode merged = merge(h1, h2);
 
 		return merged;
 	}
 
-	public static Node merge(Node l, Node r) {
-		Node p1 = l;
-		Node p2 = r;
+	public static ListNode merge(ListNode l, ListNode r) {
+		ListNode p1 = l;
+		ListNode p2 = r;
 
-		Node fakeHead = new Node(100);
-		Node pNew = fakeHead;
+		ListNode fakeHead = new ListNode(100);
+		ListNode pNew = fakeHead;
 
 		while (p1 != null || p2 != null) {
 
 			if (p1 == null) {
-				pNew.next = new Node(p2.val);
+				pNew.next = new ListNode(p2.val);
 				p2 = p2.next;
 				pNew = pNew.next;
 			} else if (p2 == null) {
-				pNew.next = new Node(p1.val);
+				pNew.next = new ListNode(p1.val);
 				p1 = p1.next;
 				pNew = pNew.next;
 			} else {
 				if (p1.val < p2.val) {
 					// if(fakeHead)
-					pNew.next = new Node(p1.val);
+					pNew.next = new ListNode(p1.val);
 					p1 = p1.next;
 					pNew = pNew.next;
 				} else if (p1.val == p2.val) {
-					pNew.next = new Node(p1.val);
-					pNew.next.next = new Node(p1.val);
+					pNew.next = new ListNode(p1.val);
+					pNew.next.next = new ListNode(p1.val);
 					pNew = pNew.next.next;
 					p1 = p1.next;
 					p2 = p2.next;
 
 				} else {
-					pNew.next = new Node(p2.val);
+					pNew.next = new ListNode(p2.val);
 					p2 = p2.next;
 					pNew = pNew.next;
 				}
@@ -148,10 +148,10 @@ public class MergeSortLinkedList {
 		MergeSortLinkedList ob = new MergeSortLinkedList();
 		// int[] arr = { 3, 5, 2, 1, 4, 6 };
 		int[] arr = { 3, 5, 2, 7, 1, 4, 6 };
-		Node unsorted = LinkedListUtils.generateListFromArray(arr);
+		ListNode unsorted = LinkedListUtils.generateListFromArray(arr);
 		LinkedListUtils.printNodes(unsorted);
 		System.out.println("------------------------");
-		Node sorted = ob.mergeSort(unsorted);
+		ListNode sorted = ob.mergeSort(unsorted);
 		// Node sorted = mergeSortList(unsorted);
 		LinkedListUtils.printNodes(sorted);
 	}

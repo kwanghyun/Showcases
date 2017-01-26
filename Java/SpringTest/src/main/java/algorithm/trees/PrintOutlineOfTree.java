@@ -16,11 +16,11 @@ public class PrintOutlineOfTree {
 			for (int idx = 0; idx < size; idx++) {
 				TreeNode node = queue.remove();
 				if (idx == 0)
-					System.out.println(node.value);
+					System.out.println(node.val);
 				else if (idx == size - 1)
-					System.out.println(node.value);
+					System.out.println(node.val);
 				else if (node.right == null && node.left == null)
-					System.out.println(node.value);
+					System.out.println(node.val);
 
 				if (node.right != null) {
 					queue.add(node.right);
@@ -37,7 +37,7 @@ public class PrintOutlineOfTree {
 		if(root == null) 
 			return null;
 		
-		str = str + root.value;
+		str = str + root.val;
 		if(root.left != null){
 			str = getLeftNodes(root.left, str);
 		}else if(root.right != null){
@@ -51,7 +51,7 @@ public class PrintOutlineOfTree {
 		if(root == null) 
 			return null;
 		
-		str = str + root.value;
+		str = str + root.val;
 		if(root.right != null){
 			str = getRightNodes(root.right, str);
 		}else if(root.left != null){
@@ -68,7 +68,7 @@ public class PrintOutlineOfTree {
 		while(stack.size() > 0){
 			TreeNode node = stack.pop();
 			if(node.left == null && node.right == null){
-				str += node.value;
+				str += node.val;
 			}else{
 				if(node.left != null){
 					stack.push(node.left);

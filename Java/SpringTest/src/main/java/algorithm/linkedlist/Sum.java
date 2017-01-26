@@ -7,29 +7,29 @@ public class Sum {
 
 	// You have two numbers represented by a linked list, where each node
 	// contains a single digit. The digits are
-	// stored in reverse order, such that the 1¡¯s digit is at the head of the
+	// stored in reverse order, such that the 1ï¿½ï¿½s digit is at the head of the
 	// list. Write a function that adds the
 	// two numbers and returns the sum as a linked list.
 	// EXAMPLE
 	// Input: (3 -> 1 -> 5) + (5 -> 9 -> 2)
 	// Output: 8 -> 0 -> 8
 
-	Node first;
-	Node last;
+	ListNode first;
+	ListNode last;
 
 	public void insert(int i) {
-		Node node = new Node(i);
+		ListNode node = new ListNode(i);
 		if (first == null) {
 			first = node;
 			last = node;
 		} else {
-			Node current = last;
+			ListNode current = last;
 			current.next = node;
 			last = node;
 		}
 	}
 
-	public Sum sum(Node head1, Node head2) {
+	public Sum sum(ListNode head1, ListNode head2) {
 		Sum newList = new Sum();
 		int sum = 0;
 		int surplusPre = 0;
@@ -61,9 +61,9 @@ public class Sum {
 	
 	//TODO make as interger and add
 
-	public String toString(Node root) {
+	public String toString(ListNode root) {
 		StringBuilder sb = new StringBuilder();
-		Node tmp = root;
+		ListNode tmp = root;
 		while (tmp != null) {
 			sb.append(tmp.val).append(", ");
 			tmp = tmp.next;

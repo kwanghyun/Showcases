@@ -20,23 +20,23 @@ public class ReverseBits {
 		int a = (n >> i) & 1; // right to left
 		int b = (n >> j) & 1; // left to right
 		if ((a ^ b) != 0) { // if it's not the same bit.
-			return n ^= (1 << i) | (1 << j); //toggle the bits
+			return n ^= (1 << i) | (1 << j); // toggle the bits
 		}
 		return n;
 	}
 
 	public static long reverse(long x) {
-	    long r = 0;
-	    for (int i = 63; i >= 0; i--) {
-	        r |= ((x >>> i) & 0x1L) << (63 - i);
-	    }
-	    return r;
+		long r = 0;
+		for (int i = 63; i >= 0; i--) {
+			r |= ((x >>> i) & 0x1L) << (63 - i);
+		}
+		return r;
 	}
-	
+
 	public static void main(String[] args) {
 		System.out.println(reverse(5));
-		
-		System.out.println(8 >> 2);
-		System.out.println((8 >> 2) & 1);
+
+		System.out.println(-8 >> 2);
+		System.out.println((-8 >> 2) & 1);
 	}
 }

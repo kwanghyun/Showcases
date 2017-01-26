@@ -3,17 +3,40 @@ package algorithm.etc;
 import java.util.Arrays;
 
 /*
- * Given an array of integers, modify each position to contin multiplication
- * of values in all other locations
+ * Given an array of n integers where n > 1, nums, return an array output
+ * such that output[i] is equal to the product of all the elements of nums
+ * except nums[i].
  * 
- * EX)
- * input  { 1, 2, 3, 4 }
- * output [24, 12, 8, 6] 
+ * Solve it without division and in O(n).
  * 
- * Analysis
- * Basically you are making (a * b * c * d) / a, (a * b * c * d)b, .... 
+ * For example, given [1,2,3,4], return [24,12,8,6].
+ * 
+ * Follow up: Could you solve it with constant space complexity? (Note: The
+ * output array does not count as extra space for the purpose of space
+ * complexity analysis.)
  */
 public class MitiplyFieldsExceptItsPosition {
+
+	public int[] productExceptSelf(int[] nums) {
+		int n = nums.length;
+		int[] leftArr = new int[n];
+		int left = 1;
+		
+		// Traverse from the left
+		for (int i = 0; i < n; ++i) {
+			leftArr[i] = left;
+			left = left * nums[i];
+		}
+
+		// Traverse from the right
+		int right = 1;
+		int[] prodArray = leftArr;
+		for (int i = n - 1; i >= 0; --i) {
+			prodArray[i] = right * prodArray[i];
+			right = right * nums[i];
+		}
+		return prodArray;
+	}
 
 	public static void prod(int[] input) {
 		int n = input.length;
@@ -39,12 +62,12 @@ public class MitiplyFieldsExceptItsPosition {
 		int len = input.length;
 		int[] resultArr = new int[len];
 		int total = 1;
-		
+
 		for (int num : input) {
 			total *= num;
 		}
 		for (int i = 0; i < len; i++) {
-			resultArr[i] = total/input[i];
+			resultArr[i] = total / input[i];
 		}
 
 		System.out.println(Arrays.toString(resultArr));

@@ -13,8 +13,8 @@ public class BreadthFirstSearch {
 		stack.push(root);
 		while(!stack.isEmpty()){
 			TreeNode node = stack.pop();
-			System.out.println(node.value);
-			if(node.value == value)
+			System.out.println(node.val);
+			if(node.val == value)
 				return node;
 			
 			if(node.left != null)
@@ -33,8 +33,8 @@ public class BreadthFirstSearch {
 		while(!queue.isEmpty()){
 			TreeNode node = queue.element();
 			queue.remove();
-			System.out.println(node.value);
-			if(node.value == value)
+			System.out.println(node.val);
+			if(node.val == value)
 				return node;
 			
 			if(node.left != null)
@@ -50,7 +50,7 @@ public class BreadthFirstSearch {
 	public static void main(String args[]){
 		BreadthFirstSearch bfs = new BreadthFirstSearch();
 //		System.out.println(bfs.findNode(bfs.generateTree(), 7).value);
-		System.out.println(bfs.findNode2(bfs.generateTree(), 10).value);
+		System.out.println(bfs.findNode2(bfs.generateTree(), 10).val);
 	}
 	
 	public TreeNode generateTree() {

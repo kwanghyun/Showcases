@@ -2,13 +2,13 @@ package algorithm.linkedlist;
 
 public class ReverseLinkedList {
 
-	public Node reverseList(Node head) {
+	public ListNode reverseList(ListNode head) {
 
 		if (head.next == null) // One node only
 			return null;
 
-		Node second = head.next;
-		Node third = second.next;
+		ListNode second = head.next;
+		ListNode third = second.next;
 
 		head.next = null;
 		second.next = head;
@@ -18,11 +18,11 @@ public class ReverseLinkedList {
 			return second;
 		}
 
-		Node currentNode = third;
-		Node previousNode = second;
+		ListNode currentNode = third;
+		ListNode previousNode = second;
 
 		while (currentNode != null) {
-			Node nextNode = currentNode.next;
+			ListNode nextNode = currentNode.next;
 			// Only current.next to point previous Node
 			currentNode.next = previousNode;
 			previousNode = currentNode;
@@ -31,16 +31,16 @@ public class ReverseLinkedList {
 		return previousNode;
 	}
 
-public Node reverseList2(Node head) {
+public ListNode reverseList2(ListNode head) {
 	if (head == null || head.next == null)
 		return head;
 
-	Node prev = head;
-	Node curr = head.next;
+	ListNode prev = head;
+	ListNode curr = head.next;
 	head.next = null;
 
 	while (prev != null && curr != null) {
-		Node next = curr.next;
+		ListNode next = curr.next;
 		curr.next = prev;
 		prev = curr;
 		curr = next;
@@ -48,35 +48,35 @@ public Node reverseList2(Node head) {
 	return prev;
 }
 
-	public Node reverseList3(Node head) {
+	public ListNode reverseList3(ListNode head) {
 		if (head == null || head.next == null)
 			return head;
 
 		// get second node
-		Node second = head.next;
+		ListNode second = head.next;
 
 		// set first’s next to be null
 		head.next = null;
 
-		Node rest = reverseList3(second);
+		ListNode rest = reverseList3(second);
 		second.next = head;
 		return rest;
 	}
 
-	public void printAllNode(Node head) {
-		Node currentNode = head;
+	public void printAllNode(ListNode head) {
+		ListNode currentNode = head;
 		while (currentNode != null) {
 			System.out.print("[" + currentNode.val + "] ");
 			currentNode = currentNode.next;
 		}
 	}
 
-	public Node generateList() {
-		Node node1 = new Node(1);
-		Node node2 = new Node(2);
-		Node node3 = new Node(3);
-		Node node4 = new Node(4);
-		Node node5 = new Node(5);
+	public ListNode generateList() {
+		ListNode node1 = new ListNode(1);
+		ListNode node2 = new ListNode(2);
+		ListNode node3 = new ListNode(3);
+		ListNode node4 = new ListNode(4);
+		ListNode node5 = new ListNode(5);
 		node1.next = node2;
 		node2.next = node3;
 		node3.next = node4;
@@ -87,8 +87,8 @@ public Node reverseList2(Node head) {
 
 	public static void main(String args[]) {
 		ReverseLinkedList mrl = new ReverseLinkedList();
-		Node head = mrl.generateList();
-		Node head2 = mrl.generateList();
+		ListNode head = mrl.generateList();
+		ListNode head2 = mrl.generateList();
 		mrl.printAllNode(head);
 		System.out.println("\n-----------------------------------------");
 		mrl.printAllNode(mrl.reverseList2(head));

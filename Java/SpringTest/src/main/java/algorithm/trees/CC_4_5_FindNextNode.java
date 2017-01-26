@@ -24,7 +24,7 @@ public class CC_4_5_FindNextNode {
 		//Stop signal must be defined first
 		if (stopSignal == true) {
 			return root;
-		}else if (root.value == value) {
+		}else if (root.val == value) {
 			stopSignal = true;
 		}
 

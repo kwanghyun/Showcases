@@ -31,7 +31,7 @@ public class CC_4_3_ArrayToBST {
 		if (root == null)
 			return;
 		printBstInOrder(root.left);
-		System.out.println(root.value);
+		System.out.println(root.val);
 		printBstInOrder(root.right);
 	}
 

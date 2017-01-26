@@ -1,6 +1,9 @@
 package algorithm.stringArray;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 /*
  * Given a string S and a string T, find the minimum window in S which will
@@ -9,6 +12,110 @@ import java.util.HashMap;
  * For example, S = "ADOBECODEBANC", T = "ABC", Minimum window is "BANC".
  */
 public class MinimumWindowSubstring {
+
+	public String minWindowII(String s, String t) {
+
+		HashMap<Character, Integer> target = new HashMap<>();
+		int targetCount = t.length();
+		for (int i = 0; i < t.length(); i++) {
+			char ch = t.charAt(i);
+			target.compute(ch, (k, v) -> {
+				if (v == null)
+					return v = 1;
+				return v + 1;
+			});
+		}
+
+		int start = 0;
+		int minLen = s.length();
+		String minStr = "";
+		int hasToFind = 0;
+
+		Map<Character, Integer> map = new HashMap<>();
+		for (int i = 0; i < s.length(); i++) {
+
+			char ch = s.charAt(i);
+
+			if (target.containsKey(ch)) {
+				if (!map.containsKey(ch)) {
+					map.put(ch, 1);
+					hasToFind++;
+				} else {
+					if (target.get(ch) > map.get(ch))
+						hasToFind++;
+					map.put(ch, map.get(ch) + 1);
+				}
+			}
+
+			while (hasToFind == targetCount) {
+				char sch = s.charAt(start);
+				if (i - start + 1 < minLen) {
+					minStr = s.substring(start, i + 1);
+					minLen = i - start + 1;
+				}
+
+				if (map.containsKey(sch)) {
+					int count = map.get(sch);
+					if (count == 1) {
+						map.remove(sch);
+						hasToFind--;
+					} else {
+						if (target.get(sch) >= count)
+							hasToFind--;
+						map.put(sch, count - 1);
+					}
+				}
+				start++;
+			}
+		}
+
+		return minStr;
+	}
+
+	public String minWindowI(String s, String t) {
+
+		Set<Character> set = new HashSet<>();
+		for (int i = 0; i < t.length(); i++) {
+			set.add(t.charAt(i));
+		}
+
+		int start = 0;
+		int minLen = s.length();
+		String minStr = "";
+
+		Map<Character, Integer> map = new HashMap<>();
+		for (int i = 0; i < s.length(); i++) {
+
+			char ch = s.charAt(i);
+
+			if (set.contains(ch)) {
+				map.compute(ch, (k, v) -> {
+					if (v == null)
+						return 1;
+					return v + 1;
+				});
+			}
+
+			while (map.size() == set.size()) {
+				char sch = s.charAt(start);
+				if (i - start + 1 < minLen) {
+					minStr = s.substring(start, i + 1);
+					minLen = i - start + 1;
+				}
+
+				if (map.containsKey(sch)) {
+					map.compute(sch, (k, v) -> {
+						if (v == 1)
+							return null;
+						return v - 1;
+					});
+				}
+				start++;
+			}
+		}
+		return minStr;
+	}
+
 	public String minWindow(String s, String t) {
 		if (t.length() > s.length())
 			return "";
@@ -64,5 +171,15 @@ public class MinimumWindowSubstring {
 		}
 
 		return result;
+	}
+
+	public static void main(String[] args) {
+		String s = "ADOBECODEBANC";
+		// String t = "ABC";
+		String t = "ABCC";
+		// String t = "BB";
+		MinimumWindowSubstring ob = new MinimumWindowSubstring();
+		System.out.println(ob.minWindowII(s, t));
+		System.out.println(ob.minWindowI(s, t));
 	}
 }

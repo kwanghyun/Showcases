@@ -14,20 +14,20 @@ public class CC_4_8_BiniaryTreeSum {
 	public int sum(TreeNode root ){
 		if(root == null)
 			return 0;
-		return  root.value + sum(root.left) + sum(root.right);
+		return  root.val + sum(root.left) + sum(root.right);
 	}
 	
 	public int treeSum(TreeNode root){
 		if(root == null) 
 			return 0;		
-		int sum =  root.value + treeSum(root.left) + treeSum(root.right);
+		int sum =  root.val + treeSum(root.left) + treeSum(root.right);
 		return sum;
 	}
 	
 	public int treeSum(TreeNode root, int sum){
 		if(root == null) 
 			return 0;		
-		sum =  root.value + treeSum(root.left, sum) + treeSum(root.right, sum);
+		sum =  root.val + treeSum(root.left, sum) + treeSum(root.right, sum);
 		return sum;
 	}
 	

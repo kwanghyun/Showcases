@@ -10,9 +10,14 @@ import algorithm.utils.TreeUtils;
  * 
  * This problem can be illustrated by using a simple example.
  * 
- * in-order: 4 2 5 (1) 6 7 3 8
- * 
- * post-order: 4 5 2 6 7 8 3 (1)
+            4
+            / \
+        2        6
+        / \        / \
+    1    3    5    7
+                              
+ Post-order - 1  3  2  5  7  6  4 
+ In-order - 1  2  3  4  5  6  7 
  * 
  * From the post-order array, we know that last element is the root. We can
  * find the root in in-order array. Then we can identify the left and right
@@ -54,10 +59,13 @@ public class ConstructBinaryTreeFromInPostOrder {
 		return root;
 	}
 
-
 	public static void main(String[] args) {
 		int[] inorder = { 4, 2, 5, 1, 6, 7, 3, 8 };
 		int[] postorder = { 4, 5, 2, 6, 7, 8, 3, 1 };
+		TreeNode root = TreeUtils.buildBstFromRange(1, 7);
+		TreeUtils.drawTree(root);
+		TreeUtils.printPostorder(root);
+		TreeUtils.printInorder(root);
 		ConstructBinaryTreeFromInPostOrder ob = new ConstructBinaryTreeFromInPostOrder();
 		TreeUtils.printPreorder(ob.buildTree(inorder, postorder));
 	}

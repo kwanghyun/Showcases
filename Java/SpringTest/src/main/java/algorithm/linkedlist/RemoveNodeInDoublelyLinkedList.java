@@ -4,7 +4,7 @@ public class RemoveNodeInDoublelyLinkedList {
 
 	public static void main(String[] args) {
 		RemoveNodeInDoublelyLinkedList obj = new RemoveNodeInDoublelyLinkedList();
-		Node header = obj.generateList();
+		ListNode header = obj.generateList();
 		obj.printAllNode(header);
 		System.out.println("----------------------");
 		obj.remove(header, 3);
@@ -12,9 +12,9 @@ public class RemoveNodeInDoublelyLinkedList {
 	}
 	
 	
-	public void printAllNode(Node head){
+	public void printAllNode(ListNode head){
 
-		Node currentNode = head;
+		ListNode currentNode = head;
 		while(currentNode != null){
 			System.out.print("[" + currentNode.val + "] ");
 			currentNode = currentNode.next;
@@ -22,13 +22,13 @@ public class RemoveNodeInDoublelyLinkedList {
 		System.out.print("\n");
 	}
 	
-	public Node remove(Node node, int val){
-		Node curr = node;
+	public ListNode remove(ListNode node, int val){
+		ListNode curr = node;
 		while(curr != null){
 			if(curr.val == val ){
 				
-				Node next = curr.next;
-				Node prev = curr.prev;
+				ListNode next = curr.next;
+				ListNode prev = curr.prev;
 				
 				prev.next = next;
 				next.prev = prev;
@@ -41,13 +41,13 @@ public class RemoveNodeInDoublelyLinkedList {
 	}
 	
 	
-	public Node generateList(){
-		Node node1 = new Node(1);
-		Node node3 = new Node(3);
-		Node node5 = new Node(5);
-		Node node7 = new Node(7);
-		Node node9 = new Node(9);
-		Node node11 = new Node(11);
+	public ListNode generateList(){
+		ListNode node1 = new ListNode(1);
+		ListNode node3 = new ListNode(3);
+		ListNode node5 = new ListNode(5);
+		ListNode node7 = new ListNode(7);
+		ListNode node9 = new ListNode(9);
+		ListNode node11 = new ListNode(11);
 		node1.next = node3;
 		node3.prev = node1;
 		node3.next = node5;

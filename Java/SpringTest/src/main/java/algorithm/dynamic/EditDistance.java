@@ -3,8 +3,7 @@ package algorithm.dynamic;
 /*
  * There are three operations permitted on a word: replace, delete, insert.
  * For example, the edit distance between "a" and "b" is 1, the edit
- * distance between "abc" and "def" is 3. This post analyzes how to
- * calculate edit distance by using dynamic programming.
+ * distance between "abc" and "def" is 3. 
  * 
  * Key Analysis
  * 
@@ -29,6 +28,35 @@ package algorithm.dynamic;
 public class EditDistance {
 
 	public int minDistanceI(String src, String dst) {
+		// System.out.println("1 src = " + src + ", dst = " + dst);
+		// If first string is empty, the only option is to
+		// insert all characters of second string into first
+		if (src.length() == 0)
+			return dst.length();
+	
+		// If second string is empty, the only option is to
+		// remove all characters of first string
+		if (dst.length() == 0)
+			return src.length();
+	
+		if (src.charAt(0) == dst.charAt(0)) {
+			return minDistanceI(src.substring(1), dst.substring(1));
+		}
+	
+		// If last characters are not same, consider all three
+		// operations on last character of first string, recursively
+		// compute minimum cost for all three operations and take
+		// minimum of three values.
+		int replace = minDistanceI(src.substring(1), dst.substring(1));
+		System.out.println("replace = " + replace + ", src = " + src + ", dst = " + dst);
+		int delete = minDistanceI(src.substring(1), dst);
+		int add = minDistanceI(src, dst.substring(1));
+		int tmp = Math.min(replace, delete);
+	
+		return 1 + Math.min(tmp, add);
+	}
+
+	public int minDistanceDP(String src, String dst) {
 		int srcLen = src.length();
 		int dstLen = dst.length();
 
@@ -108,8 +136,13 @@ public class EditDistance {
 
 	public static void main(String[] args) {
 		EditDistance ob = new EditDistance();
-		System.out.println(ob.minDistance("abc", "dec"));
-		System.out.println("--------------------------------");
-		System.out.println(ob.minDistanceI("abc", "dec"));
+		String src = "acb";
+		String dst = "ade";
+		System.out.println("-------------minDistance-------------------");
+		System.out.println(ob.minDistance(src, dst));
+		System.out.println("-------------minDistanceI-------------------");
+		System.out.println(ob.minDistanceDP(src, dst));
+		System.out.println("--------------minDistanceR------------------");
+		System.out.println(ob.minDistanceI(src, dst));
 	}
 }

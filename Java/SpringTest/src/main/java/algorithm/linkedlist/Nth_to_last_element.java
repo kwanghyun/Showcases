@@ -8,13 +8,13 @@ package algorithm.linkedlist;
  element.
  */
 public class Nth_to_last_element {
-	public Node removeNthFromEnd(Node head, int n) {
+	public ListNode removeNthFromEnd(ListNode head, int n) {
 
 		if (head == null)
 			return null;
 
-		Node fast = head;
-		Node slow = head;
+		ListNode fast = head;
+		ListNode slow = head;
 
 		for (int i = 0; i < n; i++) {
 			fast = fast.next;

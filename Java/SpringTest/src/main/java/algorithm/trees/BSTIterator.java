@@ -1,6 +1,9 @@
 package algorithm.trees;
 
+import java.util.Iterator;
 import java.util.Stack;
+
+import algorithm.utils.TreeUtils;
 
 /*Implement an iterator over a binary search tree (BST). Your iterator will be initialized
  with the root node of a BST. Calling next() will return the next smallest number in
@@ -14,14 +17,14 @@ import java.util.Stack;
 	    / \    /
        4  7  13
  The key to solve this problem is understanding what is BST.*/
-public class BSTIterator {
+public class BSTIterator implements Iterator<TreeNode> {
 
 	Stack<TreeNode> stack;
 
 	public BSTIterator(TreeNode root) {
-		
+
 		stack = new Stack<TreeNode>();
-		
+
 		while (root != null) {
 			stack.push(root);
 			root = root.left;
@@ -32,18 +35,27 @@ public class BSTIterator {
 		return !stack.isEmpty();
 	}
 
-	public int next() {
+	public TreeNode next() {
 		TreeNode node = stack.pop();
-		int result = node.value;
-		
+		TreeNode result = node;
+
 		if (node.right != null) {
 			node = node.right;
-			
+
 			while (node != null) {
 				stack.push(node);
 				node = node.left;
 			}
 		}
 		return result;
+	}
+
+	public static void main(String[] args) {
+		TreeNode root = TreeUtils.buildBstFromRange(1, 9);
+		BSTIterator it = new BSTIterator(root);
+		while (it.hasNext()) {
+			TreeNode node = it.next();
+			System.out.println(node.val);
+		}
 	}
 }

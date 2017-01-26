@@ -66,14 +66,14 @@ public class RestoreIpAddress {
 
 		for (int i = 1; i <= 3; i++) {
 			if (i > str.length())
-				return;
+				break;
+
 			String s = str.substring(0, i);
 			if (!isValidIp(s))
-				return;
+				break;
 			list.add(s);
 			dfsI(result, str.substring(i), list);
 			list.remove(list.size() - 1);
-
 		}
 	}
 

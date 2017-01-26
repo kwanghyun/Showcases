@@ -46,6 +46,50 @@ public class TextJustification {
 		spaces.put(6, "      ");
 	}
 
+	public List<String> fullJustifyII(String[] words, int maxWidth) {
+		List<String> result = new ArrayList<>();
+
+		int wordIdx;
+		for (wordIdx = 0; wordIdx < words.length; wordIdx++) {
+			ArrayList<StringBuilder> words4line = new ArrayList<>();
+
+			int wordLenSum = 0;
+			while (wordIdx < words.length) {
+				if (wordLenSum + words[wordIdx].length() + words4line.size() + 1 > maxWidth) {
+					wordIdx--;
+					break;
+				}
+				StringBuilder sb = new StringBuilder(words[wordIdx]);
+				words4line.add(sb);
+				wordLenSum += words[wordIdx].length();
+				wordIdx++;
+			}
+
+			StringBuilder line = new StringBuilder();
+
+			if (words4line.size() > 1) {
+				int eachSpace = (maxWidth - wordLenSum) / (words4line.size() - 1);
+				int extraSpace = (maxWidth - wordLenSum) % (words4line.size() - 1);
+
+				for (int i = 0; i < words4line.size(); i++) {
+					if (i != words4line.size() - 1) {
+						words4line.get(i).append(spaces.get(eachSpace));
+						if (extraSpace > 0) {
+							words4line.get(i).append(spaces.get(1));
+							extraSpace--;
+						}
+					}
+					line.append(words4line.get(i));
+				}
+			} else {
+				line.append(words4line.get(0) + spaces.get(maxWidth - wordLenSum));
+			}
+
+			result.add(line.toString());
+		}
+		return result;
+	}
+
 	public List<String> fullJustify(String[] words, int maxWidth) {
 		int len = 0;
 		List<StringBuilder> words4line = new ArrayList<>();
@@ -57,8 +101,6 @@ public class TextJustification {
 			words4line.add(new StringBuilder(word));
 			len += word.length();
 
-			// if it's last string or line exceed the limit by adding next
-			// string.
 			if (idx == words.length - 1 || len + (words4line.size() - 1) + words[idx + 1].length() > maxWidth) {
 				int eachSpace = 0;
 				int extraSpace = 0;
@@ -68,8 +110,6 @@ public class TextJustification {
 
 					for (int i = 0; i < words4line.size() - 1; i++) {
 						words4line.get(i).append(spaces.get(eachSpace));
-						// words4line.get(i).append(new String(new
-						// char[eachSpace]).replace("\0", " "));
 					}
 
 					int i = 0;
@@ -79,10 +119,7 @@ public class TextJustification {
 					}
 				} else {
 					extraSpace = maxWidth - len;
-					// single string leftover case
 					words4line.get(0).append(spaces.get(extraSpace));
-					// words4line.get(0).append(new String(new
-					// char[extraSpace]).replace("\0", " "));
 				}
 
 				for (StringBuilder w : words4line) {
@@ -99,21 +136,20 @@ public class TextJustification {
 	public static void main(String[] args) {
 		String[] words = { "This", "is", "an", "example", "of", "text", "justification." };
 		TextJustification ob = new TextJustification();
+		System.out.println("-------------fullJustify--------------");
 		List<String> list = ob.fullJustify(words, 16);
 		System.out.println(list);
-		for (String word : list)
-			System.out.println(word.length());
+		list.forEach(word -> System.out.println(word.length()));
 
-		System.out.println("---------------------------");
+		System.out.println("-------------fullJustifyI--------------");
 		List<String> list2 = ob.fullJustifyI(words, 16);
 		System.out.println(list2);
-		for (String word : list2)
-			System.out.println(word.length());
+		list2.forEach(word -> System.out.println(word.length()));
 
-		String str = "abc";
-		String repeated = "";
-		repeated = new String(new char[10]).replace("\0", " ");
-		System.out.println(repeated + "abcabcabc");
+		System.out.println("-------------fullJustifyII--------------");
+		List<String> list3 = ob.fullJustifyII(words, 16);
+		System.out.println(list3);
+		list3.forEach(word -> System.out.println(word.length()));
 
 	}
 

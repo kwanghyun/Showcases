@@ -1,75 +1,89 @@
 package algorithm.dynamic;
 
+import java.util.Arrays;
+import java.util.Stack;
+
+
+
 /*
  * Given an array of non-negative integers, you are initially positioned at
  * the first index of the array. Each element in the array represents your
- * maximum jump length at that position.
+ * maximum jump length at that position. Determine if you are able to reach
+ * the last index. For example: A = [2,3,1,1,4], return true. A =
+ * [3,2,1,0,4], return false.
  * 
- * Your goal is to reach the last index in the minimum number of jumps.
+ * Analysis
  * 
- * For example, given array A = [2,3,1,1,4], the minimum number of jumps to
- * reach the last index is 2. (Jump 1 step from index 0 to 1, then 3 steps
- * to the last index.)
+ * We can track the maximum index that can be reached. The key to solve this
+ * problem is to find: 
+ * 1) when the current position can not reach next position (return false) , and 
+ * 2) when the maximum index can reach the end (return true).
+ * 
+ * The largest index that can be reached is: i + A[i].
  */
 public class JumpGame {
-	public int jump(int[] nums) {
-		if (nums == null || nums.length == 0)
-			return 0;
 
-		int maxReach = 0;
-		int step = 0;
+	public boolean canJump(int[] nums) {
+		if (nums.length <= 1)
+			return true;
+
+		int maxIdx = nums[0];
 
 		for (int i = 0; i < nums.length; i++) {
-			if (nums[i] == 0 && i >= maxReach)
-				return 0;
-			int tmp_max = i + nums[i];
-			if (maxReach < tmp_max) {
-				maxReach = tmp_max;
-				step++;
+			System.out.println("maxIdx = " + maxIdx);
+			if (maxIdx <= i && nums[i] == 0) {
+				System.out.println("# maxIdx = " + maxIdx);
+				return false;
 			}
 
-			if (maxReach >= nums.length - 1) {
-				break;
-			}
+			maxIdx = Math.max(maxIdx, i + nums[i]);
+
+			if (maxIdx >= nums.length - 1)
+				return true;
 		}
 
-		if (maxReach < nums.length - 1)
-			return 0;
+		if (maxIdx < nums.length - 1)
+			return false;
 
-		return step;
+		return true;
 	}
 
-	public int jumpI(int[] nums) {
-		if (nums == null || nums.length == 0)
-			return 0;
+	public boolean canJumpI(int[] arr) {
+		if (arr.length <= 1)
+			return true;
 
-		int lastReach = 0;
-		int reach = 0;
-		int step = 0;
+		int max = arr[0];
 
-		for (int i = 0; i <= reach && i < nums.length; i++) {
-			// when last jump can not read current i, increase the step by 1
-			if (i > lastReach) {
-				step++;
-				lastReach = reach;
+		for (int i = 0; i < arr.length; i++) {
+			// if not enough to go to next
+			if (max <= i && arr[i] == 0)
+				return false;
+
+			// update max
+			if (i + arr[i] > max) {
+				max = i + arr[i];
 			}
-			// update the maximal jump
-			reach = Math.max(reach, nums[i] + i);
+
+			// max is enough to reach the end
+			if (max >= arr.length - 1)
+				return true;
 		}
-
-		if (reach < nums.length - 1)
-			return 0;
-
-		return step;
+		return false;
 	}
 
 	public static void main(String[] args) {
 		JumpGame ob = new JumpGame();
-		// int[] nums = { 2, 3, 1, 1, 4 };
-		// int[] nums = { 2, 1, 1, 1, 4 };
-		// int[] nums = { 2, 1, 0, 1, 4 };
-		int[] nums = { 5, 1, 0, 1, 4 };
-		System.out.println(ob.jump(nums));
-		System.out.println(ob.jumpI(nums));
+		int[] arr1 = { 2, 3, 1, 1, 4 };
+		// int[] arr2 = { 3, 2, 1, 0, 4 };
+		// int[] arr2 = { 2, 0, 0 };
+		int[] arr2 = { 3, 0, 8, 2, 0, 0, 1 };
+		System.out.println("-------" + Arrays.toString(arr1) + "--------");
+		System.out.println(ob.canJump(arr1));
+		System.out.println(ob.canJumpI(arr1));
+		System.out.println("-------" + Arrays.toString(arr2) + "--------");
+		System.out.println(ob.canJump(arr2));
+		System.out.println(ob.canJumpI(arr2));
+		
+
 	}
 }

@@ -1,7 +1,10 @@
 package algorithm.dynamic;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+
+import algorithm.Utils;
 
 /*
  * Given a total and coins of certain denomination with infinite supply, what is
@@ -100,15 +103,57 @@ public class CoinChangingMinimumCoin {
 		System.out.print("\n");
 	}
 
-	public static void main(String args[]) {
-		int total = 13;
-		int coins[] = { 7, 3, 2, 6 };
-		CoinChangingMinimumCoin cc = new CoinChangingMinimumCoin();
-		Map<Integer, Integer> map = new HashMap<>();
-		int topDownValue = cc.minimumCoinTopDown(total, coins, map);
-		int bottomUpValue = cc.minimumCoinBottomUp(total, coins);
+	public int coinChange(int[] coins, int amount) {
+		if (amount == 0)
+			return 0;
 
-		System.out.print(String.format("Bottom up and top down result %s %s", bottomUpValue, topDownValue));
+		Arrays.sort(coins);
+
+		int[][] dp = new int[coins.length][amount + 1];
+		for (int r = 0; r < coins.length; r++) {
+			for (int c = 0; c <= amount; c++) {
+				if (c == 0) {
+					dp[r][c] = 0;
+				} else if (r == 0) {
+					if (c % coins[0] == 0)
+						dp[r][c] = c / coins[0];
+					else
+						dp[r][c] = -1;
+
+				} else if (coins[r] > c) {
+					dp[r][c] = dp[r - 1][c];
+				} else {
+					int top = dp[r - 1][c];
+					int right = dp[r][c - coins[r]] + 1;
+					if (top != -1 && right != -1)
+						dp[r][c] = Math.min(top, right);
+					else if (top != -1)
+						dp[r][c] = top;
+					else if (right != -1)
+						dp[r][c] = right;
+					else
+						dp[r][c] = -1;
+				}
+			}
+		}
+		Utils.printMetrix(dp);
+		return dp[coins.length - 1][amount];
+	}
+
+	public static void main(String args[]) {
+		int total = 6249;
+		int coins[] = { 186, 419, 83, 408 };
+
+		CoinChangingMinimumCoin cc = new CoinChangingMinimumCoin();
+		System.out.println(cc.coinChange(coins, total));
+
+		// Map<Integer, Integer> map = new HashMap<>();
+
+		// int topDownValue = cc.minimumCoinTopDown(total, coins, map);
+		// int bottomUpValue = cc.minimumCoinBottomUp(total, coins);
+
+		// System.out.print(String.format("Bottom up and top down result %s %s",
+		// bottomUpValue, topDownValue));
 
 	}
 }

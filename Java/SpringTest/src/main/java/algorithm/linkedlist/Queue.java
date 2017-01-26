@@ -1,9 +1,9 @@
 package algorithm.linkedlist;
 
 public class Queue {
-	Node first, last;
+	ListNode first, last;
 
-	public void enqueue(Node newNode) {
+	public void enqueue(ListNode newNode) {
 		if (first == null) {
 			first = newNode;
 			last = first;
@@ -13,11 +13,11 @@ public class Queue {
 		}
 	}
 
-	public Node dequeue() {
+	public ListNode dequeue() {
 		if (first == null) {
 			return null;
 		} else {
-			Node temp = new Node(first.val);
+			ListNode temp = new ListNode(first.val);
 			first = first.next;
 			return temp;
 		}

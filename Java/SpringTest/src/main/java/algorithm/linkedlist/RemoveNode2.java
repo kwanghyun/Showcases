@@ -4,25 +4,25 @@ public class RemoveNode2 {
 	// Implement an algorithm to delete a node in the middle of a single linked
 	// list, given only access to that node.
 	// EXAMPLE
-	// Input: the node ¡®c¡¯ from the linked list a->b->c->d->e
+	// Input: the node ï¿½ï¿½cï¿½ï¿½ from the linked list a->b->c->d->e
 	// Result: nothing is returned, but the new linked list looks like
 	// a->b->d->e
 
 	//MISTAKE NODE : 
 	// I can't delete a node because I've set a null on pointer "current" rather than Reference current.next. 
 	
-	Node root;
+	ListNode root;
 
 	public void insert(char ch) {
-		Node node = new Node(ch);
-		Node current = root;
+		ListNode node = new ListNode(ch);
+		ListNode current = root;
 		node.next = current;
 		root = node;
 	}
 
 	public void remove(char ch) {
-		Node current = root;
-		Node previous = null;
+		ListNode current = root;
+		ListNode previous = null;
 		while (current != null) {
 			if (current.ch == ch) {
 				System.out.println("previous : " + previous.ch);
@@ -36,9 +36,9 @@ public class RemoveNode2 {
 		}
 	}
 	
-	public String toString(Node root) {
+	public String toString(ListNode root) {
 		StringBuilder sb = new StringBuilder();
-		Node tmp = root;
+		ListNode tmp = root;
 		while (tmp != null) {
 			sb.append(tmp.ch).append(", ");
 			tmp = tmp.next;

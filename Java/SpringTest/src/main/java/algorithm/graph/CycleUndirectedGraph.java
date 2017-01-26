@@ -1,84 +1,94 @@
 package algorithm.graph;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-/**
+/*
+ * Given an undirected graph find cycle in this graph.
  *
- *         Given an undirected graph find cycle in this graph.
+ * Solution This can be solved in many ways. Below is the code to solve it
+ * using disjoint sets and DFS.
  *
- *         Solution This can be solved in many ways. Below is the code to solve
- *         it using disjoint sets and DFS.
- *
- *         Runtime and space complexity for both the techniques is O(v) where v
- *         is total number of vertices in the graph.
+ * Runtime and space complexity for both the techniques is O(v) where v is
+ * total number of vertices in the graph.
  */
-public class CycleUndirectedGraph<T> {
+public class CycleUndirectedGraph {
 
-	public boolean hasCycleUsingDisjointSets(Graph<T> graph) {
-		DisjointSet disjointSet = new DisjointSet();
+	private int noOfVs; // No. of vertices
+	private LinkedList<Integer> adj[]; // Adjacency List Represntation
 
-		for (Vertex<T> vertex : graph.getAllVertex()) {
-			disjointSet.makeSet(vertex.getId());
-		}
-
-		for (Edge<T> edge : graph.getAllEdges()) {
-			long parent1 = disjointSet.findSet(edge.getVertex1().getId());
-			long parent2 = disjointSet.findSet(edge.getVertex2().getId());
-			if (parent1 == parent2) {
-				return true;
-			}
-			disjointSet.union(edge.getVertex1().getId(), edge.getVertex2().getId());
-		}
-		return false;
+	// Constructor
+	public CycleUndirectedGraph(int v) {
+		noOfVs = v;
+		adj = new LinkedList[v];
+		for (int i = 0; i < v; ++i)
+			adj[i] = new LinkedList();
 	}
 
-	public boolean hasCycleDFS(Graph<T> graph) {
-		Set<Vertex<T>> visited = new HashSet<Vertex<T>>();
-		for (Vertex<T> vertex : graph.getAllVertex()) {
-			if (visited.contains(vertex)) {
-				continue;
-			}
-			boolean flag = hasCycleDFSUtil(vertex, visited, null);
-			if (flag) {
-				return true;
-			}
-		}
-		return false;
+	// Function to add an edge into the graph
+	public void addEdge(int v, int w) {
+		adj[v].add(w);
+		adj[w].add(v);
 	}
 
-	public boolean hasCycleDFSUtil(Vertex<T> vertex, Set<Vertex<T>> visited, Vertex<T> parent) {
-		visited.add(vertex);
-		for (Vertex<T> adj : vertex.getAdjacentVertexes()) {
-			if (adj.equals(parent)) {
-				continue;
-			}
-			if (visited.contains(adj)) {
-				return true;
-			}
-			boolean hasCycle = hasCycleDFSUtil(adj, visited, vertex);
-			if (hasCycle) {
+	public Boolean hasCycleDFS(int v, Boolean visited[], int parent) {
+		visited[v] = true;
+		Integer i;
+
+		// Recur for all the vertices adjacent to this vertex
+		Iterator<Integer> it = adj[v].iterator();
+		while (it.hasNext()) {
+			i = it.next();
+
+			if (!visited[i]) {
+				if (hasCycleDFS(i, visited, v))
+					return true;
+			} else if (i != parent) {
+				// If an adjacent is visited and not parent of current
+				// vertex, then there is a cycle.
 				return true;
 			}
 		}
 		return false;
 	}
 
-	public static void main(String args[]){
-        
-        CycleUndirectedGraph<Integer> cycle = new CycleUndirectedGraph<Integer>();
-        Graph<Integer> graph = new Graph<Integer>(false);
-        
-        graph.addEdge(0, 1);
-        graph.addEdge(1, 2);
-        graph.addEdge(0, 3);
-        graph.addEdge(3, 4);
-        graph.addEdge(4, 5);
-        graph.addEdge(5, 1);
-        boolean isCycle = cycle.hasCycleDFS(graph);
-        System.out.println(isCycle);
-        isCycle = cycle.hasCycleUsingDisjointSets(graph);
-        System.out.print(isCycle);
-        
-    }
+	// Returns true if the graph contains a cycle, else false.
+	public Boolean isCyclic() {
+		// Mark all the vertices as not visited and not part of
+		// recursion stack
+		Boolean visited[] = new Boolean[noOfVs];
+		for (int i = 0; i < noOfVs; i++)
+			visited[i] = false;
+
+		for (int u = 0; u < noOfVs; u++)
+			if (!visited[u])
+				if (hasCycleDFS(u, visited, -1))
+					return true;
+
+		return false;
+	}
+
+	// Driver method to test above methods
+	public static void main(String args[]) {
+		// Create a graph given in the above diagram
+		CycleUndirectedGraph g1 = new CycleUndirectedGraph(5);
+		g1.addEdge(1, 0);
+		g1.addEdge(0, 2);
+		g1.addEdge(2, 0);
+		g1.addEdge(0, 3);
+		g1.addEdge(3, 4);
+		if (g1.isCyclic())
+			System.out.println("Graph contains cycle");
+		else
+			System.out.println("Graph doesn't contains cycle");
+
+		CycleUndirectedGraph g2 = new CycleUndirectedGraph(3);
+		g2.addEdge(0, 1);
+		g2.addEdge(1, 2);
+		if (g2.isCyclic())
+			System.out.println("Graph contains cycle");
+		else
+			System.out.println("Graph doesn't contains cycle");
+	}
+
 }

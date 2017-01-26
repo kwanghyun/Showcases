@@ -20,11 +20,11 @@ package algorithm.linkedlist;
  */
 public class MinStack {
 
-	Node head;
+	ListNode head;
 	int min = Integer.MAX_VALUE;
 
 	public void push(int value) {
-		Node node = new Node(value);
+		ListNode node = new ListNode(value);
 		if (head != null) {
 			node.next = head;
 		}
@@ -33,16 +33,16 @@ public class MinStack {
 		head = node;
 	}
 
-	public Node pop() {
+	public ListNode pop() {
 		if (head == null)
 			throw new IllegalStateException("Stack is Empty");
 
-		Node temp = head;
+		ListNode temp = head;
 		head = head.next;
 		return temp;
 	}
 
-	public Node top() {
+	public ListNode top() {
 		if (head == null)
 			throw new IllegalStateException("Stack is Empty");
 		return head;
@@ -55,7 +55,7 @@ public class MinStack {
 	}
 
 	public void printAll() {
-		Node h = head;
+		ListNode h = head;
 		while (h != null) {
 			System.out.println(h);
 			h = h.next;

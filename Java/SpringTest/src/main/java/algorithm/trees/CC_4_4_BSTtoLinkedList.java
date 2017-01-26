@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Stack;
 
-import algorithm.linkedlist.Node;
+import algorithm.linkedlist.ListNode;
 
 public class CC_4_4_BSTtoLinkedList {
 	/*
@@ -20,19 +20,19 @@ public class CC_4_4_BSTtoLinkedList {
 	 * add left,right node of root node.
 	 */
 
-	public ArrayList<LinkedList<Node>> solution(TreeNode root) {
-		ArrayList<LinkedList<Node>> result = new ArrayList<LinkedList<Node>>();
+	public ArrayList<LinkedList<ListNode>> solution(TreeNode root) {
+		ArrayList<LinkedList<ListNode>> result = new ArrayList<LinkedList<ListNode>>();
 		LinkedList<TreeNode> q = new LinkedList<TreeNode>();
 		q.add(root);
 		
 		while(!q.isEmpty()){
 			int size = q.size();
 			
-			LinkedList<Node> newHeader = new LinkedList<Node>();
+			LinkedList<ListNode> newHeader = new LinkedList<ListNode>();
 			
 			for(int i = 0; i < size; i++){
 				TreeNode curr = q.remove();
-				newHeader.addLast(new Node(curr.value));
+				newHeader.addLast(new ListNode(curr.val));
 				
 				if(curr.left != null) 
 					q.add(curr.left);
@@ -53,7 +53,7 @@ public class CC_4_4_BSTtoLinkedList {
 		if(result_list.size() == level){
 			result_list.add(new LinkedList<Integer>());
 		}
-		result_list.get(level).addLast(root.value);
+		result_list.get(level).addLast(root.val);
 		
 		if(root.left != null)
 			result_list = convertRecursively(result_list, root.left, level + 1);
@@ -82,8 +82,8 @@ public class CC_4_4_BSTtoLinkedList {
 		}
 
 		System.out.println("----------------@Convert() while with queue -------------------");
-		for (LinkedList<Node> linkedList : bll.solution(bll.generateTree())) {
-			for (Node node : linkedList) {
+		for (LinkedList<ListNode> linkedList : bll.solution(bll.generateTree())) {
+			for (ListNode node : linkedList) {
 				System.out.print(node.val + ",");
 			}
 			System.out.print("\n");

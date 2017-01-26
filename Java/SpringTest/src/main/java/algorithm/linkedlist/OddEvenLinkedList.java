@@ -22,20 +22,20 @@ import algorithm.utils.LinkedListUtils;
  * link and move the two pointers.
  */
 public class OddEvenLinkedList {
-	public Node oddEvenList_(Node head) {
+	public ListNode oddEvenList_(ListNode head) {
 		if (head == null)
 			return head;
 
-		Node oddHead = head;
-		Node evenHead = head.next;
+		ListNode oddHead = head;
+		ListNode evenHead = head.next;
 
-		Node p = head;
-		Node oddLastNode = null;
+		ListNode p = head;
+		ListNode oddLastNode = null;
 		boolean isOdd = true;
 
 		while (p != null && p.next != null) {
 
-			Node n = p.next;
+			ListNode n = p.next;
 			p.next = p.next.next;
 
 			if (isOdd) {
@@ -51,17 +51,17 @@ public class OddEvenLinkedList {
 		return oddHead;
 	}
 
-	public Node oddEvenList(Node head) {
+	public ListNode oddEvenList(ListNode head) {
 		if (head == null)
 			return head;
 
-		Node result = head;
-		Node p1 = head;
-		Node p2 = head.next;
-		Node connectNode = head.next;
+		ListNode result = head;
+		ListNode p1 = head;
+		ListNode p2 = head.next;
+		ListNode connectNode = head.next;
 
 		while (p1 != null && p2 != null) {
-			Node t = p2.next;
+			ListNode t = p2.next;
 			if (t == null)
 				break;
 
@@ -77,14 +77,14 @@ public class OddEvenLinkedList {
 		return result;
 	}
 
-	public Node oddEvenListI(Node head) {
+	public ListNode oddEvenListI(ListNode head) {
 		if (head == null)
 			return head;
 
-		Node result = head;
-		Node p1 = head;
-		Node p2 = head.next;
-		Node connectNode = head.next;
+		ListNode result = head;
+		ListNode p1 = head;
+		ListNode p2 = head.next;
+		ListNode connectNode = head.next;
 
 		while (p1 != null && p2 != null && p2.next != null) {
 
@@ -100,14 +100,14 @@ public class OddEvenLinkedList {
 		return result;
 	}
 
-	public Node oddEvenListII(Node head) {
+	public ListNode oddEvenListII(ListNode head) {
 		if (head == null)
 			return head;
 
-		Node oddHead = head;
-		Node p1 = head;
-		Node p2 = head.next;
-		Node evenHead = head.next;
+		ListNode oddHead = head;
+		ListNode p1 = head;
+		ListNode p2 = head.next;
+		ListNode evenHead = head.next;
 
 		while (p1.next != null && p2.next != null) {
 
@@ -126,15 +126,15 @@ public class OddEvenLinkedList {
 	public static void main(String[] args) {
 		OddEvenLinkedList ob = new OddEvenLinkedList();
 		System.out.println("-----------------oddEvenList_---------------------");
-		Node result = ob.oddEvenList_(LinkedListUtils.generateOrderedList(6));
+		ListNode result = ob.oddEvenList_(LinkedListUtils.generateOrderedList(6));
 		LinkedListUtils.drawList(result);
-		Node result1 = ob.oddEvenList_(LinkedListUtils.generateOrderedList(5));
+		ListNode result1 = ob.oddEvenList_(LinkedListUtils.generateOrderedList(5));
 		LinkedListUtils.drawList(result1);
 		System.out.println("-----------------oddEvenListI---------------------");
-		Node resultI = ob.oddEvenListI(LinkedListUtils.generateOrderedList(6));
+		ListNode resultI = ob.oddEvenListI(LinkedListUtils.generateOrderedList(6));
 		LinkedListUtils.drawList(resultI);
 		System.out.println("-----------------oddEvenListII---------------------");
-		Node resultII = ob.oddEvenListII(LinkedListUtils.generateOrderedList(6));
+		ListNode resultII = ob.oddEvenListII(LinkedListUtils.generateOrderedList(6));
 		LinkedListUtils.drawList(resultII);
 	}
 }

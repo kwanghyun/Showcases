@@ -26,7 +26,7 @@ public class RecoverBST {
 		if (pre == null) {
 			pre = root;
 		} else {
-			if (root.value < pre.value) {
+			if (root.val < pre.val) {
 				if (first == null) {
 					first = pre;
 				}
@@ -45,9 +45,9 @@ public class RecoverBST {
 
 		inorder(root);
 		if (second != null && first != null) {
-			int val = second.value;
-			second.value = first.value;
-			first.value = val;
+			int val = second.val;
+			second.val = first.val;
+			first.val = val;
 		}
 	}
 

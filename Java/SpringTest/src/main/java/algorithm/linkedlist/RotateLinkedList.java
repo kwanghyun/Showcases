@@ -10,7 +10,7 @@ import algorithm.utils.LinkedListUtils;
  * count of nodes in linked list.
  */
 public class RotateLinkedList {
-	Node head; // head of list
+	ListNode head; // head of list
 
 	// This function rotates a linked list counter-clockwise
 	// and updates the head. The function assumes that k is
@@ -23,7 +23,7 @@ public class RotateLinkedList {
 
 		// Let us understand the below code for example k = 4
 		// and list = 10->20->30->40->50->60.
-		Node current = head;
+		ListNode current = head;
 
 		// current will either point to kth or NULL after this
 		// loop. current will point to node 40 in the above example
@@ -40,7 +40,7 @@ public class RotateLinkedList {
 
 		// current points to kth node. Store it in a variable.
 		// kthNode points to node 40 in the above example
-		Node kthNode = current;
+		ListNode kthNode = current;
 
 		// current will point to last node after this loop
 		// current will point to node 60 in the above example
@@ -60,15 +60,16 @@ public class RotateLinkedList {
 		kthNode.next = null;
 	}
 
-	public Node rotateI(Node node, int k) {
-		if (node == null || node.next == null)
-			return node;
+	public ListNode rotateRight(ListNode head, int k) {
+		if (head == null || head.next == null || k == 0)
+			return head;
 
-		Node newH = null;
-		Node prev = node;
-		Node curr = node.next;
+		ListNode newH = null;
+		ListNode prev = head;
+		ListNode curr = head.next;
 		int idx = 1;
 		while (curr != null) {
+
 			if (idx == k) {
 				newH = curr;
 				prev.next = null;
@@ -77,14 +78,18 @@ public class RotateLinkedList {
 			curr = curr.next;
 			idx++;
 		}
-		prev.next = node;
+		
+		if (newH == null)
+			return head;
+		
+		prev.next = head;
 
 		return newH;
 	}
 
 	public static void main(String[] args) {
 		RotateLinkedList ob = new RotateLinkedList();
-		LinkedListUtils.printNodes(ob.rotateI(LinkedListUtils.generateOrderedList(6), 4));
+		LinkedListUtils.printNodes(ob.rotateRight(LinkedListUtils.generateOrderedList(6), 6));
 
 	}
 }

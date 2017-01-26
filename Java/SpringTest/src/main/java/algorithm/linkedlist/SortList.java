@@ -9,14 +9,14 @@ package algorithm.linkedlist;
  */
 public class SortList {
 	// merge sort
-	public static Node mergeSortList(Node head) {
+	public static ListNode mergeSortList(ListNode head) {
 
 		if (head == null || head.next == null)
 			return head;
 
 		// count total number of elements
 		int count = 0;
-		Node p = head;
+		ListNode p = head;
 		while (p != null) {
 			count++;
 			p = p.next;
@@ -25,12 +25,12 @@ public class SortList {
 		// break up to two list
 		int middle = count / 2;
 
-		Node l = head, r = null;
-		Node p2 = head;
+		ListNode l = head, r = null;
+		ListNode p2 = head;
 		int countHalf = 0;
 		while (p2 != null) {
 			countHalf++;
-			Node next = p2.next;
+			ListNode next = p2.next;
 
 			if (countHalf == middle) {
 				p2.next = null;
@@ -40,47 +40,47 @@ public class SortList {
 		}
 
 		// now we have two parts l and r, recursively sort them
-		Node h1 = mergeSortList(l);
-		Node h2 = mergeSortList(r);
+		ListNode h1 = mergeSortList(l);
+		ListNode h2 = mergeSortList(r);
 
 		// merge together
-		Node merged = merge(h1, h2);
+		ListNode merged = merge(h1, h2);
 
 		return merged;
 	}
 
-	public static Node merge(Node l, Node r) {
-		Node p1 = l;
-		Node p2 = r;
+	public static ListNode merge(ListNode l, ListNode r) {
+		ListNode p1 = l;
+		ListNode p2 = r;
 
-		Node fakeHead = new Node(100);
-		Node pNew = fakeHead;
+		ListNode fakeHead = new ListNode(100);
+		ListNode pNew = fakeHead;
 
 		while (p1 != null || p2 != null) {
 
 			if (p1 == null) {
-				pNew.next = new Node(p2.val);
+				pNew.next = new ListNode(p2.val);
 				p2 = p2.next;
 				pNew = pNew.next;
 			} else if (p2 == null) {
-				pNew.next = new Node(p1.val);
+				pNew.next = new ListNode(p1.val);
 				p1 = p1.next;
 				pNew = pNew.next;
 			} else {
 				if (p1.val < p2.val) {
 					// if(fakeHead)
-					pNew.next = new Node(p1.val);
+					pNew.next = new ListNode(p1.val);
 					p1 = p1.next;
 					pNew = pNew.next;
 				} else if (p1.val == p2.val) {
-					pNew.next = new Node(p1.val);
-					pNew.next.next = new Node(p1.val);
+					pNew.next = new ListNode(p1.val);
+					pNew.next.next = new ListNode(p1.val);
 					pNew = pNew.next.next;
 					p1 = p1.next;
 					p2 = p2.next;
 
 				} else {
-					pNew.next = new Node(p2.val);
+					pNew.next = new ListNode(p2.val);
 					p2 = p2.next;
 					pNew = pNew.next;
 				}
@@ -92,13 +92,13 @@ public class SortList {
 	}
 
 	public static void main(String[] args) {
-		Node n1 = new Node(2);
-		Node n2 = new Node(3);
-		Node n3 = new Node(4);
+		ListNode n1 = new ListNode(2);
+		ListNode n2 = new ListNode(3);
+		ListNode n3 = new ListNode(4);
 
-		Node n4 = new Node(3);
-		Node n5 = new Node(4);
-		Node n6 = new Node(5);
+		ListNode n4 = new ListNode(3);
+		ListNode n5 = new ListNode(4);
+		ListNode n6 = new ListNode(5);
 
 		n1.next = n2;
 		n2.next = n3;
@@ -111,7 +111,7 @@ public class SortList {
 		printList(n1);
 	}
 
-	public static void printList(Node x) {
+	public static void printList(ListNode x) {
 		if (x != null) {
 			System.out.print(x.val + " ");
 			while (x.next != null) {

@@ -1,5 +1,8 @@
 package algorithm.dynamic;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /*
  * Given n, how many structurally unique BST's (binary search trees) that store
  * values 1...n?
@@ -34,6 +37,7 @@ package algorithm.dynamic;
  * i=n, count[n] = sum(count[0..k]*count[k+1...n]) 0 <= k < n-1
  */
 public class CountNumberOfTree {
+
 	public int numTrees(int n) {
 		int[] count = new int[n + 1];
 
@@ -47,5 +51,54 @@ public class CountNumberOfTree {
 		}
 
 		return count[n];
+	}
+	
+	
+	HashMap<Integer, Integer> map = new HashMap<>();
+
+	public int numTreesII(int n) {
+
+		if (n == 0 || n == 1)
+			return 1;
+
+		if (map.containsKey(n)) {
+			return map.get(n);
+		}
+
+		int count = 0;
+
+		for (int i = 0; i < n; i++) {
+			count += numTreesII(n - i - 1) * numTreesII(i);
+			map.put(n, count);
+		}
+		return count;
+	}
+
+	public int numTreesI(int n) {
+		if (n == 0 || n == 1)
+			return 1;
+
+		int count = 0;
+
+		for (int i = 0; i < n; i++) {
+			count += numTreesI(n - i - 1) * numTreesI(i);
+		}
+		return count;
+	}
+
+
+
+	public static void main(String[] args) {
+		CountNumberOfTree ob = new CountNumberOfTree();
+		int nodeCount = 19;
+		System.out.println("--------- numTreesII ---------");
+		System.out.println(ob.numTreesII(nodeCount));
+
+		System.out.println("--------- numTreesI ---------");
+		System.out.println(ob.numTreesI(nodeCount));
+
+		System.out.println("--------- numTrees ---------");
+		System.out.println(ob.numTrees(nodeCount));
+
 	}
 }

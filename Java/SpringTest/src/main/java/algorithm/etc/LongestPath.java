@@ -5,6 +5,8 @@ package algorithm.etc;
  * Write algorithm/code to find longest path between any two cities. 4X4 matrix was given. 
  * If there is no connectivity between two cities then the distance between them was given as -1. 
  * Its cyclic graph.
+ * 
+ * Time Complexity: O(n) where n is number of nodes in Binary Tree.
  */
 public class LongestPath {
 

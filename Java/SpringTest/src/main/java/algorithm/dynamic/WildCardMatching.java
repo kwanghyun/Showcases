@@ -2,7 +2,17 @@ package algorithm.dynamic;
 
 /* 
  * Implement wildcard pattern matching with support for '?' and '*'. 
- * */
+	‘?’ – matches any single character
+	‘*’ – Matches any sequence of characters (including the empty sequence)
+
+	For example,
+
+	Text = "baaabab",
+	Pattern = “*****ba*****ab", output : true
+	Pattern = "baaa?ab", output : true
+	Pattern = "ba*a?", output : true
+	Pattern = "a*ab", output : false 
+*/
 public class WildCardMatching {
 
 	public boolean isMatch(String s, String p) {

@@ -27,10 +27,10 @@ package algorithm.linkedlist;
 public class ReorderList {
 
 	public static void main(String[] args) {
-		Node n1 = new Node(1);
-		Node n2 = new Node(2);
-		Node n3 = new Node(3);
-		Node n4 = new Node(4);
+		ListNode n1 = new ListNode(1);
+		ListNode n2 = new ListNode(2);
+		ListNode n3 = new ListNode(3);
+		ListNode n4 = new ListNode(4);
 		n1.next = n2;
 		n2.next = n3;
 		n3.next = n4;
@@ -42,12 +42,12 @@ public class ReorderList {
 		printList(n1);
 	}
 
-	public static void reorderList(Node head) {
+	public static void reorderList(ListNode head) {
 
 		if (head != null && head.next != null) {
 
-			Node slow = head;
-			Node fast = head;
+			ListNode slow = head;
+			ListNode fast = head;
 
 			// use a fast and slow pointer to break the link to two parts.
 			while (fast != null
@@ -59,7 +59,7 @@ public class ReorderList {
 				System.out.println("after " + slow.val + " " + fast.val);
 			}
 
-			Node second = slow.next;
+			ListNode second = slow.next;
 			slow.next = null;// need to close first part
 
 			// now should have two lists: head and fast
@@ -67,13 +67,13 @@ public class ReorderList {
 			// reverse order for second part
 			second = reverseOrder(second);
 
-			Node p1 = head;
-			Node p2 = second;
+			ListNode p1 = head;
+			ListNode p2 = second;
 
 			// merge two lists here
 			while (p2 != null) {
-				Node temp1 = p1.next;
-				Node temp2 = p2.next;
+				ListNode temp1 = p1.next;
+				ListNode temp2 = p2.next;
 
 				p1.next = p2;
 				p2.next = temp1;
@@ -84,17 +84,17 @@ public class ReorderList {
 		}
 	}
 
-	public static Node reverseOrder(Node head) {
+	public static ListNode reverseOrder(ListNode head) {
 
 		if (head == null || head.next == null) {
 			return head;
 		}
 
-		Node pre = head;
-		Node curr = head.next;
+		ListNode pre = head;
+		ListNode curr = head.next;
 
 		while (curr != null) {
-			Node temp = curr.next;
+			ListNode temp = curr.next;
 			curr.next = pre;
 			pre = curr;
 			curr = temp;
@@ -106,7 +106,7 @@ public class ReorderList {
 		return pre;
 	}
 
-	public static void printList(Node n) {
+	public static void printList(ListNode n) {
 		System.out.println("------");
 		while (n != null) {
 			System.out.print(n.val);

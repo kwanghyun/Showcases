@@ -3,16 +3,18 @@ package algorithm.trees;
 import java.util.ArrayList;
 import java.util.List;
 
+import algorithm.utils.TreeUtils;
+
 /*
  * Given a binary tree and a sum, find all root-to-leaf paths where each path’s sum equals
  the given sum.
  For example, given the below binary tree and sum = 22,
- 5
- / \
- 4  8
- /   / \
- 11 13 4(3)
- / \     /    \
+        5
+      /  \
+     4   8
+    /    / \
+  11 13 4(3)
+  / \     /    \
  7  2   5(6)  1
  the method returns the following:
  [
@@ -27,91 +29,93 @@ import java.util.List;
  */
 public class PathSum2 {
 
-	public List<ArrayList<Integer>> pathSum(TreeNode root, int sum) {
+	public List<List<Integer>> pathSum(TreeNode root, int sum) {
 
-		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+		ArrayList<List<Integer>> result = new ArrayList<>();
 
 		if (root == null)
 			return result;
 
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		list.add(root.value);
+		ArrayList<Integer> list = new ArrayList<>();
+		list.add(root.val);
 
-		dfs(root, sum - root.value, result, list);
+		dfs(root, sum - root.val, result, list);
 
 		return result;
 	}
 
-	public void dfs(TreeNode node, int sum,
-			ArrayList<ArrayList<Integer>> result, ArrayList<Integer> list) {
+	public void dfs(TreeNode node, int sum, List<List<Integer>> result, List<Integer> list) {
 
 		if (node.left == null && node.right == null && sum == 0) {
-			// Must add copy unless the values of list will be added and
-			// removed.
-			ArrayList<Integer> temp = new ArrayList<Integer>();
-			temp.addAll(list);
-			result.add(temp);
+			result.add(new ArrayList<>(list));
 		}
 
-		// search path of left node
 		if (node.left != null) {
-			list.add(node.left.value);
-			dfs(node.left, sum - node.left.value, result, list);
+			list.add(node.left.val);
+			dfs(node.left, sum - node.left.val, result, list);
 			list.remove(list.size() - 1);
 		}
 
-		// search path of right node
 		if (node.right != null) {
-			list.add(node.right.value);
-			dfs(node.right, sum - node.right.value, result, list);
+			list.add(node.right.val);
+			dfs(node.right, sum - node.right.val, result, list);
 			list.remove(list.size() - 1);
 		}
 	}
 
 	public ArrayList<ArrayList<Integer>> pathSum2(TreeNode root, int sum) {
-		
+
 		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		list.add(root.value);
-		
-		pathSum2(root, sum - root.value, result, list);
-		
+		ArrayList<Integer> list = new ArrayList<>();
+		list.add(root.val);
+
+		pathSum2(root, sum - root.val, result, list);
+
 		return result;
 	}
 
-	public void pathSum2(TreeNode root, int sum,
-			ArrayList<ArrayList<Integer>> result, ArrayList<Integer> list) {
-		
-		
-		if(root.left == null && root.right == null && sum == 0){
-			ArrayList<Integer> temp = new ArrayList<Integer>();
+	public void pathSum2(TreeNode root, int sum, ArrayList<ArrayList<Integer>> result, ArrayList<Integer> list) {
+
+		if (root.left == null && root.right == null && sum == 0) {
+			ArrayList<Integer> temp = new ArrayList<>();
 			temp.addAll(list);
 			result.add(temp);
 		}
-		
-		if(root.left != null){
-			list.add(root.left.value);
-			pathSum2(root.left, sum - root.left.value, result, list);
+
+		if (root.left != null) {
+			list.add(root.left.val);
+			pathSum2(root.left, sum - root.left.val, result, list);
 			list.remove(list.size() - 1);
 		}
-		
-		if(root.right != null){
-			list.add(root.right.value);
-			pathSum2(root.right, sum - root.right.value, result, list);
+
+		if (root.right != null) {
+			list.add(root.right.val);
+			pathSum2(root.right, sum - root.right.val, result, list);
 			list.remove(list.size() - 1);
 		}
+	}
+
+	public int maxPathSum(TreeNode root) {
+		int max = 0;
+		if (root == null)
+			return 0;
+		max = Math.max(root.val + maxPathSum(root.right), root.val + maxPathSum(root.left));
+		return max;
 	}
 
 	public static void main(String[] args) {
 		PathSum2 obj = new PathSum2();
-
-		List<ArrayList<Integer>> lists = obj.pathSum(obj.generateEntireTree(),
-				22);
+		TreeNode root = obj.generateEntireTree();
+		TreeUtils.drawTree(root);
+		List<List<Integer>> lists = obj.pathSum(root, 22);
 		System.out.println(lists);
 
-		List<ArrayList<Integer>> lists2 = obj.pathSum2(obj.generateEntireTree(),
-				22);
+		List<ArrayList<Integer>> lists2 = obj.pathSum2(root, 22);
 		System.out.println(lists2);
+
+		TreeNode root1 = TreeUtils.buildBstFromRange(1, 7);
+		TreeUtils.drawTree(root1);
+		System.out.println(obj.maxPathSum(root1));
 	}
 
 	public TreeNode generateEntireTree() {

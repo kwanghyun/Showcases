@@ -7,12 +7,12 @@ import algorithm.linkedlist.*;
  */
 public class PopPushMin {
 
-	Node first;
-	Node min; 
+	ListNode first;
+	ListNode min; 
 	
 	public void push(int value){
-		Node node = new Node(value);		
-		Node current = first;
+		ListNode node = new ListNode(value);		
+		ListNode current = first;
 		node.next = current;
 		first = node;
 		
@@ -25,20 +25,20 @@ public class PopPushMin {
 		}
 	}
 	
-	public Node pop(){
-		Node current = first;
+	public ListNode pop(){
+		ListNode current = first;
 		first = first.next;
 		current.next = null;
 		return current;
 	}
 	
-	public Node min(){
+	public ListNode min(){
 		return min;
 	}
 	
-	public String toString(Node root) {
+	public String toString(ListNode root) {
 		StringBuilder sb = new StringBuilder();
-		Node tmp = root;
+		ListNode tmp = root;
 		while (tmp != null) {
 			sb.append(tmp.val).append(", ");
 			tmp = tmp.next;

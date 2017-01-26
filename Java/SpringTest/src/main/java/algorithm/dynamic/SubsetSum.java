@@ -8,25 +8,24 @@ package algorithm.dynamic;
  * subset (4, 5) with sum 9.
  */
 public class SubsetSum {
-public boolean subsetSum(int input[], int total) {
+	public boolean subsetSum(int arr[], int sum) {
 
-	boolean T[][] = new boolean[input.length + 1][total + 1];
-	for (int i = 0; i <= input.length; i++) {
-		T[i][0] = true;
-	}
+		boolean T[][] = new boolean[arr.length + 1][sum + 1];
+		for (int i = 0; i <= arr.length; i++) {
+			T[i][0] = true;
+		}
 
-	for (int i = 1; i <= input.length; i++) {
-		for (int j = 1; j <= total; j++) {
-			if (j - input[i - 1] >= 0) {
-				T[i][j] = T[i - 1][j] || T[i - 1][j - input[i - 1]];
-			} else {
-				T[i][j] = T[i - 1][j];
+		for (int r = 1; r <= arr.length; r++) {
+			for (int c = 1; c <= sum; c++) {
+				if (c - arr[r - 1] >= 0) {
+					T[r][c] = T[r - 1][c] || T[r - 1][c - arr[r - 1]];
+				} else {
+					T[r][c] = T[r - 1][c];
+				}
 			}
 		}
+		return T[arr.length][sum];
 	}
-	return T[input.length][total];
-
-}
 
 	public static void main(String args[]) {
 		SubsetSum ss = new SubsetSum();

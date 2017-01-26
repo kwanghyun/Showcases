@@ -1,17 +1,17 @@
 package algorithm.trees;
 
 public class TreeNode {
-	public int value;
+	public int val;
 	String str;
 	public TreeNode left;
 	public TreeNode right;
-	public TreeNode neighbor;
+	public TreeNode next;
 	public TreeNode parent;
 
 	public TreeNode(int value) {
 		this.left = null;
 		this.right = null;
-		this.value = value;
+		this.val = value;
 	}
 
 	public TreeNode(String str) {
@@ -23,7 +23,7 @@ public class TreeNode {
 	public TreeNode(TreeNode left, TreeNode right, int value) {
 		this.left = left;
 		this.right = right;
-		this.value = value;
+		this.val = value;
 	}
 
 	public TreeNode getLeft() {
@@ -31,7 +31,7 @@ public class TreeNode {
 	}
 
 	public void setValue(int value) {
-		this.value = value;
+		this.val = value;
 	}
 
 	public void setLeft(TreeNode left) {
@@ -47,29 +47,29 @@ public class TreeNode {
 	}
 
 	public int getValue() {
-		return value;
+		return val;
 	}
 
 	public void printValue() {
-		System.out.println(value);
+		System.out.println(val);
 	}
 
 	@Override
 	public String toString() {
 
 		StringBuilder sb = new StringBuilder();
-		sb.append("[value=" + value);
+		sb.append("[value=" + val);
 
 		if (parent != null) {
-			sb.append(" : parent = " + parent.value);
+			sb.append(" : parent = " + parent.val);
 		}
 
 		if (left != null) {
-			sb.append(" : left = " + left.value);
+			sb.append(" : left = " + left.val);
 		}
 
 		if (right != null) {
-			sb.append(" : right = " + right.value);
+			sb.append(" : right = " + right.val);
 		}
 		sb.append("]");
 		return sb.toString();

@@ -34,9 +34,9 @@ public class CommonAncester {
 		if (root == null)
 			return null;
 
-		if (root.value > val1 && root.value > val2) {
+		if (root.val > val1 && root.val > val2) {
 			root = findCom(root.left, val1, val2);
-		} else if (root.value < val1 && root.value < val2) {
+		} else if (root.val < val1 && root.val < val2) {
 			root = findCom(root.right, val1, val2);
 		}
 		return root;
@@ -47,9 +47,9 @@ public class CommonAncester {
 		if (root == null)
 			return null;
 
-		if (root.value > val1 && root.value > val2) {
+		if (root.val > val1 && root.val > val2) {
 			return findCom(root.left, val1, val2);
-		} else if (root.value < val1 && root.value < val2) {
+		} else if (root.val < val1 && root.val < val2) {
 			return findCom(root.right, val1, val2);
 		}
 		return root;

@@ -8,7 +8,7 @@ public class CloneBinaryTree {
 		if(root == null)
 			return null;
 		
-		TreeNode node = new TreeNode(root.value);
+		TreeNode node = new TreeNode(root.val);
 		node.left = clone(root.left);
 		node.right = clone(root.right);
 		
@@ -27,7 +27,7 @@ public class CloneBinaryTree {
 	public void printPreOrder(TreeNode root){
 		if(root == null)
 			return;
-		System.out.print("[" + root.value + "] ");
+		System.out.print("[" + root.val + "] ");
 		printPreOrder(root.left);
 		printPreOrder(root.right);
 		

@@ -22,16 +22,16 @@ package algorithm.dynamic;
 
 public class LongestPalindromicSubsequence {
 	public static int LPS(String s) {
-		int n = s.length();
-		int dp[][] = new int[n][n];
+		int strLen = s.length();
+		int dp[][] = new int[strLen][strLen];
 
-		for (int i = 0; i < n; i++) {
+		for (int i = 0; i < strLen; i++) {
 			dp[i][i] = 1;
 		}
 
 		// Finding palindromes of length 2 to n and saving the longest
-		for (int len = 2; len <= n; len++) {
-			for (int r = 0; r < n - len + 1; r++) {
+		for (int len = 2; len <= strLen; len++) {
+			for (int r = 0; r < strLen - len + 1; r++) {
 				int c = r + len - 1;
 				if (s.charAt(r) == s.charAt(c))// Trim if match and add 2
 				{
@@ -43,7 +43,7 @@ public class LongestPalindromicSubsequence {
 			}
 		}
 
-		return dp[0][n - 1];
+		return dp[0][strLen - 1];
 	}
 
 	public static void main(String args[]) {

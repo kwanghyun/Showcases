@@ -53,7 +53,7 @@ public class WordLadder {
 		return len;
 	}
 	
-	/***
+	/*
 	 * So we quickly realize that this looks like a tree searching problem for which breath
 	 * 	first guarantees the optimal solution.
 	 * 	Assuming we have some words in the dictionary, and the start is "hit" as shown in
@@ -71,6 +71,9 @@ public class WordLadder {
 	* What can be learned from this problem?
 	* • Use breath-first or depth-first search to solve problems
 	* • Use two queues, one for words and another for counting
+	* 
+	* Time Complexity of the above code is O(n²m) where n is the number of entries originally 
+	* in the dictionary and m is the size of the string
  	***/
 	
 public int ladderLength2(String start, String end, HashSet<String> dict) {

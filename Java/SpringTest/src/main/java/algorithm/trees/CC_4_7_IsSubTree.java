@@ -25,21 +25,40 @@ public class CC_4_7_IsSubTree {
 		return checkTrees(match, root2);
 	}
 
-	public TreeNode findNode(TreeNode root1, TreeNode root2) {
+	public TreeNode findNodeI(TreeNode root1, TreeNode root2) {
 		if (root1 == null)
 			return null;
 
-		if (root1.value == root2.value) {
+		if (root1.val == root2.val) {
 			return root1;
 		}
 
-		System.out.println(root1.value);
+		System.out.println(root1.val);
 
 		if (root1.left != null)
 			return findNode(root1.left, root2);
 		else
 			return findNode(root1.right, root2);
 
+	}
+
+	public TreeNode findNode(TreeNode root1, TreeNode root2) {
+		if (root1 == null)
+			return null;
+
+		if (root1.val == root2.val) {
+			return root1;
+		}
+
+		System.out.println("root.val = " + root1.val);
+
+		TreeNode left = findNode(root1.left, root2);
+		TreeNode right = findNode(root1.right, root2);
+
+		if (left == null && right == null)
+			return null;
+		else
+			return left == null ? right : left;
 	}
 
 	public boolean checkTrees(TreeNode root1, TreeNode root2) {
@@ -49,7 +68,7 @@ public class CC_4_7_IsSubTree {
 		if (root1 == null)
 			return false;
 
-		if (root1.value != root2.value)
+		if (root1.val != root2.val)
 			return false;
 
 		return checkTrees(root1.left, root2.left) && checkTrees(root1.right, root2.right);
@@ -82,7 +101,7 @@ public class CC_4_7_IsSubTree {
 		if (node == null)
 			return null;
 
-		if (node.value == value)
+		if (node.val == value)
 			return node;
 
 		foundNode = find(node.left, value);

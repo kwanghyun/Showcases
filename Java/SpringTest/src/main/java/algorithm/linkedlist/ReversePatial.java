@@ -5,17 +5,17 @@ package algorithm.linkedlist;
  * example: 1->2->3->4->5, n=2. Output is 1->4->3->2->5*/
 public class ReversePatial {
 	//head, middle, tail, and combine later.
-	public Node reverse(Node head, int n) {
+	public ListNode reverse(ListNode head, int n) {
 
 		if (head == null)
 			return null;
-		Node returnNode = head;
-		Node temp = head;
-		Node current = head;
-		Node previous = null;
-		Node top = null;
-		Node bottom = null;
-		Node nextNode = null;
+		ListNode returnNode = head;
+		ListNode temp = head;
+		ListNode current = head;
+		ListNode previous = null;
+		ListNode top = null;
+		ListNode bottom = null;
+		ListNode nextNode = null;
 		int size = 0;
 		while (temp != null) {
 			temp = temp.next;

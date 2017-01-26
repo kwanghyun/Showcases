@@ -10,6 +10,20 @@ package algorithm.dynamic;
 public class MaximumProduct {
 
 	public int maxProduct(int[] arr) {
+		if (arr == null || arr.length == 0)
+			return 0;
+
+		int max = arr[0];
+		int curr_max = arr[0];
+
+		for (int i = 1; i < arr.length; i++) {
+			curr_max = Math.max(curr_max * arr[i], arr[i]);
+			max = Math.max(curr_max, max);
+		}
+		return max;
+	}
+
+	public int maxProductBF(int[] arr) {
 		int max = Integer.MIN_VALUE;
 
 		for (int i = 0; i < arr.length; i++) {
@@ -56,23 +70,11 @@ public class MaximumProduct {
 		return max;
 	}
 
-	public int maxProduct_(int[] arr) {
-		if (arr == null || arr.length == 0)
-			return 0;
-
-		int max = 0;
-
-		for (int i = 0; i < arr.length; i++) {
-			int tmp_min = Math.min(max * arr[i], arr[i]);
-			max = Math.max(tmp_min * arr[i], max * arr[i]);
-		}
-		return max;
-	}
-
 	public static void main(String[] args) {
 		MaximumProduct ob = new MaximumProduct();
-		int[] arr = { 2, 3, -2, 4 };
+		int[] arr = { 2, 3, -2, 4, 5, 7, -1 };
+		System.out.println(ob.maxProduct(arr));
 		System.out.println(ob.maxProductI(arr));
-		System.out.println(ob.maxProduct_(arr));
+		System.out.println(ob.maxProductBF(arr));
 	}
 }

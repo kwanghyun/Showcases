@@ -39,16 +39,13 @@ public class NQueenProblem {
 
 	public boolean findSolution(int board[][], int queens, int col) {
 		if (queens == 0) {
-			Utils.printMetrix(board);
 			return true;
 		}
-
-		if (col >= board[0].length)
-			return false;
 
 		for (int r = 0; r < board.length; r++) {
 			if (validPosition(board, r, col)) {
 				board[r][col] = 1;
+
 				if (findSolution(board, queens - 1, col + 1)) {
 					return true;
 				}
@@ -58,43 +55,55 @@ public class NQueenProblem {
 		return false;
 	}
 
+	public boolean findSolutionCS(int board[][], int queens, int col, int callstack) {
+		if (queens == 0) {
+			System.out.println(Utils.getCallStackPrefix(callstack) + " [DONE]");
+			Utils.printMetrix(board);
+			return true;
+		}
+
+		for (int r = 0; r < board.length; r++) {
+			if (validPosition(board, r, col)) {
+				System.out.println(Utils.getCallStackPrefix(callstack) + " (+) queen = " + queens + ", r = " + r
+						+ ", col = " + (col));
+				board[r][col] = 1;
+
+				if (findSolutionCS(board, queens - 1, col + 1, callstack + 1)) {
+					return true;
+				}
+				System.out.println(Utils.getCallStackPrefix(callstack) + " (-) -> queen = " + queens + ", r = " + r
+						+ ", col = " + (col));
+				board[r][col] = 0;
+			}
+		}
+		Utils.printCsEOL(callstack);
+		return false;
+	}
+
 	public boolean validPosition(int board[][], int row, int col) {
-		// Check left top
-		for (int r = row, c = col; r >= 0 && c >= 0; r--, c--) {
-			if (board[r][c] == 1)
-				return false;
-		}
-
-		// Check right top
-		for (int r = row, c = col; r >= 0 && c < board[0].length; r--, c++) {
-			if (board[r][c] == 1)
-				return false;
-		}
-
-		// Check top
-		for (int r = row; r >= 0; r--) {
-			if (board[r][col] == 1)
-				return false;
-		}
-
-		// Check left
-		for (int c = col; c >= 0; c--) {
+		int r, c;
+		/* Check this row on left side */
+		for (c = 0; c < col; c++)
 			if (board[row][c] == 1)
 				return false;
-		}
+
+		/* Check upper diagonal on left side */
+		for (r = row, c = col; r >= 0 && c >= 0; r--, c--)
+			if (board[r][c] == 1)
+				return false;
+
+		/* Check lower diagonal on left side */
+		for (r = row, c = col; c >= 0 && r < nQueens; r++, c--)
+			if (board[r][c] == 1)
+				return false;
 
 		return true;
 	}
 
 	final int nQueens = 4;
 
-	/*
-	 * A recursive utility function to solve N Queen problem
-	 */
 	boolean placeQueens(int board[][], int idx) {
-		/*
-		 * base case: If all queens are placed then return true
-		 */
+
 		if (idx >= nQueens)
 			return true;
 
@@ -188,7 +197,7 @@ public class NQueenProblem {
 		System.out.println("---------------------------------");
 		int board[][] = { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
 		int queens = 4;
-		Queen.findSolution(board, queens, 0);
+		Queen.findSolutionCS(board, queens, 0, 0);
 
 	}
 }

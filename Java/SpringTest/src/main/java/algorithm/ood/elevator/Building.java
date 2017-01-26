@@ -7,12 +7,37 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
 /*
  * Controller, intentionally not add abstraction.
  */
+class Node implements Comparable<Node> {
+	char id;
+	int weight;
+
+	public Node(char id, int weight) {
+		this.id = id;
+		this.weight = weight;
+	}
+
+	@Override
+	public int compareTo(Node o) {
+		return this.weight - o.weight;
+	}
+
+	@Override
+	public String toString() {
+		return "Node [id=" + id + ", weight=" + weight + "]";
+	}
+
+	public boolean equals(Node o) {
+		return this.id == o.id;
+	}
+}
+
 public class Building {
 
 	int maxFloor;
@@ -28,27 +53,22 @@ public class Building {
 	 * In data structure, we could use CompareTo, to array is sorted by floor as
 	 * a second index
 	 * 
-	 * 1. How many data?(space complexity)
-	 * 2. Need to be sorted?
-	 * 3. Read performance
-	 * 4. Write performance
+	 * 1. How many data?(space complexity) 2. Need to be sorted? 3. Read
+	 * performance 4. Write performance
 	 */
-		
-	Set<Elevator> elevators = new TreeSet<Elevator>(
-			new Comparator<Elevator>() {
-				public int compare(Elevator elev1, Elevator elev2) {
-					return elev1.floor - elev2.floor;
-				}
-			});
 
-	Map<Elevator, String> sortedMap = new TreeMap<Elevator, String>(
-			new Comparator<Elevator>() {
-				public int compare(Elevator elev1, Elevator elev2) {
-					return elev1.floor - elev2.floor;
-				}
-			});
-	
-	
+	Set<Elevator> elevators = new TreeSet<Elevator>(new Comparator<Elevator>() {
+		public int compare(Elevator elev1, Elevator elev2) {
+			return elev1.floor - elev2.floor;
+		}
+	});
+
+	Map<Elevator, String> sortedMap = new TreeMap<Elevator, String>(new Comparator<Elevator>() {
+		public int compare(Elevator elev1, Elevator elev2) {
+			return elev1.floor - elev2.floor;
+		}
+	});
+
 	public Elevator findNearestElevator(int floor) {
 
 		Elevator nearOne = null;
@@ -93,4 +113,20 @@ public class Building {
 		this.elevators = elevators;
 	}
 
+	public static void main(String[] args) {
+		TreeSet<Node> set = new TreeSet<>();
+		set.add(new Node('A', 2));
+		TreeMap<Node, Integer> map = new TreeMap<>();
+
+		map.put(new Node('A', 2), 0);
+		map.put(new Node('B', 3), 0);
+		map.put(new Node('C', 4), 0);
+		map.put(new Node('D', 5), 0);
+		map.put(new Node('E', 6), 0);
+		System.out.println(map);
+		System.out.println(map.firstKey());
+		System.out.println(map.lastKey());
+		SortedMap<Node, Integer> tail = map.tailMap(new Node('C', 4));
+		System.out.println(tail.firstKey());
+	}
 }

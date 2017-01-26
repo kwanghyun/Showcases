@@ -3,6 +3,8 @@ package algorithm.recursion;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import algorithm.Utils;
+
 /*
  * [1] printComb(abc, a , 1)
  * [1] printComb(abc, ab , 2)
@@ -32,6 +34,20 @@ public class AddSpaceToAllCombination {
 		}
 	}
 
+	private void printCombCS(String str, String part, int idx, int callstack) {
+
+		if (str.length() == idx) {
+			Utils.printCS(callstack, "[DONE] part = " + part);
+		} else {
+			Utils.printCS(callstack, "part = " + part + ", idx = " + idx);
+			printCombCS(str, part + str.charAt(idx), idx + 1, callstack + 1);
+			Utils.printCS(callstack, "part = " + part + ", idx = " + idx);
+			printCombCS(str, part + "_" + str.charAt(idx), idx + 1, callstack + 1);
+			Utils.printCS(callstack, "part = " + part + ", idx = " + idx);
+		}
+		Utils.printCsEOF(callstack);
+	}
+
 	private void printCombI(String str, String part, int idx) {
 
 		if (str.length() == idx) {
@@ -53,5 +69,8 @@ public class AddSpaceToAllCombination {
 		obj.printComb("ABC");
 		System.out.println("--------------------printCombI------------------");
 		obj.printCombI("ABC", "A", 1);
+		System.out.println("--------------------printCombCS------------------");
+		obj.printCombCS("ABC", "A", 1, 0);
+
 	}
 }

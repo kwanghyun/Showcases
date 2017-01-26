@@ -6,14 +6,14 @@ package algorithm.linkedlist;
 //4 -> 3 -> 2 -> 1
 public class Stack {
 	private int total;
-	private Node first;
+	private ListNode first;
 
 	public Stack() {
 	}
 
 	public void push(int value) {
-		Node current = first;
-		first = new Node(value);
+		ListNode current = first;
+		first = new ListNode(value);
 		first.val = value;
 		first.next = current;
 		total++;
@@ -31,7 +31,7 @@ public class Stack {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		Node tmp = first;
+		ListNode tmp = first;
 		while (tmp != null) {
 			sb.append(tmp.val).append(", ");
 			tmp = tmp.next;

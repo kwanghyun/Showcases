@@ -11,21 +11,21 @@ public class CloneRandomLinkedList {
 	 * Return a deep copy of the list.
 	 */
 
-	public Node clone(Node head) {
+	public ListNode clone(ListNode head) {
 		if (head == null)
 			return null;
 		
-		HashMap<Node, Node> map = new HashMap<>();
-		Node clone_h = new Node(head.val);
+		HashMap<ListNode, ListNode> map = new HashMap<>();
+		ListNode clone_h = new ListNode(head.val);
 
-		Node origin_p = head;
-		Node clone_p = clone_h;
+		ListNode origin_p = head;
+		ListNode clone_p = clone_h;
 		
 		map.put(head, clone_h);
 		origin_p = origin_p.next;
 		
 		while (origin_p != null) {
-			Node newNode = new Node(origin_p.val);
+			ListNode newNode = new ListNode(origin_p.val);
 			map.put(origin_p, newNode);
 			clone_p.next = newNode;
 			clone_p = newNode;
@@ -49,11 +49,11 @@ public class CloneRandomLinkedList {
 
 	public static void main(String args[]) {
 		CloneRandomLinkedList obj = new CloneRandomLinkedList();
-		Node node1 = new Node(1);
-		Node node2 = new Node(2);
-		Node node3 = new Node(3);
-		Node node4 = new Node(4);
-		Node node5 = new Node(5);
+		ListNode node1 = new ListNode(1);
+		ListNode node2 = new ListNode(2);
+		ListNode node3 = new ListNode(3);
+		ListNode node4 = new ListNode(4);
+		ListNode node5 = new ListNode(5);
 
 		node1.next = node2;
 		node1.rnd = node3;
@@ -66,14 +66,14 @@ public class CloneRandomLinkedList {
 		node5.next = null;
 		node5.rnd = null;
 
-		Node originHead = node1;
-		Node cloneHead = obj.clone(originHead);
+		ListNode originHead = node1;
+		ListNode cloneHead = obj.clone(originHead);
 		System.out.println("------------------------------");
 		obj.check(originHead, cloneHead);
 
 	}
 
-	public void check(Node origin, Node clone) {
+	public void check(ListNode origin, ListNode clone) {
 
 		while (origin != null) {
 

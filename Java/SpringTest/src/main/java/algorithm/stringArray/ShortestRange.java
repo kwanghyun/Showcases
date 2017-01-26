@@ -118,6 +118,23 @@ public class ShortestRange {
 
 	}
 
+	public void sinkDownI(int k) {
+
+		int smallest = k;
+		// check which is smaller child , 2k or 2k+1.
+		if (2 * k < position && Heap[smallest].data > Heap[2 * k].data) {
+			smallest = 2 * k;
+		}
+		if (2 * k + 1 < position && Heap[smallest].data > Heap[2 * k + 1].data) {
+			smallest = 2 * k + 1;
+		}
+		if (smallest != k) { // if any if the child is small, swap
+			swap(k, smallest);
+			sinkDown(smallest); // call recursively
+		}
+
+	}
+
 	public void swap(int a, int b) {
 		// System.out.println("swappinh" + mH[a] + " and " + mH[b]);
 		HeapNode temp = Heap[a];
@@ -136,8 +153,6 @@ public class ShortestRange {
 			pos = pos / 2; // make pos to its parent for next iteration.
 		}
 	}
-
-
 
 	public static void main(String[] args) {
 		int[][] A = new int[3][];

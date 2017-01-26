@@ -10,6 +10,16 @@ import algorithm.utils.TreeUtils;
  */
 public class SerializeDeserialize {
 
+	public String serialize(TreeNode root) {
+		if (root == null)
+			return "";
+
+		String result = root.val + " ";
+		result = result + serialize(root.left);
+		result = result + serialize(root.right);
+		return result;
+	}
+
 	public TreeNode buildBstFromPreorder(int[] preorder) {
 		return buildBstFromPreorder(preorder, 0, preorder.length - 1);
 	}
@@ -44,8 +54,8 @@ public class SerializeDeserialize {
 		if ((preorder[currIndex[0]] > min) && (preorder[currIndex[0]] < max)) {
 			root = new TreeNode(preorder[currIndex[0]]);
 			currIndex[0] += 1;
-			root.left = deserializeArrayOptimized(preorder, currIndex, min, root.value);
-			root.right = deserializeArrayOptimized(preorder, currIndex, root.value, max);
+			root.left = deserializeArrayOptimized(preorder, currIndex, min, root.val);
+			root.right = deserializeArrayOptimized(preorder, currIndex, root.val, max);
 		}
 
 		return root;
@@ -66,7 +76,7 @@ public class SerializeDeserialize {
 
 		TreeNode root = new TreeNode(preorder[low]);
 
-		int divIndex = findDivision(preorder, root.value, low + 1, high);
+		int divIndex = findDivision(preorder, root.val, low + 1, high);
 
 		root.left = deserializeArray(preorder, low + 1, divIndex - 1);
 		root.right = deserializeArray(preorder, divIndex, high);
@@ -88,6 +98,9 @@ public class SerializeDeserialize {
 
 		TreeNode rootO = solution.deserializeArrayOptimized(preorder, currIndex, min, max);
 		TreeUtils.drawTree(rootO);
+
+		System.out.print("Serialized Result : ");
+		System.out.println(solution.serialize(rootO));
 
 		TreeNode root = solution.buildBstFromPreorder(preorder, 0, preorder.length - 1);
 		TreeUtils.drawTree(root);

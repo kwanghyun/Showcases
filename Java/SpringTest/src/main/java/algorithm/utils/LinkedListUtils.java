@@ -2,48 +2,70 @@ package algorithm.utils;
 
 import java.util.List;
 
-import algorithm.linkedlist.Node;
+import algorithm.linkedlist.ListNode;
 
 public class LinkedListUtils {
 
-	public static Node generateOrderedList(int count) {
-		Node fakeNode = new Node(0);
-		Node p = fakeNode;
+	public static ListNode generateOrderedList(int count) {
+		ListNode fakeNode = new ListNode(0);
+		ListNode p = fakeNode;
 		for (int i = 0; i < count; i++) {
-			Node n = new Node(i + 1);
+			ListNode n = new ListNode(i + 1);
 			p.next = n;
 			p = n;
 		}
 		return fakeNode.next;
 	}
 
-	public static Node generateReverseOrderedList(int count) {
-		Node fakeNode = new Node(0);
-		Node p = fakeNode;
+	public static ListNode generateReverseOrderedList(int count) {
+		ListNode fakeNode = new ListNode(0);
+		ListNode p = fakeNode;
 		for (int i = count; i > 0; i--) {
-			Node n = new Node(i);
+			ListNode n = new ListNode(i);
 			p.next = n;
 			p = n;
 		}
 		return fakeNode.next;
 	}
 
-	public static Node generateListFromArray(int[] arr) {
-		Node fakeHeader = new Node(100);
-		Node p = fakeHeader;
+	public static int[] convertStrToArr(String str) {
+		str.replace("[", "").replace("]", "");
+		String[] strArr = str.split(",");
+		int[] arr = new int[strArr.length];
+		for (int i = 0; i < strArr.length; i++) {
+			arr[i] = Integer.parseInt(strArr[i]);
+		}
+		return arr;
+	}
+
+	public static ListNode generateListFromString(String str) {
+		int[] arr = convertStrToArr(str);
+		ListNode fakeHeader = new ListNode(100);
+		ListNode p = fakeHeader;
 		for (int val : arr) {
-			Node t = new Node(val);
+			ListNode t = new ListNode(val);
 			p.next = t;
 			p = t;
 		}
 		return fakeHeader.next;
 	}
 
-	public static Node generateListFromRange(int start, int end) {
-		Node fakeHeader = new Node(100);
-		Node p = fakeHeader;
+	public static ListNode generateListFromArray(int[] arr) {
+		ListNode fakeHeader = new ListNode(100);
+		ListNode p = fakeHeader;
+		for (int val : arr) {
+			ListNode t = new ListNode(val);
+			p.next = t;
+			p = t;
+		}
+		return fakeHeader.next;
+	}
+
+	public static ListNode generateListFromRange(int start, int end) {
+		ListNode fakeHeader = new ListNode(100);
+		ListNode p = fakeHeader;
 		while (start <= end) {
-			Node t = new Node(start);
+			ListNode t = new ListNode(start);
 			p.next = t;
 			p = t;
 			start++;
@@ -51,13 +73,13 @@ public class LinkedListUtils {
 		return fakeHeader.next;
 	}
 
-	public static Node generateUnSortedList() {
-		Node node1 = new Node(1);
-		Node node2 = new Node(2);
-		Node node3 = new Node(3);
-		Node node4 = new Node(4);
-		Node node5 = new Node(5);
-		Node node6 = new Node(6);
+	public static ListNode generateUnSortedList() {
+		ListNode node1 = new ListNode(1);
+		ListNode node2 = new ListNode(2);
+		ListNode node3 = new ListNode(3);
+		ListNode node4 = new ListNode(4);
+		ListNode node5 = new ListNode(5);
+		ListNode node6 = new ListNode(6);
 		node1.next = node4;
 		node4.next = node3;
 		node3.next = node6;
@@ -68,16 +90,16 @@ public class LinkedListUtils {
 		return node1;
 	}
 
-	public static void printNodes(Node node) {
-		Node p = node;
+	public static void printNodes(ListNode node) {
+		ListNode p = node;
 		while (p != null) {
 			System.out.println(p);
 			p = p.next;
 		}
 	}
 
-	public static void drawList(Node node) {
-		Node p = node;
+	public static void drawList(ListNode node) {
+		ListNode p = node;
 		while (p != null) {
 			if (p.next == null) {
 				System.out.print(p.val);

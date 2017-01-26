@@ -6,8 +6,8 @@ import algorithm.utils.TreeUtils;
 
 public class BSTtoDoubleLinkedList {
 
-	Node head;
-	Node tail;
+	ListNode head;
+	ListNode tail;
 
 	public void convert(TreeNode root) {
 		if (root == null)
@@ -15,7 +15,7 @@ public class BSTtoDoubleLinkedList {
 
 		convert(root.left);
 
-		Node newNode = new Node(root.value);
+		ListNode newNode = new ListNode(root.val);
 
 		if (tail == null) {
 			tail = newNode;

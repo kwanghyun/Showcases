@@ -29,7 +29,7 @@ public class InOrder {
 				// then let p point to the right
 			} else {
 				TreeNode temp = stack.pop();
-				list.add(temp.value);
+				list.add(temp.val);
 				pointer = temp.right;
 			}
 		}

@@ -68,18 +68,19 @@ public class LongestIncreasingSubsequence {
 	 * DP way of solving LIS
 	 */
 	public int longestSubsequenceWithActualSolution(int arr[]) {
-		int T[] = new int[arr.length];
+		int dp[] = new int[arr.length];
 		int actualSolution[] = new int[arr.length];
+		ArrayList<Integer> list = new ArrayList<>();
 		for (int i = 0; i < arr.length; i++) {
-			T[i] = 1;
+			dp[i] = 1;
 			actualSolution[i] = i;
 		}
 
 		for (int i = 1; i < arr.length; i++) {
 			for (int j = 0; j < i; j++) {
 				if (arr[i] > arr[j]) {
-					if (T[j] + 1 > T[i]) {
-						T[i] = T[j] + 1;
+					if (dp[j] + 1 > dp[i]) {
+						dp[i] = dp[j] + 1;
 						// set the actualSolution to point to guy before me
 						actualSolution[i] = j;
 					}
@@ -89,8 +90,8 @@ public class LongestIncreasingSubsequence {
 
 		// find the index of max number in T
 		int maxIndex = 0;
-		for (int i = 0; i < T.length; i++) {
-			if (T[i] > T[maxIndex]) {
+		for (int i = 0; i < dp.length; i++) {
+			if (dp[i] > dp[maxIndex]) {
 				maxIndex = i;
 			}
 		}
@@ -105,6 +106,59 @@ public class LongestIncreasingSubsequence {
 		} while (t != newT);
 		System.out.println();
 
-		return T[maxIndex];
+		return dp[maxIndex];
+	}
+
+	public static void LIS(int X[]) {
+		int parent[] = new int[X.length]; // Tracking the predecessors/parents
+											// of elements of each subsequence.
+		int increasingSub[] = new int[X.length + 1]; // Tracking ends of each
+														// increasing
+														// subsequence.
+		int length = 0; // Length of longest subsequence.
+
+		for (int i = 0; i < X.length; i++) {
+			// Binary search
+			int low = 1;
+			int high = length;
+			while (low <= high) {
+				int mid = (int) Math.ceil((low + high) / 2);
+
+				if (X[increasingSub[mid]] < X[i])
+					low = mid + 1;
+				else
+					high = mid - 1;
+			}
+
+			int pos = low;
+			// update parent/previous element for LIS
+			parent[i] = increasingSub[pos - 1];
+			// Replace or append
+			increasingSub[pos] = i;
+
+			// Update the length of the longest subsequence.
+			if (pos > length)
+				length = pos;
+		}
+
+		// Generate LIS by traversing parent array
+		int LIS[] = new int[length];
+		int k = increasingSub[length];
+		for (int j = length - 1; j >= 0; j--) {
+			LIS[j] = X[k];
+			k = parent[k];
+		}
+
+		for (int i = 0; i < length; i++) {
+			System.out.println(LIS[i]);
+		}
+
+	}
+
+	public static void main(String[] args) {
+		LongestIncreasingSubsequence ob = new LongestIncreasingSubsequence();
+		int[] arr = { 200, 9, 2, 5, 3, 7, 101, 18 };
+		System.out.println(ob.lengthOfLIS(arr));
+		System.out.println(ob.longestSubsequenceWithActualSolution(arr));
 	}
 }

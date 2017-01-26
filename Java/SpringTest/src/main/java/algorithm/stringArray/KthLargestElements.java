@@ -11,11 +11,14 @@ import java.util.PriorityQueue;
  * 
  * Note: You may assume k is always valid, 1 ≤ k ≤ array's length.
  * 
- * 
+ * Time Complexity: The worst case time complexity of the above solution is
+ * still O(n2). In worst case, the randomized function may always pick a
+ * corner element. The expected time complexity of above randomized
+ * QuickSelect is Θ(n), random number generator is equally likely
+ * to generate any number in the input range.
  */
-public class KthLargestElements {
 
-	/* Time is O(nlog(n)) */
+public class KthLargestElements {
 	public int findKthLargestI(int[] nums, int k) {
 		Arrays.sort(nums);
 		return nums[nums.length - k];

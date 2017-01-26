@@ -54,10 +54,12 @@ public class CC_8_4_Permutation {
 
 	}
 
+	int idx = 1;
+
 	private void permutationIII(List<Character> list, String str) {
 		int strLen = str.length();
 		if (strLen == 0) {
-			System.out.println(list);
+			System.out.println((idx++) + " : " + list);
 			return;
 		}
 
@@ -83,7 +85,7 @@ public class CC_8_4_Permutation {
 		List<Character> list = new ArrayList<>();
 		permutationII(str, list, 0);
 	}
-	
+
 	public void permutationIII(String str) {
 		List<Character> list = new ArrayList<>();
 		permutationIII(list, str);
@@ -91,7 +93,7 @@ public class CC_8_4_Permutation {
 
 	public static void main(String[] args) {
 
-		String targetStr = "123";
+		String targetStr = "1234";
 		// String targetStr = "hat";
 
 		CC_8_4_Permutation p = new CC_8_4_Permutation();

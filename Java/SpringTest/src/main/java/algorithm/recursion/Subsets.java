@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import algorithm.Utils;
+
 /*
  * Given a set of distinct integers, S, return all possible subsets.
  * 
@@ -35,6 +37,19 @@ import java.util.List;
  * */
 public class Subsets {
 
+	public void powerSet(int[] arr) {
+		int n = arr.length;
+
+		for (int i = 0; i < Math.pow(2, n); i++) {
+			for (int j = 0; j < n; j++) {
+				if ((i >> j & 1) == 1) {
+					System.out.print(arr[j]);
+				}
+			}
+			System.out.println("");
+		}
+	}
+
 	public ArrayList<ArrayList<Integer>> subsets(int[] arr) {
 		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
 		ArrayList<Integer> list = new ArrayList<>();
@@ -44,12 +59,35 @@ public class Subsets {
 		return result;
 	}
 
+	public ArrayList<ArrayList<Integer>> subsetsCS(int[] arr) {
+		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+		ArrayList<Integer> list = new ArrayList<>();
+
+		subsetsCS(arr, result, list, 0, 0);
+		result.add(new ArrayList<Integer>());
+		return result;
+	}
+
+	public void subsetsCS(int[] arr, ArrayList<ArrayList<Integer>> result, ArrayList<Integer> list, int idx,
+			int callstack) {
+
+		for (int i = idx; i < arr.length; i++) {
+			list.add(arr[i]);
+			result.add(new ArrayList<Integer>(list));
+			Utils.printCS(callstack, "subset() : i = " + i + ", list = " + list);
+			subsetsCS(arr, result, list, i + 1, callstack + 1);
+			list.remove(list.size() - 1);
+			Utils.printCS(callstack, "backtrack : i = " + i + ", list = " + list);
+		}
+		Utils.printCS(callstack, " ---------- EOL ------------ ");
+	}
+
 	public void subsets(int[] arr, ArrayList<ArrayList<Integer>> result, ArrayList<Integer> list, int idx) {
 
 		for (int i = idx; i < arr.length; i++) {
 			list.add(arr[i]);
 			result.add(new ArrayList<Integer>(list));
-			subsets(arr, result, list, ++idx);
+			subsets(arr, result, list, i + 1);
 			list.remove(list.size() - 1);
 		}
 	}
@@ -156,6 +194,8 @@ public class Subsets {
 		Subsets ob = new Subsets();
 		int[] arr = { 1, 2, 3 };
 		// int[] arr = { 1, 2, 3, 4 };
+		System.out.println("-------------powerSet-----------------");
+		ob.powerSet(arr);
 		System.out.println("-------------subsets-----------------");
 		System.out.println(ob.subsets(arr));
 		System.out.println("-------------subsetsI-----------------");
@@ -164,5 +204,7 @@ public class Subsets {
 		System.out.println(ob.subsetsII(arr));
 		System.out.println("-------------subsetsIII-----------------");
 		System.out.println(ob.subsetsIII(arr));
+		System.out.println("-------------subsetsCS-----------------");
+		System.out.println(ob.subsetsCS(arr));
 	}
 }

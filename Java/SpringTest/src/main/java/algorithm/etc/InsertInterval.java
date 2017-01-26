@@ -2,6 +2,8 @@ package algorithm.etc;
 
 import java.util.ArrayList;
 
+import algorithm.trees.Interval;
+
 /*Problem:
  Given a set of non-overlapping & sorted intervals, insert a new interval into the intervals
  (merge if necessary).
@@ -25,8 +27,7 @@ import java.util.ArrayList;
  */
 public class InsertInterval {
 
-	public ArrayList<Interval> insert(ArrayList<Interval> intervals,
-			Interval newInterval) {
+	public ArrayList<Interval> insert(ArrayList<Interval> intervals, Interval newInterval) {
 
 		ArrayList<Interval> result = new ArrayList<Interval>();
 
@@ -38,12 +39,10 @@ public class InsertInterval {
 				result.add(newInterval);
 				newInterval = interval;
 
-			} else if (interval.end >= newInterval.start
-					|| interval.start <= newInterval.end) {
+			} else if (interval.end >= newInterval.start || interval.start <= newInterval.end) {
 
-				newInterval = new Interval(Math.min(interval.start,
-						newInterval.start), Math.max(newInterval.end,
-						interval.end));
+				newInterval = new Interval(Math.min(interval.start, newInterval.start),
+						Math.max(newInterval.end, interval.end));
 			}
 		}
 		result.add(newInterval);

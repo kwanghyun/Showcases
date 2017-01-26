@@ -38,7 +38,7 @@ public class CuttingRod {
 	int cutRod(int price[], int n) {
 		if (n <= 0)
 			return 0;
-		int max_val = Integer.MAX_VALUE;
+		int max_val = 0;
 
 		// Recursively cut the rod in different pieces and compare different
 		// configurations
@@ -77,10 +77,10 @@ public class CuttingRod {
 		CuttingRod cr = new CuttingRod();
 		int[] price = { 3, 5, 8, 9, 10, 20, 22, 25 };
 		long t1 = System.currentTimeMillis();
-		 cr.cutRod(price, 8);
-		// int r = cr.cutRodDP(price, 8);
+		System.out.println(cr.cutRod(price, 8));
+		System.out.println(cr.cutRodDP(price, 8));
 		long t2 = System.currentTimeMillis();
 		// System.out.println(r);
-		System.out.println(t2 - t1);
+//		System.out.println(t2 - t1);
 	}
 }

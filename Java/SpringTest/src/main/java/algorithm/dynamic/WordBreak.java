@@ -1,7 +1,10 @@
 package algorithm.dynamic;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
+import algorithm.Utils;
 
 /*
  * Given a string s and a dictionary of words dict, determine if s can be
@@ -13,8 +16,14 @@ import java.util.Set;
  * discussion can always start from that though.
  */
 public class WordBreak {
+
+	// Time is O(n^2) and exceeds the time limit.
 	public boolean wordBreak(String string, HashSet<String> dict) {
 		return dfs(string, dict);
+	}
+
+	public boolean wordBreakDP(String string, HashSet<String> dict) {
+		return wordBreakDp(string, dict);
 	}
 
 	public boolean dfs(String str, HashSet<String> dict) {
@@ -50,7 +59,30 @@ public class WordBreak {
 		return false;
 	}
 
-	public String breakWordDP(String word, Set<String> dict) {
+	public boolean wordBreakDp(String s, Set<String> wordDict) {
+		int[] pos = new int[s.length() + 1];
+
+		Arrays.fill(pos, -1);
+
+		pos[0] = 0;
+
+		for (int i = 0; i < s.length(); i++) {
+			if (pos[i] != -1) {
+				for (int j = i + 1; j <= s.length(); j++) {
+					String sub = s.substring(i, j);
+					System.out.println(sub);
+					if (wordDict.contains(sub)) {
+						pos[j] = i;
+					}
+				}
+				Utils.printArray(pos);
+			}
+		}
+
+		return pos[s.length()] != -1;
+	}
+
+	public String breakWordDPI(String word, Set<String> dict) {
 		int dp[][] = new int[word.length()][word.length()];
 
 		for (int i = 0; i < dp.length; i++) {
@@ -109,16 +141,18 @@ public class WordBreak {
 		HashSet<String> dict = new HashSet<String>();
 		dict.add("leet");
 		dict.add("code");
-		dict.add("le");
-		dict.add("co");
-		dict.add("de");
+		// dict.add("le");
+		// dict.add("co");
+		// dict.add("de");
 		dict.add("none");
 		WordBreak obj = new WordBreak();
 		System.out.println("------------------wordBreak-----------------");
 		System.out.println(obj.wordBreak("leetcode", dict));
+		System.out.println("------------------wordBreakDP-----------------");
+		System.out.println(obj.wordBreakDP("leetcode", dict));
 		System.out.println("------------------wordBreakI----------------");
 		System.out.println(obj.wordBreakI("leetcode", dict));
 		System.out.println("------------------breakWordDP----------------");
-		System.out.println(obj.breakWordDP("leetcode", dict));
+		System.out.println(obj.breakWordDPI("leetcode", dict));
 	}
 }

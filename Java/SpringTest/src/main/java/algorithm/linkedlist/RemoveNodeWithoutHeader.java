@@ -9,7 +9,7 @@ package algorithm.linkedlist;
  * calling your function.
  */
 public class RemoveNodeWithoutHeader {
-	public void deleteNode(Node node) {
+	public void deleteNode(ListNode node) {
 		node.val = node.next.val;
 		node.next = node.next.next;
 	}

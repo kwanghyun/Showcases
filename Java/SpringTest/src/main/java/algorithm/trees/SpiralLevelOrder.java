@@ -38,7 +38,7 @@ public class SpiralLevelOrder {
 				while (!stackEven.isEmpty()) {
 					TreeNode currentNode = stackEven.pop();
 
-					System.out.print(" " + currentNode.value);
+					System.out.print(" " + currentNode.val);
 
 					// first push the right child
 					if (currentNode.right != null) {
@@ -54,7 +54,7 @@ public class SpiralLevelOrder {
 				while (!stackOdd.isEmpty()) {
 					TreeNode currentNode = stackOdd.pop();
 
-					System.out.print(" " + currentNode.value);
+					System.out.print(" " + currentNode.val);
 
 					// first push the left child
 					if (currentNode.left != null) {

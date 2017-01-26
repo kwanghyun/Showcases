@@ -19,12 +19,12 @@ public class FindIntersection {
 	public class Solution {
 		
 			
-		public Node getIntersectionNode(Node head1, Node head2) {
+		public ListNode getIntersectionNode(ListNode head1, ListNode head2) {
 			
 			int len1 = 0;
 			int len2 = 0;
 			
-			Node p1 = head1, p2 = head2;
+			ListNode p1 = head1, p2 = head2;
 			
 			if (p1 == null || p2 == null)
 				return null;

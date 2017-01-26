@@ -5,17 +5,17 @@ package algorithm.linkedlist;
 public class Merge2SortedLinkedListToDoublyLinkedList {
 	//	Merge tow sorted LinkedLists to a doubly LinkedList
 	//	ASCENDING
-	public Node merge(Node head1, Node head2){
-		Node resultHeader = null;
-		Node newNode = null;
+	public ListNode merge(ListNode head1, ListNode head2){
+		ListNode resultHeader = null;
+		ListNode newNode = null;
 	//		If one of node is null, the value reference of the node 
 	//		will throw Nullpoint exception.
 		while(head1 != null && head2 != null){
 			if(head1.val < head2.val){
-				newNode = new Node(head1.val);
+				newNode = new ListNode(head1.val);
 				head1 = head1.next;
 			}else{
-				newNode = new Node(head2.val);
+				newNode = new ListNode(head2.val);
 				head2 = head2.next;
 			}
 			
@@ -29,7 +29,7 @@ public class Merge2SortedLinkedListToDoublyLinkedList {
 		}
 		
 		while(head1 != null){
-			newNode = new Node(head1.val);
+			newNode = new ListNode(head1.val);
 			head1 = head1.next;
 			newNode.next = resultHeader;
 			resultHeader.prev = newNode;
@@ -37,7 +37,7 @@ public class Merge2SortedLinkedListToDoublyLinkedList {
 		}
 	
 		while(head2 != null){
-			newNode = new Node(head2.val);
+			newNode = new ListNode(head2.val);
 			head2 = head2.next;
 			newNode.next = resultHeader;
 			resultHeader.prev = newNode;
@@ -47,13 +47,13 @@ public class Merge2SortedLinkedListToDoublyLinkedList {
 		return resultHeader;
 	}
 
-	public Node generateFirstList(){
-		Node node1 = new Node(1);
-		Node node3 = new Node(3);
-		Node node5 = new Node(5);
-		Node node7 = new Node(7);
-		Node node9 = new Node(9);
-		Node node11 = new Node(11);
+	public ListNode generateFirstList(){
+		ListNode node1 = new ListNode(1);
+		ListNode node3 = new ListNode(3);
+		ListNode node5 = new ListNode(5);
+		ListNode node7 = new ListNode(7);
+		ListNode node9 = new ListNode(9);
+		ListNode node11 = new ListNode(11);
 		node1.next = node3;
 		node3.next = node5;
 		node5.next = node7;
@@ -63,12 +63,12 @@ public class Merge2SortedLinkedListToDoublyLinkedList {
 		return node1;
 	}
 	
-	public Node generateSecondList(){
-		Node node2 = new Node(2);
-		Node node4 = new Node(4);
-		Node node6 = new Node(6);
-		Node node8 = new Node(8);
-		Node node10 = new Node(10);
+	public ListNode generateSecondList(){
+		ListNode node2 = new ListNode(2);
+		ListNode node4 = new ListNode(4);
+		ListNode node6 = new ListNode(6);
+		ListNode node8 = new ListNode(8);
+		ListNode node10 = new ListNode(10);
 		node2.next = node4;
 		node4.next = node6;
 		node6.next = node8;
@@ -77,9 +77,9 @@ public class Merge2SortedLinkedListToDoublyLinkedList {
 		return node2;
 	}
 	
-	public void printAllNode(Node head){
+	public void printAllNode(ListNode head){
 
-		Node currentNode = head;
+		ListNode currentNode = head;
 		while(currentNode != null){
 			System.out.print("[" + currentNode.val + "] ");
 			currentNode = currentNode.next;

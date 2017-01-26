@@ -12,12 +12,12 @@ package algorithm.linkedlist;
  */
 public class RemoveDuplicatedNode {
 
-	public Node deleteDuplicates(Node head) {
+	public ListNode deleteDuplicates(ListNode head) {
 		if (head == null || head.next == null)
 			return head;
 
-		Node prev = head;
-		Node curr = head.next;
+		ListNode prev = head;
+		ListNode curr = head.next;
 
 		while (curr != null) {
 			if (curr.val == prev.val) {
@@ -31,11 +31,11 @@ public class RemoveDuplicatedNode {
 		return head;
 	}
 
-	public Node deleteDuplicates2(Node head) {
+	public ListNode deleteDuplicates2(ListNode head) {
 		if (head == null || head.next == null)
 			return head;
 		
-		Node curr = head;
+		ListNode curr = head;
 		while (curr != null && curr.next != null) {
 			if (curr.val == curr.next.val) {
 				curr.next = curr.next.next;
@@ -46,9 +46,9 @@ public class RemoveDuplicatedNode {
 		return head;
 	}
 
-	public String toString(Node root) {
+	public String toString(ListNode root) {
 		StringBuilder sb = new StringBuilder();
-		Node tmp = root;
+		ListNode tmp = root;
 		while (tmp != null) {
 			sb.append(tmp.ch).append(", ");
 			tmp = tmp.next;

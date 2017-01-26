@@ -24,10 +24,10 @@ public class ReverseLinkedListTest {
 
 	@Test
 	public void testOK1() {
-		Node node1 = new Node(1);
+		ListNode node1 = new ListNode(1);
 		node1.next = null;
 		
-		Node p = obj.reverseList2(node1);
+		ListNode p = obj.reverseList2(node1);
 		List<Integer> list = new ArrayList<Integer>();
 		while (p != null) {
 			list.add(p.val);
@@ -41,12 +41,12 @@ public class ReverseLinkedListTest {
 
 	@Test
 	public void testOK2() {
-		Node node1 = new Node(1);
-		Node node2 = new Node(2);
+		ListNode node1 = new ListNode(1);
+		ListNode node2 = new ListNode(2);
 		node1.next = node2;
 		node2.next = null;
 
-		Node p = obj.reverseList2(node1);
+		ListNode p = obj.reverseList2(node1);
 		List<Integer> list = new ArrayList<Integer>();
 		while (p != null) {
 			list.add(p.val);
@@ -61,11 +61,11 @@ public class ReverseLinkedListTest {
 	@Test
 	public void testOK3() {
 
-		Node node1 = new Node(1);
-		Node node2 = new Node(2);
-		Node node3 = new Node(3);
-		Node node4 = new Node(4);
-		Node node5 = new Node(5);
+		ListNode node1 = new ListNode(1);
+		ListNode node2 = new ListNode(2);
+		ListNode node3 = new ListNode(3);
+		ListNode node4 = new ListNode(4);
+		ListNode node5 = new ListNode(5);
 		node1.next = node2;
 		node2.next = node3;
 		node3.next = node4;
@@ -73,7 +73,7 @@ public class ReverseLinkedListTest {
 		node5.next = null;
 
 		
-		Node p = obj.reverseList2(node1);
+		ListNode p = obj.reverseList2(node1);
 		List<Integer> list = new ArrayList<Integer>();
 		while (p != null) {
 			list.add(p.val);

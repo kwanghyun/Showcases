@@ -1,6 +1,6 @@
 package algorithm.trees;
 
-import java.util.Stack;
+import java.util.*;
 
 import algorithm.utils.TreeUtils;
 
@@ -19,19 +19,25 @@ import algorithm.utils.TreeUtils;
  * 
  */
 public class ZIgZagLevelOrder {
-	public void spiralOrZigzagLevelOrder(TreeNode root) {
+
+	public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+		List<List<Integer>> result = new ArrayList<>();
+
 		if (root == null)
-			return;
+			return result;
+
 		Stack<TreeNode> stack = new Stack<TreeNode>();
 		stack.push(root);
 
 		boolean directionflag = false;
 		while (!stack.isEmpty()) {
 			Stack<TreeNode> tempStack = new Stack<TreeNode>();
+			List<Integer> list = new ArrayList<>();
 
 			while (!stack.isEmpty()) {
 				TreeNode node = stack.pop();
-				System.out.printf("%d ", node.value);
+				list.add(node.val);
+				System.out.printf("%d ", node.val);
 				if (!directionflag) {
 					if (node.left != null)
 						tempStack.push(node.left);
@@ -46,9 +52,10 @@ public class ZIgZagLevelOrder {
 			}
 			// for changing direction
 			directionflag = !directionflag;
-
 			stack = tempStack;
+			result.add(list);
 		}
+		return result;
 	}
 
 	public static void main(String[] args) {
@@ -57,7 +64,7 @@ public class ZIgZagLevelOrder {
 		TreeNode rootNode = ob.createBinaryTree();
 		TreeUtils.drawTree(rootNode);
 		System.out.println("Spiral/Zigzag traversal of binary tree :");
-		ob.spiralOrZigzagLevelOrder(rootNode);
+		ob.zigzagLevelOrder(rootNode);
 	}
 
 	public TreeNode createBinaryTree() {

@@ -34,4 +34,24 @@ public class ExcelSheetColumnNumber {
 
 		return result;
 	}
+
+	public int titleToNumberI(String s) {
+		if (s == null || s.length() == 0) {
+			throw new IllegalArgumentException("Input is not valid!");
+		}
+		int result = 0;
+
+		for (int i = 0; i < s.length(); i++) {
+			int val = s.charAt(i) - 'A' + 1;
+			result = result * 26 + val;
+		}
+		return result;
+	}
+
+	public static void main(String[] args) {
+		ExcelSheetColumnNumber ob = new ExcelSheetColumnNumber();
+		String test_str = "DFE";
+		System.out.println(ob.titleToNumber(test_str));
+		System.out.println(ob.titleToNumberI(test_str));
+	}
 }

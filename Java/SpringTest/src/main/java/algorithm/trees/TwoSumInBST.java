@@ -104,7 +104,7 @@ public class TwoSumInBST {
 		while (leftIter.hasNext() && rightIter.hasNext()) {
 			TreeNode left = leftIter.next();
 			TreeNode right = rightIter.next();
-			int sum = left.value + right.value;
+			int sum = left.val + right.val;
 			if (sum == num) {
 				return true;
 			} else if (sum > num) {

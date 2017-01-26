@@ -116,6 +116,39 @@ public class CombinationSum {
 		return result;
 	}
 
+	public boolean subsetSum(int arr[], int sum) {
+
+		boolean dp[][] = new boolean[arr.length + 1][sum + 1];
+		for (int i = 0; i <= arr.length; i++) {
+			dp[i][0] = true;
+		}
+
+		for (int r = 1; r <= arr.length; r++) {
+			for (int c = 1; c <= sum; c++) {
+				if (c - arr[r - 1] >= 0) {
+					dp[r][c] = dp[r - 1][c] || dp[r - 1][c - arr[r - 1]];
+				} else {
+					dp[r][c] = dp[r - 1][c];
+				}
+			}
+		}
+		return dp[arr.length][sum];
+	}
+
+	public boolean subsetSumI(int arr[], int sum, int idx) {
+		if (sum == 0)
+			return true;
+
+		for (int i = idx; i < arr.length; i++) {
+			if (arr[i] > sum)
+				break;
+
+			if (subsetSumI(arr, sum - arr[i], i + 1))
+				return true;
+		}
+		return false;
+	}
+
 	public static void main(String[] args) {
 		CombinationSum obj = new CombinationSum();
 		int[] candidates = { 2, 3, 4, 7 };
@@ -129,5 +162,8 @@ public class CombinationSum {
 		ArrayList<ArrayList<Integer>> result2 = obj.combinationSumII(candidates, 7);
 		System.out.println(result2);
 
+		System.out.println("----------------------subsetSum-----------------------");
+		System.out.println(obj.subsetSum(candidates, 7));
+		System.out.println(obj.subsetSumI(candidates, 7, 0));
 	}
 }

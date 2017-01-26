@@ -2,17 +2,17 @@ package algorithm.linkedlist;
 
 public class Merge2SortedLinkedList {
 
-	public Node mergeList(Node header1, Node header2){
-		Node header = null;
+	public ListNode mergeList(ListNode header1, ListNode header2){
+		ListNode header = null;
 		
 		while(header1!= null && header2!= null){
 			
-			Node newNode = null;
+			ListNode newNode = null;
 			if(header1.val < header2.val){
-				newNode = new Node(header1.val);
+				newNode = new ListNode(header1.val);
 				header1 = header1.next;
 			}else{
-				newNode = new Node(header2.val);
+				newNode = new ListNode(header2.val);
 				header2 = header2.next;
 			}
 			
@@ -26,7 +26,7 @@ public class Merge2SortedLinkedList {
 		}
 		
 		while(header1!= null ){
-			Node newNode = new Node(header1.val);
+			ListNode newNode = new ListNode(header1.val);
 			header1 = header1.next;
 			newNode.next = header;
 			header.prev = newNode;
@@ -34,7 +34,7 @@ public class Merge2SortedLinkedList {
 		}
 		
 		while(header2!= null ){
-			Node newNode = new Node(header2.val);
+			ListNode newNode = new ListNode(header2.val);
 			header2 = header2.next;
 			newNode.next = header;
 			header.prev = newNode;
@@ -44,8 +44,8 @@ public class Merge2SortedLinkedList {
 		return header;
 	}
 	
-	public void printAllNode(Node head){
-		Node currentNode = head;
+	public void printAllNode(ListNode head){
+		ListNode currentNode = head;
 		while(currentNode != null){
 			System.out.print("[" + currentNode.val + "] ");
 			currentNode = currentNode.next;
@@ -53,12 +53,12 @@ public class Merge2SortedLinkedList {
 		System.out.print("\n");
 	}
 	
-	public Node generateFirstList(){
-		Node node1 = new Node(1);
-		Node node3 = new Node(3);
-		Node node5 = new Node(5);
-		Node node7 = new Node(7);
-		Node node9 = new Node(9);
+	public ListNode generateFirstList(){
+		ListNode node1 = new ListNode(1);
+		ListNode node3 = new ListNode(3);
+		ListNode node5 = new ListNode(5);
+		ListNode node7 = new ListNode(7);
+		ListNode node9 = new ListNode(9);
 		node1.next = node3;
 		node3.next = node5;
 		node5.next = node7;
@@ -67,12 +67,12 @@ public class Merge2SortedLinkedList {
 		return node1;
 	}
 	
-	public Node generateSecondList(){
-		Node node2 = new Node(2);
-		Node node4 = new Node(4);
-		Node node6 = new Node(6);
-		Node node8 = new Node(8);
-		Node node10 = new Node(10);
+	public ListNode generateSecondList(){
+		ListNode node2 = new ListNode(2);
+		ListNode node4 = new ListNode(4);
+		ListNode node6 = new ListNode(6);
+		ListNode node8 = new ListNode(8);
+		ListNode node10 = new ListNode(10);
 		node2.next = node4;
 		node4.next = node6;
 		node6.next = node8;
@@ -85,15 +85,15 @@ public class Merge2SortedLinkedList {
 		Merge2SortedLinkedList mergedList = new Merge2SortedLinkedList();
 
 
-		Node header1 = mergedList.generateFirstList();
-		Node header2 = mergedList.generateSecondList();
+		ListNode header1 = mergedList.generateFirstList();
+		ListNode header2 = mergedList.generateSecondList();
 
 		
 		System.out.println("\n----------------LIST 1-------------------");
 		mergedList.printAllNode(header1);
 		System.out.println("\n----------------LIST 2-----------------");
 		mergedList.printAllNode(header2);
-		Node header = mergedList.mergeList(header1, header2);
+		ListNode header = mergedList.mergeList(header1, header2);
 		System.out.println("\n----------------AFTER Merge-----------------");
 		mergedList.printAllNode(header);
 	}

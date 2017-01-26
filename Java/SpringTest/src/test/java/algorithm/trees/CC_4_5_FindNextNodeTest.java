@@ -32,17 +32,17 @@ public class CC_4_5_FindNextNodeTest {
 
 	@Test
 	public void test() {
-		assertEquals(2, obj.findNext(testTree, 1, false).value);
+		assertEquals(2, obj.findNext(testTree, 1, false).val);
 	}
 
 	@Test
 	public void test1() {
-		assertEquals(6, obj.findNext(testTree, 3, false).value);
+		assertEquals(6, obj.findNext(testTree, 3, false).val);
 	}
 
 	@Test
 	public void test2() {
-		assertEquals(7, obj.findNext(testTree, 4, false).value);
+		assertEquals(7, obj.findNext(testTree, 4, false).val);
 	}
 
 	@Test

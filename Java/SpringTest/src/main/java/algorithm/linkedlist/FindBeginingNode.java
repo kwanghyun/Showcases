@@ -15,19 +15,19 @@ public class FindBeginingNode {
 	// input: A -> B -> C -> D -> E -> C [the same C as earlier]
 	// output: C
 
-	Node head;
+	ListNode head;
 
-	public void insert(Node node) {
-		Node current = head;
+	public void insert(ListNode node) {
+		ListNode current = head;
 		node.next = current;
 		head = node;
 	}
 
 	
-	public Node Solution(Node head) {
+	public ListNode Solution(ListNode head) {
 
-		Node fast = head.next.next;
-		Node slow = head.next;
+		ListNode fast = head.next.next;
+		ListNode slow = head.next;
 
 		while (fast != null) {
 			if (fast.ch == slow.ch) {
@@ -47,11 +47,11 @@ public class FindBeginingNode {
 	
 	public static void main(String args[]) {
 		FindBeginingNode fbn = new FindBeginingNode();
-		Node nodec = new Node('C');
-		Node nodee = new Node('E');
-		Node noded = new Node('D');
-		Node nodeb = new Node('B');
-		Node nodea = new Node('C');
+		ListNode nodec = new ListNode('C');
+		ListNode nodee = new ListNode('E');
+		ListNode noded = new ListNode('D');
+		ListNode nodeb = new ListNode('B');
+		ListNode nodea = new ListNode('C');
 
 		fbn.insert(nodec);
 		fbn.insert(nodee);

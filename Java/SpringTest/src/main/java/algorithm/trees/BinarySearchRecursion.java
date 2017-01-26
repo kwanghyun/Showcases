@@ -29,7 +29,7 @@ public class BinarySearchRecursion {
 	
 	public void preOrder(TreeNode root){
 		if(root != null){
-			System.out.println(root.value);
+			System.out.println(root.val);
 			preOrder(root.left);
 			preOrder(root.right);
 		}
@@ -39,7 +39,7 @@ public class BinarySearchRecursion {
 		if(root != null){
 
 			preOrder(root.left);
-			System.out.println(root.value);
+			System.out.println(root.val);
 			preOrder(root.right);
 		}
 	}
@@ -48,7 +48,7 @@ public class BinarySearchRecursion {
 
 			preOrder(root.left);
 			preOrder(root.right);
-			System.out.println(root.value);
+			System.out.println(root.val);
 		}
 	}
 	public static void main(String args []){

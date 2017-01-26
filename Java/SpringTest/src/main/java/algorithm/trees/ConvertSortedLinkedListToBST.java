@@ -1,6 +1,6 @@
 package algorithm.trees;
 
-import algorithm.linkedlist.Node;
+import algorithm.linkedlist.ListNode;
 import algorithm.utils.LinkedListUtils;
 import algorithm.utils.TreeUtils;
 
@@ -18,9 +18,9 @@ import algorithm.utils.TreeUtils;
  * in its order at the same time as creating nodes.
  */
 public class ConvertSortedLinkedListToBST {
-	static Node h;
+	static ListNode h;
 
-	public TreeNode sortedListToBST(Node head) {
+	public TreeNode sortedListToBST(ListNode head) {
 		if (head == null)
 			return null;
 
@@ -30,9 +30,9 @@ public class ConvertSortedLinkedListToBST {
 	}
 
 	// get list length
-	public int getLength(Node head) {
+	public int getLength(ListNode head) {
 		int len = 0;
-		Node p = head;
+		ListNode p = head;
 
 		while (p != null) {
 			len++;
@@ -62,7 +62,7 @@ public class ConvertSortedLinkedListToBST {
 
 	public static void main(String[] args) {
 		ConvertSortedLinkedListToBST ob = new ConvertSortedLinkedListToBST();
-		Node node = LinkedListUtils.generateListFromRange(1, 8);
+		ListNode node = LinkedListUtils.generateListFromRange(1, 8);
 		LinkedListUtils.printNodes(node);
 		TreeNode tnode = ob.sortedListToBST(node);
 		TreeUtils.printInorder(tnode);

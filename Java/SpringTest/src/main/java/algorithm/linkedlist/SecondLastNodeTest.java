@@ -31,26 +31,26 @@ public class SecondLastNodeTest {
 		assertEquals(5, obj.solution(generateEvenList()).val);
 	}
 
-	public Node generateOneList() {
-		Node node1 = new Node(1);
+	public ListNode generateOneList() {
+		ListNode node1 = new ListNode(1);
 		node1.next = null;
 		return node1;
 	}
 
-	public Node generateTwoList() {
-		Node node1 = new Node(1);
-		Node node2 = new Node(2);
+	public ListNode generateTwoList() {
+		ListNode node1 = new ListNode(1);
+		ListNode node2 = new ListNode(2);
 		node1.next = node2;
 		node2.next = null;
 		return node1;
 	}
 
-	public Node generateOddList() {
-		Node node1 = new Node(1);
-		Node node2 = new Node(2);
-		Node node3 = new Node(3);
-		Node node4 = new Node(4);
-		Node node5 = new Node(5);
+	public ListNode generateOddList() {
+		ListNode node1 = new ListNode(1);
+		ListNode node2 = new ListNode(2);
+		ListNode node3 = new ListNode(3);
+		ListNode node4 = new ListNode(4);
+		ListNode node5 = new ListNode(5);
 		node1.next = node2;
 		node2.next = node3;
 		node3.next = node4;
@@ -59,13 +59,13 @@ public class SecondLastNodeTest {
 		return node1;
 	}
 
-	public Node generateEvenList() {
-		Node node1 = new Node(1);
-		Node node2 = new Node(2);
-		Node node3 = new Node(3);
-		Node node4 = new Node(4);
-		Node node5 = new Node(5);
-		Node node6 = new Node(6);
+	public ListNode generateEvenList() {
+		ListNode node1 = new ListNode(1);
+		ListNode node2 = new ListNode(2);
+		ListNode node3 = new ListNode(3);
+		ListNode node4 = new ListNode(4);
+		ListNode node5 = new ListNode(5);
+		ListNode node6 = new ListNode(6);
 		node1.next = node2;
 		node2.next = node3;
 		node3.next = node4;

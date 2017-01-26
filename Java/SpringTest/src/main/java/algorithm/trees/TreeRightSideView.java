@@ -20,36 +20,36 @@ right-most element to the results.
 public class TreeRightSideView {
 
 	public List<Integer> rightSideView(TreeNode root) {
-		
+
 		ArrayList<Integer> result = new ArrayList<Integer>();
 		LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
-		
+
 		if (root == null)
 			return result;
-		
-		queue.add(root);
-		
+
+		queue.offer(root);
+
 		while (queue.size() > 0) {
-			
+
 			// get size here
 			int size = queue.size();
-			
+
 			for (int i = 0; i < size; i++) {
-				TreeNode node = queue.remove();
+				TreeNode node = queue.poll();
 
 				// the first element in the queue (right-most of the tree)
 				if (i == 0) {
-					result.add(node.value);
+					result.add(node.val);
 				}
-				
+
 				// add right first
 				if (node.right != null) {
-					queue.add(node.right);
+					queue.offer(node.right);
 				}
-				
+
 				// add left
 				if (node.left != null) {
-					queue.add(node.left);
+					queue.offer(node.left);
 				}
 			}
 		}

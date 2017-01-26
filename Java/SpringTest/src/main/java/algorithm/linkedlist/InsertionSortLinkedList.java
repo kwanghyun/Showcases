@@ -10,96 +10,96 @@ import algorithm.utils.LinkedListUtils;
  */
 public class InsertionSortLinkedList {
 
-	public static Node insertionSort(Node head) {
+	public static ListNode insertionSortList(ListNode head) {
 
 		if (head == null || head.next == null)
 			return head;
 
-		Node prev = head;
-		Node curr = head.next;
-		while (curr != null) {
-			Node t_prv = head;
-			Node t_crr = head.next;
-			while (t_crr != curr) {
-				if (t_crr.val > curr.val) {
-					insert(t_prv, t_crr, prev, curr);
+		ListNode start = head;
+		ListNode end = head.next;
+		while (end != null) {
+			ListNode s = head;
+			ListNode c = head.next;
+			while (c != end) {
+				if (c.val > end.val) {
+					insert(s, c, start, end);
 					break;
 				}
-				t_prv = t_prv.next;
-				t_crr = t_crr.next;
+				s = s.next;
+				c = c.next;
 			}
-			prev = prev.next;
-			curr = curr.next;
+			start = start.next;
+			end = end.next;
 		}
 		return head;
 	}
 
-	public static void insert(Node prev1, Node curr1, Node prev2, Node curr2) {
-		Node t = curr2.next;
+	public static void insert(ListNode prev1, ListNode curr1, ListNode prev2, ListNode curr2) {
+		ListNode t = curr2.next;
 		prev1.next = curr2;
 		curr2.next = curr1;
 		prev2.next = t;
 	}
 
-	public static void swap(Node n1, Node n2) {
+	public static void swap(ListNode n1, ListNode n2) {
 		int temp = n2.val;
 		n2.val = n1.val;
 		n1.val = temp;
 	}
 
-	public static Node insertionSortList(Node head) {
+	public static ListNode insertionSortListI(ListNode head) {
 
 		if (head == null || head.next == null)
 			return head;
 
-		Node newHead = new Node(head.val);
-		Node pointer = head.next;
+		ListNode new_h = new ListNode(head.val);
+		ListNode end = head.next;
 
 		// loop through each element in the list
-		while (pointer != null) {
+		while (end != null) {
 			// insert this element to the new list
 
-			Node innerPointer = newHead;
-			Node next = pointer.next;
+			ListNode start = new_h;
+			ListNode next = end.next;
 
-			if (pointer.val <= newHead.val) {
-				Node oldHead = newHead;
-				newHead = pointer;
-				newHead.next = oldHead;
+			if (end.val <= new_h.val) {
+				ListNode old_h = new_h;
+				new_h = end;
+				new_h.next = old_h;
 			} else {
-				while (innerPointer.next != null) {
+				while (start.next != null) {
 
-					if (pointer.val > innerPointer.val && pointer.val <= innerPointer.next.val) {
-						Node oldNext = innerPointer.next;
-						innerPointer.next = pointer;
-						pointer.next = oldNext;
+					if (end.val > start.val && end.val <= start.next.val) {
+						ListNode oldNext = start.next;
+						start.next = end;
+						end.next = oldNext;
 					}
 
-					innerPointer = innerPointer.next;
+					start = start.next;
 				}
 
-				if (innerPointer.next == null && pointer.val > innerPointer.val) {
-					innerPointer.next = pointer;
-					pointer.next = null;
+				if (start.next == null && end.val > start.val) {
+					start.next = end;
+					end.next = null;
 				}
 			}
 
 			// finally
-			pointer = next;
+			end = next;
 		}
 
-		return newHead;
+		return new_h;
 	}
 
 	public static void main(String[] args) {
 
-		Node node = LinkedListUtils.generateUnSortedList();
+		ListNode node = LinkedListUtils.generateUnSortedList();
 		LinkedListUtils.printNodes(node);
-		node = insertionSort(node);
+		node = insertionSortList(node);
 		LinkedListUtils.printNodes(node);
 	}
 
-	public static void printList(Node x) {
+	public static void printList(ListNode x) {
 		if (x != null) {
 			System.out.print(x.val + " ");
 			while (x.next != null) {

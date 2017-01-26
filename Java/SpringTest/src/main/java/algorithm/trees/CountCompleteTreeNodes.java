@@ -1,5 +1,7 @@
 package algorithm.trees;
 
+import algorithm.utils.TreeUtils;
+
 /*
  * Given a complete binary tree, count the number of nodes.
  * 
@@ -50,5 +52,13 @@ public class CountCompleteTreeNodes {
 			n = n.right;
 		}
 		return height;
+	}
+
+	public static void main(String[] args) {
+		CountCompleteTreeNodes ob = new CountCompleteTreeNodes();
+		for (int i = 2; i <= 7; i++) {
+			TreeNode root = TreeUtils.buildBstFromRange(1, i);
+			TreeUtils.drawTree(root);
+		}
 	}
 }

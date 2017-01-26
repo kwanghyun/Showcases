@@ -34,7 +34,7 @@ public class DiagnalSumOfBT {
 
 		// now add current node's value to its diagonal sum
 		int sum = (map.get(level) == null) ? 0 : map.get(level);
-		map.put(level, sum + node.value);
+		map.put(level, sum + node.val);
 
 		// compute diagonal sum for the tree rooted at the right child
 		// right child would be placed in the same diagonal as that of current

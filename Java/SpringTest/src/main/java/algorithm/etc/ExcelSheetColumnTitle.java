@@ -24,13 +24,39 @@ public class ExcelSheetColumnTitle {
 		StringBuilder sb = new StringBuilder();
 
 		while (n > 0) {
+			// If -1 in the below ch level, it got wired value
+			n--;
+			char ch = (char) (n % 26 + 'A');
+			n /= 26;
+			sb.insert(0, ch);
+		}
+		return sb.toString();
+	}
+
+	public String convertToTitleI(int n) {
+		if (n <= 0) {
+			throw new IllegalArgumentException("Input is not valid!");
+		}
+
+		StringBuilder sb = new StringBuilder();
+
+		while (n > 0) {
 			n--;
 			char ch = (char) (n % 26 + 'A');
 			n /= 26;
 			sb.append(ch);
+			// sb.insert(0, ch);
 		}
 
-		sb.reverse();
+		// sb.reverse();
 		return sb.toString();
+	}
+
+	public static void main(String[] args) {
+		ExcelSheetColumnTitle ob = new ExcelSheetColumnTitle();
+		int test_n = 324;
+		// int test_n = 26;
+		System.out.println(ob.convertToTitle(test_n));
+		System.out.println(ob.convertToTitleI(test_n));
 	}
 }

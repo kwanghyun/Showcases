@@ -12,17 +12,32 @@ import algorithm.utils.LinkedListUtils;
  */
 public class SwapNodeInPairs {
 
-	public Node swapPairsI(Node head) {
+	public ListNode swapPairsII(ListNode head) {
+		
+		ListNode p = head;
+		/* Traverse only till there are atleast 2 nodes left */
+		while (p != null && p.next != null) {
+
+			/* Swap the data */
+			int tmp = p.val;
+			p.val = p.next.val;
+			p.next.val = tmp;
+			p = p.next.next;
+		}
+		return head;
+	}
+
+	public ListNode swapPairsI(ListNode head) {
 
 		if (head == null || head.next == null)
 			return head;
 
-		Node prev = head;
-		Node curr = head.next;
-		Node n_head = curr;
+		ListNode prev = head;
+		ListNode curr = head.next;
+		ListNode n_head = curr;
 
 		while (curr != null) {
-			Node nxt = curr.next;
+			ListNode nxt = curr.next;
 			curr.next = prev;
 
 			if (nxt == null || nxt.next == null) {
@@ -40,35 +55,41 @@ public class SwapNodeInPairs {
 
 	public static void main(String[] args) {
 		SwapNodeInPairs obj = new SwapNodeInPairs();
-		Node head = LinkedListUtils.generateListFromRange(1, 5);
+		ListNode head = LinkedListUtils.generateListFromRange(1, 5);
 		LinkedListUtils.printNodes(head);
 		System.out.println("\n--------------swapPairsI--------------");
 		LinkedListUtils.drawList(obj.swapPairsI(head));
 		System.out.println("\n--------------swapPairsI--------------");
-		Node head5 = LinkedListUtils.generateOrderedList(5);
+		ListNode head5 = LinkedListUtils.generateOrderedList(5);
 		LinkedListUtils.drawList(obj.swapPairsI(head5));
 		System.out.println("\n--------------swapPairsI--------------");
-		Node head6 = LinkedListUtils.generateOrderedList(6);
+		ListNode head6 = LinkedListUtils.generateOrderedList(6);
 		LinkedListUtils.drawList(obj.swapPairsI(head6));
+		System.out.println("\n--------------swapPairsII--------------");
+		ListNode head7 = LinkedListUtils.generateOrderedList(5);
+		LinkedListUtils.drawList(obj.swapPairsII(head7));
+		System.out.println("\n--------------swapPairsII--------------");
+		ListNode head8 = LinkedListUtils.generateOrderedList(6);
+		LinkedListUtils.drawList(obj.swapPairsII(head8));
 	}
 
-	public Node swapPairs(Node head) {
+	public ListNode swapPairs(ListNode head) {
 
 		if (head == null || head.next == null)
 			return head;
 
-		Node newNode = new Node(0);
+		ListNode newNode = new ListNode(0);
 		newNode.next = head;
-		Node p = newNode;
+		ListNode p = newNode;
 
 		while (p.next != null && p.next.next != null) {
 			// use t1 to track first node
-			Node t1 = p;
+			ListNode t1 = p;
 			p = p.next;
 			t1.next = p.next;
 
 			// use t2 to track next node of the pair
-			Node t2 = p.next.next;
+			ListNode t2 = p.next.next;
 			p.next.next = p;
 			p.next = t2;
 		}

@@ -62,7 +62,7 @@ public class InorderSuccessorInBST {
 			TreeNode temp = null;
 
 			/* 2. Otherwise, recur down the tree */
-			if (data <= node.value) {
+			if (data <= node.val) {
 				temp = insert(node.left, data);
 				node.left = temp;
 				temp.parent = node;
@@ -108,6 +108,7 @@ public class InorderSuccessorInBST {
 		return current;
 	}
 
+
 	// Driver program to test above functions
 	public static void main(String[] args) {
 		InorderSuccessorInBST tree = new InorderSuccessorInBST();
@@ -123,7 +124,7 @@ public class InorderSuccessorInBST {
 		TreeUtils.drawTree(root);
 		suc = tree.inOrderSuccessor(root, temp);
 		if (suc != null) {
-			System.out.println("Inorder successor of " + temp.value + " is " + suc.value);
+			System.out.println("Inorder successor of " + temp.val + " is " + suc.val);
 		} else {
 			System.out.println("Inorder successor does not exist");
 		}

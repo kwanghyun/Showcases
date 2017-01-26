@@ -2,15 +2,15 @@ package algorithm.linkedlist;
  
 public class RemoveNode {
 
-	Node head, tail;
+	ListNode head, tail;
 	int count;
 	
 	// 3 => 4 => 5
 	// previous.next = temp.next
 	// 3 => 5
 	public boolean delete(int value) {		
-		Node temp = tail;
-		Node previous = tail;
+		ListNode temp = tail;
+		ListNode previous = tail;
 		while (temp != null) {
 			if (temp.val == value) {
 				if (temp == previous) {
@@ -34,9 +34,9 @@ public class RemoveNode {
 	//  2 => previous.next = node
 	//  2 => node.next = previous.next
 	//  2 => 3 => 4 => 5 =>
-	public boolean insertAfter(Node node, int index) {
-		Node temp = tail;
-		Node previous = tail;
+	public boolean insertAfter(ListNode node, int index) {
+		ListNode temp = tail;
+		ListNode previous = tail;
 		
 		if (index > count || index < 0)
 			return false;
@@ -61,7 +61,7 @@ public class RemoveNode {
 		return true;
 	}
 
-	public boolean add(Node node) {
+	public boolean add(ListNode node) {
 		if (head == null) {
 			head = node;
 			tail = node;
@@ -75,7 +75,7 @@ public class RemoveNode {
 	}
 
 	public void printAll() {
-		Node temp = tail;
+		ListNode temp = tail;
 		for (int i = 0; i < count; i++) {
 			System.out.print("[" + temp.val + "], ");
 			temp = temp.next;
@@ -86,13 +86,13 @@ public class RemoveNode {
 	public static void main(String args[]) {
 		RemoveNode rn = new RemoveNode();
 		for (int i = 0; i < 10; i++) {
-			Node node = new Node(i);
+			ListNode node = new ListNode(i);
 			rn.add(node);
 		}
 		rn.printAll();
 		System.out.println(rn.delete(3));
 		rn.printAll();
-		System.out.println(rn.insertAfter(new Node(3), 3));
+		System.out.println(rn.insertAfter(new ListNode(3), 3));
 		rn.printAll();
 	}
 }

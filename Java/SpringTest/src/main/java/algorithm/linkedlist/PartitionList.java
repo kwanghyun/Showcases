@@ -14,16 +14,16 @@ import algorithm.utils.LinkedListUtils;
  */
 public class PartitionList {
 
-	public Node partitionI(Node head, int x) {
+	public ListNode partitionI(ListNode head, int x) {
 		if (head == null)
 			return null;
 
-		Node sp = new Node(0);
-		Node bp = new Node(0);
-		Node sHead = sp;
-		Node bHead = bp;
+		ListNode sp = new ListNode(0);
+		ListNode bp = new ListNode(0);
+		ListNode sHead = sp;
+		ListNode bHead = bp;
 
-		Node p = head;
+		ListNode p = head;
 
 		while (p != null) {
 			if (head.val < x) {
@@ -41,17 +41,17 @@ public class PartitionList {
 		return sHead.next;
 	}
 
-	public Node partition(Node head, int x) {
+	public ListNode partition(ListNode head, int x) {
 		if (head == null)
 			return null;
 
-		Node fakeHead1 = new Node(0);
-		Node fakeHead2 = new Node(0);
+		ListNode fakeHead1 = new ListNode(0);
+		ListNode fakeHead2 = new ListNode(0);
 		fakeHead1.next = head;
 
-		Node p = head;
-		Node prev = fakeHead1;
-		Node p2 = fakeHead2;
+		ListNode p = head;
+		ListNode prev = fakeHead1;
+		ListNode p2 = fakeHead2;
 
 		while (p != null) {
 			if (p.val < x) {
@@ -79,20 +79,20 @@ public class PartitionList {
 		PartitionList ob = new PartitionList();
 
 		int[] arr1 = { 1, 4, 3, 2, 5, 2 };
-		Node head1 = LinkedListUtils.generateListFromArray(arr1);
-		LinkedListUtils.printNodes(head1);
+		ListNode head1 = LinkedListUtils.generateListFromArray(arr1);
+		LinkedListUtils.drawList(head1);
 		System.out.println("");
 		ob.partitionI(head1, 3);
-		LinkedListUtils.printNodes(head1);
+		LinkedListUtils.drawList(head1);
 
 		System.out.println("");
 
 		int[] arr = { 1, 4, 3, 2, 5, 2 };
-		Node head = LinkedListUtils.generateListFromArray(arr);
-		LinkedListUtils.printNodes(head);
+		ListNode head = LinkedListUtils.generateListFromArray(arr);
+		LinkedListUtils.drawList(head);
 		System.out.println("");
 		ob.partition(head, 3);
-		LinkedListUtils.printNodes(head);
+		LinkedListUtils.drawList(head);
 
 	}
 }

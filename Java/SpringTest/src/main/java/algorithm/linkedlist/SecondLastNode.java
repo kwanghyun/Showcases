@@ -4,8 +4,8 @@ package algorithm.linkedlist;
  * second last (n-1) node. If we want to reach till (n\2) node.*/
 public class SecondLastNode {
 
-	public Node solution(Node head) {
-		Node node = head;
+	public ListNode solution(ListNode head) {
+		ListNode node = head;
 
 		if (node == null || node.next == null)
 			return null;

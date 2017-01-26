@@ -9,26 +9,35 @@ package algorithm.trees;
  key.
  • Both the left and right subtrees must also be binary search trees.
  
- All values on the left sub tree must be less than root, and all values on the right sub
-tree must be greater than root.
+	 Example 1:
+	    2
+	   / \
+	  1   3
+	Binary tree [2,1,3], return true.
+
+	Example 2:
+	    1
+	   / \
+	  2   3
+	Binary tree [1,2,3], return false.
  */
 public class ValidateBinarySearchTree {
 	public static boolean isValidBST(TreeNode root) {
-		return validate(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+		return validate(root, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
 	}
 
-	public static boolean validate(TreeNode root, int min, int max) {
+	public static boolean validate(TreeNode root, double min, double max) {
 		if (root == null) {
 			return true;
 		}
 
 		// not in range
-		if (root.value <= min || root.value >= max) {
+		if (root.val <= min || root.val >= max) {
 			return false;
 		}
 
 		// left subtree must be < root.val && right subtree must be > root.val
-		return validate(root.left, min, root.value)
-				&& validate(root.right, root.value, max);
+		return validate(root.left, min, root.val)
+				&& validate(root.right, root.val, max);
 	}
 }

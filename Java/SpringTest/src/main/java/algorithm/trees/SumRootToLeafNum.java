@@ -2,6 +2,7 @@ package algorithm.trees;
 
 import java.util.ArrayList;
 
+import algorithm.Utils;
 import algorithm.utils.TreeUtils;
 
 /*Given a binary tree containing digits from 0-9 only, each root-to-leaf path could
@@ -24,16 +25,37 @@ public class SumRootToLeafNum {
 		return dfs(root, 0);
 	}
 
-	public int dfs(TreeNode root, int num) {
+	public int dfs(TreeNode root, int sum) {
 		if (root == null)
 			return 0;
 
-		num = num * 10 + root.value;
+		if (root.left == null && root.right == null) {
+			return sum * 10 + root.val;
+		}
+
+		return dfs(root.left, sum * 10 + root.val) + dfs(root.right, sum * 10 + root.val);
+	}
+
+	public int sumNumbersCS(TreeNode root) {
+
+		if (root == null)
+			return 0;
+		return dfsCS(root, root.val, 0, 0);
+	}
+
+	public int dfsCS(TreeNode root, int sum, int total, int callstack) {
 
 		if (root.left == null && root.right == null) {
-			return num;
+			total += sum;
+			Utils.printCS(callstack, "root.val = " + root.val + ", sum = " + sum + ", total = " + total);
+			Utils.printCsEOR(callstack);
+			return total;
 		}
-		return dfs(root.left, num) + dfs(root.right, num);
+		Utils.printCS(callstack, "root.val = " + root.val + ", sum = " + sum + ", total = " + total);
+		total = dfsCS(root.left, sum * 10 + root.left.val, total, callstack + 1)
+				+ dfsCS(root.right, sum * 10 + root.right.val, total, callstack + 1);
+		Utils.printCS(callstack, "root.val = " + root.val + ", sum = " + sum + ", total = " + total);
+		return total;
 	}
 
 	public int sumNumbersI(TreeNode root) {
@@ -54,7 +76,7 @@ public class SumRootToLeafNum {
 		if (node == null)
 			return 0;
 
-		num = num * 10 + node.value;
+		num = num * 10 + node.val;
 
 		// leaf
 		if (node.left == null && node.right == null) {
@@ -71,7 +93,7 @@ public class SumRootToLeafNum {
 		if (node == null)
 			return 0;
 
-		num = num * 10 + node.value;
+		num = num * 10 + node.val;
 
 		if (node.left == null && node.right == null) {
 			sum += num;
@@ -85,11 +107,13 @@ public class SumRootToLeafNum {
 		SumRootToLeafNum ob = new SumRootToLeafNum();
 		int[] inorder = { 2, 1, 3 };
 		int[] preorder = { 1, 2, 3 };
-		// TreeNode root = TreeUtils.buildInPreorderTree(inorder, preorder);
-		TreeNode root = TreeUtils.buildBstFromRange(1, 7);
+		TreeNode root = TreeUtils.buildInPreorderTree(inorder, preorder);
+		// TreeNode root = TreeUtils.buildBstFromRange(1, 7);
 		TreeUtils.drawTree(root);
 		System.out.println("---------------------sumNumbers------------------------");
 		System.out.println(ob.sumNumbers(root));
+		System.out.println("---------------------sumNumbersCS------------------------");
+		System.out.println(ob.sumNumbersCS(root));
 		System.out.println("---------------------sumNumbersI------------------------");
 		System.out.println(ob.sumNumbersI(root));
 		System.out.println("---------------------sumNumbersII------------------------");

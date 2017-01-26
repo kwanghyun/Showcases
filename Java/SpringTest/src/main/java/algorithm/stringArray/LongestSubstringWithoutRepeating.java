@@ -1,6 +1,9 @@
 package algorithm.stringArray;
 
 import java.util.HashMap;
+import java.util.Set;
+
+import scala.collection.mutable.HashSet;
 
 /*
  * Given a string, find the length of the longest substring without
@@ -16,6 +19,7 @@ import java.util.HashMap;
  * O(n).
  */
 public class LongestSubstringWithoutRepeating {
+
 	public static int lengthOfLongestSubstring(String s) {
 		if (s == null)
 			return 0;
@@ -25,11 +29,13 @@ public class LongestSubstringWithoutRepeating {
 		HashMap<Character, Integer> map = new HashMap<>();
 
 		for (int i = 0; i < arr.length; i++) {
+			// System.out.println("[0] i = " + i);
 			if (!map.containsKey(arr[i])) {
 				map.put(arr[i], i);
 			} else {
 				max = Math.max(max, map.size());
 				i = map.get(arr[i]);
+				System.out.println("[1] i = " + i + ", ch = " + arr[i]);
 				map.clear();
 			}
 		}
@@ -66,5 +72,9 @@ public class LongestSubstringWithoutRepeating {
 		max = Math.max(max, map.size());
 
 		return max;
+	}
+
+	public static void main(String[] args) {
+		System.out.println(lengthOfLongestSubstring("abcabcbb"));
 	}
 }

@@ -21,7 +21,7 @@ public class KthSmallestElementInBST {
 				TreeNode t = stack.pop();
 				k--;
 				if (k == 0)
-					result = t.value;
+					result = t.val;
 				p = t.right;
 			}
 		}
